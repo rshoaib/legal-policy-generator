@@ -3,7 +3,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms';
+  selectedType: 'privacy' | 'terms' | 'cookie';
 }
 
 export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType }) => {
@@ -29,7 +29,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? 'Privacy Policy' : 'Terms & Conditions'} Details
+        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : 'Cookie Policy'} Details
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -91,7 +91,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
 
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            Generate {selectedType === 'privacy' ? 'Privacy Policy' : 'Terms & Conditions'}
+            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : 'Cookie Policy'}
           </button>
         </div>
       </form>

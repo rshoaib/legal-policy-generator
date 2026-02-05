@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
+import { Toaster } from 'sonner'
 import { Layout } from './components/Layout'
 import { GeneratorForm } from './components/GeneratorForm'
 import { PolicyPreview } from './components/PolicyPreview'
@@ -10,8 +11,10 @@ import type { PolicyData } from './appTypes'
 import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
 
+import { generateCookiePolicy } from './utils/templates/cookiePolicy'
+
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms'
+type PolicyType = 'privacy' | 'terms' | 'cookie'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -27,8 +30,10 @@ function GeneratorApp() {
     let content = ''
     if (selectedType === 'privacy') {
       content = generatePrivacyPolicy(data)
-    } else {
+    } else if (selectedType === 'terms') {
       content = generateTermsConditions(data)
+    } else {
+      content = generateCookiePolicy(data)
     }
     setGeneratedContent(content)
     setStep('preview')
@@ -47,7 +52,7 @@ function GeneratorApp() {
             Free Legal Policy Generator
           </h1>
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 3rem' }}>
-            Generate professional Privacy Policies and Terms & Conditions for your website or app in minutes.
+            Generate professional Privacy Policies, Terms & Conditions, and Cookie Policies for your website or app in minutes.
           </p>
           
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '4rem' }}>
@@ -64,6 +69,13 @@ function GeneratorApp() {
               onClick={() => handleStart('terms')}
             >
               Create Terms & Conditions
+            </button>
+            <button 
+              className="btn-primary" 
+              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(90deg)' }}
+              onClick={() => handleStart('cookie')}
+            >
+              Create Cookie Policy
             </button>
           </div>
 
@@ -109,6 +121,7 @@ function App() {
                     <Route path=":slug" element={<BlogPost />} />
                 </Route>
             </Routes>
+            <Toaster position="top-right" />
         </Layout>
     </BrowserRouter>
   )
