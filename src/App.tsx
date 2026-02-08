@@ -12,9 +12,10 @@ import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
 
 import { generateCookiePolicy } from './utils/templates/cookiePolicy'
+import { generateRefundPolicy } from './utils/templates/refundPolicy'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -32,8 +33,10 @@ function GeneratorApp() {
       content = generatePrivacyPolicy(data)
     } else if (selectedType === 'terms') {
       content = generateTermsConditions(data)
-    } else {
+    } else if (selectedType === 'cookie') {
       content = generateCookiePolicy(data)
+    } else {
+      content = generateRefundPolicy(data)
     }
     setGeneratedContent(content)
     setStep('preview')
@@ -76,6 +79,13 @@ function GeneratorApp() {
               onClick={() => handleStart('cookie')}
             >
               Create Cookie Policy
+            </button>
+            <button 
+              className="btn-primary" 
+              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(135deg)' }}
+              onClick={() => handleStart('refund')}
+            >
+              Create Refund Policy
             </button>
           </div>
 

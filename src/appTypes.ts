@@ -5,4 +5,6 @@ export interface PolicyData {
     contactEmail: string;
     country: string;
     date: string;
+    refundDays?: string; // stored as string from input, convert if needed
+    refundConditions?: string;
 }
