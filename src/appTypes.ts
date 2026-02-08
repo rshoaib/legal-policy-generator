@@ -7,4 +7,7 @@ export interface PolicyData {
     date: string;
     refundDays?: string; // stored as string from input, convert if needed
     refundConditions?: string;
+    disclaimerAffiliate?: boolean;
+    disclaimerHealth?: boolean;
+    disclaimerFinancial?: boolean;
 }

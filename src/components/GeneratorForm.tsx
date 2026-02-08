@@ -3,7 +3,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund';
+  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer';
 }
 
 export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType }) => {
@@ -15,12 +15,18 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     country: '',
     date: new Date().toISOString().split('T')[0],
     refundDays: '30',
-    refundConditions: 'Items must be unused and in original packaging.'
+    refundConditions: 'Items must be unused and in original packaging.',
+    disclaimerAffiliate: false,
+    disclaimerHealth: false,
+    disclaimerFinancial: false
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({ 
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value 
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -31,7 +37,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : 'Cookie Policy'} Details
+        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : 'Cookie Policy'} Details
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -115,9 +121,45 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           </>
         )}
 
+
+
+        {selectedType === 'disclaimer' && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="disclaimerAffiliate"
+                type="checkbox"
+                checked={formData.disclaimerAffiliate}
+                onChange={handleChange}
+              />
+              Include Affiliate Disclaimer (e.g. Amazon Associates)
+            </label>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="disclaimerHealth"
+                type="checkbox"
+                checked={formData.disclaimerHealth}
+                onChange={handleChange}
+              />
+              Include Health/Medical Disclaimer
+            </label>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="disclaimerFinancial"
+                type="checkbox"
+                checked={formData.disclaimerFinancial}
+                onChange={handleChange}
+              />
+              Include Financial/Investment Advice Disclaimer
+            </label>
+          </div>
+        )}
+
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : 'Cookie Policy'}
+            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : 'Cookie Policy'}
           </button>
         </div>
       </form>
