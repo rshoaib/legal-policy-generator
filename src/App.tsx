@@ -16,9 +16,10 @@ import { generateRefundPolicy } from './utils/templates/refundPolicy'
 import { generateDisclaimer } from './utils/templates/disclaimer'
 import { generateCookieBannerCode } from './utils/templates/cookieBanner'
 import { generateRobotsTxt } from './utils/templates/robotsTxt'
+import { generateAccessibilityStatement } from './utils/templates/accessibilityStatement'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -44,8 +45,10 @@ function GeneratorApp() {
       content = generateDisclaimer(data)
     } else if (selectedType === 'cookie-banner') {
       content = generateCookieBannerCode(data)
-    } else {
+    } else if (selectedType === 'robots-txt') {
       content = generateRobotsTxt(data)
+    } else {
+      content = generateAccessibilityStatement(data)
     }
     setGeneratedContent(content)
     setStep('preview')
@@ -116,6 +119,13 @@ function GeneratorApp() {
               onClick={() => handleStart('robots-txt')}
             >
               Create Robots.txt
+            </button>
+             <button 
+              className="btn-primary" 
+              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(60deg)' }}
+              onClick={() => handleStart('accessibility')}
+            >
+              Create Accessibility
             </button>
           </div>
 

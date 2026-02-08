@@ -25,4 +25,9 @@ export interface PolicyData {
     robotsAllow?: string;
     robotsDisallow?: string;
     robotsSitemap?: string;
+
+    // Accessibility fields
+    accessibilityStandard?: string;
+    accessibilityContactEmail?: string;
+    accessibilityContactPhone?: string;
 }

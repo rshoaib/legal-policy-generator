@@ -3,7 +3,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt';
+  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility';
 }
 
 export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType }) => {
@@ -29,7 +29,10 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     robotsUserAgent: '*',
     robotsAllow: '/',
     robotsDisallow: '',
-    robotsSitemap: ''
+    robotsSitemap: '',
+    accessibilityStandard: 'WCAG 2.1 Level AA',
+    accessibilityContactEmail: '',
+    accessibilityContactPhone: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -50,7 +53,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Cookie Consent Banner' : selectedType === 'robots-txt' ? 'Robots.txt Generator' : 'Cookie Policy'} Details
+        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Cookie Consent Banner' : selectedType === 'robots-txt' ? 'Robots.txt Generator' : selectedType === 'accessibility' ? 'Accessibility Statement' : 'Cookie Policy'} Details
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -348,9 +351,51 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           </div>
         )}
 
+
+
+        {selectedType === 'accessibility' && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+             <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Accessibility Standard</label>
+              <input
+                name="accessibilityStandard"
+                value={formData.accessibilityStandard}
+                onChange={handleChange}
+                placeholder="WCAG 2.1 Level AA"
+                style={{ width: '100%' }}
+              />
+            </div>
+
+             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Contact Email (Optional)</label>
+                <input
+                  name="accessibilityContactEmail"
+                  type="email"
+                  value={formData.accessibilityContactEmail}
+                  onChange={handleChange}
+                  placeholder={formData.contactEmail || "accessibility@example.com"}
+                  style={{ width: '100%' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Contact Phone (Optional)</label>
+                 <input
+                  name="accessibilityContactPhone"
+                  type="tel"
+                  value={formData.accessibilityContactPhone}
+                  onChange={handleChange}
+                  placeholder="+1 (555) 000-0000"
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Banner Code' : selectedType === 'robots-txt' ? 'Robots.txt' : 'Cookie Policy'}
+            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Banner Code' : selectedType === 'robots-txt' ? 'Robots.txt' : selectedType === 'accessibility' ? 'Accessibility Statement' : 'Cookie Policy'}
           </button>
         </div>
       </form>
