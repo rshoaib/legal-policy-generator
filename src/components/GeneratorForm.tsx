@@ -1,48 +1,58 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
   selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility';
+  initialData?: Partial<PolicyData>;
+  onDataChange?: (data: PolicyData) => void;
 }
 
-export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType }) => {
+export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType, initialData, onDataChange }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<PolicyData>({
-    companyName: '',
-    websiteUrl: '',
-    websiteName: '',
-    contactEmail: '',
-    country: '',
-    date: new Date().toISOString().split('T')[0],
-    refundDays: '30',
-    refundConditions: 'Items must be unused and in original packaging.',
-    disclaimerAffiliate: false,
-    disclaimerHealth: false,
-    disclaimerFinancial: false,
-    bannerPosition: 'bottom',
-    bannerColor: '#2b2b2b',
-    bannerTextColor: '#ffffff',
-    buttonColor: '#f1d600',
-    buttonTextColor: '#000000',
-    bannerText: 'We use cookies to improve your experience.',
-    buttonText: 'Got it!',
-    robotsUserAgent: '*',
-    robotsAllow: '/',
-    robotsDisallow: '',
-    robotsSitemap: '',
-    accessibilityStandard: 'WCAG 2.1 Level AA',
-    accessibilityContactEmail: '',
-    accessibilityContactPhone: ''
+    companyName: initialData?.companyName || '',
+    websiteUrl: initialData?.websiteUrl || '',
+    websiteName: initialData?.websiteName || '',
+    contactEmail: initialData?.contactEmail || '',
+    country: initialData?.country || '',
+    date: initialData?.date || new Date().toISOString().split('T')[0],
+    refundDays: initialData?.refundDays || '30',
+    refundConditions: initialData?.refundConditions || 'Items must be unused and in original packaging.',
+    disclaimerAffiliate: initialData?.disclaimerAffiliate || false,
+    disclaimerHealth: initialData?.disclaimerHealth || false,
+    disclaimerFinancial: initialData?.disclaimerFinancial || false,
+    bannerPosition: initialData?.bannerPosition || 'bottom',
+    bannerColor: initialData?.bannerColor || '#2b2b2b',
+    bannerTextColor: initialData?.bannerTextColor || '#ffffff',
+    buttonColor: initialData?.buttonColor || '#f1d600',
+    buttonTextColor: initialData?.buttonTextColor || '#000000',
+    bannerText: initialData?.bannerText || 'We use cookies to improve your experience.',
+    buttonText: initialData?.buttonText || 'Got it!',
+    robotsUserAgent: initialData?.robotsUserAgent || '*',
+    robotsAllow: initialData?.robotsAllow || '/',
+    robotsDisallow: initialData?.robotsDisallow || '',
+    robotsSitemap: initialData?.robotsSitemap || '',
+    accessibilityStandard: initialData?.accessibilityStandard || 'WCAG 2.1 Level AA',
+    accessibilityContactEmail: initialData?.accessibilityContactEmail || '',
+    accessibilityContactPhone: initialData?.accessibilityContactPhone || ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
     
-    setFormData(prev => ({ 
-      ...prev, 
-      [name]: type === 'checkbox' ? checked : value 
-    }));
+    setFormData(prev => {
+      const newData = { 
+        ...prev, 
+        [name]: type === 'checkbox' ? checked : value 
+      };
+      if (onDataChange) {
+        onDataChange(newData);
+      }
+      return newData;
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -53,11 +63,11 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Cookie Consent Banner' : selectedType === 'robots-txt' ? 'Robots.txt Generator' : selectedType === 'accessibility' ? 'Accessibility Statement' : 'Cookie Policy'} Details
+        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : t('cookie_policy')} {t('details')}
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Company Name</label>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('company_name')}</label>
           <input
             name="companyName"
             value={formData.companyName}
@@ -68,7 +78,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         </div>
         
         <div>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Website Name</label>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('website_name')}</label>
           <input
             name="websiteName"
             value={formData.websiteName}
@@ -79,7 +89,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         </div>
 
         <div>
-           <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Website URL</label>
+           <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('website_url')}</label>
            <input
             name="websiteUrl"
             type="url"
@@ -91,7 +101,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Contact Email</label>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('contact_email')}</label>
           <input
             name="contactEmail"
             type="email"
@@ -103,7 +113,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Country</label>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('country')}</label>
           <input
             name="country"
             value={formData.country}
@@ -116,7 +126,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         {selectedType === 'refund' && (
           <>
              <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Return Window (Days)</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('return_window')}</label>
               <input
                 name="refundDays"
                 type="number"
@@ -126,7 +136,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
               />
             </div>
             <div style={{ gridColumn: '1 / -1' }}>
-               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Return Conditions</label>
+               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('return_conditions')}</label>
                <input
                 name="refundConditions"
                 value={formData.refundConditions}
@@ -148,7 +158,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 checked={formData.disclaimerAffiliate}
                 onChange={handleChange}
               />
-              Include Affiliate Disclaimer (e.g. Amazon Associates)
+              {t('include_affiliate')}
             </label>
 
             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
@@ -158,7 +168,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 checked={formData.disclaimerHealth}
                 onChange={handleChange}
               />
-              Include Health/Medical Disclaimer
+              {t('include_health')}
             </label>
 
             <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
@@ -168,7 +178,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 checked={formData.disclaimerFinancial}
                 onChange={handleChange}
               />
-              Include Financial/Investment Advice Disclaimer
+              {t('include_financial')}
             </label>
           </div>
         )}
@@ -179,7 +189,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           <>
             <div style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Banner Text</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('banner_text')}</label>
                 <input
                   name="bannerText"
                   value={formData.bannerText}
@@ -189,7 +199,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Button Text</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('button_text')}</label>
                 <input
                   name="buttonText"
                   value={formData.buttonText}
@@ -201,7 +211,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Position</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('position')}</label>
               <select
                 name="bannerPosition"
                 value={formData.bannerPosition}
@@ -215,16 +225,16 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                   color: 'var(--text-primary)' 
                 }}
               >
-                <option value="bottom">Bottom Full Width</option>
-                <option value="top">Top Full Width</option>
-                <option value="bottom-right">Bottom Right Floating</option>
-                <option value="bottom-left">Bottom Left Floating</option>
+                <option value="bottom">{t('pos_bottom')}</option>
+                <option value="top">{t('pos_top')}</option>
+                <option value="bottom-right">{t('pos_bottom_right')}</option>
+                <option value="bottom-left">{t('pos_bottom_left')}</option>
               </select>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Banner Color</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('banner_color')}</label>
                 <input
                   name="bannerColor"
                   type="color"
@@ -234,7 +244,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Text Color</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('text_color')}</label>
                 <input
                   name="bannerTextColor"
                   type="color"
@@ -247,7 +257,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
                <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Button Color</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('button_color')}</label>
                 <input
                   name="buttonColor"
                   type="color"
@@ -257,7 +267,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Button Text Color</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('button_text_color')}</label>
                 <input
                   name="buttonTextColor"
                   type="color"
@@ -275,7 +285,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         {selectedType === 'robots-txt' && (
           <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>User Agent</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('user_agent')}</label>
               <select
                 name="robotsUserAgent"
                 value={formData.robotsUserAgent}
@@ -299,11 +309,15 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Allow Paths (One per line)</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('allow_paths')}</label>
               <textarea
                 name="robotsAllow"
                 value={formData.robotsAllow}
-                onChange={(e) => setFormData(prev => ({ ...prev, robotsAllow: e.target.value }))}
+                onChange={(e) => {
+                    const newData = { ...formData, robotsAllow: e.target.value };
+                    setFormData(newData);
+                    if (onDataChange) onDataChange(newData);
+                }}
                 placeholder="/"
                 style={{
                   width: '100%',
@@ -319,11 +333,15 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             </div>
 
             <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Disallow Paths (One per line)</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('disallow_paths')}</label>
               <textarea
                 name="robotsDisallow"
                 value={formData.robotsDisallow}
-                onChange={(e) => setFormData(prev => ({ ...prev, robotsDisallow: e.target.value }))}
+                onChange={(e) => {
+                    const newData = { ...formData, robotsDisallow: e.target.value };
+                    setFormData(newData);
+                    if (onDataChange) onDataChange(newData);
+                }}
                 placeholder="/admin&#10;/private"
                 style={{
                   width: '100%',
@@ -339,7 +357,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             </div>
 
              <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Sitemap URL</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('sitemap_url')}</label>
               <input
                 name="robotsSitemap"
                 value={formData.robotsSitemap}
@@ -356,7 +374,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
         {selectedType === 'accessibility' && (
           <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
              <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Accessibility Standard</label>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('accessibility_standard')}</label>
               <input
                 name="accessibilityStandard"
                 value={formData.accessibilityStandard}
@@ -368,7 +386,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
 
              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Contact Email (Optional)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('contact_email_optional')}</label>
                 <input
                   name="accessibilityContactEmail"
                   type="email"
@@ -379,7 +397,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Contact Phone (Optional)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('contact_phone')}</label>
                  <input
                   name="accessibilityContactPhone"
                   type="tel"
@@ -395,7 +413,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
 
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Banner Code' : selectedType === 'robots-txt' ? 'Robots.txt' : selectedType === 'accessibility' ? 'Accessibility Statement' : 'Cookie Policy'}
+            {selectedType === 'privacy' ? t('generate_button') : selectedType === 'terms' ? t('generate_button') : selectedType === 'refund' ? t('generate_button') : selectedType === 'disclaimer' ? t('generate_button') : selectedType === 'cookie-banner' ? t('generate_banner') : selectedType === 'robots-txt' ? t('generate_robots') : selectedType === 'accessibility' ? t('generate_accessibility') : t('generate_button')}
           </button>
         </div>
       </form>

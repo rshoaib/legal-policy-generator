@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import html2pdf from 'html2pdf.js';
+// @ts-ignore
+import { asBlob } from 'html-docx-js-typescript';
+import { saveAs } from 'file-saver';
 
 interface PolicyPreviewProps {
   content: string;
@@ -8,11 +12,12 @@ interface PolicyPreviewProps {
 }
 
 export const PolicyPreview: React.FC<PolicyPreviewProps> = ({ content, onReset }) => {
+  const { t } = useTranslation();
   const contentRef = useRef<HTMLTextAreaElement>(null);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(content);
-    toast.success('Copied to clipboard!');
+    toast.success(t('copied'));
   };
 
   const handleDownloadHtml = () => {
@@ -25,7 +30,8 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({ content, onReset }
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success('HTML downloaded successfully!');
+    URL.revokeObjectURL(url);
+    toast.success(t('html_downloaded'));
   };
 
  const handleDownloadPdf = () => {
@@ -47,18 +53,44 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({ content, onReset }
 
     // Use toast.promise for better UX during generation
     toast.promise(html2pdf().set(opt).from(element).save(), {
-      loading: 'Generating PDF...',
-      success: 'PDF downloaded successfully!',
-      error: 'Failed to generate PDF'
+      loading: t('pdf_generating'),
+      success: t('pdf_downloaded'),
+      error: t('pdf_error')
     });
+  };
+
+  const handleDownloadWord = () => {
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Legal Policy</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.5; }
+          </style>
+        </head>
+        <body>
+          ${content.replace(/\n/g, '<br>')}
+        </body>
+        </html>
+      `;
+      
+      asBlob(htmlContent).then((blob: any) => {
+          saveAs(blob, 'legal-policy.docx');
+          toast.success(t('word_downloaded'));
+      }).catch((err: any) => {
+          console.error(err);
+          toast.error(t('word_error'));
+      });
   };
 
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <h2 style={{ color: 'var(--accent-secondary)' }}>Generated Policy</h2>
+        <h2 style={{ color: 'var(--accent-secondary)' }}>{t('generated_policy')}</h2>
         <button onClick={onReset} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', textDecoration: 'underline' }}>
-          Create New
+          {t('create_new')}
         </button>
       </div>
 
@@ -71,13 +103,16 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({ content, onReset }
 
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         <button className="btn-primary" onClick={handleCopy}>
-          Copy to Clipboard
+          {t('copy_clipboard')}
         </button>
         <button className="btn-primary" style={{ filter: 'hue-rotate(90deg)' }} onClick={handleDownloadHtml}>
-          Download HTML
+          {t('download_html')}
         </button>
         <button className="btn-primary" style={{ filter: 'hue-rotate(180deg)' }} onClick={handleDownloadPdf}>
-          Download PDF
+          {t('download_pdf')}
+        </button>
+        <button className="btn-primary" style={{ filter: 'hue-rotate(270deg)' }} onClick={handleDownloadWord}>
+          {t('download_word')}
         </button>
       </div>
     </div>

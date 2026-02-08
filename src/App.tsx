@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Toaster } from 'sonner'
 import { Layout } from './components/Layout'
 import { GeneratorForm } from './components/GeneratorForm'
@@ -26,15 +27,44 @@ function GeneratorApp() {
   const [selectedType, setSelectedType] = useState<PolicyType>('privacy')
   const [generatedContent, setGeneratedContent] = useState('')
 
+  /* New: Language Handling */
+  const { t, i18n } = useTranslation()
+  const [currentLang, setCurrentLang] = useState('en')
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+    setCurrentLang(lng)
+  }
+
+  /* New: Load initial data from local storage */
+  const [formData, setFormData] = useState<Partial<PolicyData>>(() => {
+    const saved = localStorage.getItem('policy_generator_data')
+    return saved ? JSON.parse(saved) : {}
+  })
+
+  /* New: Save data to local storage on change */
+  const handleDataChange = (data: PolicyData) => {
+    setFormData(data)
+    localStorage.setItem('policy_generator_data', JSON.stringify(data))
+  }
+
+  /* New: Clear saved data */
+  const handleClearData = () => {
+      localStorage.removeItem('policy_generator_data')
+      setFormData({})
+      window.location.reload() // Simple way to reset form state for now
+  }
+
   const handleStart = (type: PolicyType) => {
     setSelectedType(type)
     setStep('form')
   }
 
   const handleGenerate = (data: PolicyData) => {
+    handleDataChange(data) // Ensure final state is saved
     let content = ''
     if (selectedType === 'privacy') {
-      content = generatePrivacyPolicy(data)
+      content = generatePrivacyPolicy(data, currentLang)
     } else if (selectedType === 'terms') {
       content = generateTermsConditions(data)
     } else if (selectedType === 'cookie') {
@@ -61,98 +91,81 @@ function GeneratorApp() {
 
   return (
     <>
+      <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 100 }}>
+         <select 
+            value={currentLang} 
+            onChange={(e) => changeLanguage(e.target.value)}
+            style={{ 
+                background: 'rgba(0,0,0,0.5)', 
+                color: 'white', 
+                border: '1px solid rgba(255,255,255,0.2)', 
+                padding: '0.5rem', 
+                borderRadius: '0.5rem',
+                cursor: 'pointer'
+            }}
+         >
+             <option value="en">English (EN)</option>
+             <option value="es">Español (ES)</option>
+         </select>
+      </div>
+
       {step === 'landing' && (
-        <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem', background: 'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Free Legal Policy Generator
+        <div style={{ textAlign: 'center', marginTop: '4rem' }} className="animate-enter">
+          <h1 className="text-gradient" style={{ fontSize: '4rem', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+            {t('app_title')}
           </h1>
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 3rem' }}>
-            Generate professional Privacy Policies, Terms & Conditions, and Cookie Policies for your website or app in minutes.
+          <p className="delay-100 animate-enter" style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 4rem', lineHeight: '1.8' }}>
+            {t('app_subtitle')}
           </p>
           
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '4rem' }}>
-            <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}
-              onClick={() => handleStart('privacy')}
-            >
-              Create Privacy Policy
-            </button>
-            <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(45deg)' }}
-              onClick={() => handleStart('terms')}
-            >
-              Create Terms & Conditions
-            </button>
-            <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(90deg)' }}
-              onClick={() => handleStart('cookie')}
-            >
-              Create Cookie Policy
-            </button>
-            <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(135deg)' }}
-              onClick={() => handleStart('refund')}
-            >
-              Create Refund Policy
-            </button>
-            <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(180deg)' }}
-              onClick={() => handleStart('disclaimer')}
-            >
-              Create Disclaimer
-            </button>
-             <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(270deg)' }}
-              onClick={() => handleStart('cookie-banner')}
-            >
-              Create Cookie Banner
-            </button>
-             <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(330deg)' }}
-              onClick={() => handleStart('robots-txt')}
-            >
-              Create Robots.txt
-            </button>
-             <button 
-              className="btn-primary" 
-              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(60deg)' }}
-              onClick={() => handleStart('accessibility')}
-            >
-              Create Accessibility
-            </button>
+          <div className="delay-200 animate-enter" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto 4rem' }}>
+            <button className="btn-primary" onClick={() => handleStart('privacy')}>{t('start_privacy')}</button>
+            <button className="btn-primary" onClick={() => handleStart('terms')}>{t('start_terms')}</button>
+            <button className="btn-primary" onClick={() => handleStart('cookie')}>{t('start_cookie')}</button>
+            <button className="btn-primary" onClick={() => handleStart('refund')}>{t('start_refund')}</button>
+            <button className="btn-primary" onClick={() => handleStart('disclaimer')}>{t('start_disclaimer')}</button>
+            <button className="btn-primary" onClick={() => handleStart('cookie-banner')}>{t('start_cookie_banner')}</button>
+            <button className="btn-primary" onClick={() => handleStart('robots-txt')}>{t('start_robots')}</button>
+            <button className="btn-primary" onClick={() => handleStart('accessibility')}>{t('start_accessibility')}</button>
           </div>
 
-          <div style={{ marginTop: '2rem', padding: '2rem', background: 'var(--glass-bg)', borderRadius: '1rem', maxWidth: '600px', margin: '0 auto' }}>
-             <h3 style={{ marginBottom: '1rem' }}>Not sure what you need?</h3>
-             <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Check out our guides to understand legal requirements for your project.</p>
-             <Link to="/blog" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none', background: 'var(--bg-secondary)', border: '1px solid var(--accent-primary)' }}>
-                Read Our Guides
+          <div className="glass-panel delay-300 animate-enter" style={{ marginTop: '4rem', maxWidth: '600px', margin: '0 auto' }}>
+             <h3 style={{ marginBottom: '1rem', color: 'var(--accent-tertiary)' }}>{t('header_guides')}</h3>
+             <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{t('text_guides')}</p>
+             <Link to="/blog" style={{ color: 'var(--accent-secondary)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
+                {t('link_guides')} <span>→</span>
              </Link>
           </div>
         </div>
       )}
 
       {step === 'form' && (
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <button 
-            onClick={() => setStep('landing')}
-            style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', marginBottom: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-          >
-            ← Back to Home
-          </button>
-          <GeneratorForm onGenerate={handleGenerate} selectedType={selectedType} />
+        <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <button 
+                onClick={() => setStep('landing')}
+                style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+                ← {t('back_home')}
+            </button>
+            <button 
+                onClick={handleClearData}
+                style={{ background: 'none', border: 'none', color: 'var(--accent-secondary)', cursor: 'pointer', fontSize: '0.8rem', opacity: 0.8 }}
+            >
+                {t('clear_data')}
+            </button>
+          </div>
+          <GeneratorForm 
+            onGenerate={handleGenerate} 
+            selectedType={selectedType} 
+            initialData={formData}
+            onDataChange={handleDataChange}
+          />
         </div>
       )}
 
       {step === 'preview' && (
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <PolicyPreview content={generatedContent} onReset={handleReset} />
         </div>
       )}
