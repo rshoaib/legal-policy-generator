@@ -14,9 +14,11 @@ import { generateTermsConditions } from './utils/templates/termsConditions'
 import { generateCookiePolicy } from './utils/templates/cookiePolicy'
 import { generateRefundPolicy } from './utils/templates/refundPolicy'
 import { generateDisclaimer } from './utils/templates/disclaimer'
+import { generateCookieBannerCode } from './utils/templates/cookieBanner'
+import { generateRobotsTxt } from './utils/templates/robotsTxt'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -38,8 +40,12 @@ function GeneratorApp() {
       content = generateCookiePolicy(data)
     } else if (selectedType === 'refund') {
       content = generateRefundPolicy(data)
-    } else {
+    } else if (selectedType === 'disclaimer') {
       content = generateDisclaimer(data)
+    } else if (selectedType === 'cookie-banner') {
+      content = generateCookieBannerCode(data)
+    } else {
+      content = generateRobotsTxt(data)
     }
     setGeneratedContent(content)
     setStep('preview')
@@ -96,6 +102,20 @@ function GeneratorApp() {
               onClick={() => handleStart('disclaimer')}
             >
               Create Disclaimer
+            </button>
+             <button 
+              className="btn-primary" 
+              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(270deg)' }}
+              onClick={() => handleStart('cookie-banner')}
+            >
+              Create Cookie Banner
+            </button>
+             <button 
+              className="btn-primary" 
+              style={{ fontSize: '1.1rem', padding: '1rem 2rem', filter: 'hue-rotate(330deg)' }}
+              onClick={() => handleStart('robots-txt')}
+            >
+              Create Robots.txt
             </button>
           </div>
 

@@ -3,7 +3,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer';
+  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt';
 }
 
 export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType }) => {
@@ -18,11 +18,24 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     refundConditions: 'Items must be unused and in original packaging.',
     disclaimerAffiliate: false,
     disclaimerHealth: false,
-    disclaimerFinancial: false
+    disclaimerFinancial: false,
+    bannerPosition: 'bottom',
+    bannerColor: '#2b2b2b',
+    bannerTextColor: '#ffffff',
+    buttonColor: '#f1d600',
+    buttonTextColor: '#000000',
+    bannerText: 'We use cookies to improve your experience.',
+    buttonText: 'Got it!',
+    robotsUserAgent: '*',
+    robotsAllow: '/',
+    robotsDisallow: '',
+    robotsSitemap: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    
     setFormData(prev => ({ 
       ...prev, 
       [name]: type === 'checkbox' ? checked : value 
@@ -37,7 +50,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : 'Cookie Policy'} Details
+        {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Cookie Consent Banner' : selectedType === 'robots-txt' ? 'Robots.txt Generator' : 'Cookie Policy'} Details
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -157,9 +170,187 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           </div>
         )}
 
+
+
+        {selectedType === 'cookie-banner' && (
+          <>
+            <div style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Banner Text</label>
+                <input
+                  name="bannerText"
+                  value={formData.bannerText}
+                  onChange={handleChange}
+                  placeholder="We use cookies..."
+                  style={{ width: '100%' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Button Text</label>
+                <input
+                  name="buttonText"
+                  value={formData.buttonText}
+                  onChange={handleChange}
+                  placeholder="Got it!"
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Position</label>
+              <select
+                name="bannerPosition"
+                value={formData.bannerPosition}
+                onChange={handleChange}
+                style={{ 
+                  width: '100%', 
+                  padding: '0.75rem', 
+                  borderRadius: '0.5rem', 
+                  border: '1px solid rgba(255,255,255,0.1)', 
+                  background: 'rgba(255,255,255,0.05)', 
+                  color: 'var(--text-primary)' 
+                }}
+              >
+                <option value="bottom">Bottom Full Width</option>
+                <option value="top">Top Full Width</option>
+                <option value="bottom-right">Bottom Right Floating</option>
+                <option value="bottom-left">Bottom Left Floating</option>
+              </select>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Banner Color</label>
+                <input
+                  name="bannerColor"
+                  type="color"
+                  value={formData.bannerColor}
+                  onChange={handleChange}
+                  style={{ width: '100%', height: '40px', padding: 0, border: 'none' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Text Color</label>
+                <input
+                  name="bannerTextColor"
+                  type="color"
+                  value={formData.bannerTextColor}
+                  onChange={handleChange}
+                  style={{ width: '100%', height: '40px', padding: 0, border: 'none' }}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+               <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Button Color</label>
+                <input
+                  name="buttonColor"
+                  type="color"
+                  value={formData.buttonColor}
+                  onChange={handleChange}
+                  style={{ width: '100%', height: '40px', padding: 0, border: 'none' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Button Text Color</label>
+                <input
+                  name="buttonTextColor"
+                  type="color"
+                  value={formData.buttonTextColor}
+                  onChange={handleChange}
+                   style={{ width: '100%', height: '40px', padding: 0, border: 'none' }}
+                />
+              </div>
+            </div>
+          </>
+        )}
+
+
+
+        {selectedType === 'robots-txt' && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>User Agent</label>
+              <select
+                name="robotsUserAgent"
+                value={formData.robotsUserAgent}
+                onChange={handleChange}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  color: 'var(--text-primary)'
+                }}
+              >
+                <option value="*">All Bots (*)</option>
+                <option value="Googlebot">Googlebot</option>
+                <option value="Bingbot">Bingbot</option>
+                <option value="DuckDuckBot">DuckDuckBot</option>
+                <option value="Baiduspider">Baiduspider</option>
+                <option value="YandexBot">YandexBot</option>
+              </select>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Allow Paths (One per line)</label>
+              <textarea
+                name="robotsAllow"
+                value={formData.robotsAllow}
+                onChange={(e) => setFormData(prev => ({ ...prev, robotsAllow: e.target.value }))}
+                placeholder="/"
+                style={{
+                  width: '100%',
+                  minHeight: '80px',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  color: 'var(--text-primary)',
+                  fontFamily: 'monospace'
+                }}
+              />
+            </div>
+
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Disallow Paths (One per line)</label>
+              <textarea
+                name="robotsDisallow"
+                value={formData.robotsDisallow}
+                onChange={(e) => setFormData(prev => ({ ...prev, robotsDisallow: e.target.value }))}
+                placeholder="/admin&#10;/private"
+                style={{
+                  width: '100%',
+                  minHeight: '80px',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  color: 'var(--text-primary)',
+                   fontFamily: 'monospace'
+                }}
+              />
+            </div>
+
+             <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Sitemap URL</label>
+              <input
+                name="robotsSitemap"
+                value={formData.robotsSitemap}
+                onChange={handleChange}
+                placeholder="https://example.com/sitemap.xml"
+                style={{ width: '100%' }}
+              />
+            </div>
+          </div>
+        )}
+
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : 'Cookie Policy'}
+            Generate {selectedType === 'privacy' ? 'Privacy Policy' : selectedType === 'terms' ? 'Terms & Conditions' : selectedType === 'refund' ? 'Refund Policy' : selectedType === 'disclaimer' ? 'Disclaimer' : selectedType === 'cookie-banner' ? 'Banner Code' : selectedType === 'robots-txt' ? 'Robots.txt' : 'Cookie Policy'}
           </button>
         </div>
       </form>

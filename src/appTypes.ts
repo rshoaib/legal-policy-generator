@@ -10,4 +10,19 @@ export interface PolicyData {
     disclaimerAffiliate?: boolean;
     disclaimerHealth?: boolean;
     disclaimerFinancial?: boolean;
+
+    // Cookie Banner fields
+    bannerPosition?: 'top' | 'bottom' | 'bottom-right' | 'bottom-left';
+    bannerColor?: string;
+    bannerTextColor?: string;
+    buttonColor?: string;
+    buttonTextColor?: string;
+    bannerText?: string;
+    buttonText?: string;
+
+    // Robots.txt fields
+    robotsUserAgent?: string;
+    robotsAllow?: string;
+    robotsDisallow?: string;
+    robotsSitemap?: string;
 }
