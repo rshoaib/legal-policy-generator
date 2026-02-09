@@ -4,7 +4,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility';
+  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda';
   initialData?: Partial<PolicyData>;
   onDataChange?: (data: PolicyData) => void;
 }
@@ -13,6 +13,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   const { t } = useTranslation();
   const [formData, setFormData] = useState<PolicyData>({
     companyName: initialData?.companyName || '',
+    companyAddress: initialData?.companyAddress || '',
     websiteUrl: initialData?.websiteUrl || '',
     websiteName: initialData?.websiteName || '',
     contactEmail: initialData?.contactEmail || '',
@@ -63,7 +64,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : t('cookie_policy')} {t('details')}
+        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : selectedType === 'nda' ? t('start_nda') : t('cookie_policy')} {t('details')}
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -73,6 +74,18 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             value={formData.companyName}
             onChange={handleChange}
             placeholder="e.g. Acme Corp"
+            required
+          />
+        </div>
+        
+        
+        <div>
+           <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('company_address')}</label>
+           <input
+            name="companyAddress"
+            value={formData.companyAddress}
+            onChange={handleChange}
+            placeholder="e.g. 123 Main St, New York, NY"
             required
           />
         </div>

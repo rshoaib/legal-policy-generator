@@ -1,5 +1,6 @@
 export interface PolicyData {
     companyName: string;
+    companyAddress: string;
     websiteUrl: string;
     websiteName: string;
     contactEmail: string;
@@ -30,4 +31,7 @@ export interface PolicyData {
     accessibilityStandard?: string;
     accessibilityContactEmail?: string;
     accessibilityContactPhone?: string;
+
+    // NDA fields (reusing generic company fields)
+    vehicleDescription?: string; // Placeholder if we need specific NDA fields later
 }

@@ -17,10 +17,12 @@ import { generateRefundPolicy } from './utils/templates/refundPolicy'
 import { generateDisclaimer } from './utils/templates/disclaimer'
 import { generateCookieBannerCode } from './utils/templates/cookieBanner'
 import { generateRobotsTxt } from './utils/templates/robotsTxt'
+
 import { generateAccessibilityStatement } from './utils/templates/accessibilityStatement'
+import { generateNDA } from './utils/templates/nda'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -77,8 +79,10 @@ function GeneratorApp() {
       content = generateCookieBannerCode(data)
     } else if (selectedType === 'robots-txt') {
       content = generateRobotsTxt(data)
-    } else {
+    } else if (selectedType === 'accessibility') {
       content = generateAccessibilityStatement(data)
+    } else {
+      content = generateNDA(data, currentLang)
     }
     setGeneratedContent(content)
     setStep('preview')
@@ -127,6 +131,7 @@ function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('cookie-banner')}>{t('start_cookie_banner')}</button>
             <button className="btn-primary" onClick={() => handleStart('robots-txt')}>{t('start_robots')}</button>
             <button className="btn-primary" onClick={() => handleStart('accessibility')}>{t('start_accessibility')}</button>
+            <button className="btn-primary" onClick={() => handleStart('nda')}>{t('start_nda')}</button>
           </div>
 
           <div className="glass-panel delay-300 animate-enter" style={{ marginTop: '4rem', maxWidth: '600px', margin: '0 auto' }}>
