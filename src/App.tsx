@@ -8,6 +8,10 @@ import { PolicyPreview } from './components/PolicyPreview'
 import { BlogLayout } from './components/BlogLayout'
 import { BlogIndex } from './components/BlogIndex'
 import { BlogPost } from './components/BlogPost'
+import { PrivacyPage } from './components/PrivacyPage'
+import { TermsPage } from './components/TermsPage'
+import { AboutPage } from './components/AboutPage'
+import { ContactPage } from './components/ContactPage'
 import type { PolicyData } from './appTypes'
 import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
@@ -184,6 +188,10 @@ function App() {
         <Layout>
             <Routes>
                 <Route path="/" element={<GeneratorApp />} />
+                <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="/terms" element={<TermsPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
                 <Route path="/blog" element={<BlogLayout />}>
                     <Route index element={<BlogIndex />} />
                     <Route path=":slug" element={<BlogPost />} />

@@ -27,6 +27,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       <footer className="main-footer">
         <div className="container">
+          <div className="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact Us</a>
+          </div>
           <p>&copy; {new Date().getFullYear()} Legal Policy Generator. All rights reserved.</p>
         </div>
       </footer>
@@ -70,6 +76,28 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           padding: 2rem 0;
           color: var(--text-secondary);
           font-size: 0.875rem;
+          border-top: 1px solid var(--glass-border);
+          background: var(--glass-bg);
+          backdrop-filter: blur(10px);
+          margin-top: auto;
+        }
+
+        .footer-links {
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .footer-links a {
+          color: var(--text-secondary);
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+          color: var(--accent-primary);
         }
       `}</style>
     </div>

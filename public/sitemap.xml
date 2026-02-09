@@ -24,4 +24,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://LegalPolicyGen.com/privacy</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://LegalPolicyGen.com/terms</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://LegalPolicyGen.com/about</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://LegalPolicyGen.com/contact</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
