@@ -13,6 +13,7 @@ import { PrivacyPage } from './components/PrivacyPage'
 import { TermsPage } from './components/TermsPage'
 import { AboutPage } from './components/AboutPage'
 import { ContactPage } from './components/ContactPage'
+import { CookieConsent } from './components/CookieConsent'
 import type { PolicyData } from './appTypes'
 import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
@@ -247,6 +248,7 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Toaster position="top-right" />
+            <CookieConsent />
         </Layout>
     </BrowserRouter>
   )
