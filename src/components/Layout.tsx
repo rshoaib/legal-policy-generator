@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,14 +10,14 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="layout-wrapper">
       <header className="main-header glass-panel">
         <div className="container header-content">
-          <div className="logo">
-            <span style={{ fontSize: '1.5rem' }}>⚖️</span>
+          <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+            <span style={{ fontSize: '1.5rem' }} role="img" aria-label="Legal scales">⚖️</span>
             <span style={{ fontWeight: 700, fontSize: '1.25rem', marginLeft: '0.5rem' }}>
               PolicyGen
             </span>
-          </div>
-          <nav>
-            {/* Add nav links later if needed */}
+          </Link>
+          <nav aria-label="Main navigation">
+            <Link to="/blog" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Blog</Link>
           </nav>
         </div>
       </header>
@@ -28,10 +29,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <footer className="main-footer">
         <div className="container">
           <div className="footer-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
-            <a href="/about">About Us</a>
-            <a href="/contact">Contact Us</a>
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/terms">Terms of Service</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact Us</Link>
+            <Link to="/blog">Blog</Link>
           </div>
           <p>&copy; {new Date().getFullYear()} Legal Policy Generator. All rights reserved.</p>
         </div>
@@ -103,3 +105,4 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     </div>
   );
 };
+

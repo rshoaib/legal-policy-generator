@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
+import { SEO } from './SEO';
 
 export const AboutPage: React.FC = () => {
   useEffect(() => {
-    document.title = 'About Us | Legal Policy Generator';
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="container animate-enter" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
+      <SEO
+        title="About Us"
+        description="Learn about Legal Policy Generator — our mission to make legal compliance accessible and free for everyone, from solo developers to small businesses."
+        canonical="/about"
+      />
       <h1 className="text-gradient" style={{ marginBottom: '2rem' }}>About Us</h1>
       
       <div className="glass-panel" style={{ padding: '2rem' }}>
@@ -35,3 +40,4 @@ export const AboutPage: React.FC = () => {
     </div>
   );
 };
+

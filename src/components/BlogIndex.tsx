@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../lib/blogData';
+import { SEO } from './SEO';
 
 export const BlogIndex: React.FC = () => {
   return (
     <div>
+      <SEO
+        title="Blog — Helpful Guides & Resources"
+        description="Expert guides on privacy policies, terms & conditions, cookie policies, GDPR, CCPA compliance, and more. Free legal resources for website owners."
+        canonical="/blog"
+      />
       <h1 style={{ marginBottom: '2rem', background: 'linear-gradient(to right, #ec4899 0%, #8b5cf6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontSize: '2.5rem' }}>
         Helpful Guides & Resources
       </h1>
@@ -31,3 +37,4 @@ export const BlogIndex: React.FC = () => {
     </div>
   );
 };
+

@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Toaster } from 'sonner'
+import { SEO } from './components/SEO'
 import { Layout } from './components/Layout'
 import { GeneratorForm } from './components/GeneratorForm'
 import { PolicyPreview } from './components/PolicyPreview'
@@ -97,8 +98,38 @@ function GeneratorApp() {
     setGeneratedContent('')
   }
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Legal Policy Generator',
+    url: 'https://legalpolicygen.com',
+    description: 'Free legal policy generator for Privacy Policies, Terms & Conditions, Refund Policies, Disclaimers, and more.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://legalpolicygen.com/?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Legal Policy Generator',
+    url: 'https://legalpolicygen.com',
+    logo: 'https://legalpolicygen.com/og-image.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'contact@legalpolicygen.com',
+      contactType: 'customer service',
+    },
+  };
+
   return (
     <>
+      <SEO
+        canonical="/"
+        jsonLd={[websiteJsonLd, orgJsonLd]}
+      />
       <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 100 }}>
          <select 
             value={currentLang} 
@@ -182,7 +213,24 @@ function GeneratorApp() {
   )
 }
 
+function NotFoundPage() {
+  return (
+    <div className="animate-enter" style={{ textAlign: 'center', marginTop: '6rem' }}>
+      <SEO title="Page Not Found" description="The page you're looking for doesn't exist." noindex />
+      <h1 className="text-gradient" style={{ fontSize: '4rem', marginBottom: '1rem' }}>404</h1>
+      <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>The page you're looking for doesn't exist.</p>
+      <Link to="/" className="btn-primary" style={{ display: 'inline-block' }}>← Back to Home</Link>
+    </div>
+  )
+}
+
 function App() {
+  const { i18n } = useTranslation()
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language || 'en';
+  }, [i18n.language]);
+
   return (
     <BrowserRouter>
         <Layout>
@@ -196,6 +244,7 @@ function App() {
                     <Route index element={<BlogIndex />} />
                     <Route path=":slug" element={<BlogPost />} />
                 </Route>
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Toaster position="top-right" />
         </Layout>

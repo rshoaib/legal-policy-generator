@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://LegalPolicyGen.com/sitemap.xml
+Sitemap: https://legalpolicygen.com/sitemap.xml
+
