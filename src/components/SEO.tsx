@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
   title?: string;
@@ -31,7 +30,9 @@ export const SEO: React.FC<SEOProps> = ({
   jsonLd,
   noindex = false,
 }) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `Free Legal Policy Generator | Privacy, Terms, Refund, Disclaimer & More — ${SITE_NAME}`;
+  const fullTitle = title
+    ? `${title} | ${SITE_NAME}`
+    : `Free Legal Policy Generator | Privacy, Terms, Refund, Disclaimer & More — ${SITE_NAME}`;
   const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : undefined;
 
   // Normalize jsonLd to an array
@@ -42,8 +43,8 @@ export const SEO: React.FC<SEOProps> = ({
     : [];
 
   return (
-    <Helmet>
-      {/* Basic */}
+    <>
+      {/* React 19 natively hoists <title>, <meta>, and <link> to <head> */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
@@ -69,10 +70,8 @@ export const SEO: React.FC<SEOProps> = ({
 
       {/* JSON-LD Structured Data */}
       {jsonLdArray.map((ld, i) => (
-        <script key={i} type="application/ld+json">
-          {JSON.stringify(ld)}
-        </script>
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       ))}
-    </Helmet>
+    </>
   );
 };
