@@ -14,6 +14,7 @@ import { TermsPage } from './components/TermsPage'
 import { AboutPage } from './components/AboutPage'
 import { ContactPage } from './components/ContactPage'
 import { CookieConsent } from './components/CookieConsent'
+import { ComplianceChecker } from './components/ComplianceChecker'
 import type { PolicyData } from './appTypes'
 import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
@@ -170,6 +171,20 @@ function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('nda')}>{t('start_nda')}</button>
           </div>
 
+          <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
+            <Link
+              to="/compliance-checker"
+              className="btn-primary"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                textDecoration: 'none', filter: 'hue-rotate(45deg)',
+                padding: '0.85rem 2rem', fontSize: '1.05rem',
+              }}
+            >
+              🔍 Check Your Existing Policy
+            </Link>
+          </div>
+
           <div className="glass-panel delay-300 animate-enter" style={{ marginTop: '4rem', maxWidth: '600px', margin: '0 auto' }}>
              <h3 style={{ marginBottom: '1rem', color: 'var(--accent-tertiary)' }}>{t('header_guides')}</h3>
              <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{t('text_guides')}</p>
@@ -245,6 +260,7 @@ function App() {
                     <Route index element={<BlogIndex />} />
                     <Route path=":slug" element={<BlogPost />} />
                 </Route>
+                <Route path="/compliance-checker" element={<ComplianceChecker />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Toaster position="top-right" />

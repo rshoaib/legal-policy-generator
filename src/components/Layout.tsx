@@ -16,7 +16,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               PolicyGen
             </span>
           </Link>
-          <nav aria-label="Main navigation">
+          <nav aria-label="Main navigation" style={{ display: 'flex', gap: '1.25rem' }}>
+            <Link to="/compliance-checker" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Compliance Checker</Link>
             <Link to="/blog" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Blog</Link>
           </nav>
         </div>
@@ -34,6 +35,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
             <Link to="/blog">Blog</Link>
+            <Link to="/compliance-checker">Compliance Checker</Link>
           </div>
           <p>&copy; {new Date().getFullYear()} Legal Policy Generator. All rights reserved.</p>
         </div>
