@@ -70,5 +70,13 @@
   "pdf_downloaded": "¡PDF descargado con éxito!",
   "pdf_error": "Error al generar PDF",
   "word_downloaded": "¡Documento Word descargado!",
-  "word_error": "Error al generar documento Word"
+  "word_error": "Error al generar documento Word",
+  "start_eula": "Crear EULA",
+  "eula": "Contrato de Licencia de Usuario Final",
+  "generate_eula": "Generar EULA",
+  "eula_license_type": "Tipo de Licencia",
+  "eula_single_user": "Licencia de Usuario Único",
+  "eula_multi_user": "Licencia Multi-Usuario / Empresarial",
+  "eula_saas": "SaaS (Software como Servicio)",
+  "eula_subscription": "Este es un producto basado en suscripción"
 }

@@ -27,9 +27,10 @@ import { generateRobotsTxt } from './utils/templates/robotsTxt'
 
 import { generateAccessibilityStatement } from './utils/templates/accessibilityStatement'
 import { generateNDA } from './utils/templates/nda'
+import { generateEULA } from './utils/templates/eula'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -88,8 +89,10 @@ function GeneratorApp() {
       content = generateRobotsTxt(data)
     } else if (selectedType === 'accessibility') {
       content = generateAccessibilityStatement(data)
-    } else {
+    } else if (selectedType === 'nda') {
       content = generateNDA(data, currentLang)
+    } else {
+      content = generateEULA(data, currentLang)
     }
     setGeneratedContent(content)
     setStep('preview')
@@ -169,6 +172,7 @@ function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('robots-txt')}>{t('start_robots')}</button>
             <button className="btn-primary" onClick={() => handleStart('accessibility')}>{t('start_accessibility')}</button>
             <button className="btn-primary" onClick={() => handleStart('nda')}>{t('start_nda')}</button>
+            <button className="btn-primary" onClick={() => handleStart('eula')}>{t('start_eula')}</button>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>

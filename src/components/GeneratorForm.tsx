@@ -4,7 +4,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda';
+  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula';
   initialData?: Partial<PolicyData>;
   onDataChange?: (data: PolicyData) => void;
 }
@@ -37,7 +37,9 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     robotsSitemap: initialData?.robotsSitemap || '',
     accessibilityStandard: initialData?.accessibilityStandard || 'WCAG 2.1 Level AA',
     accessibilityContactEmail: initialData?.accessibilityContactEmail || '',
-    accessibilityContactPhone: initialData?.accessibilityContactPhone || ''
+    accessibilityContactPhone: initialData?.accessibilityContactPhone || '',
+    eulaLicenseType: initialData?.eulaLicenseType || 'single-user',
+    eulaSubscription: initialData?.eulaSubscription || false
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -64,7 +66,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : selectedType === 'nda' ? t('start_nda') : t('cookie_policy')} {t('details')}
+        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : selectedType === 'nda' ? t('start_nda') : selectedType === 'eula' ? t('eula') : t('cookie_policy')} {t('details')}
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -423,10 +425,44 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             </div>
           </div>
         )}
+        {selectedType === 'eula' && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('eula_license_type')}</label>
+              <select
+                name="eulaLicenseType"
+                value={formData.eulaLicenseType}
+                onChange={handleChange}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  color: 'var(--text-primary)'
+                }}
+              >
+                <option value="single-user">{t('eula_single_user')}</option>
+                <option value="multi-user">{t('eula_multi_user')}</option>
+                <option value="saas">{t('eula_saas')}</option>
+              </select>
+            </div>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="eulaSubscription"
+                type="checkbox"
+                checked={formData.eulaSubscription}
+                onChange={handleChange}
+              />
+              {t('eula_subscription')}
+            </label>
+          </div>
+        )}
 
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            {selectedType === 'privacy' ? t('generate_button') : selectedType === 'terms' ? t('generate_button') : selectedType === 'refund' ? t('generate_button') : selectedType === 'disclaimer' ? t('generate_button') : selectedType === 'cookie-banner' ? t('generate_banner') : selectedType === 'robots-txt' ? t('generate_robots') : selectedType === 'accessibility' ? t('generate_accessibility') : t('generate_button')}
+            {selectedType === 'privacy' ? t('generate_button') : selectedType === 'terms' ? t('generate_button') : selectedType === 'refund' ? t('generate_button') : selectedType === 'disclaimer' ? t('generate_button') : selectedType === 'cookie-banner' ? t('generate_banner') : selectedType === 'robots-txt' ? t('generate_robots') : selectedType === 'accessibility' ? t('generate_accessibility') : selectedType === 'eula' ? t('generate_eula') : t('generate_button')}
           </button>
         </div>
       </form>

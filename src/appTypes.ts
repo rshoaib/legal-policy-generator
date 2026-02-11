@@ -34,4 +34,8 @@ export interface PolicyData {
 
     // NDA fields (reusing generic company fields)
     vehicleDescription?: string; // Placeholder if we need specific NDA fields later
+
+    // EULA fields
+    eulaLicenseType?: 'single-user' | 'multi-user' | 'saas';
+    eulaSubscription?: boolean;
 }
