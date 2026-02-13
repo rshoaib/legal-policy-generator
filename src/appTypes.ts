@@ -38,4 +38,14 @@ export interface PolicyData {
     // EULA fields
     eulaLicenseType?: 'single-user' | 'multi-user' | 'saas';
     eulaSubscription?: boolean;
+
+    // DPA fields
+    dpaDataTypes?: string;
+    dpaProcessingPurpose?: string;
+
+    // Cookie Banner Extras
+    bannerLinkText?: string;
+    bannerLinkUrl?: string;
+    bannerDeclineButton?: boolean;
+    bannerDeclineText?: string;
 }

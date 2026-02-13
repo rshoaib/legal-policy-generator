@@ -17,7 +17,7 @@ interface SEOProps {
 const SITE_NAME = 'Legal Policy Generator';
 const SITE_URL = 'https://legalpolicygen.com';
 const DEFAULT_DESCRIPTION =
-  'Generate professional Privacy Policies, Terms & Conditions, Refund Policies, Disclaimers, Cookie Banners, Robots.txt, and Accessibility Statements. Free GDPR/CCPA/WCAG tools.';
+  'Generate professional Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA, AUP, Refund Policies, Disclaimers, Cookie Banners, Robots.txt, Accessibility Statements & more. Free GDPR/CCPA/WCAG compliance tools.';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const SEO: React.FC<SEOProps> = ({

@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import html2pdf from 'html2pdf.js';
@@ -89,9 +90,14 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({ content, onReset }
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
         <h2 style={{ color: 'var(--accent-secondary)' }}>{t('generated_policy')}</h2>
-        <button onClick={onReset} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', textDecoration: 'underline' }}>
-          {t('create_new')}
-        </button>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Link to="/history" style={{ color: 'var(--accent-tertiary)', fontSize: '0.9rem', textDecoration: 'none' }}>
+            📋 {t('view_history')}
+          </Link>
+          <button onClick={onReset} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', textDecoration: 'underline' }}>
+            {t('create_new')}
+          </button>
+        </div>
       </div>
 
       <textarea

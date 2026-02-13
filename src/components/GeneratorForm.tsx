@@ -4,7 +4,7 @@ import type { PolicyData } from '../appTypes';
 
 interface GeneratorFormProps {
   onGenerate: (data: PolicyData) => void;
-  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula';
+  selectedType: 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter';
   initialData?: Partial<PolicyData>;
   onDataChange?: (data: PolicyData) => void;
 }
@@ -39,7 +39,9 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     accessibilityContactEmail: initialData?.accessibilityContactEmail || '',
     accessibilityContactPhone: initialData?.accessibilityContactPhone || '',
     eulaLicenseType: initialData?.eulaLicenseType || 'single-user',
-    eulaSubscription: initialData?.eulaSubscription || false
+    eulaSubscription: initialData?.eulaSubscription || false,
+    dpaDataTypes: initialData?.dpaDataTypes || '',
+    dpaProcessingPurpose: initialData?.dpaProcessingPurpose || ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -58,6 +60,15 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     });
   };
 
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, checked } = e.target;
+      setFormData(prev => {
+          const newData = { ...prev, [name]: checked };
+          if (onDataChange) onDataChange(newData);
+          return newData;
+      });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onGenerate(formData);
@@ -66,7 +77,7 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
-        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : selectedType === 'nda' ? t('start_nda') : selectedType === 'eula' ? t('eula') : t('cookie_policy')} {t('details')}
+        {selectedType === 'privacy' ? t('privacy_policy') : selectedType === 'terms' ? t('terms_conditions') : selectedType === 'refund' ? t('refund_policy') : selectedType === 'disclaimer' ? t('disclaimer') : selectedType === 'cookie-banner' ? t('cookie_consent_banner') : selectedType === 'robots-txt' ? t('robots_txt_generator') : selectedType === 'accessibility' ? t('accessibility_statement') : selectedType === 'nda' ? t('start_nda') : selectedType === 'eula' ? t('eula') : selectedType === 'dpa' ? t('dpa') : selectedType === 'aup' ? t('aup') : selectedType === 'dmca' ? t('dmca') : selectedType === 'employee-privacy' ? t('employee_privacy') : selectedType === 'affiliate-disclaimer' ? t('affiliate_disclaimer') : selectedType === 'social-media' ? t('social_media_policy') : selectedType === 'newsletter' ? t('newsletter_policy') : t('cookie_policy')} {t('details')}
       </h2>
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
         <div style={{ gridColumn: '1 / -1' }}>
@@ -292,6 +303,55 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 />
               </div>
             </div>
+        {(selectedType === 'cookie-banner') && (
+          <div style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+              <div>
+                  <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('banner_link_text')}</label>
+                  <input
+                      name="bannerLinkText"
+                      value={formData.bannerLinkText || ''}
+                      onChange={handleChange}
+                      placeholder="Learn more"
+                      style={{ width: '100%' }}
+                  />
+              </div>
+              <div>
+                  <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('banner_link_url')}</label>
+                  <input
+                      name="bannerLinkUrl"
+                      value={formData.bannerLinkUrl || ''}
+                      onChange={handleChange}
+                      placeholder="/privacy-policy"
+                      style={{ width: '100%' }}
+                  />
+              </div>
+
+              <div style={{ gridColumn: '1 / -1', marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', marginBottom: '1rem' }}>
+                    <input
+                        name="bannerDeclineButton"
+                        type="checkbox"
+                        checked={formData.bannerDeclineButton || false}
+                        onChange={handleCheckboxChange}
+                    />
+                    {t('enable_decline_button')}
+                </label>
+
+                {formData.bannerDeclineButton && (
+                    <div>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('decline_button_text')}</label>
+                        <input
+                            name="bannerDeclineText"
+                            value={formData.bannerDeclineText || ''}
+                            onChange={handleChange}
+                            placeholder="Decline"
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                )}
+            </div>
+          </div>
+        )}
           </>
         )}
 
@@ -460,9 +520,34 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           </div>
         )}
 
+        {selectedType === 'dpa' && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('dpa_data_types')}</label>
+              <input
+                name="dpaDataTypes"
+                value={formData.dpaDataTypes}
+                onChange={handleChange}
+                placeholder="e.g. names, email addresses, IP addresses, usage data"
+                style={{ width: '100%' }}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('dpa_processing_purpose')}</label>
+              <input
+                name="dpaProcessingPurpose"
+                value={formData.dpaProcessingPurpose}
+                onChange={handleChange}
+                placeholder="e.g. to provide and improve services offered through the website"
+                style={{ width: '100%' }}
+              />
+            </div>
+          </div>
+        )}
+
         <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
           <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            {selectedType === 'privacy' ? t('generate_button') : selectedType === 'terms' ? t('generate_button') : selectedType === 'refund' ? t('generate_button') : selectedType === 'disclaimer' ? t('generate_button') : selectedType === 'cookie-banner' ? t('generate_banner') : selectedType === 'robots-txt' ? t('generate_robots') : selectedType === 'accessibility' ? t('generate_accessibility') : selectedType === 'eula' ? t('generate_eula') : t('generate_button')}
+            {selectedType === 'privacy' ? t('generate_button') : selectedType === 'terms' ? t('generate_button') : selectedType === 'refund' ? t('generate_button') : selectedType === 'disclaimer' ? t('generate_button') : selectedType === 'cookie-banner' ? t('generate_banner') : selectedType === 'robots-txt' ? t('generate_robots') : selectedType === 'accessibility' ? t('generate_accessibility') : selectedType === 'eula' ? t('generate_eula') : selectedType === 'dpa' ? t('generate_dpa') : selectedType === 'aup' ? t('generate_aup') : selectedType === 'dmca' ? t('generate_dmca') : selectedType === 'employee-privacy' ? t('generate_employee_privacy') : selectedType === 'affiliate-disclaimer' ? t('generate_affiliate_disclaimer') : selectedType === 'social-media' ? t('generate_social_media') : selectedType === 'newsletter' ? t('generate_newsletter') : t('generate_button')}
           </button>
         </div>
       </form>

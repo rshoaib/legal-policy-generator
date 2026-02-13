@@ -224,3 +224,79 @@ h3 {
   font-weight: 700;
   line-height: 1.2;
 }
+
+/* ─── Policy History ─────────────────────────────────────────────────────── */
+
+.history-card {
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.history-card:hover {
+  transform: translateX(4px);
+  border-color: var(--accent-primary);
+  box-shadow:
+    0 8px 30px rgba(139, 92, 246, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.history-action-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.history-action-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-tertiary);
+  transform: scale(1.1);
+}
+
+.history-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Modal Overlay */
+.history-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 17, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.history-modal {
+  width: 100%;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.history-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .history-modal-overlay {
+    padding: 1rem;
+  }
+
+  .history-modal {
+    max-height: 90vh;
+  }
+}

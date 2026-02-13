@@ -36,6 +36,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/contact">Contact Us</Link>
             <Link to="/blog">Blog</Link>
             <Link to="/compliance-checker">Compliance Checker</Link>
+            <Link to="/history">Policy History</Link>
           </div>
           <p>&copy; {new Date().getFullYear()} Legal Policy Generator. All rights reserved.</p>
         </div>

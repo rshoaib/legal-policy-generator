@@ -15,6 +15,7 @@ import { AboutPage } from './components/AboutPage'
 import { ContactPage } from './components/ContactPage'
 import { CookieConsent } from './components/CookieConsent'
 import { ComplianceChecker } from './components/ComplianceChecker'
+import { PolicyHistory } from './components/PolicyHistory'
 import type { PolicyData } from './appTypes'
 import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
@@ -28,9 +29,17 @@ import { generateRobotsTxt } from './utils/templates/robotsTxt'
 import { generateAccessibilityStatement } from './utils/templates/accessibilityStatement'
 import { generateNDA } from './utils/templates/nda'
 import { generateEULA } from './utils/templates/eula'
+import { generateDPA } from './utils/templates/dpa'
+import { generateAUP } from './utils/templates/aup'
+import { generateDMCA } from './utils/templates/dmca'
+import { generateEmployeePrivacy } from './utils/templates/employeePrivacy'
+import { generateAffiliateDisclaimer } from './utils/templates/affiliateDisclaimer'
+import { generateSocialMediaPolicy } from './utils/templates/socialMediaPolicy'
+import { generateNewsletterPolicy } from './utils/templates/newsletterPolicy'
+import { savePolicy } from './utils/useHistoryStorage'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -91,9 +100,28 @@ function GeneratorApp() {
       content = generateAccessibilityStatement(data)
     } else if (selectedType === 'nda') {
       content = generateNDA(data, currentLang)
+    } else if (selectedType === 'dpa') {
+      content = generateDPA(data, currentLang)
+    } else if (selectedType === 'aup') {
+      content = generateAUP(data, currentLang)
+    } else if (selectedType === 'dmca') {
+      content = generateDMCA(data, currentLang)
+    } else if (selectedType === 'employee-privacy') {
+      content = generateEmployeePrivacy(data, currentLang)
+    } else if (selectedType === 'affiliate-disclaimer') {
+      content = generateAffiliateDisclaimer(data, currentLang)
+    } else if (selectedType === 'social-media') {
+      content = generateSocialMediaPolicy(data, currentLang)
+    } else if (selectedType === 'newsletter') {
+      content = generateNewsletterPolicy(data, currentLang)
     } else {
       content = generateEULA(data, currentLang)
     }
+
+    // Save to policy history
+    const label = `${selectedType.charAt(0).toUpperCase() + selectedType.slice(1).replace(/-/g, ' ')} — ${data.companyName || data.websiteName || 'Untitled'}`
+    savePolicy(selectedType, label, content)
+
     setGeneratedContent(content)
     setStep('preview')
   }
@@ -108,7 +136,7 @@ function GeneratorApp() {
     '@type': 'WebSite',
     name: 'Legal Policy Generator',
     url: 'https://legalpolicygen.com',
-    description: 'Free legal policy generator for Privacy Policies, Terms & Conditions, Refund Policies, Disclaimers, and more.',
+    description: 'Free legal policy generator for Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA, AUP, Refund Policies, Disclaimers, Cookie Banners, Robots.txt, Accessibility Statements, and more.',
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://legalpolicygen.com/?q={search_term_string}',
@@ -129,11 +157,27 @@ function GeneratorApp() {
     },
   };
 
+  const appJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Legal Policy Generator',
+    url: 'https://legalpolicygen.com',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'All',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    description: 'Generate 17+ free legal documents including Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA Policies, and more. GDPR, CCPA, and WCAG compliant.',
+    featureList: 'Privacy Policy Generator, Terms & Conditions Generator, NDA Generator, EULA Generator, DPA Generator, DMCA Policy Generator, AUP Generator, Cookie Policy Generator, Cookie Consent Banner Generator, Robots.txt Generator, Accessibility Statement Generator, Refund Policy Generator, Disclaimer Generator, Employee Privacy Policy Generator, Affiliate Disclosure Generator, Social Media Policy Generator, Newsletter Policy Generator, Compliance Checker',
+  };
+
   return (
     <>
       <SEO
         canonical="/"
-        jsonLd={[websiteJsonLd, orgJsonLd]}
+        jsonLd={[websiteJsonLd, orgJsonLd, appJsonLd]}
       />
       <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 100 }}>
          <select 
@@ -173,6 +217,13 @@ function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('accessibility')}>{t('start_accessibility')}</button>
             <button className="btn-primary" onClick={() => handleStart('nda')}>{t('start_nda')}</button>
             <button className="btn-primary" onClick={() => handleStart('eula')}>{t('start_eula')}</button>
+            <button className="btn-primary" onClick={() => handleStart('dpa')}>{t('start_dpa')}</button>
+            <button className="btn-primary" onClick={() => handleStart('aup')}>{t('start_aup')}</button>
+            <button className="btn-primary" onClick={() => handleStart('dmca')}>{t('start_dmca')}</button>
+            <button className="btn-primary" onClick={() => handleStart('employee-privacy')}>{t('start_employee_privacy')}</button>
+            <button className="btn-primary" onClick={() => handleStart('affiliate-disclaimer')}>{t('start_affiliate_disclaimer')}</button>
+            <button className="btn-primary" onClick={() => handleStart('social-media')}>{t('start_social_media')}</button>
+            <button className="btn-primary" onClick={() => handleStart('newsletter')}>{t('start_newsletter')}</button>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
@@ -186,6 +237,18 @@ function GeneratorApp() {
               }}
             >
               🔍 Check Your Existing Policy
+            </Link>
+            <Link
+              to="/history"
+              className="btn-primary"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                textDecoration: 'none', filter: 'hue-rotate(200deg)',
+                padding: '0.85rem 2rem', fontSize: '1.05rem',
+                marginLeft: '1rem',
+              }}
+            >
+              📋 {t('view_history')}
             </Link>
           </div>
 
@@ -265,6 +328,7 @@ function App() {
                     <Route path=":slug" element={<BlogPost />} />
                 </Route>
                 <Route path="/compliance-checker" element={<ComplianceChecker />} />
+                <Route path="/history" element={<PolicyHistory />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Toaster position="top-right" />
