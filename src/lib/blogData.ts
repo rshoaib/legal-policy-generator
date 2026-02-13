@@ -1,3 +1,11 @@
+/**
+ * LOCAL FALLBACK DATA
+ * 
+ * This file contains blog post data used as a fallback when Supabase is unavailable.
+ * The primary data source is the `blog_posts` table in Supabase.
+ * This data is served by blogService.ts only when Supabase cannot be reached.
+ */
+
 export interface BlogPost {
   slug: string;
   title: string;

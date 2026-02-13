@@ -1,15 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { blogPosts } from '../lib/blogData';
+import { getPostBySlug } from '../lib/blogService';
+import { type BlogPost as BlogPostType } from '../lib/blogData';
 import { SEO } from './SEO';
 
 export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = blogPosts.find(p => p.slug === slug);
+  const [post, setPost] = useState<BlogPostType | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
-  if (!post) {
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadPost() {
+      if (!slug) {
+        setNotFound(true);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        const data = await getPostBySlug(slug);
+        if (!cancelled) {
+          if (data) {
+            setPost(data);
+          } else {
+            setNotFound(true);
+          }
+        }
+      } catch (err) {
+        console.error(err);
+        if (!cancelled) {
+          setNotFound(true);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadPost();
+    return () => { cancelled = true; };
+  }, [slug]);
+
+  if (notFound && !loading) {
     return <Navigate to="/blog" replace />;
   }
+
+  if (loading) {
+    return (
+      <article className="glass-panel" style={{ padding: '3rem 2rem' }}>
+        <header style={{ marginBottom: '2rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '2rem' }}>
+          <div style={{ height: '0.875rem', width: '150px', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '1rem' }} />
+          <div style={{ height: '2.5rem', width: '90%', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '0.5rem' }} />
+          <div style={{ height: '2.5rem', width: '60%', background: 'var(--border-color)', borderRadius: '4px' }} />
+        </header>
+        <div>
+          {[1, 2, 3, 4, 5].map(i => (
+            <div key={i} style={{ height: '1rem', width: i % 2 === 0 ? '80%' : '95%', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '1rem' }} />
+          ))}
+        </div>
+      </article>
+    );
+  }
+
+  if (!post) return null;
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -79,4 +137,3 @@ export const BlogPost: React.FC = () => {
       </article>
   );
 };
-
