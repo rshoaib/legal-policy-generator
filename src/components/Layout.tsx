@@ -190,10 +190,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           padding: 2rem 0;
           color: var(--text-secondary);
           font-size: 0.875rem;
+          line-height: 1.5;
           border-top: 1px solid var(--glass-border);
           background: var(--glass-bg);
           backdrop-filter: blur(10px);
           margin-top: auto;
+          min-height: 90px;
+          contain: layout style;
         }
 
         .footer-links {
@@ -202,12 +205,15 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           gap: 1.5rem;
           margin-bottom: 1rem;
           flex-wrap: wrap;
+          min-height: 24px;
         }
 
         .footer-links a {
           color: var(--text-secondary);
           text-decoration: none;
           transition: color 0.2s;
+          line-height: 1.5;
+          font-size: 0.875rem;
         }
 
         .footer-links a:hover {
