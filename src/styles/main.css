@@ -1,3 +1,22 @@
+/* Adjusted system-font fallbacks that match Outfit/Inter metrics — prevents CLS on swap */
+@font-face {
+  font-family: 'Outfit Fallback';
+  src: local('Arial');
+  size-adjust: 100.4%;
+  ascent-override: 101%;
+  descent-override: 27%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* Midnight Neon Palette */
   --bg-primary: #050511;
@@ -17,7 +36,7 @@
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shine: rgba(255, 255, 255, 0.03);
 
-  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Outfit', 'Outfit Fallback', 'Inter', 'Inter Fallback', system-ui, sans-serif;
 
   --animation-speed: 0.3s;
 }
