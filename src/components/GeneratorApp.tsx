@@ -1,11 +1,19 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { SEO } from './SEO'
-import { GeneratorForm } from './GeneratorForm'
-import { PolicyPreview } from './PolicyPreview'
 import type { PolicyData } from '../appTypes'
 import { savePolicy } from '../utils/useHistoryStorage'
+
+/* ── Heavy components loaded only when user clicks a policy type ── */
+const GeneratorForm = lazy(() => import('./GeneratorForm').then(m => ({ default: m.GeneratorForm })))
+const PolicyPreview = lazy(() => import('./PolicyPreview').then(m => ({ default: m.PolicyPreview })))
+
+const FormLoader = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
+    <div style={{ width: 40, height: 40, border: '3px solid rgba(255,255,255,0.1)', borderTopColor: 'var(--accent)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+  </div>
+)
 
 type Step = 'landing' | 'form' | 'preview'
 type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos'
@@ -226,6 +234,7 @@ export function GeneratorApp() {
       )}
 
       {step === 'form' && (
+        <Suspense fallback={<FormLoader />}>
         <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <button 
@@ -248,12 +257,15 @@ export function GeneratorApp() {
             onDataChange={handleDataChange}
           />
         </div>
+        </Suspense>
       )}
 
       {step === 'preview' && (
+        <Suspense fallback={<FormLoader />}>
         <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <PolicyPreview content={generatedContent} onReset={handleReset} />
         </div>
+        </Suspense>
       )}
     </>
   )
