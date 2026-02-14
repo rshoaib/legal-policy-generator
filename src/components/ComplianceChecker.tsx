@@ -153,6 +153,16 @@ export const ComplianceChecker: React.FC = () => {
         title="Free Policy Compliance Checker — GDPR & CCPA Analysis"
         description="Paste your privacy policy and get an instant compliance analysis. Check for GDPR, CCPA, and general best-practice gaps with actionable suggestions."
         canonical="/compliance-checker"
+        jsonLd={[{
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'Policy Compliance Checker',
+          url: 'https://legalpolicygen.com/compliance-checker',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'All',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          description: 'Free GDPR and CCPA compliance analyzer for privacy policies.',
+        }]}
       />
 
       <div style={{ maxWidth: '850px', margin: '0 auto' }}>

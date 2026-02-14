@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 interface LayoutProps {
@@ -6,8 +6,43 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
+    }
+    return 'dark';
+  });
+
+  const [showValentine, setShowValentine] = useState(() => {
+    const now = new Date();
+    return now.getMonth() === 1 && now.getDate() === 14 && !sessionStorage.getItem('valentine_dismissed');
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+
+  const dismissValentine = () => {
+    setShowValentine(false);
+    sessionStorage.setItem('valentine_dismissed', 'true');
+  };
+
   return (
     <div className="layout-wrapper">
+      {showValentine && (
+        <div className="valentine-banner">
+          <div className="valentine-content">
+            <span className="valentine-hearts">💝</span>
+            <span>Happy Valentine's Day! Generate a love-ly legal policy today!</span>
+            <span className="valentine-hearts">💝</span>
+            <button onClick={dismissValentine} className="valentine-close" aria-label="Dismiss">✕</button>
+          </div>
+        </div>
+      )}
+
       <header className="main-header glass-panel">
         <div className="container header-content">
           <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
@@ -16,9 +51,23 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               PolicyGen
             </span>
           </Link>
-          <nav aria-label="Main navigation" style={{ display: 'flex', gap: '1.25rem' }}>
+          <nav aria-label="Main navigation" style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
+            <Link to="/bundle" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Starter Kit</Link>
+            <Link to="/policy-guide" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Policy Guide</Link>
             <Link to="/compliance-checker" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Compliance Checker</Link>
             <Link to="/blog" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Blog</Link>
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              style={{
+                background: 'none', border: '1px solid var(--glass-border)',
+                borderRadius: '0.5rem', padding: '0.4rem 0.6rem',
+                cursor: 'pointer', fontSize: '1.1rem', lineHeight: 1,
+                color: 'var(--text-primary)', transition: 'all 0.2s',
+              }}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
           </nav>
         </div>
       </header>
@@ -35,6 +84,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
             <Link to="/blog">Blog</Link>
+            <Link to="/bundle">Starter Kit</Link>
+            <Link to="/policy-guide">Policy Guide</Link>
             <Link to="/compliance-checker">Compliance Checker</Link>
             <Link to="/history">Policy History</Link>
           </div>
@@ -47,6 +98,64 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           display: flex;
           flex-direction: column;
           min-height: 100vh;
+        }
+
+        .valentine-banner {
+          background: linear-gradient(135deg, #be185d, #e11d48, #f43f5e, #ec4899);
+          color: white;
+          text-align: center;
+          padding: 0.6rem 1rem;
+          font-weight: 600;
+          font-size: 0.95rem;
+          position: relative;
+          animation: valentineSlideIn 0.5s ease-out;
+          background-size: 200% 200%;
+          animation: valentineGlow 3s ease-in-out infinite alternate, valentineSlideIn 0.5s ease-out;
+        }
+
+        .valentine-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+        }
+
+        .valentine-hearts {
+          animation: heartbeat 1.2s ease-in-out infinite;
+          display: inline-block;
+        }
+
+        .valentine-close {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: white;
+          font-size: 1rem;
+          cursor: pointer;
+          opacity: 0.7;
+          transition: opacity 0.2s;
+        }
+
+        .valentine-close:hover {
+          opacity: 1;
+        }
+
+        @keyframes heartbeat {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.2); }
+        }
+
+        @keyframes valentineSlideIn {
+          from { transform: translateY(-100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes valentineGlow {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 100% 50%; }
         }
 
         .main-header {
@@ -103,6 +212,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         .footer-links a:hover {
           color: var(--accent-primary);
+        }
+
+        @media (max-width: 768px) {
+          .header-content nav {
+            gap: 0.5rem !important;
+            flex-wrap: wrap;
+          }
+
+          .header-content nav a {
+            font-size: 0.8rem !important;
+          }
         }
       `}</style>
     </div>

@@ -118,5 +118,16 @@
   "banner_link_text": "Texto del Enlace (ej. Más información)",
   "banner_link_url": "URL del Enlace (ej. /privacy-policy)",
   "enable_decline_button": "Habilitar Botón 'Rechazar'",
-  "decline_button_text": "Texto Botón Rechazar"
+  "decline_button_text": "Texto Botón Rechazar",
+  "start_tos": "Crear Términos de Servicio",
+  "tos": "Términos de Servicio",
+  "generate_tos": "Generar Términos de Servicio",
+  "bundle_title": "Kit Legal para Sitio Web",
+  "bundle_subtitle": "Genere todas las políticas esenciales de una vez con un solo formulario.",
+  "bundle_select_policies": "Seleccionar Políticas a Generar",
+  "bundle_generate_all": "Generar Todo",
+  "bundle_download_all": "Descargar Todo",
+  "policy_guide": "Guía de Políticas",
+  "policy_guide_title": "¿Qué políticas necesita su sitio web?",
+  "policy_guide_subtitle": "Utilice nuestra guía interactiva para descubrir los documentos legales adecuados para su tipo de negocio."
 }

@@ -118,5 +118,16 @@
   "banner_link_text": "Link Text (e.g. Learn more)",
   "banner_link_url": "Link URL (e.g. /privacy-policy)",
   "enable_decline_button": "Enable 'Decline' Button",
-  "decline_button_text": "Decline Button Text"
+  "decline_button_text": "Decline Button Text",
+  "start_tos": "Create Terms of Service",
+  "tos": "Terms of Service",
+  "generate_tos": "Generate Terms of Service",
+  "bundle_title": "Website Legal Starter Kit",
+  "bundle_subtitle": "Generate all essential policies at once with a single form.",
+  "bundle_select_policies": "Select Policies to Generate",
+  "bundle_generate_all": "Generate All",
+  "bundle_download_all": "Download All",
+  "policy_guide": "Policy Guide",
+  "policy_guide_title": "Which policies does your website need?",
+  "policy_guide_subtitle": "Use our interactive guide to discover the legal documents suited to your business type."
 }

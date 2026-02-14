@@ -16,9 +16,12 @@ import { ContactPage } from './components/ContactPage'
 import { CookieConsent } from './components/CookieConsent'
 import { ComplianceChecker } from './components/ComplianceChecker'
 import { PolicyHistory } from './components/PolicyHistory'
+import { PolicyBundle } from './components/PolicyBundle'
+import { PolicyGuide } from './components/PolicyGuide'
 import type { PolicyData } from './appTypes'
 import { generatePrivacyPolicy } from './utils/templates/privacyPolicy'
 import { generateTermsConditions } from './utils/templates/termsConditions'
+import { generateTermsOfService } from './utils/templates/termsOfService'
 
 import { generateCookiePolicy } from './utils/templates/cookiePolicy'
 import { generateRefundPolicy } from './utils/templates/refundPolicy'
@@ -39,7 +42,7 @@ import { generateNewsletterPolicy } from './utils/templates/newsletterPolicy'
 import { savePolicy } from './utils/useHistoryStorage'
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos'
 
 function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -53,6 +56,7 @@ function GeneratorApp() {
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
     setCurrentLang(lng)
+    document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr'
   }
 
   /* New: Load initial data from local storage */
@@ -114,6 +118,8 @@ function GeneratorApp() {
       content = generateSocialMediaPolicy(data, currentLang)
     } else if (selectedType === 'newsletter') {
       content = generateNewsletterPolicy(data, currentLang)
+    } else if (selectedType === 'tos') {
+      content = generateTermsOfService(data, currentLang)
     } else {
       content = generateEULA(data, currentLang)
     }
@@ -191,10 +197,14 @@ function GeneratorApp() {
                 borderRadius: '0.5rem',
                 cursor: 'pointer'
             }}
-         >
+          >
              <option value="en">English (EN)</option>
              <option value="es">Español (ES)</option>
-         </select>
+             <option value="fr">Français (FR)</option>
+             <option value="de">Deutsch (DE)</option>
+             <option value="pt">Português (PT)</option>
+             <option value="ar">العربية (AR)</option>
+          </select>
       </div>
 
       {step === 'landing' && (
@@ -224,6 +234,7 @@ function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('affiliate-disclaimer')}>{t('start_affiliate_disclaimer')}</button>
             <button className="btn-primary" onClick={() => handleStart('social-media')}>{t('start_social_media')}</button>
             <button className="btn-primary" onClick={() => handleStart('newsletter')}>{t('start_newsletter')}</button>
+            <button className="btn-primary" onClick={() => handleStart('tos')}>{t('start_tos')}</button>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
@@ -329,6 +340,8 @@ function App() {
                 </Route>
                 <Route path="/compliance-checker" element={<ComplianceChecker />} />
                 <Route path="/history" element={<PolicyHistory />} />
+                <Route path="/bundle" element={<PolicyBundle />} />
+                <Route path="/policy-guide" element={<PolicyGuide />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Toaster position="top-right" />
