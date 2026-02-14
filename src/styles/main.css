@@ -357,3 +357,10 @@ h3 {
     max-height: 90vh;
   }
 }
+
+/* Loading spinner for lazy routes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
