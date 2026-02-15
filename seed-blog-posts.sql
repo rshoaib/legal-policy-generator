@@ -1204,3 +1204,353 @@ INSERT INTO blog_posts (slug, title, excerpt, date, content) VALUES (
   content = EXCLUDED.content,
   updated_at = NOW();
 
+INSERT INTO blog_posts (slug, title, excerpt, date, content) VALUES (
+  'ai-privacy-policy-what-your-app-needs',
+  'AI Privacy Policy — What Your AI-Powered App Needs in 2026',
+  'Building with GPT, Claude, Gemini, or other AI models? Your privacy policy needs specific AI disclosures. Here''s exactly what to include.',
+  '2026-02-15',
+  '<p>Artificial intelligence is no longer a niche technology — it''s embedded in everything from customer support chatbots to content generation tools, recommendation engines, and code assistants. If your app or website uses AI in any capacity, your privacy policy <strong>must</strong> disclose this. Here''s why, and exactly what you need to include.</p>
+
+      <h3>Why AI Requires Special Privacy Disclosures</h3>
+      <p>Traditional privacy policies cover data collection, storage, and sharing. But AI introduces unique concerns:</p>
+      <ul>
+        <li><strong>Training data:</strong> Is user data used to train or fine-tune models?</li>
+        <li><strong>Automated decision-making:</strong> Does AI make decisions that affect users (e.g., credit scoring, content moderation, hiring)?</li>
+        <li><strong>Third-party AI providers:</strong> Are you sending user data to OpenAI, Google, Anthropic, or other providers?</li>
+        <li><strong>Data retention by AI providers:</strong> Do these providers retain conversation logs or prompts?</li>
+      </ul>
+      <p>Under GDPR Article 22, users have the right not to be subject to decisions based solely on automated processing. The EU AI Act (effective 2025–2026) adds further transparency requirements for high-risk AI systems.</p>
+
+      <h3>What Your AI Privacy Policy Must Include</h3>
+
+      <h4>1. Disclosure of AI Usage</h4>
+      <p>State clearly that your app uses AI technology. Be specific about <em>what</em> AI does — don''t hide it behind vague language like "advanced algorithms."</p>
+      <p><strong>Example:</strong> <em>"Our application uses artificial intelligence, including large language models provided by OpenAI, to generate content recommendations and respond to user queries."</em></p>
+
+      <h4>2. Data Sent to AI Models</h4>
+      <p>Users need to know what data is sent to AI systems. This includes:</p>
+      <ul>
+        <li>User prompts and queries</li>
+        <li>Uploaded documents or images</li>
+        <li>Contextual data (browsing history, preferences)</li>
+        <li>Personal information included in prompts</li>
+      </ul>
+
+      <h4>3. Third-Party AI Providers</h4>
+      <p>If you use third-party AI APIs (OpenAI, Google Vertex AI, Anthropic Claude, etc.), you must disclose:</p>
+      <ul>
+        <li>Which providers you use</li>
+        <li>What data is sent to them</li>
+        <li>Their data retention and training policies</li>
+        <li>Whether they operate in a different jurisdiction</li>
+      </ul>
+
+      <h4>4. Training Data Opt-Out</h4>
+      <p>If user data could be used to improve or train AI models, you must:</p>
+      <ul>
+        <li>Disclose this practice</li>
+        <li>Provide a clear opt-out mechanism</li>
+        <li>Explain what happens to data already used for training</li>
+      </ul>
+
+      <h4>5. Automated Decision-Making</h4>
+      <p>If AI makes decisions that significantly affect users, GDPR requires you to:</p>
+      <ul>
+        <li>Inform users about the existence of automated decision-making</li>
+        <li>Provide meaningful information about the logic involved</li>
+        <li>Explain the significance and consequences</li>
+        <li>Offer the right to human review of the decision</li>
+      </ul>
+
+      <h4>6. AI-Generated Content Disclaimer</h4>
+      <p>If your app generates content using AI, include a disclaimer that:</p>
+      <ul>
+        <li>AI-generated content may contain errors or inaccuracies</li>
+        <li>Content should not be relied upon as professional advice</li>
+        <li>Users are responsible for verifying AI-generated output</li>
+      </ul>
+
+      <h3>Regulations You Need to Know</h3>
+      <table>
+        <tr><th>Regulation</th><th>AI Requirement</th><th>Effective</th></tr>
+        <tr><td>GDPR Art. 22</td><td>Right to opt out of automated decisions</td><td>Active</td></tr>
+        <tr><td>EU AI Act</td><td>Transparency obligations for AI systems</td><td>2025–2026</td></tr>
+        <tr><td>CCPA/CPRA</td><td>Disclose automated decision-making</td><td>Active</td></tr>
+        <tr><td>Colorado AI Act</td><td>Transparency for high-risk AI decisions</td><td>2026</td></tr>
+      </table>
+
+      <h3>Generate Your AI-Ready Privacy Policy</h3>
+      <p>Don''t risk non-compliance. Our <a href="/"><strong>Privacy Policy Generator</strong></a> includes AI-specific clauses that cover third-party AI providers, training data disclosure, and automated decision-making rights. Generate yours in under 5 minutes.</p>
+
+      <p><strong><a href="/">Create your AI Privacy Policy now →</a></strong></p>'
+) ON CONFLICT (slug) DO UPDATE SET
+  title = EXCLUDED.title,
+  excerpt = EXCLUDED.excerpt,
+  date = EXCLUDED.date,
+  content = EXCLUDED.content,
+  updated_at = NOW();
+
+INSERT INTO blog_posts (slug, title, excerpt, date, content) VALUES (
+  'hipaa-compliance-checklist-small-business',
+  'HIPAA Compliance Checklist for Small Businesses (2026)',
+  'If your business handles health information, HIPAA compliance isn''t optional. Use our checklist to ensure you meet every requirement.',
+  '2026-02-15',
+  '<p>If your business touches Protected Health Information (PHI) in any way — whether you''re a healthcare provider, a health app developer, a dental office, or a SaaS company processing medical data — you must comply with HIPAA. Violations can result in fines ranging from $100 to $50,000 <em>per violation</em>, with annual maximums of $1.5 million per category.</p>
+
+      <p>Here''s a practical checklist to help small businesses achieve and maintain HIPAA compliance.</p>
+
+      <h3>Part 1: Administrative Safeguards</h3>
+      <ul>
+        <li>☐ <strong>Designate a Privacy Officer</strong> responsible for developing and implementing privacy policies</li>
+        <li>☐ <strong>Designate a Security Officer</strong> responsible for developing and implementing security policies</li>
+        <li>☐ <strong>Conduct a Risk Assessment</strong> — identify where PHI is stored, transmitted, and processed</li>
+        <li>☐ <strong>Develop Written Policies and Procedures</strong> covering all aspects of PHI handling</li>
+        <li>☐ <strong>Train All Employees</strong> on HIPAA requirements within 30 days of hiring, and annually thereafter</li>
+        <li>☐ <strong>Implement Sanctions Policy</strong> for employees who violate HIPAA procedures</li>
+        <li>☐ <strong>Create a Contingency Plan</strong> for data backup, disaster recovery, and emergency mode operations</li>
+        <li>☐ <strong>Sign Business Associate Agreements (BAAs)</strong> with all vendors who access PHI</li>
+      </ul>
+
+      <h3>Part 2: Physical Safeguards</h3>
+      <ul>
+        <li>☐ <strong>Control facility access</strong> — limit physical access to areas where PHI is stored</li>
+        <li>☐ <strong>Secure workstations</strong> — position screens away from public view, use privacy filters</li>
+        <li>☐ <strong>Device security</strong> — encrypt all portable devices (laptops, phones, USB drives)</li>
+        <li>☐ <strong>Proper disposal</strong> — shred physical documents, securely wipe electronic media</li>
+      </ul>
+
+      <h3>Part 3: Technical Safeguards</h3>
+      <ul>
+        <li>☐ <strong>Access controls</strong> — unique user IDs, role-based access, automatic logoff</li>
+        <li>☐ <strong>Encryption</strong> — encrypt PHI at rest (AES-256) and in transit (TLS 1.2+)</li>
+        <li>☐ <strong>Audit controls</strong> — log all access to systems containing PHI</li>
+        <li>☐ <strong>Integrity controls</strong> — implement mechanisms to prevent unauthorized alteration of PHI</li>
+        <li>☐ <strong>Transmission security</strong> — use encrypted email, secure file transfer protocols</li>
+        <li>☐ <strong>Multi-factor authentication (MFA)</strong> — required for all systems accessing PHI</li>
+      </ul>
+
+      <h3>Part 4: Breach Notification Requirements</h3>
+      <ul>
+        <li>☐ <strong>Individual notification</strong> — notify affected individuals within 60 days of discovering a breach</li>
+        <li>☐ <strong>HHS notification</strong> — report breaches affecting 500+ individuals to HHS within 60 days</li>
+        <li>☐ <strong>Media notification</strong> — notify prominent media outlets if 500+ residents of a state are affected</li>
+        <li>☐ <strong>Breach log</strong> — maintain a log of all breaches, even those affecting fewer than 500 individuals</li>
+      </ul>
+
+      <h3>Part 5: Documentation</h3>
+      <ul>
+        <li>☐ <strong>Notice of Privacy Practices (NPP)</strong> — provide patients with a clear notice explaining their rights</li>
+        <li>☐ <strong>Written policies</strong> — retain all HIPAA policies for at least 6 years</li>
+        <li>☐ <strong>Training records</strong> — document all employee training sessions</li>
+        <li>☐ <strong>Risk assessment reports</strong> — update annually and after any significant change</li>
+      </ul>
+
+      <h3>Common HIPAA Mistakes Small Businesses Make</h3>
+      <ol>
+        <li><strong>Using personal email</strong> to send PHI (Gmail, Yahoo, etc. are not HIPAA-compliant by default)</li>
+        <li><strong>No BAAs with vendors</strong> — using cloud storage, billing software, or scheduling tools without a signed BAA</li>
+        <li><strong>Assuming "small" means "exempt"</strong> — HIPAA applies regardless of business size</li>
+        <li><strong>Skipping the risk assessment</strong> — this is the #1 most-cited violation in audits</li>
+        <li><strong>No employee training documentation</strong> — training happened but wasn''t recorded</li>
+      </ol>
+
+      <h3>Generate Your HIPAA Notice</h3>
+      <p>One of the most important HIPAA documents is the Notice of Privacy Practices. Our <a href="/"><strong>HIPAA Notice Generator</strong></a> creates a compliant notice covering all required sections under 45 CFR § 164.520. It''s free and takes under 5 minutes.</p>
+
+      <p><strong><a href="/">Generate your HIPAA Notice now →</a></strong></p>'
+) ON CONFLICT (slug) DO UPDATE SET
+  title = EXCLUDED.title,
+  excerpt = EXCLUDED.excerpt,
+  date = EXCLUDED.date,
+  content = EXCLUDED.content,
+  updated_at = NOW();
+
+INSERT INTO blog_posts (slug, title, excerpt, date, content) VALUES (
+  'privacy-policy-mobile-apps-ios-android',
+  'Privacy Policy for Mobile Apps — iOS & Android Guide (2026)',
+  'Apple and Google both require a privacy policy for app store listings. Here''s what your mobile app privacy policy must include.',
+  '2026-02-15',
+  '<p>If you''re publishing a mobile app on the Apple App Store or Google Play Store, a privacy policy isn''t optional — it''s a hard requirement. Both platforms will reject your app or remove it from the store if you don''t have one. But beyond store requirements, privacy regulations like GDPR, CCPA, and COPPA also apply to mobile apps.</p>
+
+      <h3>Platform Requirements</h3>
+
+      <h4>Apple App Store</h4>
+      <p>Apple requires all apps to have a privacy policy, regardless of whether they collect user data. Key requirements:</p>
+      <ul>
+        <li>A privacy policy URL must be provided in App Store Connect</li>
+        <li>You must complete <strong>App Privacy Labels</strong> ("nutrition labels") disclosing all data collection</li>
+        <li>If you use App Tracking Transparency (ATT), you must explain why in your policy</li>
+        <li>Apps targeting children must comply with Apple''s strict data collection rules</li>
+      </ul>
+
+      <h4>Google Play Store</h4>
+      <p>Google requires a privacy policy for all apps that:</p>
+      <ul>
+        <li>Handle personal or sensitive user data</li>
+        <li>Access device permissions (camera, location, contacts, etc.)</li>
+        <li>Use advertising SDKs or analytics tools</li>
+      </ul>
+      <p>You must also complete Google''s <strong>Data Safety Section</strong>, which is similar to Apple''s privacy labels.</p>
+
+      <h3>What Your Mobile App Privacy Policy Must Include</h3>
+
+      <h4>1. Data Collection</h4>
+      <p>Be specific about what data your app collects:</p>
+      <ul>
+        <li><strong>Account data:</strong> names, email addresses, phone numbers</li>
+        <li><strong>Device data:</strong> device model, OS version, unique device identifiers</li>
+        <li><strong>Location data:</strong> GPS, Wi-Fi-based location, IP geolocation</li>
+        <li><strong>Usage data:</strong> app interactions, session duration, feature usage</li>
+        <li><strong>Camera/microphone data:</strong> photos, videos, audio recordings</li>
+        <li><strong>Health/fitness data:</strong> if applicable (triggers additional regulations)</li>
+        <li><strong>Financial data:</strong> payment information, purchase history</li>
+      </ul>
+
+      <h4>2. Permissions</h4>
+      <p>Explain why your app requests each permission:</p>
+      <ul>
+        <li>Camera — "to allow profile photo uploads"</li>
+        <li>Location — "to show nearby results"</li>
+        <li>Contacts — "to find friends using the app"</li>
+        <li>Push notifications — "to send order updates"</li>
+      </ul>
+
+      <h4>3. Third-Party SDKs and Services</h4>
+      <p>Mobile apps commonly integrate multiple SDKs that collect data independently. Disclose all of them:</p>
+      <ul>
+        <li>Analytics: Google Analytics, Firebase, Mixpanel, Amplitude</li>
+        <li>Advertising: AdMob, Facebook Ads SDK, Unity Ads</li>
+        <li>Crash reporting: Crashlytics, Sentry, Bugsnag</li>
+        <li>Authentication: Google Sign-In, Apple Sign-In, Facebook Login</li>
+        <li>Push notifications: Firebase Cloud Messaging, OneSignal</li>
+      </ul>
+
+      <h4>4. Data Storage and Security</h4>
+      <p>Explain where data is stored (on-device vs. cloud), encryption methods used, and how long data is retained.</p>
+
+      <h4>5. Children''s Privacy (COPPA)</h4>
+      <p>If your app is directed at children under 13 (or under 16 in the EU), you must:</p>
+      <ul>
+        <li>Obtain verifiable parental consent before collecting data</li>
+        <li>Limit data collection to what''s strictly necessary</li>
+        <li>Not use behavioral advertising</li>
+        <li>Provide parents with access to their child''s data</li>
+      </ul>
+
+      <h4>6. User Rights</h4>
+      <p>Include clear instructions for users to:</p>
+      <ul>
+        <li>Access their data</li>
+        <li>Delete their account and data</li>
+        <li>Opt out of data collection (where applicable)</li>
+        <li>Export their data (data portability)</li>
+      </ul>
+      <p>Both Google and Apple now require apps to offer an <strong>account deletion mechanism</strong> directly within the app.</p>
+
+      <h3>Where to Display Your Privacy Policy</h3>
+      <ol>
+        <li><strong>App store listing</strong> — required by both platforms</li>
+        <li><strong>Within the app</strong> — typically in Settings → Privacy Policy</li>
+        <li><strong>During onboarding</strong> — before collecting any data</li>
+        <li><strong>Your website</strong> — link from app to web version</li>
+      </ol>
+
+      <h3>Generate Your Mobile App Privacy Policy</h3>
+      <p>Our <a href="/"><strong>free Privacy Policy Generator</strong></a> creates policies that cover mobile app requirements, including data collection disclosures for both iOS and Android. Just fill in your details and download your policy in HTML, PDF, or Word format.</p>
+
+      <p><strong><a href="/">Generate your app Privacy Policy now →</a></strong></p>'
+) ON CONFLICT (slug) DO UPDATE SET
+  title = EXCLUDED.title,
+  excerpt = EXCLUDED.excerpt,
+  date = EXCLUDED.date,
+  content = EXCLUDED.content,
+  updated_at = NOW();
+
+INSERT INTO blog_posts (slug, title, excerpt, date, content) VALUES (
+  'do-shopify-stores-need-privacy-policy',
+  'Do Shopify Stores Need a Privacy Policy? (Yes — Here''s Why)',
+  'Running a Shopify store? You''re legally required to have a privacy policy. Learn what it must include and how to create one for free.',
+  '2026-02-15',
+  '<p>If you run a Shopify store, the short answer is: <strong>yes, you absolutely need a privacy policy.</strong> In fact, Shopify themselves require it in their <a href="https://www.shopify.com/legal/terms" target="_blank">Terms of Service</a>. But beyond Shopify''s rules, privacy laws like GDPR and CCPA legally obligate you to disclose how you handle customer data — and e-commerce stores handle a <em>lot</em> of personal data.</p>
+
+      <h3>Why Shopify Stores Must Have a Privacy Policy</h3>
+
+      <h4>1. Shopify Requires It</h4>
+      <p>Shopify''s <a href="https://www.shopify.com/legal/terms" target="_blank">Terms of Service</a> state that merchants must comply with all applicable privacy laws and provide a privacy policy to their customers. Failure to comply can result in store suspension.</p>
+
+      <h4>2. You Collect Personal Data</h4>
+      <p>Every Shopify store collects personal data during the checkout process, including:</p>
+      <ul>
+        <li>Full names</li>
+        <li>Email addresses</li>
+        <li>Shipping and billing addresses</li>
+        <li>Phone numbers</li>
+        <li>Payment information (processed via Shopify Payments or third-party gateways)</li>
+        <li>IP addresses and browser data (via cookies and analytics)</li>
+      </ul>
+
+      <h4>3. You Use Third-Party Apps</h4>
+      <p>Most Shopify stores use apps that collect additional data:</p>
+      <ul>
+        <li><strong>Marketing:</strong> Klaviyo, Mailchimp, Omnisend (email collection)</li>
+        <li><strong>Analytics:</strong> Google Analytics, Facebook Pixel, TikTok Pixel</li>
+        <li><strong>Reviews:</strong> Judge.me, Loox, Stamped (customer names and photos)</li>
+        <li><strong>Upsells:</strong> Bold, ReConvert (purchase behavior tracking)</li>
+        <li><strong>Chat:</strong> Tidio, Gorgias (conversation data)</li>
+      </ul>
+      <p>Each of these apps processes user data, and your privacy policy needs to disclose this.</p>
+
+      <h4>4. Privacy Laws Apply to You</h4>
+      <p>If you sell to customers in the EU, California, or other regulated regions, you must comply with:</p>
+      <table>
+        <tr><th>Law</th><th>Who It Covers</th><th>Key Requirements</th></tr>
+        <tr><td>GDPR</td><td>EU/EEA residents</td><td>Consent for cookies, right to deletion, DPO contact</td></tr>
+        <tr><td>CCPA/CPRA</td><td>California residents</td><td>"Do Not Sell" option, data access/deletion rights</td></tr>
+        <tr><td>PIPEDA</td><td>Canadian residents</td><td>Consent for collection, access to personal data</td></tr>
+        <tr><td>UK GDPR</td><td>UK residents</td><td>Same as EU GDPR, enforced by ICO</td></tr>
+        <tr><td>LGPD</td><td>Brazilian residents</td><td>Legal basis for processing, data subject rights</td></tr>
+      </table>
+
+      <h3>What Your Shopify Privacy Policy Must Include</h3>
+      <ol>
+        <li><strong>What data you collect</strong> — names, emails, addresses, payment info, cookies</li>
+        <li><strong>How you use it</strong> — order fulfillment, marketing, analytics, fraud prevention</li>
+        <li><strong>Who you share it with</strong> — payment processors, shipping carriers, marketing platforms</li>
+        <li><strong>Cookies and tracking</strong> — Shopify''s own cookies, Google Analytics, Facebook Pixel, etc.</li>
+        <li><strong>Data retention</strong> — how long you keep customer data</li>
+        <li><strong>User rights</strong> — how customers can access, update, or delete their data</li>
+        <li><strong>Children''s data</strong> — confirm whether your store is directed at minors</li>
+        <li><strong>International transfers</strong> — if data is transferred outside the customer''s country</li>
+        <li><strong>Contact information</strong> — a dedicated email for privacy-related requests</li>
+      </ol>
+
+      <h3>Where to Add Your Privacy Policy in Shopify</h3>
+      <ol>
+        <li>Go to <strong>Settings → Policies</strong> in your Shopify admin</li>
+        <li>Paste your privacy policy into the <strong>Privacy Policy</strong> field</li>
+        <li>Shopify automatically creates a page at <code>yourstore.com/policies/privacy-policy</code></li>
+        <li>Add a link to your footer navigation: <strong>Online Store → Navigation → Footer menu</strong></li>
+      </ol>
+
+      <h3>Common Mistakes Shopify Stores Make</h3>
+      <ul>
+        <li><strong>Using Shopify''s auto-generated template as-is</strong> — it''s generic and doesn''t cover your specific apps and practices</li>
+        <li><strong>Not disclosing third-party apps</strong> — Klaviyo, Google Analytics, and Facebook Pixel all need to be listed</li>
+        <li><strong>Ignoring cookie consent</strong> — EU customers require opt-in cookie consent (not just a banner)</li>
+        <li><strong>No "Do Not Sell" link</strong> — required for California customers under CCPA</li>
+        <li><strong>Outdated policy</strong> — policies should be updated whenever you add new apps or change data practices</li>
+      </ul>
+
+      <h3>Create Your Shopify Privacy Policy for Free</h3>
+      <p>Don''t rely on generic templates. Our <a href="/"><strong>Privacy Policy Generator</strong></a> creates a customized policy that covers your specific business details, third-party services, and applicable regulations. Generate it in minutes and paste it directly into your Shopify admin.</p>
+
+      <p>Need more than just a privacy policy? Use our <a href="/bundle"><strong>Website Legal Starter Kit</strong></a> to generate a Privacy Policy, Terms & Conditions, Refund Policy, and Cookie Policy — all at once.</p>
+
+      <p><strong><a href="/">Generate your Shopify Privacy Policy now →</a></strong></p>'
+) ON CONFLICT (slug) DO UPDATE SET
+  title = EXCLUDED.title,
+  excerpt = EXCLUDED.excerpt,
+  date = EXCLUDED.date,
+  content = EXCLUDED.content,
+  updated_at = NOW();
+
