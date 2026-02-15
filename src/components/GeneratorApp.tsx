@@ -16,7 +16,7 @@ const FormLoader = () => (
 )
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos'
+type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos' | 'hipaa' | 'sla' | 'data-breach' | 'ai-ethics'
 
 export function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -77,6 +77,10 @@ export function GeneratorApp() {
     'affiliate-disclaimer': () => import('../utils/templates/affiliateDisclaimer').then(m => m.generateAffiliateDisclaimer),
     'social-media': () => import('../utils/templates/socialMediaPolicy').then(m => m.generateSocialMediaPolicy),
     'newsletter': () => import('../utils/templates/newsletterPolicy').then(m => m.generateNewsletterPolicy),
+    'hipaa': () => import('../utils/templates/hipaaNotice').then(m => m.generateHIPAANotice),
+    'sla': () => import('../utils/templates/sla').then(m => m.generateSLA),
+    'data-breach': () => import('../utils/templates/dataBreachNotification').then(m => m.generateDataBreachNotification),
+    'ai-ethics': () => import('../utils/templates/aiEthicsPolicy').then(m => m.generateAIEthicsPolicy),
   }
 
   const handleGenerate = async (data: PolicyData) => {
@@ -135,8 +139,8 @@ export function GeneratorApp() {
       price: '0',
       priceCurrency: 'USD',
     },
-    description: 'Generate 17+ free legal documents including Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA Policies, and more. GDPR, CCPA, and WCAG compliant.',
-    featureList: 'Privacy Policy Generator, Terms & Conditions Generator, NDA Generator, EULA Generator, DPA Generator, DMCA Policy Generator, AUP Generator, Cookie Policy Generator, Cookie Consent Banner Generator, Robots.txt Generator, Accessibility Statement Generator, Refund Policy Generator, Disclaimer Generator, Employee Privacy Policy Generator, Affiliate Disclosure Generator, Social Media Policy Generator, Newsletter Policy Generator, Compliance Checker',
+    description: 'Generate 22+ free legal documents including Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA Policies, HIPAA Notices, SLA, Data Breach Notifications, AI Ethics Policies, and more. GDPR, CCPA, and WCAG compliant.',
+    featureList: 'Privacy Policy Generator, Terms & Conditions Generator, NDA Generator, EULA Generator, DPA Generator, DMCA Policy Generator, AUP Generator, Cookie Policy Generator, Cookie Consent Banner Generator, Robots.txt Generator, Accessibility Statement Generator, Refund Policy Generator, Disclaimer Generator, Employee Privacy Policy Generator, Affiliate Disclosure Generator, Social Media Policy Generator, Newsletter Policy Generator, HIPAA Notice Generator, SLA Generator, Data Breach Notification Generator, AI Ethics Policy Generator, Compliance Checker',
   };
 
   return (
@@ -195,6 +199,10 @@ export function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('social-media')}>{t('start_social_media')}</button>
             <button className="btn-primary" onClick={() => handleStart('newsletter')}>{t('start_newsletter')}</button>
             <button className="btn-primary" onClick={() => handleStart('tos')}>{t('start_tos')}</button>
+            <button className="btn-primary" onClick={() => handleStart('hipaa')}>{t('start_hipaa')}</button>
+            <button className="btn-primary" onClick={() => handleStart('sla')}>{t('start_sla')}</button>
+            <button className="btn-primary" onClick={() => handleStart('data-breach')}>{t('start_data_breach')}</button>
+            <button className="btn-primary" onClick={() => handleStart('ai-ethics')}>{t('start_ai_ethics')}</button>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>

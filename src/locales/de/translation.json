@@ -129,5 +129,18 @@
   "bundle_download_all": "Alle Herunterladen",
   "policy_guide": "Richtlinien-Leitfaden",
   "policy_guide_title": "Welche Richtlinien braucht Ihre Website?",
-  "policy_guide_subtitle": "Verwenden Sie unseren interaktiven Leitfaden, um die für Ihren Unternehmenstyp geeigneten Rechtsdokumente zu entdecken."
+  "policy_guide_subtitle": "Verwenden Sie unseren interaktiven Leitfaden, um die für Ihren Unternehmenstyp geeigneten Rechtsdokumente zu entdecken.",
+  "start_hipaa": "HIPAA-Hinweis Erstellen",
+  "hipaa": "HIPAA-Datenschutzhinweis",
+  "generate_hipaa": "HIPAA-Hinweis Generieren",
+  "start_sla": "SLA Erstellen",
+  "sla": "Service-Level-Vereinbarung",
+  "generate_sla": "SLA Generieren",
+  "sla_uptime": "Verfügbarkeitsgarantie (%)",
+  "start_data_breach": "Datenschutzverletzungs-Richtlinie Erstellen",
+  "data_breach": "Meldepflicht bei Datenschutzverletzungen",
+  "generate_data_breach": "Richtlinie Generieren",
+  "start_ai_ethics": "KI-Ethik-Richtlinie Erstellen",
+  "ai_ethics": "KI / ML Ethik-Richtlinie",
+  "generate_ai_ethics": "KI-Ethik-Richtlinie Generieren"
 }

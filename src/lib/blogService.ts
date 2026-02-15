@@ -1,5 +1,6 @@
 import { supabase } from './supabase'
-import { blogPosts as localBlogPosts, type BlogPost } from './blogData'
+import type { BlogPost } from './blogData'
+export type { BlogPost }
 
 // In-memory cache to avoid redundant fetches during navigation
 let cachedPosts: BlogPost[] | null = null
@@ -8,6 +9,15 @@ const CACHE_TTL = 5 * 60 * 1000 // 5 minutes
 
 function isCacheValid(): boolean {
     return cachedPosts !== null && (Date.now() - cacheTimestamp) < CACHE_TTL
+}
+
+/**
+ * Lazily load the 99KB local fallback only when Supabase is unavailable.
+ * This keeps blogData.ts out of the initial JS bundle.
+ */
+async function getLocalPosts(): Promise<BlogPost[]> {
+    const { blogPosts } = await import('./blogData')
+    return blogPosts
 }
 
 /**
@@ -20,7 +30,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     }
 
     if (!supabase) {
-        return localBlogPosts
+        return getLocalPosts()
     }
 
     try {
@@ -38,10 +48,10 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         }
 
         // Empty table — fall back to local data
-        return localBlogPosts
+        return getLocalPosts()
     } catch (err) {
         console.warn('Failed to fetch blog posts from Supabase, using local fallback:', err)
-        return localBlogPosts
+        return getLocalPosts()
     }
 }
 
@@ -56,7 +66,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     }
 
     if (!supabase) {
-        return localBlogPosts.find(p => p.slug === slug) || null
+        const posts = await getLocalPosts()
+        return posts.find(p => p.slug === slug) || null
     }
 
     try {
@@ -71,6 +82,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
         return data as BlogPost
     } catch (err) {
         console.warn(`Failed to fetch post "${slug}" from Supabase, using local fallback:`, err)
-        return localBlogPosts.find(p => p.slug === slug) || null
+        const posts = await getLocalPosts()
+        return posts.find(p => p.slug === slug) || null
     }
 }

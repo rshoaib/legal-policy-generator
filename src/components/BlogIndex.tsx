@@ -42,6 +42,24 @@ export const BlogIndex: React.FC = () => {
         title="Blog — Helpful Guides & Resources"
         description="Expert guides on privacy policies, terms & conditions, cookie policies, GDPR, CCPA compliance, and more. Free legal resources for website owners."
         canonical="/blog"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://legalpolicygen.com/blog' },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'Helpful Guides & Resources',
+            url: 'https://legalpolicygen.com/blog',
+            description: 'Expert guides on privacy policies, terms & conditions, cookie policies, GDPR, CCPA compliance, and more.',
+            isPartOf: { '@type': 'WebSite', name: 'Legal Policy Generator', url: 'https://legalpolicygen.com' },
+          },
+        ]}
       />
       <h1 style={{ marginBottom: '2rem', background: 'linear-gradient(to right, #ec4899 0%, #8b5cf6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontSize: '2.5rem' }}>
         Helpful Guides & Resources

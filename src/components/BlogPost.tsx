@@ -69,12 +69,26 @@ export const BlogPost: React.FC = () => {
 
   if (!post) return null;
 
+  const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://legalpolicygen.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://legalpolicygen.com/blog/${post.slug}` },
+    ],
+  };
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    wordCount,
+    image: 'https://legalpolicygen.com/og-image.png',
     author: {
       '@type': 'Organization',
       name: 'Legal Policy Generator',
@@ -101,7 +115,7 @@ export const BlogPost: React.FC = () => {
           canonical={`/blog/${post.slug}`}
           ogType="article"
           article={{ publishedTime: post.date }}
-          jsonLd={articleJsonLd}
+          jsonLd={[breadcrumbJsonLd, articleJsonLd]}
         />
         <header style={{ marginBottom: '2rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '2rem' }}>
            <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>

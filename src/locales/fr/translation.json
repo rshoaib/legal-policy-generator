@@ -129,5 +129,18 @@
   "bundle_download_all": "Tout Télécharger",
   "policy_guide": "Guide des Politiques",
   "policy_guide_title": "Quelles politiques votre site web a-t-il besoin ?",
-  "policy_guide_subtitle": "Utilisez notre guide interactif pour découvrir les documents juridiques adaptés à votre type d'entreprise."
+  "policy_guide_subtitle": "Utilisez notre guide interactif pour découvrir les documents juridiques adaptés à votre type d'entreprise.",
+  "start_hipaa": "Créer un Avis HIPAA",
+  "hipaa": "Avis de Pratiques de Confidentialité HIPAA",
+  "generate_hipaa": "Générer l'Avis HIPAA",
+  "start_sla": "Créer un SLA",
+  "sla": "Accord de Niveau de Service",
+  "generate_sla": "Générer le SLA",
+  "sla_uptime": "Garantie de Disponibilité (%)",
+  "start_data_breach": "Créer Politique de Violation de Données",
+  "data_breach": "Politique de Notification de Violation de Données",
+  "generate_data_breach": "Générer Politique de Violation",
+  "start_ai_ethics": "Créer Politique d'Éthique IA",
+  "ai_ethics": "Politique d'Éthique IA / ML",
+  "generate_ai_ethics": "Générer Politique d'Éthique IA"
 }

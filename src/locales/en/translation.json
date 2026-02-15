@@ -129,5 +129,18 @@
   "bundle_download_all": "Download All",
   "policy_guide": "Policy Guide",
   "policy_guide_title": "Which policies does your website need?",
-  "policy_guide_subtitle": "Use our interactive guide to discover the legal documents suited to your business type."
+  "policy_guide_subtitle": "Use our interactive guide to discover the legal documents suited to your business type.",
+  "start_hipaa": "Create HIPAA Notice",
+  "hipaa": "HIPAA Notice of Privacy Practices",
+  "generate_hipaa": "Generate HIPAA Notice",
+  "start_sla": "Create SLA",
+  "sla": "Service Level Agreement",
+  "generate_sla": "Generate SLA",
+  "sla_uptime": "Uptime Guarantee (%)",
+  "start_data_breach": "Create Data Breach Policy",
+  "data_breach": "Data Breach Notification Policy",
+  "generate_data_breach": "Generate Data Breach Policy",
+  "start_ai_ethics": "Create AI Ethics Policy",
+  "ai_ethics": "AI / ML Ethics Policy",
+  "generate_ai_ethics": "Generate AI Ethics Policy"
 }

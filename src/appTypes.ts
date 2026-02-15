@@ -48,4 +48,7 @@ export interface PolicyData {
     bannerLinkUrl?: string;
     bannerDeclineButton?: boolean;
     bannerDeclineText?: string;
+
+    // SLA fields
+    slaUptimeGuarantee?: string;
 }
