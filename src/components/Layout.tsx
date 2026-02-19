@@ -203,7 +203,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           background: var(--glass-bg);
           backdrop-filter: blur(10px);
           margin-top: auto;
-          min-height: 90px;
+          min-height: 160px;
           contain: layout style;
         }
 
@@ -213,7 +213,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           gap: 1.5rem;
           margin-bottom: 1rem;
           flex-wrap: wrap;
-          min-height: 24px;
+          min-height: 28px;
         }
 
         .footer-links a {
