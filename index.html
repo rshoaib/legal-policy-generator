@@ -5,9 +5,6 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="eQuLiSbiykNngy21ZpYGas-qRRHmzv3-E3u1Ax1OrCY" />
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3166995085202346"
-         crossorigin="anonymous"></script>
     <!-- Google tag (gtag.js) — deferred until after paint -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,14 +17,30 @@
         document.head.appendChild(s);
       }, {timeout: 3000});
     </script>
+    <!-- Google AdSense — deferred until after paint -->
+    <script>
+      (window.requestIdleCallback || setTimeout)(function(){
+        var s = document.createElement('script');
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3166995085202346';
+        s.crossOrigin = 'anonymous';
+        s.async = true;
+        document.head.appendChild(s);
+      }, {timeout: 3000});
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;600;700&display=optional" rel="stylesheet"></noscript>
     <title>Free Legal Policy Generator | Privacy, Terms, NDA, EULA, DPA, DMCA & More — Legal Policy Generator</title>
-    <meta name="description" content="Generate professional Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA, AUP, Cookie Banners, Robots.txt, Accessibility Statements & more. Free GDPR/CCPA/WCAG compliance tools." />
+    <meta name="description" content="Generate free Privacy Policies, Terms, NDA, EULA, DMCA, Cookie Banners & 22 more legal documents. GDPR/CCPA compliant — no signup required." />
     <meta name="keywords" content="privacy policy generator, terms generator, refund policy, disclaimer generator, cookie consent banner, robots.txt generator, accessibility statement generator, NDA generator, EULA generator, DPA generator, DMCA policy, AUP generator, employee privacy policy, affiliate disclosure, social media policy, newsletter policy, compliance checker, wcag, gdpr, ccpa, free legal tools" />
     <meta name="robots" content="index, follow" />
+    <!-- OG fallback (React SEO component overrides per-page) -->
+    <meta property="og:title" content="Free Legal Policy Generator | Privacy, Terms, NDA & More" />
+    <meta property="og:description" content="Generate free Privacy Policies, Terms, NDA, EULA, DMCA, Cookie Banners & 22 more legal documents. GDPR/CCPA compliant." />
+    <meta property="og:image" content="https://legalpolicygen.com/og-image.png" />
+    <meta property="og:url" content="https://legalpolicygen.com" />
+    <meta property="og:type" content="website" />
   </head>
   <body>
     <div id="root"></div>

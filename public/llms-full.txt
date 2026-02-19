@@ -1,0 +1,90 @@
+# Legal Policy Generator — Full Documentation
+> https://legalpolicygen.com
+
+## Overview
+Legal Policy Generator is a free, open-access web application that generates professional legal documents for websites, apps, and businesses. No signup or account is required. All processing happens client-side in the browser — we do not store user data on our servers.
+
+## Tools (22 Generators)
+
+### Core Policies
+1. **Privacy Policy Generator** — GDPR/CCPA-compliant privacy policies covering data collection, usage, sharing, and user rights.
+2. **Terms of Service Generator** — Comprehensive ToS covering IP rights, acceptable use, termination, and liability.
+3. **Terms & Conditions Generator** — Business-focused T&C for websites and e-commerce.
+4. **Cookie Policy Generator** — Detailed cookie disclosure covering types, purposes, and durations.
+5. **Cookie Consent Banner Generator** — Ready-to-paste HTML/CSS/JS banner with accept/decline buttons.
+6. **Refund Policy Generator** — E-commerce return/refund terms covering windows, conditions, and methods.
+7. **Disclaimer Generator** — General, professional, medical, legal, and financial disclaimers.
+
+### Technical & SEO
+8. **Robots.txt Generator** — Properly formatted robots.txt with sitemap directive.
+9. **Accessibility Statement Generator** — WCAG 2.1 Level AA compliance statement.
+
+### Business & Legal
+10. **NDA Generator** — Unilateral and mutual non-disclosure agreements.
+11. **EULA Generator** — End User License Agreements for software and apps.
+12. **DPA Generator** — GDPR Article 28 compliant Data Processing Agreements.
+13. **AUP Generator** — Acceptable Use Policies for platforms and services.
+14. **DMCA Policy Generator** — Safe harbor compliant DMCA takedown policies.
+15. **Employee Privacy Policy Generator** — Internal HR privacy policies.
+16. **Affiliate Disclaimer Generator** — FTC-compliant affiliate disclosures.
+17. **Social Media Policy Generator** — Corporate social media guidelines.
+18. **Newsletter Policy Generator** — Email marketing compliance policies.
+19. **HIPAA Notice Generator** — Notice of Privacy Practices for healthcare.
+20. **SLA Generator** — Service Level Agreements with uptime guarantees.
+21. **Data Breach Notification Generator** — Incident response notification templates.
+22. **AI Ethics Policy Generator** — AI transparency and ethics policies.
+
+## Additional Features
+
+### Compliance Checker
+Paste any legal document to get instant analysis of missing clauses, outdated provisions, and compliance gaps across GDPR, CCPA, and other frameworks.
+URL: https://legalpolicygen.com/compliance-checker
+
+### Policy Starter Kit
+Generate a complete bundle of essential documents (Privacy Policy + Terms + Cookie Policy + Disclaimer) in one session.
+URL: https://legalpolicygen.com/bundle
+
+### Policy Guide
+Interactive guide to help determine which legal documents your specific business type needs.
+URL: https://legalpolicygen.com/policy-guide
+
+### Blog (28 Articles)
+Educational content covering privacy law, compliance, and legal best practices:
+- Why Your Website Needs a Privacy Policy
+- Terms & Conditions vs. Privacy Policy: What's the Difference?
+- Cookie Consent Requirements by Country: A Global Guide
+- GDPR vs CCPA: Key Differences Every Website Owner Should Know
+- How to Write a Refund Policy for Your E-Commerce Store
+- NDA Templates: What to Include and Common Mistakes
+- What Is a EULA? Everything About End User License Agreements
+- Data Processing Agreements: A Complete GDPR Guide
+- DMCA Policy: How to Protect from Copyright Claims
+- Employee Privacy Policy: What HR Teams Need to Know
+- Affiliate Disclosure: FTC Requirements for Bloggers
+- Social Media Policy for Businesses
+- How to Make Your Website Legally Compliant in 30 Minutes
+- Launching a SaaS Product? Complete Legal Checklist
+- The Freelancer's Guide to Legal Protection
+- 7 Legal Pages Every E-Commerce Store Needs
+- Legal Protection for Bloggers
+- Is Your Privacy Policy Actually Compliant?
+- AI Privacy Policy — What Your AI App Needs in 2026
+- HIPAA Compliance Checklist for Small Businesses
+- Privacy Policy for Mobile Apps — iOS & Android Guide
+- Do Shopify Stores Need a Privacy Policy?
+- And more...
+
+Full blog: https://legalpolicygen.com/blog
+
+## Supported Languages
+English, Spanish, French, German, Portuguese, Arabic
+
+## Technical Details
+- Client-side React SPA (no server-side data processing)
+- Documents can be exported as HTML, PDF, or Word
+- No database, no user accounts, no tracking beyond Google Analytics
+- Hosted on Vercel with global CDN
+
+## Contact
+Website: https://legalpolicygen.com/contact
+About: https://legalpolicygen.com/about

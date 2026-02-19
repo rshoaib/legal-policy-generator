@@ -143,11 +143,39 @@ export function GeneratorApp() {
     featureList: 'Privacy Policy Generator, Terms & Conditions Generator, NDA Generator, EULA Generator, DPA Generator, DMCA Policy Generator, AUP Generator, Cookie Policy Generator, Cookie Consent Banner Generator, Robots.txt Generator, Accessibility Statement Generator, Refund Policy Generator, Disclaimer Generator, Employee Privacy Policy Generator, Affiliate Disclosure Generator, Social Media Policy Generator, Newsletter Policy Generator, HIPAA Notice Generator, SLA Generator, Data Breach Notification Generator, AI Ethics Policy Generator, Compliance Checker',
   };
 
+  const howToJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Generate a Free Legal Policy for Your Website',
+    description: 'Create a professional, GDPR/CCPA-compliant legal document in under 5 minutes using our free generator.',
+    totalTime: 'PT5M',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Select your document type',
+        text: 'Choose from 22 legal document types including Privacy Policy, Terms & Conditions, NDA, EULA, DPA, DMCA Policy, and more.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Fill in your business details',
+        text: 'Enter your company name, website URL, contact information, and select the applicable regulations (GDPR, CCPA, etc.).',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Generate and download your policy',
+        text: 'Click Generate to create your customized legal document. Download it as HTML, copy to clipboard, or export as PDF/Word.',
+      },
+    ],
+  };
+
   return (
     <>
       <SEO
         canonical="/"
-        jsonLd={[websiteJsonLd, orgJsonLd, appJsonLd]}
+        jsonLd={[websiteJsonLd, orgJsonLd, appJsonLd, howToJsonLd]}
       />
       <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 100 }}>
          <select 
