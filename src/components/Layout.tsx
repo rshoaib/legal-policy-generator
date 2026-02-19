@@ -89,6 +89,14 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/compliance-checker">Compliance Checker</Link>
             <Link to="/history">Policy History</Link>
           </div>
+          <div className="footer-links" style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--glass-border)' }}>
+            <span style={{ fontSize: '0.75rem', opacity: 0.6 }}>Our Other Free Tools:</span>
+            <a href="https://dailysmartcalc.com" target="_blank" rel="noopener noreferrer">Smart Calculators</a>
+            <a href="https://mycalcfinance.com" target="_blank" rel="noopener noreferrer">Finance Calculators</a>
+            <a href="https://onlineimageshrinker.com" target="_blank" rel="noopener noreferrer">Image Compressor</a>
+            <a href="https://imrizwan.com" target="_blank" rel="noopener noreferrer">Developer Blog</a>
+            <a href="https://orderviachat.com" target="_blank" rel="noopener noreferrer">OrderViaChat</a>
+          </div>
           <p>&copy; {new Date().getFullYear()} Legal Policy Generator. All rights reserved.</p>
         </div>
       </footer>
