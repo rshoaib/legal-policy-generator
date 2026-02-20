@@ -19,6 +19,8 @@ const ComplianceChecker = lazy(() => import('./components/ComplianceChecker').th
 const PolicyHistory = lazy(() => import('./components/PolicyHistory').then(m => ({ default: m.PolicyHistory })))
 const PolicyBundle = lazy(() => import('./components/PolicyBundle').then(m => ({ default: m.PolicyBundle })))
 const PolicyGuide = lazy(() => import('./components/PolicyGuide').then(m => ({ default: m.PolicyGuide })))
+const PolicyIndustryPage = lazy(() => import('./components/PolicyIndustryPage').then(m => ({ default: m.PolicyIndustryPage })))
+import { seoPages } from './data/seoPages'
 
 /* ── Loading fallback ── */
 const PageLoader = () => (
@@ -63,6 +65,10 @@ function App() {
                 <Route path="/history" element={<PolicyHistory />} />
                 <Route path="/bundle" element={<PolicyBundle />} />
                 <Route path="/policy-guide" element={<PolicyGuide />} />
+                {/* PROGRAMMATIC SEO: [Policy] for [Industry] */}
+                {seoPages.map(page => (
+                    <Route key={page.slug} path={`/${page.slug}`} element={<PolicyIndustryPage page={page} />} />
+                ))}
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             </Suspense>
