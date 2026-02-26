@@ -107,11 +107,6 @@ export function GeneratorApp() {
     name: 'Legal Policy Generator',
     url: 'https://legalpolicygen.com',
     description: 'Free legal policy generator for Privacy Policies, Terms & Conditions, NDA, EULA, DPA, DMCA, AUP, Refund Policies, Disclaimers, Cookie Banners, Robots.txt, Accessibility Statements, and more.',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://legalpolicygen.com/?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
   };
 
   const orgJsonLd = {
