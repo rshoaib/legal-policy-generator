@@ -72,6 +72,19 @@
     </script>
   </head>
   <body>
+    <style>
+      /* Hide static SEO fallback to prevent CLS during React hydration.
+         Content remains in DOM for crawlers that don't execute JS. */
+      #root > :not(script) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+      /* Once React mounts, it replaces #root children — this rule becomes irrelevant */
+    </style>
     <div id="root">
       <!-- Static SEO fallback for crawlers that don't execute JavaScript -->
       <h1>Free Legal Policy Generator — Privacy, Terms, NDA, EULA & More</h1>

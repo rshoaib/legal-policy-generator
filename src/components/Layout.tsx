@@ -61,9 +61,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               aria-label="Toggle theme"
               style={{
                 background: 'none', border: '1px solid var(--glass-border)',
-                borderRadius: '0.5rem', padding: '0.4rem 0.6rem',
+                borderRadius: '0.5rem', padding: '0.6rem 0.75rem',
                 cursor: 'pointer', fontSize: '1.1rem', lineHeight: 1,
                 color: 'var(--text-primary)', transition: 'all 0.2s',
+                minHeight: '48px', minWidth: '48px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}
             >
               {theme === 'dark' ? '☀️' : '🌙'}

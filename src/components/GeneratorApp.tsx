@@ -176,13 +176,17 @@ export function GeneratorApp() {
          <select 
             value={currentLang} 
             onChange={(e) => changeLanguage(e.target.value)}
+            aria-label="Select language"
             style={{ 
                 background: 'rgba(0,0,0,0.5)', 
                 color: 'white', 
                 border: '1px solid rgba(255,255,255,0.2)', 
-                padding: '0.5rem', 
+                padding: '0.75rem 1rem', 
                 borderRadius: '0.5rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                minHeight: '48px',
+                minWidth: '48px',
+                fontSize: '0.9rem'
             }}
           >
              <option value="en">English (EN)</option>
@@ -255,7 +259,7 @@ export function GeneratorApp() {
           </div>
 
           <div className="glass-panel delay-300 animate-enter" style={{ marginTop: '4rem', maxWidth: '600px', margin: '0 auto' }}>
-             <h3 style={{ marginBottom: '1rem', color: 'var(--accent-tertiary)' }}>{t('header_guides')}</h3>
+             <h2 style={{ marginBottom: '1rem', color: 'var(--accent-tertiary)', fontSize: '1.25rem' }}>{t('header_guides')}</h2>
              <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{t('text_guides')}</p>
              <Link to="/blog" style={{ color: 'var(--accent-secondary)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
                 {t('link_guides')} <span>→</span>
