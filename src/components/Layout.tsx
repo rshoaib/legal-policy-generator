@@ -94,6 +94,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <a href="https://dailysmartcalc.com" target="_blank" rel="noopener noreferrer">Smart Calculators</a>
             <a href="https://mycalcfinance.com" target="_blank" rel="noopener noreferrer">Finance Calculators</a>
             <a href="https://onlineimageshrinker.com" target="_blank" rel="noopener noreferrer">Image Compressor</a>
+            <a href="https://tinypdftools.com" target="_blank" rel="noopener noreferrer">PDF Tools</a>
             <a href="https://imrizwan.com" target="_blank" rel="noopener noreferrer">Developer Blog</a>
           </div>
           <p>&copy; {new Date().getFullYear()} Legal Policy Generator. All rights reserved.</p>
