@@ -16,6 +16,7 @@ const BlogPost = lazy(() => import('./components/BlogPost').then(m => ({ default
 const AboutPage = lazy(() => import('./components/AboutPage').then(m => ({ default: m.AboutPage })))
 const ContactPage = lazy(() => import('./components/ContactPage').then(m => ({ default: m.ContactPage })))
 const ComplianceChecker = lazy(() => import('./components/ComplianceChecker').then(m => ({ default: m.ComplianceChecker })))
+const LegalPageChecker = lazy(() => import('./components/LegalPageChecker').then(m => ({ default: m.LegalPageChecker })))
 const PolicyHistory = lazy(() => import('./components/PolicyHistory').then(m => ({ default: m.PolicyHistory })))
 const PolicyBundle = lazy(() => import('./components/PolicyBundle').then(m => ({ default: m.PolicyBundle })))
 const PolicyGuide = lazy(() => import('./components/PolicyGuide').then(m => ({ default: m.PolicyGuide })))
@@ -62,6 +63,7 @@ function App() {
                     <Route path=":slug" element={<BlogPost />} />
                 </Route>
                 <Route path="/compliance-checker" element={<ComplianceChecker />} />
+                <Route path="/legal-page-checker" element={<LegalPageChecker />} />
                 <Route path="/history" element={<PolicyHistory />} />
                 <Route path="/bundle" element={<PolicyBundle />} />
                 <Route path="/policy-guide" element={<PolicyGuide />} />

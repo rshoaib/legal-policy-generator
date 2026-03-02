@@ -89,6 +89,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/bundle">Starter Kit</Link>
             <Link to="/policy-guide">Policy Guide</Link>
             <Link to="/compliance-checker">Compliance Checker</Link>
+            <Link to="/legal-page-checker">Legal Page Checker</Link>
             <Link to="/history">Policy History</Link>
           </div>
           <div className="footer-links" style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--glass-border)' }}>

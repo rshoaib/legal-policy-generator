@@ -20,7 +20,7 @@ const industries = [
 
 const existingPages = [
   '/', '/privacy', '/terms', '/about', '/contact',
-  '/blog', '/compliance-checker', '/history', '/bundle', '/policy-guide',
+  '/blog', '/compliance-checker', '/legal-page-checker', '/history', '/bundle', '/policy-guide',
 ];
 
 // --- Extract blog post slugs from blogData.ts ---
