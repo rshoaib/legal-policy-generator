@@ -2751,6 +2751,109 @@ export const blogPosts: BlogPost[] = [
       </ul>
       <p><strong><a href="/">Update your Terms of Service for DSA compliance — free →</a></strong></p>
     `
+  },
+  {
+    slug: 'legal-pages-every-website-needs-checklist',
+    title: 'Legal Pages Every Website Needs in 2026: The Complete Checklist',
+    date: '2026-03-03',
+    excerpt: 'Not sure which legal pages your website needs? This 8-point checklist covers every essential page — from Privacy Policy to Accessibility Statement — with a free tool to scan your site instantly.',
+    content: `
+      <p>Running a website in 2026 means navigating a growing patchwork of privacy laws, consumer protection rules, and platform requirements. But here's the good news: regardless of your jurisdiction, there's a clear set of <strong>essential legal pages</strong> that every website should have. Missing even one can expose you to fines, lawsuits, account suspensions, or lost customer trust.</p>
+
+      <p>In this guide, we'll walk through the <strong>8 legal pages every website needs</strong>, explain why each matters, and show you how to check your site in seconds with our <a href="/legal-page-checker">free Legal Page Checker</a>.</p>
+
+      <h3>Why Legal Pages Matter More Than Ever</h3>
+      <p>The legal landscape for websites has changed dramatically. Consider these 2026 realities:</p>
+      <ul>
+        <li><strong>19 US states</strong> now have their own privacy laws in effect, with more on the way — there's still no single federal privacy law.</li>
+        <li>The <strong>EU AI Act</strong> becomes fully applicable in August 2026, adding new disclosure requirements for websites using AI.</li>
+        <li><strong>12 US states</strong> now legally require websites to honor <strong>Global Privacy Control (GPC)</strong> opt-out signals.</li>
+        <li>Google, Apple, and major ad networks <strong>require visible legal pages</strong> as a condition of using their services.</li>
+      </ul>
+      <p>Bottom line: the cost of <em>not</em> having proper legal pages is higher than ever. Let's go through each one.</p>
+
+      <h3>1. Privacy Policy</h3>
+      <p>A privacy policy is the single most important legal page on your website. It discloses what personal data you collect, how you use it, who you share it with, and what rights users have over their data.</p>
+      <p><strong>Who needs it:</strong> Every website that collects any data — including analytics cookies, email signups, contact forms, or payment information. If you use Google Analytics, Facebook Pixel, or any third-party service, you need a privacy policy.</p>
+      <p><strong>Legal requirements:</strong> GDPR (EU), CCPA/CPRA (California), LGPD (Brazil), PIPEDA (Canada), and all 19 US state privacy laws require a privacy policy. Google AdSense, the App Store, and Google Play all mandate one.</p>
+      <p><strong>→ <a href="/">Generate a free Privacy Policy</a></strong></p>
+
+      <h3>2. Terms of Service</h3>
+      <p>Terms of Service (ToS) — also called Terms & Conditions or Terms of Use — define the rules for using your website. They cover intellectual property, user conduct, liability limitations, dispute resolution, and account termination.</p>
+      <p><strong>Who needs it:</strong> Any website where users interact with content, purchase products, create accounts, or submit information. E-commerce stores, SaaS platforms, and community sites especially need robust terms.</p>
+      <p><strong>Why it matters:</strong> Without terms, you have limited legal recourse if users misuse your site, scrape your content, or file frivolous disputes. Terms also help you set jurisdiction for legal proceedings.</p>
+      <p><strong>→ <a href="/">Generate free Terms of Service</a></strong></p>
+
+      <h3>3. Cookie Policy</h3>
+      <p>A cookie policy explains what tracking technologies your site uses (cookies, pixels, local storage), what data they collect, and how users can control them.</p>
+      <p><strong>Who needs it:</strong> Any website that uses cookies — which is virtually every website. If you use analytics, advertising, social media embeds, or even session management, you use cookies.</p>
+      <p><strong>Legal requirements:</strong> The EU ePrivacy Directive requires explicit consent before placing non-essential cookies. Pre-ticked boxes and "by continuing to browse" implied consent are <strong>not valid</strong>. The UK, Brazil, and several US states have similar requirements.</p>
+      <p><strong>→ <a href="/">Generate a free Cookie Policy</a></strong></p>
+
+      <h3>4. Disclaimer</h3>
+      <p>A disclaimer limits your liability for the accuracy and completeness of the information on your website. It tells visitors that while you strive for accuracy, they use the information at their own risk.</p>
+      <p><strong>Who needs it:</strong> Bloggers, content creators, affiliate marketers, and anyone providing information that users might act upon — especially in health, finance, legal, fitness, or educational niches.</p>
+      <p><strong>Key types:</strong> General disclaimer, professional advice disclaimer, affiliate disclaimer, earnings disclaimer, and fair use disclaimer. Many sites need more than one type.</p>
+      <p><strong>→ <a href="/">Generate a free Disclaimer</a></strong></p>
+
+      <h3>5. Refund / Return Policy</h3>
+      <p>If you sell products or services online, a clear refund policy is essential. It sets expectations about returns, refunds, exchanges, and the conditions under which they're accepted.</p>
+      <p><strong>Who needs it:</strong> E-commerce stores, digital product sellers, subscription services, and anyone accepting payments online.</p>
+      <p><strong>Legal requirements:</strong> EU consumers have a mandatory 14-day cooling-off period for online purchases. Several US states require refund policies to be conspicuously posted — if you don't have one, some states require you to accept <em>all</em> returns.</p>
+      <p><strong>→ <a href="/">Generate a free Refund Policy</a></strong></p>
+
+      <h3>6. DMCA / Copyright Notice</h3>
+      <p>A DMCA (Digital Millennium Copyright Act) policy protects you from liability for user-generated content that infringes copyright. It establishes a takedown process and designates a DMCA agent to receive complaints.</p>
+      <p><strong>Who needs it:</strong> Any website that allows user-generated content — forums, comment sections, file uploads, social platforms, marketplaces, or blogs with guest posts.</p>
+      <p><strong>Why it matters:</strong> Without a DMCA policy and designated agent, you lose "safe harbor" protection and could be held directly liable for copyright-infringing content your users post.</p>
+      <p><strong>→ <a href="/">Generate a free DMCA Policy</a></strong></p>
+
+      <h3>7. Accessibility Statement</h3>
+      <p>An accessibility statement declares your commitment to making your website usable by people with disabilities. It outlines your accessibility standards (typically WCAG 2.1 Level AA), known limitations, and how users can report issues.</p>
+      <p><strong>Who needs it:</strong> Technically, every website benefits from one. Public sector websites in the EU and US government sites are legally required to be accessible. Privately, ADA-related website lawsuits exceed <strong>4,000 cases per year</strong> in the US alone.</p>
+      <p><strong>Why it matters:</strong> Beyond legal risk, accessibility expands your audience, improves SEO (search engines favor accessible sites), and demonstrates social responsibility.</p>
+      <p><strong>→ <a href="/">Generate a free Accessibility Statement</a></strong></p>
+
+      <h3>8. Contact Page</h3>
+      <p>A contact page provides visitors with a way to reach you — whether for support, legal inquiries, data subject requests, or partnership opportunities.</p>
+      <p><strong>Who needs it:</strong> Every website. Many privacy laws explicitly require you to provide contact information where users can exercise their data rights (access, deletion, correction). Google's search quality guidelines also favor sites with clear contact information.</p>
+      <p><strong>What to include:</strong> Email address, contact form, physical address (if applicable), and response time expectations. For GDPR compliance, include the name and contact details of your Data Protection Officer if you have one.</p>
+
+      <h3>How to Check Your Website in 30 Seconds</h3>
+      <p>Instead of manually clicking through your site to verify each page, use our <strong>free Legal Page Checker</strong>. Simply enter your website URL and get an instant compliance scorecard showing which pages you have and which are missing.</p>
+      <p>The tool checks for all 8 essential pages listed above by scanning your site's HTML and testing common legal page paths. Each missing page includes a direct "Generate Now" link so you can create it immediately.</p>
+      <p><strong><a href="/legal-page-checker">→ Scan your website now — it's free</a></strong></p>
+
+      <h3>Industry-Specific Requirements</h3>
+      <p>Beyond the 8 essential pages, some industries need additional legal documents:</p>
+      <ul>
+        <li><strong>Healthcare:</strong> HIPAA Notice of Privacy Practices — <a href="/">generate one free</a></li>
+        <li><strong>SaaS / Software:</strong> End User License Agreement (EULA) and Service Level Agreement (SLA) — <a href="/">generate free</a></li>
+        <li><strong>Apps handling client data:</strong> Data Processing Agreement (DPA) — <a href="/">generate free</a></li>
+        <li><strong>Platforms with user content:</strong> Acceptable Use Policy (AUP) — <a href="/">generate free</a></li>
+        <li><strong>Affiliate sites:</strong> FTC Affiliate Disclosure — <a href="/">generate free</a></li>
+        <li><strong>Sites using AI:</strong> AI Ethics / AI Disclosure Policy — <a href="/">generate free</a></li>
+      </ul>
+
+      <h3>What Happens If You're Missing Legal Pages?</h3>
+      <p>The consequences depend on your jurisdiction and business type, but can include:</p>
+      <ul>
+        <li><strong>Regulatory fines:</strong> GDPR violations can cost up to €20 million or 4% of global revenue. CCPA fines reach $7,500 per intentional violation.</li>
+        <li><strong>Ad account suspension:</strong> Google AdSense, Facebook Ads, and major ad networks can suspend or ban accounts that lack required legal pages.</li>
+        <li><strong>App store rejection:</strong> Apple and Google will reject apps that don't include a privacy policy.</li>
+        <li><strong>Lawsuits:</strong> ADA accessibility lawsuits alone average over 4,000 per year in the US. Missing DMCA policies remove your safe harbor protection.</li>
+        <li><strong>Lost trust:</strong> 79% of consumers say they're concerned about how companies use their data. Visible legal pages build confidence.</li>
+      </ul>
+
+      <h3>Get Compliant in Minutes</h3>
+      <p>You don't need a lawyer to create professional legal pages. Our generators cover all 8 essential document types — plus 14 more specialized ones — all free, with no signup required.</p>
+      <ol>
+        <li><strong>Scan your site</strong> with our <a href="/legal-page-checker">Legal Page Checker</a> to see what's missing</li>
+        <li><strong>Generate</strong> any missing policies using our <a href="/">free generator</a> or <a href="/bundle">Starter Kit bundle</a></li>
+        <li><strong>Verify</strong> your existing policies with our <a href="/compliance-checker">Compliance Checker</a></li>
+      </ol>
+      <p><strong><a href="/legal-page-checker">→ Start your free website scan now</a></strong></p>
+    `
   }
 ];
 
