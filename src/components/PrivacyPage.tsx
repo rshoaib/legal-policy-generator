@@ -43,10 +43,26 @@ export const PrivacyPage: React.FC = () => {
           We use third-party services such as Google Analytics and Google AdSense. These third parties may access data as necessary to perform their functions. We do not sell your personal data to third parties.
         </p>
 
+        <h3 style={{ fontSize: '1.25rem', marginTop: '1.5rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>4a. Google AdSense &amp; the DoubleClick DART Cookie</h3>
+        <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+          Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DoubleClick DART cookie enables it to serve ads to our users based on their visits to this site and other sites on the Internet.
+        </p>
+        <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+          You may opt out of the use of the DART cookie by visiting the{' '}
+          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-primary)' }}>
+            Google Ad and Content Network Privacy Policy
+          </a>.
+        </p>
+
         <h2 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>5. Cookies</h2>
         <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
-          We use cookies to enhance your experience. You can choose to disable cookies through your browser settings, but some features of the site may not function properly.
+          We use cookies to enhance your experience. You can choose to disable cookies through your browser settings, but some features of the site may not function properly. The cookies used on this site include:
         </p>
+        <ul style={{ marginBottom: '1rem', paddingLeft: '1.5rem', color: 'var(--text-secondary)' }}>
+          <li><strong>Google Analytics cookies</strong> — to measure site traffic and understand how visitors use our site.</li>
+          <li><strong>Google AdSense cookies (including DART)</strong> — to serve relevant advertisements based on your browsing behavior.</li>
+          <li><strong>Preference cookies</strong> — to remember your settings such as theme preference and cookie consent choice.</li>
+        </ul>
 
         <h2 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>6. Changes to This Policy</h2>
         <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
