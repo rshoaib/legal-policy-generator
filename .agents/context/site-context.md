@@ -35,12 +35,12 @@ description: Brand voice, internal links, and target keywords for legalpolicygen
 | free privacy policy generator | ✅ Published |
 | terms of service generator | 🆕 Need content |
 | GDPR privacy policy template | 🆕 Need content |
-| cookie consent policy | 🆕 Need content |
+| cookie consent policy | ✅ Published |
 | return policy generator | 🆕 Need content |
 
 ### Content Calendar
 1. ~~"How to Write a Privacy Policy (GDPR + CCPA Compliant 2026)"~~ ✅ Published
-2. "Do You Need a Cookie Policy? What the Law Actually Says"
+2. ~~"Do You Need a Cookie Policy? What the Law Actually Says (2026)"~~ ✅ Published
 3. "Terms of Service vs Privacy Policy: What's the Difference?"
 4. "Free Legal Pages Every Website Needs (Complete Checklist)"
 5. "GDPR for Small Business: A Plain-English Guide"
