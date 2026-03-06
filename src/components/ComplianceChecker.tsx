@@ -175,6 +175,22 @@ export const ComplianceChecker: React.FC = () => {
           </p>
         </div>
 
+        {/* Educational Intro */}
+        <div className="glass-panel animate-enter delay-100" style={{ padding: '2rem', marginBottom: '2rem' }}>
+          <h2 style={{ color: 'var(--accent-tertiary)', fontSize: '1.2rem', marginBottom: '1rem' }}>What This Tool Checks</h2>
+          <div style={{ color: 'var(--text-secondary)', lineHeight: '1.8', fontSize: '0.95rem' }}>
+            <p style={{ marginBottom: '1rem' }}>
+              Our free compliance checker analyzes your privacy policy or terms of service against real-world regulatory requirements and industry best practices. The analysis covers <strong style={{ color: 'var(--text-primary)' }}>GDPR compliance</strong> (data subject rights, lawful basis for processing, data retention), <strong style={{ color: 'var(--text-primary)' }}>CCPA compliance</strong> (right to know, right to delete, opt-out of sale), and <strong style={{ color: 'var(--text-primary)' }}>general best practices</strong> (contact information, cookie disclosure, third-party sharing).
+            </p>
+            <p style={{ marginBottom: '1rem' }}>
+              Each policy is scored across multiple categories, with individual checks for specific clauses and provisions that regulatory authorities expect to find. The tool also measures <strong style={{ color: 'var(--text-primary)' }}>readability</strong> using the Flesch Reading Ease score — because a privacy policy that users can't understand doesn't truly provide informed consent.
+            </p>
+            <p>
+              All analysis happens <strong style={{ color: 'var(--text-primary)' }}>entirely in your browser</strong> — your policy text is never sent to any server. This means your confidential legal documents remain private and secure throughout the entire process.
+            </p>
+          </div>
+        </div>
+
         {!result ? (
           <div className="glass-panel animate-enter delay-100" style={{ padding: '2rem' }}>
             <textarea

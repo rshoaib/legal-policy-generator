@@ -180,6 +180,22 @@ export const LegalPageChecker: React.FC = () => {
           </p>
         </div>
 
+        {/* Educational Intro */}
+        <div className="glass-panel animate-enter delay-100" style={{ padding: '2rem', marginBottom: '2rem' }}>
+          <h2 style={{ color: 'var(--accent-tertiary)', fontSize: '1.2rem', marginBottom: '1rem' }}>Why Check Your Legal Pages?</h2>
+          <div style={{ color: 'var(--text-secondary)', lineHeight: '1.8', fontSize: '0.95rem' }}>
+            <p style={{ marginBottom: '1rem' }}>
+              Missing legal pages can expose your website to <strong style={{ color: 'var(--text-primary)' }}>regulatory fines, lawsuits, and lost business opportunities</strong>. Under GDPR, the absence of a proper privacy policy alone can result in penalties of up to €20 million or 4% of annual global revenue. Platforms like Google AdSense, Stripe, Shopify, and Apple's App Store require specific legal documents before approving your account.
+            </p>
+            <p style={{ marginBottom: '1rem' }}>
+              Our Legal Page Checker scans your website for <strong style={{ color: 'var(--text-primary)' }}>8 essential legal pages</strong>: Privacy Policy, Terms of Service, Cookie Policy, Disclaimer, Refund Policy, DMCA / Copyright Notice, Accessibility Statement, and Contact Page. The scan checks common URL patterns, navigation links, and footer references to determine which pages exist on your site.
+            </p>
+            <p>
+              After the scan, you'll receive a <strong style={{ color: 'var(--text-primary)' }}>compliance scorecard</strong> showing which pages are present and which are missing — with one-click links to generate any missing policies using our free generator.
+            </p>
+          </div>
+        </div>
+
         {/* Input / Results */}
         {!result ? (
           <div className="glass-panel animate-enter delay-100" style={{ padding: '2rem' }}>

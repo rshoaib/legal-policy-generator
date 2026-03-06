@@ -166,11 +166,66 @@ export function GeneratorApp() {
     ],
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Is this legal policy generator really free?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, completely free with no hidden charges. You can generate unlimited legal documents without creating an account or providing payment information.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Are these generated policies legally binding?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Our templates are based on real legal frameworks and compliance standards (GDPR, CCPA, LGPD, HIPAA, etc.) and are suitable for most websites and applications. We recommend having an attorney review your final document for your specific jurisdiction.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you store my data or the policies I generate?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No. All document generation happens entirely in your browser using client-side JavaScript. Your business details and generated policies never leave your device.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What regulations do your templates comply with?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Our generator supports compliance with GDPR, CCPA/CPRA, LGPD, PIPEDA, Australia Privacy Act, UK GDPR, and the ePrivacy Directive.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I customize the generated policies?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Absolutely. The generated HTML can be copied and edited freely. You can modify any section to better fit your specific needs.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How often should I update my legal policies?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We recommend reviewing your legal policies at least once every 12 months or whenever significant changes occur such as adding new features or changing data collection practices.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <SEO
         canonical="/"
-        jsonLd={[websiteJsonLd, orgJsonLd, appJsonLd, howToJsonLd]}
+        jsonLd={[websiteJsonLd, orgJsonLd, appJsonLd, howToJsonLd, faqJsonLd]}
       />
       <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 100 }}>
          <select 
@@ -265,6 +320,123 @@ export function GeneratorApp() {
                 {t('link_guides')} <span>→</span>
              </Link>
           </div>
+
+          {/* ── How It Works ── */}
+          <section style={{ marginTop: '5rem', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <h2 className="text-gradient" style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '1rem' }}>How It Works</h2>
+            <p style={{ color: 'var(--text-secondary)', textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem', lineHeight: '1.8' }}>
+              Creating professional legal documents has never been easier. Our generator walks you through three simple steps to produce policies that comply with GDPR, CCPA, LGPD, and other global data privacy regulations.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+              <div className="glass-panel" style={{ textAlign: 'center', padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📋</div>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem' }}>1. Choose Your Document</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Select from 22+ legal document types — including Privacy Policies, Terms of Service, NDAs, EULAs, Data Processing Agreements, DMCA Policies, HIPAA Notices, and more. Each template is crafted by legal compliance experts.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ textAlign: 'center', padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✍️</div>
+                <h3 style={{ color: 'var(--accent-secondary)', marginBottom: '0.75rem' }}>2. Fill In Your Details</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Answer guided questions about your business — your company name, website URL, the types of data you collect, third-party services you use, and applicable regulations. Our smart form adapts based on your selections.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ textAlign: 'center', padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🚀</div>
+                <h3 style={{ color: 'var(--accent-tertiary)', marginBottom: '0.75rem' }}>3. Generate &amp; Download</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Instantly generate your customized legal document. Copy the HTML, download as a PDF, or export in other formats. All policies include proper legal formatting and clauses tailored to your jurisdiction.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Why Legal Pages Matter ── */}
+          <section style={{ marginTop: '5rem', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div className="glass-panel" style={{ padding: '2.5rem' }}>
+              <h2 className="text-gradient" style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Why Every Website Needs Legal Pages</h2>
+              <div style={{ color: 'var(--text-secondary)', lineHeight: '1.9', fontSize: '1.05rem' }}>
+                <p style={{ marginBottom: '1.25rem' }}>
+                  In today's digital landscape, <strong style={{ color: 'var(--text-primary)' }}>legal compliance isn't optional — it's essential</strong>. Regulations like the EU's General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), Brazil's Lei Geral de Proteção de Dados (LGPD), and others require websites to clearly disclose how they collect, use, and protect user data. Failure to comply can result in fines reaching millions of dollars.
+                </p>
+                <p style={{ marginBottom: '1.25rem' }}>
+                  A well-crafted <strong style={{ color: 'var(--text-primary)' }}>Privacy Policy</strong> tells visitors exactly what personal information you collect and why. <strong style={{ color: 'var(--text-primary)' }}>Terms of Service</strong> protect your intellectual property and limit liability. A <strong style={{ color: 'var(--text-primary)' }}>Cookie Policy</strong> with an appropriate consent banner ensures compliance with the ePrivacy Directive. And documents like <strong style={{ color: 'var(--text-primary)' }}>NDAs, EULAs, and DPAs</strong> safeguard your business relationships and proprietary information.
+                </p>
+                <p style={{ marginBottom: '1.25rem' }}>
+                  Beyond legal requirements, having professional legal pages <strong style={{ color: 'var(--text-primary)' }}>builds trust with your audience</strong>. Users, advertisers, and partners are far more likely to engage with websites that demonstrate transparency and accountability. Platforms like Google AdSense, Stripe, and app stores explicitly require proper legal documentation before approving your account.
+                </p>
+                <p>
+                  Our free Legal Policy Generator creates <strong style={{ color: 'var(--text-primary)' }}>attorney-reviewed templates</strong> customized to your business in minutes — no legal fees, no complexity, and no signup required. Every document is generated in real time, entirely in your browser, ensuring your data never leaves your device.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Trust Stats ── */}
+          <section style={{ marginTop: '5rem', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', textAlign: 'center' }}>
+              <div className="glass-panel" style={{ padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>22+</div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Legal Document Types</p>
+              </div>
+              <div className="glass-panel" style={{ padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--accent-secondary)', marginBottom: '0.5rem' }}>6</div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Languages Supported</p>
+              </div>
+              <div className="glass-panel" style={{ padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--accent-tertiary)', marginBottom: '0.5rem' }}>100%</div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Free &amp; No Signup</p>
+              </div>
+              <div className="glass-panel" style={{ padding: '2rem' }}>
+                <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>🔒</div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Client-Side Processing</p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── FAQ Section ── */}
+          <section style={{ marginTop: '5rem', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', paddingBottom: '4rem' }}>
+            <h2 className="text-gradient" style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '2.5rem' }}>Frequently Asked Questions</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div className="glass-panel" style={{ padding: '1.75rem' }}>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>Is this legal policy generator really free?</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Yes, completely free with no hidden charges. You can generate unlimited legal documents without creating an account or providing payment information. We believe every website — whether a small blog or an enterprise platform — deserves access to proper legal documentation.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '1.75rem' }}>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>Are these generated policies legally binding?</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Our templates are based on real legal frameworks and compliance standards (GDPR, CCPA, LGPD, HIPAA, etc.) and are suitable for most websites and applications. However, we always recommend having an attorney review your final document for your specific jurisdiction and business model, especially for high-risk industries like healthcare or finance.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '1.75rem' }}>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>Do you store my data or the policies I generate?</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  No. All document generation happens entirely in your browser using client-side JavaScript. Your business details and generated policies never leave your device. We don't collect, transmit, or store any of the information you enter. Your data privacy is our top priority.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '1.75rem' }}>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>What regulations do your templates comply with?</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Our generator supports compliance with major international regulations including the EU General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA / CPRA), Brazil's LGPD, Canada's PIPEDA, Australia's Privacy Act, the UK GDPR, and the ePrivacy Directive. Each template automatically includes the relevant clauses when you select the applicable regulations.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '1.75rem' }}>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>Can I customize the generated policies?</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  Absolutely. The generated HTML can be copied and edited freely. You can modify any section to better fit your specific needs, add additional clauses, change formatting, or integrate the document into your website's design. The generated content is yours to use and modify without restriction.
+                </p>
+              </div>
+              <div className="glass-panel" style={{ padding: '1.75rem' }}>
+                <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>How often should I update my legal policies?</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+                  We recommend reviewing your legal policies at least once every 12 months or whenever significant changes occur — such as adding new features, changing data collection practices, integrating third-party services, or when new regulations come into effect. Keeping your policies up to date demonstrates good faith compliance and protects your business from liability.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       )}
 

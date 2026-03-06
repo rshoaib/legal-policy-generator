@@ -160,6 +160,33 @@ export const PolicyGuide: React.FC = () => {
         </div>
       </div>
 
+      {/* Educational Content Section */}
+      <section style={{ marginTop: '3rem' }}>
+        <div className="glass-panel" style={{ padding: '2.5rem' }}>
+          <h2 className="text-gradient" style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Understanding Each Legal Document</h2>
+          <div style={{ color: 'var(--text-secondary)', lineHeight: '1.9', fontSize: '1rem' }}>
+            <p style={{ marginBottom: '1.25rem' }}>
+              <strong style={{ color: 'var(--accent-primary)' }}>Privacy Policy</strong> — Required by virtually every data protection law worldwide (GDPR, CCPA, LGPD, PIPEDA), a privacy policy explains what personal data you collect, why you collect it, how you process it, and what rights users have over their information. Every website that uses analytics, forms, or cookies needs one.
+            </p>
+            <p style={{ marginBottom: '1.25rem' }}>
+              <strong style={{ color: 'var(--accent-primary)' }}>Terms &amp; Conditions / Terms of Service</strong> — These documents establish the rules and guidelines that govern how visitors use your website or application. They protect your intellectual property, limit your liability, and define acceptable behavior. The distinction between the two is mostly naming convention — "Terms of Service" is common for SaaS platforms, while "Terms &amp; Conditions" is preferred for e-commerce.
+            </p>
+            <p style={{ marginBottom: '1.25rem' }}>
+              <strong style={{ color: 'var(--accent-primary)' }}>Cookie Policy &amp; Consent Banner</strong> — If your site uses cookies (including analytics like Google Analytics, advertising pixels, or session cookies), the EU ePrivacy Directive and UK PECR regulations require you to inform users and obtain consent before setting non-essential cookies.
+            </p>
+            <p style={{ marginBottom: '1.25rem' }}>
+              <strong style={{ color: 'var(--accent-primary)' }}>NDA (Non-Disclosure Agreement)</strong> — Essential for protecting confidential business information when working with partners, contractors, or employees. NDAs are particularly critical for SaaS companies, agencies, and any business sharing proprietary data with third parties.
+            </p>
+            <p style={{ marginBottom: '1.25rem' }}>
+              <strong style={{ color: 'var(--accent-primary)' }}>EULA (End User License Agreement)</strong> — Required for software products and mobile apps, a EULA defines how users may use your software, restricts reverse engineering, and outlines termination conditions.
+            </p>
+            <p>
+              <strong style={{ color: 'var(--accent-primary)' }}>DPA (Data Processing Agreement)</strong> — Mandated by GDPR Article 28 whenever you share personal data with third-party processors (hosting providers, email services, analytics tools). A DPA ensures the processor handles data according to your instructions and applicable laws.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
         <Link to="/bundle" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
           📦 {t('bundle_title')}
