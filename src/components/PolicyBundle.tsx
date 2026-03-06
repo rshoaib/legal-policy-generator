@@ -113,6 +113,22 @@ export const PolicyBundle: React.FC = () => {
         {t('bundle_subtitle')}
       </p>
 
+      {/* Educational Intro */}
+      <div className="glass-panel" style={{ padding: '2rem', marginBottom: '2rem' }}>
+        <h2 style={{ color: 'var(--accent-tertiary)', fontSize: '1.2rem', marginBottom: '1rem' }}>Why Use a Legal Starter Kit?</h2>
+        <div style={{ color: 'var(--text-secondary)', lineHeight: '1.8', fontSize: '0.95rem' }}>
+          <p style={{ marginBottom: '1rem' }}>
+            Every website needs multiple legal documents to be fully compliant with global privacy regulations. Instead of generating each policy individually, our <strong style={{ color: 'var(--text-primary)' }}>Legal Starter Kit</strong> lets you create all essential documents at once — saving you time and ensuring consistency across your legal pages. Enter your business details once, and the kit automatically populates your company name, website URL, and contact information across all selected policies.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            The bundle includes <strong style={{ color: 'var(--text-primary)' }}>Privacy Policy</strong> (required by GDPR, CCPA, and most laws), <strong style={{ color: 'var(--text-primary)' }}>Terms &amp; Conditions</strong> (protects your intellectual property), <strong style={{ color: 'var(--text-primary)' }}>Cookie Policy</strong> (required for EU users), <strong style={{ color: 'var(--text-primary)' }}>Disclaimer</strong> (limits liability), and optional <strong style={{ color: 'var(--text-primary)' }}>Refund Policy</strong> and <strong style={{ color: 'var(--text-primary)' }}>Terms of Service</strong> for commerce and SaaS platforms.
+          </p>
+          <p>
+            All documents are generated in a single downloadable HTML file, ready to be added to your website. The entire process takes under 2 minutes and is <strong style={{ color: 'var(--text-primary)' }}>completely free</strong> — no signup, no watermarks, no hidden charges.
+          </p>
+        </div>
+      </div>
+
       {Object.keys(generated).length === 0 ? (
         <form onSubmit={handleGenerateAll} className="glass-panel" style={{ padding: '2rem' }}>
           <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
