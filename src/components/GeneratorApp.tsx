@@ -2,7 +2,7 @@ import { useState, lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { SEO } from './SEO'
-import type { PolicyData } from '../appTypes'
+import { type PolicyData, type PolicyType, POLICY_FILE_LABELS } from '../appTypes'
 import { savePolicy } from '../utils/useHistoryStorage'
 
 /* ── Heavy components loaded only when user clicks a policy type ── */
@@ -16,7 +16,6 @@ const FormLoader = () => (
 )
 
 type Step = 'landing' | 'form' | 'preview'
-type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos' | 'hipaa' | 'sla' | 'data-breach' | 'ai-ethics'
 
 export function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
@@ -45,11 +44,12 @@ export function GeneratorApp() {
     localStorage.setItem('policy_generator_data', JSON.stringify(data))
   }
 
-  /* New: Clear saved data */
+  /* New: Clear saved data — proper React reset, no page reload */
   const handleClearData = () => {
       localStorage.removeItem('policy_generator_data')
       setFormData({})
-      window.location.reload()
+      setStep('landing')
+      setGeneratedContent('')
   }
 
   const handleStart = (type: PolicyType) => {
@@ -470,7 +470,12 @@ export function GeneratorApp() {
       {step === 'preview' && (
         <Suspense fallback={<FormLoader />}>
         <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <PolicyPreview content={generatedContent} onReset={handleReset} />
+          <PolicyPreview
+            content={generatedContent}
+            onReset={handleReset}
+            fileLabel={POLICY_FILE_LABELS[selectedType]}
+            companyName={formData.companyName as string || formData.websiteName as string || ''}
+          />
         </div>
         </Suspense>
       )}

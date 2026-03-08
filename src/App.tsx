@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import { useEffect, lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Toaster } from 'sonner'
@@ -7,6 +7,8 @@ import { Layout } from './components/Layout'
 import { PrivacyPage } from './components/PrivacyPage'
 import { TermsPage } from './components/TermsPage'
 import { CookieConsent } from './components/CookieConsent'
+import { ErrorBoundary } from './components/ErrorBoundary'
+import { ScrollToTop } from './components/ScrollToTop'
 
 /* ── Lazy-loaded route components (code-split) ── */
 const GeneratorApp = lazy(() => import('./components/GeneratorApp').then(m => ({ default: m.GeneratorApp })))
@@ -21,6 +23,7 @@ const PolicyHistory = lazy(() => import('./components/PolicyHistory').then(m => 
 const PolicyBundle = lazy(() => import('./components/PolicyBundle').then(m => ({ default: m.PolicyBundle })))
 const PolicyGuide = lazy(() => import('./components/PolicyGuide').then(m => ({ default: m.PolicyGuide })))
 const PolicyIndustryPage = lazy(() => import('./components/PolicyIndustryPage').then(m => ({ default: m.PolicyIndustryPage })))
+const CookiePolicyGenerator = lazy(() => import('./components/CookiePolicyGenerator').then(m => ({ default: m.CookiePolicyGenerator })))
 import { seoPages } from './data/seoPages'
 
 /* ── Loading fallback ── */
@@ -50,7 +53,9 @@ function App() {
 
   return (
     <BrowserRouter>
+        <ScrollToTop />
         <Layout>
+            <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
             <Routes>
                 <Route path="/" element={<GeneratorApp />} />
@@ -67,6 +72,8 @@ function App() {
                 <Route path="/history" element={<PolicyHistory />} />
                 <Route path="/bundle" element={<PolicyBundle />} />
                 <Route path="/policy-guide" element={<PolicyGuide />} />
+                <Route path="/cookie-policy-generator" element={<CookiePolicyGenerator />} />
+                <Route path="/cookie-policy" element={<Navigate to="/cookie-policy-generator" replace />} />
                 {/* PROGRAMMATIC SEO: [Policy] for [Industry] */}
                 {seoPages.map(page => (
                     <Route key={page.slug} path={`/${page.slug}`} element={<PolicyIndustryPage page={page} />} />
@@ -74,6 +81,7 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             </Suspense>
+            </ErrorBoundary>
             <Toaster position="top-right" />
             <CookieConsent />
         </Layout>

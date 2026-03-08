@@ -4,10 +4,13 @@ import { getAllPosts } from '../lib/blogService';
 import { type BlogPost } from '../lib/blogData';
 import { SEO } from './SEO';
 
+const POSTS_PER_PAGE = 6;
+
 export const BlogIndex: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
 
   useEffect(() => {
     let cancelled = false;
@@ -35,6 +38,9 @@ export const BlogIndex: React.FC = () => {
     loadPosts();
     return () => { cancelled = true; };
   }, []);
+
+  const visiblePosts = posts.slice(0, visibleCount);
+  const hasMore = visibleCount < posts.length;
 
   return (
     <div>
@@ -69,11 +75,11 @@ export const BlogIndex: React.FC = () => {
         <div style={{ display: 'grid', gap: '2rem' }}>
           {[1, 2, 3].map(i => (
             <div key={i} className="glass-panel" style={{ padding: '2rem' }}>
-              <div style={{ height: '0.875rem', width: '100px', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '0.75rem' }} />
-              <div style={{ height: '1.5rem', width: '80%', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '1rem' }} />
-              <div style={{ height: '1rem', width: '95%', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '0.5rem' }} />
-              <div style={{ height: '1rem', width: '60%', background: 'var(--border-color)', borderRadius: '4px', marginBottom: '1.5rem' }} />
-              <div style={{ height: '1rem', width: '120px', background: 'var(--border-color)', borderRadius: '4px' }} />
+              <div className="skeleton-shimmer" style={{ height: '0.875rem', width: '100px', borderRadius: '4px', marginBottom: '0.75rem' }} />
+              <div className="skeleton-shimmer" style={{ height: '1.5rem', width: '80%', borderRadius: '4px', marginBottom: '1rem' }} />
+              <div className="skeleton-shimmer" style={{ height: '1rem', width: '95%', borderRadius: '4px', marginBottom: '0.5rem' }} />
+              <div className="skeleton-shimmer" style={{ height: '1rem', width: '60%', borderRadius: '4px', marginBottom: '1.5rem' }} />
+              <div className="skeleton-shimmer" style={{ height: '1rem', width: '120px', borderRadius: '4px' }} />
             </div>
           ))}
         </div>
@@ -86,26 +92,45 @@ export const BlogIndex: React.FC = () => {
       )}
 
       {!loading && !error && (
-        <div style={{ display: 'grid', gap: '2rem' }}>
-          {posts.map(post => (
-            <article key={post.slug} className="glass-panel" style={{ padding: '2rem', transition: 'transform 0.2s' }}>
-              <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                {post.date}
-              </div>
-              <h2 style={{ marginBottom: '1rem' }}>
-                <Link to={`/blog/${post.slug}`} style={{ color: 'var(--text-primary)' }}>
-                  {post.title}
+        <>
+          <div style={{ display: 'grid', gap: '2rem' }}>
+            {visiblePosts.map(post => (
+              <article key={post.slug} className="glass-panel" style={{ padding: '2rem', transition: 'transform 0.2s' }}>
+                <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                  {post.date}
+                </div>
+                <h2 style={{ marginBottom: '1rem' }}>
+                  <Link to={`/blog/${post.slug}`} style={{ color: 'var(--text-primary)' }}>
+                    {post.title}
+                  </Link>
+                </h2>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                  {post.excerpt}
+                </p>
+                <Link to={`/blog/${post.slug}`} style={{ fontWeight: 600, color: 'var(--accent-primary)' }}>
+                  Read Article →
                 </Link>
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                {post.excerpt}
+              </article>
+            ))}
+          </div>
+
+          {/* Load More / Counter */}
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            {hasMore ? (
+              <button
+                className="btn-primary"
+                onClick={() => setVisibleCount(prev => prev + POSTS_PER_PAGE)}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+              >
+                Load More ({posts.length - visibleCount} remaining)
+              </button>
+            ) : posts.length > POSTS_PER_PAGE && (
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                Showing all {posts.length} articles
               </p>
-              <Link to={`/blog/${post.slug}`} style={{ fontWeight: 600, color: 'var(--accent-primary)' }}>
-                Read Article →
-              </Link>
-            </article>
-          ))}
-        </div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );

@@ -2353,9 +2353,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'new-us-state-privacy-laws-2026',
-    title: 'New US State Privacy Laws in 2026: What Every Website Owner Must Know',
+    title: 'New US State & Federal Privacy Laws 2026: All 20+ States, Deadlines & What You Must Do',
     date: '2026-02-28',
-    excerpt: 'Eight new state privacy laws take effect in 2026 — Kentucky, Indiana, Rhode Island, and more. Here\'s what they require, who they apply to, and how to update your website.',
+    excerpt: 'No federal privacy law yet — but 20+ states now have their own. 8 new laws took effect in 2026 (Kentucky, Indiana, Rhode Island & more). See every deadline, who must comply, and update your policy free.',
     content: `
       <p>If you thought keeping up with <a href="/blog/gdpr-vs-ccpa-key-differences">GDPR and CCPA</a> was challenging, 2026 has a surprise: <strong>eight new US state privacy laws</strong> are now in effect or taking effect this year. From Kentucky to Rhode Island, states are no longer waiting for federal action — they're building their own privacy frameworks, and if your website serves users in these states, you must comply.</p>
 
@@ -3737,6 +3737,355 @@ export const blogPosts: BlogPost[] = [
       </ul>
       <p>All generators are <strong>free</strong>, require <strong>no signup</strong>, and produce professional documents in minutes.</p>
       <p><em>Disclaimer: This article is for informational purposes only and does not constitute legal advice. Consult a qualified attorney for your specific situation.</em></p>
+    `
+  },
+  {
+    slug: 'gdpr-for-small-business-plain-english-guide',
+    title: 'GDPR for Small Business: A Plain-English Guide (2026)',
+    date: '2026-03-06',
+    excerpt: 'GDPR applies to almost every business that serves EU users — including yours. This plain-English guide explains the 7 core principles, your obligations, and how to comply without a lawyer.',
+    content: `
+      <p>If your business collects <strong>any personal data</strong> from people in the European Union — even just an email address or an IP address — the <strong>General Data Protection Regulation (GDPR)</strong> applies to you. It doesn't matter if you're a solo freelancer, a 5-person startup, or a small e-commerce store. It doesn't even matter if your business is based outside the EU.</p>
+      <p>This guide explains GDPR in <strong>plain English</strong> — no legal jargon, no 50-page policy documents. Just the essential rules every small business owner needs to understand in 2026, with practical steps to get compliant.</p>
+
+      <h2>What Is GDPR, Exactly?</h2>
+      <p>The <strong>General Data Protection Regulation</strong> is a privacy and data security law enacted by the European Union in May 2018. It's considered the world's most comprehensive privacy regulation and has influenced similar laws worldwide (CCPA in California, LGPD in Brazil, PIPEDA in Canada).</p>
+      <p>In simple terms, GDPR gives EU residents <strong>control over their personal data</strong> and imposes obligations on any organization that collects or processes that data. The UK has its own version (UK GDPR) that largely mirrors the EU regulation.</p>
+
+      <h2>Does GDPR Apply to My Small Business?</h2>
+      <p>Almost certainly <strong>yes</strong>, if any of the following are true:</p>
+      <ul>
+        <li>You have a website that's accessible to EU residents (even if you're based in the US, India, or anywhere else)</li>
+        <li>You collect email addresses through a contact form, newsletter, or checkout</li>
+        <li>You use Google Analytics, Facebook Pixel, or any tracking cookies</li>
+        <li>You have customers, employees, or suppliers in the EU</li>
+        <li>You sell products or services to people in the EU (even digitally)</li>
+      </ul>
+      <p><strong>Common myth:</strong> "GDPR only applies to big companies." This is false. GDPR applies based on <em>what data you process</em>, not <em>how big your company is</em>.</p>
+
+      <h2>The 7 Principles of GDPR (in Plain English)</h2>
+      <p>GDPR is built on seven core principles. Here's what each one means for your business:</p>
+
+      <h3>1. Lawfulness, Fairness, and Transparency</h3>
+      <p>You must process data legally, fairly, and openly. In practice, this means: tell people <strong>what</strong> data you collect, <strong>why</strong> you collect it, and <strong>how</strong> you use it. Your <a href="/privacy-policy">privacy policy</a> is where you do this.</p>
+
+      <h3>2. Purpose Limitation</h3>
+      <p>Only collect data for a specific, stated reason. If someone gives you their email to receive order confirmations, you can't automatically add them to your marketing list without separate consent.</p>
+
+      <h3>3. Data Minimisation</h3>
+      <p>Only collect what you actually need. If you're running a newsletter, you need an email address — you don't need their home address, phone number, and date of birth.</p>
+
+      <h3>4. Accuracy</h3>
+      <p>Keep data up to date. If a customer asks you to correct their information, you must do so promptly.</p>
+
+      <h3>5. Storage Limitation</h3>
+      <p>Don't keep data forever. Set clear retention periods — for example, "We delete inactive customer accounts after 24 months." Once the data is no longer needed, securely delete it.</p>
+
+      <h3>6. Integrity and Confidentiality (Security)</h3>
+      <p>Protect data from unauthorized access, loss, or damage. Use encryption, strong passwords, multi-factor authentication, and limit who in your team can access personal data.</p>
+
+      <h3>7. Accountability</h3>
+      <p>You must be able to <strong>demonstrate</strong> that you comply with GDPR. This means keeping records, documenting your data practices, and being able to show a regulator what steps you've taken.</p>
+
+      <h2>Small Business Exemptions — Are There Any?</h2>
+      <p>There's a common misconception that small businesses are exempt from GDPR. The truth is more nuanced:</p>
+      <ul>
+        <li><strong>Businesses with fewer than 250 employees</strong> have a limited exemption from keeping detailed written records of <em>all</em> processing activities — but only if your processing is occasional, doesn't involve sensitive data, and doesn't risk individuals' rights.</li>
+        <li>You are <strong>NOT</strong> exempt from the core GDPR requirements: consent, privacy notices, data security, breach notification, and respecting data subject rights.</li>
+        <li>Most small businesses that use a website, email marketing, or analytics <strong>process data regularly</strong>, which means the record-keeping exemption doesn't apply anyway.</li>
+      </ul>
+      <p><strong>Bottom line:</strong> Don't assume you're exempt. The safest approach is to comply fully.</p>
+
+      <h2>Your GDPR Compliance Checklist (10 Steps)</h2>
+      <p>Here's a practical checklist to get your small business compliant:</p>
+
+      <h3>Step 1: Audit Your Data</h3>
+      <p>Map out what personal data you collect, where it comes from, where it's stored, who has access, and how long you keep it. A simple spreadsheet works fine.</p>
+
+      <h3>Step 2: Identify Your Legal Basis</h3>
+      <p>For each type of data processing, identify your legal basis. The six legal bases under GDPR are: consent, contract, legal obligation, vital interests, public task, and legitimate interests.</p>
+
+      <h3>Step 3: Create a Privacy Policy</h3>
+      <p>Your <a href="/privacy-policy">privacy policy</a> must clearly explain what data you collect, why, how you use it, who you share it with, and what rights users have. Use our <a href="/privacy-policy"><strong>free Privacy Policy Generator</strong></a> to create one in minutes.</p>
+
+      <h3>Step 4: Implement Cookie Consent</h3>
+      <p>If you use cookies (and almost every website does), you need a <a href="/cookie-policy">Cookie Policy</a> and a consent banner that allows users to accept or reject non-essential cookies before they're loaded.</p>
+
+      <h3>Step 5: Get Proper Consent</h3>
+      <p>When collecting data via forms, make sure consent is: freely given, specific, informed, and unambiguous. Pre-checked boxes are NOT valid consent. Users must actively opt in.</p>
+
+      <h3>Step 6: Set Up Data Subject Rights Handling</h3>
+      <p>Be prepared to handle requests from individuals to access, correct, delete, or export their data. You have <strong>one month</strong> to respond to such requests.</p>
+
+      <h3>Step 7: Secure Your Data</h3>
+      <p>Implement basic security measures: strong passwords, multi-factor authentication on key systems, encryption, regular software updates, and limiting access to personal data.</p>
+
+      <h3>Step 8: Create a Breach Response Plan</h3>
+      <p>If a data breach occurs, you must notify the relevant supervisory authority within <strong>72 hours</strong>. Have a documented plan that includes: who to notify, how to assess the severity, and how to communicate with affected individuals.</p>
+
+      <h3>Step 9: Review Third-Party Services</h3>
+      <p>If you use services like Mailchimp, Stripe, or AWS that process data on your behalf, ensure you have a <a href="/dpa"><strong>Data Processing Agreement (DPA)</strong></a> in place with each one.</p>
+
+      <h3>Step 10: Train Your Team</h3>
+      <p>Make sure everyone in your business understands the basics of data protection. This doesn't require formal certification — even a 30-minute briefing on key principles makes a difference.</p>
+
+      <h2>What Happens If You Don't Comply?</h2>
+      <p>GDPR enforcement is real and active. Here's what non-compliance can cost:</p>
+      <ul>
+        <li><strong>Tier 1 fines:</strong> Up to €10 million or 2% of global annual revenue for administrative violations</li>
+        <li><strong>Tier 2 fines:</strong> Up to €20 million or 4% of global annual revenue for serious violations (like processing data without consent)</li>
+        <li><strong>Reputational damage:</strong> Data breaches and privacy violations are publicly reported, eroding customer trust</li>
+        <li><strong>Loss of business:</strong> B2B clients increasingly require GDPR compliance from their vendors and partners</li>
+      </ul>
+      <p>Small businesses typically receive smaller fines (often €5,000–€50,000), but even these can be devastating for a small operation.</p>
+
+      <h2>Common Mistakes Small Businesses Make</h2>
+      <ul>
+        <li><strong>No privacy policy:</strong> Using Google Analytics or AdSense without a privacy policy violates both GDPR and Google's own terms.</li>
+        <li><strong>Pre-checked consent boxes:</strong> "By signing up, you agree to receive marketing emails" with a pre-checked box is not valid consent under GDPR.</li>
+        <li><strong>No cookie consent:</strong> Loading analytics and marketing cookies before the user clicks "Accept" is a common violation.</li>
+        <li><strong>Ignoring data subject requests:</strong> If a customer emails asking to delete their data and you ignore it, that's a GDPR violation.</li>
+        <li><strong>Assuming it doesn't apply:</strong> The most dangerous mistake. If your website is accessible from the EU and collects any data, GDPR applies.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Do I need a Data Protection Officer (DPO)?</h3>
+      <p>Most small businesses do <strong>not</strong> need a DPO. You only need one if your core activities involve large-scale systematic monitoring of individuals or processing large amounts of sensitive data (health records, criminal data, etc.).</p>
+
+      <h3>Does GDPR apply if I'm based outside the EU?</h3>
+      <p>Yes. GDPR applies to any organization that offers goods or services to EU residents or monitors their behavior, regardless of where the organization is based. A US-based online store that ships to Europe must comply.</p>
+
+      <h3>Can I use Google Analytics under GDPR?</h3>
+      <p>Yes, but you must: (1) disclose it in your <a href="/privacy-policy">privacy policy</a>, (2) obtain cookie consent before loading the tracking script, and (3) consider using Google Analytics 4 with IP anonymization enabled.</p>
+
+      <h3>What's the difference between GDPR and CCPA?</h3>
+      <p>GDPR is an opt-in model (you need consent before collecting data). CCPA is an opt-out model (you can collect data by default, but must allow consumers to opt out). GDPR also has broader scope and stricter penalties. Read our detailed comparison: <a href="/blog/gdpr-vs-ccpa-key-differences">GDPR vs CCPA: Key Differences</a>.</p>
+
+      <h3>How much does GDPR compliance cost for a small business?</h3>
+      <p>It doesn't have to cost anything. You can create compliant legal documents for free using our generators, implement cookie consent with free tools, and handle most requirements internally. If you handle sensitive data or have complex processing needs, consulting a lawyer (typically €500–€2,000 for a small business review) is worthwhile.</p>
+
+      <h2>Get Started — Free Tools</h2>
+      <p>GDPR compliance starts with having the right legal documents. Create yours for free:</p>
+      <ul>
+        <li>🔒 <a href="/privacy-policy"><strong>Free Privacy Policy Generator</strong></a> — GDPR-compliant in minutes</li>
+        <li>🍪 <a href="/cookie-policy"><strong>Free Cookie Policy Generator</strong></a> — disclose all cookies and consent practices</li>
+        <li>📋 <a href="/terms-of-service"><strong>Free Terms of Service Generator</strong></a> — protect your business</li>
+        <li>📄 <a href="/dpa"><strong>Free DPA Generator</strong></a> — for third-party data processing agreements</li>
+      </ul>
+      <p><em>Disclaimer: This article is for informational purposes only and does not constitute legal advice. For business-specific guidance, consult a qualified data protection professional.</em></p>
+    `
+  },
+  {
+    slug: 'gdpr-for-small-business-plain-english-guide-2026',
+    title: 'GDPR for Small Business: A Plain-English Guide (2026)',
+    date: '2026-03-09',
+    excerpt: 'Think GDPR only affects big corporations? It applies to any business that collects data from EU residents — including yours. Here is a no-jargon, 10-step checklist to get compliant without a lawyer.',
+    content: `
+      <img src="/images/blog/gdpr-small-business-guide.png" alt="GDPR compliance guide for small businesses — shield icon with padlock, checklist, and EU stars" style="width:100%; border-radius:12px; margin-bottom:2rem;" />
+
+      <p>If you run a small business, freelance practice, or side project that <strong>collects any data from people in the EU</strong> — even just an email address through a contact form — the <strong>General Data Protection Regulation (GDPR)</strong> applies to you. It doesn't matter if you're based in the US, India, or Brazil. If EU residents use your service, GDPR is your responsibility.</p>
+      <p>The good news? <strong>Compliance doesn't require a legal team or a five-figure budget.</strong> This guide breaks GDPR down into plain English and gives you a practical 10-step checklist to get compliant — with free tools to do most of the work.</p>
+
+      <h2>Does GDPR Apply to My Small Business?</h2>
+      <p>GDPR applies if you do <strong>any</strong> of the following:</p>
+      <ul>
+        <li>Collect email addresses (newsletter signups, contact forms)</li>
+        <li>Use Google Analytics, Facebook Pixel, or any cookies</li>
+        <li>Sell products or services to EU customers</li>
+        <li>Have employees or contractors located in the EU</li>
+        <li>Use cloud services (AWS, Google Cloud) that store EU user data</li>
+      </ul>
+      <p><strong>Common myth:</strong> "I'm too small." There is <strong>no revenue or employee threshold</strong> that exempts you from GDPR. A one-person blog with a contact form is covered if it reaches EU visitors.</p>
+
+      <h2>GDPR in 2026: What's New</h2>
+      <p>GDPR hasn't stood still since 2018. Here are the key 2026 updates that affect small businesses:</p>
+      <ul>
+        <li><strong>EU AI Act (August 2026):</strong> If you use AI tools (chatbots, recommendation engines, automated decision-making), you now have additional transparency and documentation obligations under the EU AI Act, which layers on top of GDPR.</li>
+        <li><strong>ROPA exemption expansion:</strong> The EU Commission proposed raising the Records of Processing Activities (ROPA) exemption from businesses under 250 employees to those under 750 — reducing paperwork for mid-size companies.</li>
+        <li><strong>UK complaints process (June 2026):</strong> Under the Data (Use and Access) Act, all UK organizations must have a formal complaints-handling process for data protection issues starting June 19, 2026.</li>
+        <li><strong>Stricter cookie enforcement:</strong> EU data protection authorities have issued over €2.5 billion in GDPR fines to date. Cookie consent violations are now a top enforcement priority.</li>
+      </ul>
+
+      <h2>The 10-Step GDPR Checklist for Small Businesses</h2>
+      <p>Follow these steps in order. Each one builds on the previous.</p>
+
+      <h3>Step 1: Know What Data You Collect</h3>
+      <p>Make a simple list of every piece of personal data your business touches. <strong>"Personal data"</strong> under GDPR means anything that can identify a person — even indirectly:</p>
+      <ul>
+        <li>Names, email addresses, phone numbers</li>
+        <li>IP addresses, browser cookies</li>
+        <li>Payment and billing information</li>
+        <li>Employee records (if you have EU staff)</li>
+        <li>Location data, device identifiers</li>
+      </ul>
+      <p><strong>Action:</strong> Create a simple spreadsheet listing what data you collect, where it's stored, who has access, and why you collect it.</p>
+
+      <h3>Step 2: Identify Your Lawful Basis</h3>
+      <p>GDPR requires a <strong>legal reason</strong> for every piece of data you process. The most common bases for small businesses:</p>
+      <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+        <thead>
+          <tr style="background:#1a1a2e; color:#e0e0e0;">
+            <th style="padding:10px; border:1px solid #333; text-align:left;">Lawful Basis</th>
+            <th style="padding:10px; border:1px solid #333; text-align:left;">When to Use</th>
+            <th style="padding:10px; border:1px solid #333; text-align:left;">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border:1px solid #333;"><strong>Consent</strong></td>
+            <td style="padding:10px; border:1px solid #333;">User explicitly agrees</td>
+            <td style="padding:10px; border:1px solid #333;">Newsletter signup with opt-in checkbox</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #333;"><strong>Contract</strong></td>
+            <td style="padding:10px; border:1px solid #333;">Data needed to fulfill an agreement</td>
+            <td style="padding:10px; border:1px solid #333;">Shipping address for an order</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #333;"><strong>Legitimate Interest</strong></td>
+            <td style="padding:10px; border:1px solid #333;">Reasonable business need, low risk to user</td>
+            <td style="padding:10px; border:1px solid #333;">Fraud prevention, website security logs</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #333;"><strong>Legal Obligation</strong></td>
+            <td style="padding:10px; border:1px solid #333;">Required by law</td>
+            <td style="padding:10px; border:1px solid #333;">Tax records, employee payroll data</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Step 3: Create a Privacy Policy</h3>
+      <p>This is the single most important GDPR document. Your <a href="/privacy-policy"><strong>Privacy Policy</strong></a> must clearly explain:</p>
+      <ul>
+        <li>What data you collect and why</li>
+        <li>Your lawful basis for each type of processing</li>
+        <li>Who you share data with (analytics, ads, cloud providers)</li>
+        <li>How long you keep data</li>
+        <li>User rights (access, deletion, correction, portability)</li>
+        <li>Your contact information for privacy inquiries</li>
+      </ul>
+      <p>Don't copy someone else's policy — it won't match your actual practices. Use our <a href="/"><strong>free Privacy Policy Generator</strong></a> to create one customized to your business in under 5 minutes.</p>
+
+      <h3>Step 4: Set Up Cookie Consent</h3>
+      <p>If your website uses <strong>any non-essential cookies</strong> (Google Analytics, Facebook Pixel, ad networks), you must get consent <strong>before</strong> they load. Modern GDPR cookie consent requires:</p>
+      <ul>
+        <li>An <strong>"Accept All"</strong> and equally prominent <strong>"Reject All"</strong> button</li>
+        <li>Granular control (users should choose which cookie categories to allow)</li>
+        <li>No pre-checked boxes</li>
+        <li>No "by continuing to browse you agree" — this is not valid consent</li>
+      </ul>
+      <p>Need a Cookie Policy too? Our <a href="/cookie-policy"><strong>free Cookie Policy Generator</strong></a> covers all the technical details regulators expect.</p>
+
+      <h3>Step 5: Handle Data Subject Requests</h3>
+      <p>Any EU resident can ask you to:</p>
+      <ul>
+        <li><strong>Access:</strong> "Show me all the data you have on me."</li>
+        <li><strong>Delete:</strong> "Erase all my personal data."</li>
+        <li><strong>Correct:</strong> "My email address is wrong — update it."</li>
+        <li><strong>Port:</strong> "Give me my data in a downloadable format."</li>
+        <li><strong>Object:</strong> "Stop processing my data for marketing."</li>
+      </ul>
+      <p>You have <strong>one calendar month</strong> to respond. Set up a simple process — even a dedicated email address like <code>privacy@yourdomain.com</code> — and know where all your user data lives so you can fulfill requests quickly.</p>
+
+      <h3>Step 6: Secure Your Data</h3>
+      <p>GDPR requires "appropriate technical and organizational measures." For small businesses, this means:</p>
+      <ul>
+        <li>Use <strong>SSL/HTTPS</strong> on your website (most hosts offer this free)</li>
+        <li>Enable <strong>two-factor authentication (2FA)</strong> on all admin accounts</li>
+        <li>Use <strong>strong, unique passwords</strong> (a password manager helps)</li>
+        <li>Keep software and plugins <strong>updated</strong></li>
+        <li>Limit data access to <strong>only people who need it</strong></li>
+        <li>Back up data regularly</li>
+      </ul>
+
+      <h3>Step 7: Review Third-Party Tools</h3>
+      <p>Every SaaS tool that processes your users' data is a "data processor" under GDPR. You need a <a href="/dpa"><strong>Data Processing Agreement (DPA)</strong></a> with each one. Most major services (Google, Stripe, Mailchimp) offer DPAs — you usually just need to accept them in your account settings.</p>
+      <p><strong>Check:</strong> Google Analytics, email marketing tools, payment processors, cloud storage, CRM systems, customer support platforms.</p>
+
+      <h3>Step 8: Plan for Data Breaches</h3>
+      <p>If personal data is compromised, GDPR requires you to:</p>
+      <ul>
+        <li>Notify your supervisory authority <strong>within 72 hours</strong></li>
+        <li>Notify affected individuals <strong>without undue delay</strong> if there's high risk</li>
+        <li>Document the breach, its effects, and remedial actions taken</li>
+      </ul>
+      <p>Create a simple one-page breach response plan <strong>now</strong>, before you need it. Know who to contact, what to document, and which supervisory authority covers your jurisdiction.</p>
+
+      <h3>Step 9: Add Terms of Service</h3>
+      <p>While not strictly a GDPR requirement, a <a href="/terms-of-service"><strong>Terms of Service</strong></a> complements your Privacy Policy by establishing the rules for using your platform. It limits your liability, protects your intellectual property, and sets expectations for user conduct. If you sell products, add a <a href="/return-policy"><strong>Return Policy</strong></a> as well.</p>
+
+      <h3>Step 10: Review and Update Regularly</h3>
+      <p>GDPR compliance is not a one-time task. Review your practices whenever you:</p>
+      <ul>
+        <li>Add a new third-party tool or integration</li>
+        <li>Start collecting a new type of data</li>
+        <li>Expand into new markets or jurisdictions</li>
+        <li>Hire employees (especially in the EU)</li>
+        <li>Launch a new product or feature</li>
+      </ul>
+      <p>Set a calendar reminder to audit your privacy practices at least <strong>every 6 months</strong>.</p>
+
+      <h2>Do I Need a Data Protection Officer (DPO)?</h2>
+      <p>Most small businesses do <strong>not</strong> need a DPO. You only need one if your core activities involve:</p>
+      <ul>
+        <li>Large-scale, systematic monitoring of individuals (e.g., behavioral tracking at scale)</li>
+        <li>Large-scale processing of sensitive data (health records, biometric data)</li>
+      </ul>
+      <p>That said, <strong>designating someone</strong> to oversee privacy compliance — even yourself — is a smart move.</p>
+
+      <h2>What Are the Penalties for Non-Compliance?</h2>
+      <p>GDPR fines are structured in two tiers:</p>
+      <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+        <thead>
+          <tr style="background:#1a1a2e; color:#e0e0e0;">
+            <th style="padding:10px; border:1px solid #333; text-align:left;">Tier</th>
+            <th style="padding:10px; border:1px solid #333; text-align:left;">Maximum Fine</th>
+            <th style="padding:10px; border:1px solid #333; text-align:left;">Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border:1px solid #333;"><strong>Lower tier</strong></td>
+            <td style="padding:10px; border:1px solid #333;">€10M or 2% global revenue</td>
+            <td style="padding:10px; border:1px solid #333;">Failure to maintain records, inadequate security</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #333;"><strong>Upper tier</strong></td>
+            <td style="padding:10px; border:1px solid #333;">€20M or 4% global revenue</td>
+            <td style="padding:10px; border:1px solid #333;">Processing without consent, ignoring data subject rights</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>In practice, enforcement has historically focused on large companies. But in 2026, <strong>regulators are increasingly targeting SMEs</strong> — especially on cookie consent violations and missing privacy policies. Non-compliance also risks losing access to platforms like Google AdSense, which require a privacy policy as a condition of service.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Does GDPR apply if my business is outside the EU?</h3>
+      <p>Yes. GDPR applies to any organization that offers goods or services to EU residents, or monitors their behavior (e.g., through web analytics). Your physical location is irrelevant — what matters is whether you process data of people in the EU.</p>
+
+      <h3>What counts as "personal data" under GDPR?</h3>
+      <p>Any information that can directly or indirectly identify a natural person. This includes obvious data like names and emails, but also IP addresses, cookie identifiers, device fingerprints, location data, and even pseudonymized data if it can be re-identified.</p>
+
+      <h3>Is Google Analytics GDPR compliant?</h3>
+      <p>Google Analytics 4 (GA4) can be used in a GDPR-compliant way, but it requires configuration: disable IP collection, disable Google Signals if you don't need it, set data retention periods, and — critically — get consent via a cookie banner before GA4 loads. Simply installing GA4 without consent is a violation.</p>
+
+      <h3>What's the easiest way to get GDPR compliant?</h3>
+      <p>Start with the three documents regulators check first: a <a href="/"><strong>Privacy Policy</strong></a>, a <a href="/cookie-policy"><strong>Cookie Policy</strong></a>, and proper cookie consent. You can generate all three for free on our site in under 10 minutes. Then work through the 10-step checklist above at your own pace.</p>
+
+      <h3>Can I just copy a Privacy Policy from another website?</h3>
+      <p>No. A copied policy is likely inaccurate for your specific data practices, third-party tools, and jurisdictions — making it legally useless. Worse, it might expose you to liability. Always create a policy that reflects your actual data processing activities. Our <a href="/"><strong>free generator</strong></a> makes this easy.</p>
+
+      <h2>Get Compliant Today — For Free</h2>
+      <p>You don't need a lawyer or an expensive compliance platform to meet your GDPR obligations. Start with the essentials:</p>
+      <ul>
+        <li>🔒 <a href="/"><strong>Free Privacy Policy Generator</strong></a> — GDPR, CCPA, and LGPD compliant</li>
+        <li>🍪 <a href="/cookie-policy"><strong>Free Cookie Policy Generator</strong></a> — disclose all tracking technologies</li>
+        <li>📋 <a href="/terms-of-service"><strong>Free Terms of Service Generator</strong></a> — protect your business</li>
+        <li>📄 <a href="/dpa"><strong>Free DPA Generator</strong></a> — for third-party data processing agreements</li>
+        <li>✅ <a href="/compliance-checker"><strong>Free Compliance Checker</strong></a> — audit your website's legal pages</li>
+      </ul>
+      <p><em>Disclaimer: This article is for informational purposes only and does not constitute legal advice. For business-specific guidance, consult a qualified data protection professional.</em></p>
     `
   }
 ];

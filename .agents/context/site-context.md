@@ -43,5 +43,5 @@ description: Brand voice, internal links, and target keywords for legalpolicygen
 2. ~~"Do You Need a Cookie Policy? What the Law Actually Says (2026)"~~ ✅ Published
 3. ~~"Terms of Service vs Privacy Policy: What's the Difference?"~~ ✅ Published
 4. ~~"Free Legal Pages Every Website Needs (Complete Checklist)"~~ ✅ Published
-5. "GDPR for Small Business: A Plain-English Guide"
+5. ~~"GDPR for Small Business: A Plain-English Guide"~~ ✅ Published
 
