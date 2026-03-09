@@ -2353,9 +2353,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'new-us-state-privacy-laws-2026',
-    title: 'New US State & Federal Privacy Laws 2026: All 20+ States, Deadlines & What You Must Do',
+    title: 'US Privacy Laws 2026: 8 New State Laws Now in Effect — Deadlines, Fines & Compliance Checklist',
     date: '2026-02-28',
-    excerpt: 'No federal privacy law yet — but 20+ states now have their own. 8 new laws took effect in 2026 (Kentucky, Indiana, Rhode Island & more). See every deadline, who must comply, and update your policy free.',
+    excerpt: '8 new US state privacy laws took effect in 2026 — Kentucky, Indiana, Rhode Island and more. Fines up to $7,500 per violation. Check every deadline, see if your site must comply, and generate a compliant privacy policy free.',
     content: `
       <p>If you thought keeping up with <a href="/blog/gdpr-vs-ccpa-key-differences">GDPR and CCPA</a> was challenging, 2026 has a surprise: <strong>eight new US state privacy laws</strong> are now in effect or taking effect this year. From Kentucky to Rhode Island, states are no longer waiting for federal action — they're building their own privacy frameworks, and if your website serves users in these states, you must comply.</p>
 
@@ -2571,6 +2571,20 @@ export const blogPosts: BlogPost[] = [
         <li>Individual privacy policies for each subsite covering site-specific plugins</li>
         <li>A unified cookie consent solution that works across all sites in the network</li>
       </ul>
+
+      <h3>GDPR Privacy Policy for WordPress: What You Must Include</h3>
+      <p>If your WordPress site serves visitors from the EU or EEA, your privacy policy must meet <strong>GDPR requirements</strong>. WordPress's built-in privacy template won't cut it — here's what a <strong>GDPR-compliant WordPress privacy policy</strong> must cover:</p>
+      <ul>
+        <li><strong>Lawful basis for processing:</strong> Specify whether you rely on consent, legitimate interest, or contractual necessity for each data processing activity (comments, analytics, email signups)</li>
+        <li><strong>Data subject rights:</strong> Clearly explain how EU visitors can exercise their rights to access, rectify, erase, restrict, and port their data — and how to object to processing</li>
+        <li><strong>Data retention periods:</strong> How long you keep comment data, form submissions, analytics data, and user account information</li>
+        <li><strong>International data transfers:</strong> If your hosting provider or plugins send data outside the EU (which most do — AWS, Google, Cloudflare), disclose this and the safeguards used (SCCs, DPF)</li>
+        <li><strong>Third-party processors:</strong> Name every service that receives personal data — Google Analytics, Mailchimp, Akismet, your hosting provider — and link to their privacy policies</li>
+        <li><strong>DPO contact:</strong> If required, provide your Data Protection Officer's contact details. For most small WordPress sites, a general privacy contact email is sufficient</li>
+        <li><strong>Cookie consent:</strong> Explain that non-essential cookies (analytics, marketing) are only loaded <em>after</em> the user gives explicit consent via your cookie banner</li>
+      </ul>
+      <p><strong>Common GDPR trap for WordPress:</strong> Many themes load Google Fonts directly from Google's CDN, which sends visitor IP addresses to Google servers in the US. A German court ruled this violates GDPR (LG München, January 2022). <strong>Self-host your fonts</strong> or use a system font stack to avoid this issue.</p>
+      <p>Don't build your GDPR privacy policy from scratch — our <a href="/">free Privacy Policy Generator</a> includes all mandatory GDPR clauses pre-configured for WordPress sites. Select your plugins during generation and get a compliant policy in minutes.</p>
 
       <h3>Common WordPress Privacy Mistakes</h3>
       <ul>
@@ -3237,9 +3251,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'do-you-need-cookie-policy-what-law-says-2026',
-    title: 'Do You Need a Cookie Policy? What the Law Actually Says (2026)',
+    title: 'Do You Need a Cookie Policy? What the Law Says + Free Cookie Policy Generator (2026)',
     date: '2026-03-06',
-    excerpt: 'Cookie laws vary dramatically by country and are getting stricter in 2026. Here is exactly when you need a cookie policy, what it must include, and how to create one for free.',
+    excerpt: 'Cookie laws vary by country and are stricter in 2026. Learn when you need a cookie policy, what it must include, and use our free cookie policy generator to create one in minutes — no signup, no cost.',
     content: `
       <p>If your website uses cookies — and almost every website does — you may be legally required to have a <strong>cookie policy</strong>. But the rules aren't the same everywhere. What's perfectly fine in the US could trigger massive fines in Europe. And in 2026, the landscape is shifting again with new state privacy laws, tighter EU enforcement, and evolving consent requirements.</p>
       <p>This guide cuts through the confusion. We'll explain <strong>exactly what the law says</strong>, show you a global comparison of requirements, and help you create a compliant cookie policy in minutes using our <a href="/cookie-policy">free Cookie Policy Generator</a>.</p>
