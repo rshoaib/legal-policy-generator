@@ -4,23 +4,15 @@ const path = require('path');
 
 const TODAY = new Date().toISOString().slice(0, 10);
 
-const policies = [
-  { label: 'Privacy Policy' },
-  { label: 'Terms of Service' },
-  { label: 'EULA' },
-  { label: 'Refund Policy' },
-  { label: 'Cookie Policy' },
-  { label: 'DMCA Policy' },
-];
-
-const industries = [
-  'ecommerce', 'saas', 'mobile-app', 'blog', 'healthcare',
-  'restaurant', 'freelancer', 'agency', 'nonprofit', 'education',
-];
+// NOTE: Niche tool pages (privacy-policy-for-ecommerce, eula-for-blog, etc.) are intentionally
+// excluded from the sitemap. They remain as live routes for users but are not submitted to Google
+// to avoid "Discovered – currently not indexed" bloat and preserve crawl budget.
+// This was decided in the March 2026 GSC audit after 86 pages were stuck in that state.
 
 const existingPages = [
   '/', '/privacy', '/terms', '/about', '/contact',
-  '/blog', '/compliance-checker', '/legal-page-checker', '/history', '/bundle', '/policy-guide',
+  '/blog', '/compliance-checker', '/history', '/bundle', '/policy-guide',
+  '/cookie-policy-generator',
 ];
 
 // --- Extract blog post slugs from blogData.ts ---
@@ -49,18 +41,6 @@ existingPages.forEach(p => {
   </url>`);
 });
 
-policies.forEach(pol => {
-  industries.forEach(ind => {
-    const slug = pol.label.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-for-' + ind;
-    lines.push(`  <url>
-    <loc>https://legalpolicygen.com/${slug}</loc>
-    <lastmod>${TODAY}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`);
-  });
-});
-
 // Blog post URLs
 blogSlugs.forEach(slug => {
   lines.push(`  <url>
@@ -73,5 +53,6 @@ blogSlugs.forEach(slug => {
 
 lines.push('</urlset>');
 fs.writeFileSync('public/sitemap.xml', lines.join('\n') + '\n');
-const total = existingPages.length + policies.length * industries.length + blogSlugs.length;
-console.log(`Sitemap created: ${total} URLs (${existingPages.length} pages + ${policies.length * industries.length} industry + ${blogSlugs.length} blog posts)`);
+const total = existingPages.length + blogSlugs.length;
+console.log(`Sitemap created: ${total} URLs (${existingPages.length} core pages + ${blogSlugs.length} blog posts)`);
+

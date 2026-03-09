@@ -37,6 +37,7 @@ export function PolicyIndustryPage({ page }: Props) {
         description={page.description}
         canonical={`/${page.slug}`}
         jsonLd={faqJsonLd}
+        noindex
       />
 
       <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
