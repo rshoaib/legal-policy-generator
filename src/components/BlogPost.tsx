@@ -87,6 +87,7 @@ export const BlogPost: React.FC = () => {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.date,
     wordCount,
     image: 'https://legalpolicygen.com/og-image.png',
     author: {

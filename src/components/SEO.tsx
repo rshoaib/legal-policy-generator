@@ -19,6 +19,7 @@ const SITE_URL = 'https://legalpolicygen.com';
 const DEFAULT_DESCRIPTION =
   'Generate free Privacy Policies, Terms, NDA, EULA, DMCA, Cookie Banners & 22 more legal documents. GDPR/CCPA compliant — no signup required.';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+const SUPPORTED_LANGS = ['en', 'es', 'fr', 'de', 'pt', 'ar'] as const;
 
 export const SEO: React.FC<SEOProps> = ({
   title,
@@ -49,6 +50,12 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={description} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+      {/* hreflang — same URL serves all languages via client-side i18n */}
+      {canonicalUrl && SUPPORTED_LANGS.map(lang => (
+        <link key={lang} rel="alternate" hrefLang={lang} href={canonicalUrl} />
+      ))}
+      {canonicalUrl && <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />}
 
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />
