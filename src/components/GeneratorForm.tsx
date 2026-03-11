@@ -184,13 +184,27 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
                 placeholder="e.g. 1–2 business days"
               />
             </div>
-            <div>
+            <div style={{ gridColumn: '1 / -1' }}>
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_methods')}</label>
-              <input
+              <textarea
                 name="shippingMethods"
                 value={formData.shippingMethods || ''}
-                onChange={handleChange}
-                placeholder="e.g. Standard, Express, Overnight"
+                onChange={(e) => {
+                    const newData = { ...formData, shippingMethods: e.target.value };
+                    setFormData(newData);
+                    if (onDataChange) onDataChange(newData);
+                }}
+                placeholder="Standard Shipping&#10;Express Shipping&#10;Overnight Shipping"
+                style={{
+                  width: '100%',
+                  minHeight: '80px',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  color: 'var(--text-primary)',
+                  fontFamily: 'inherit'
+                }}
               />
             </div>
             <div>
@@ -228,6 +242,8 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_free_threshold')}</label>
               <input
                 name="shippingFreeThreshold"
+                type="number"
+                min="0"
                 value={formData.shippingFreeThreshold || ''}
                 onChange={handleChange}
                 placeholder="e.g. 50 (leave empty if none)"
@@ -235,11 +251,25 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             </div>
             <div style={{ gridColumn: '1 / -1' }}>
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_restrictions')}</label>
-              <input
+              <textarea
                 name="shippingRestrictions"
                 value={formData.shippingRestrictions || ''}
-                onChange={handleChange}
-                placeholder="e.g. Hazardous materials, P.O. Boxes"
+                onChange={(e) => {
+                    const newData = { ...formData, shippingRestrictions: e.target.value };
+                    setFormData(newData);
+                    if (onDataChange) onDataChange(newData);
+                }}
+                placeholder="Hazardous materials&#10;P.O. Boxes&#10;International restricted items"
+                style={{
+                  width: '100%',
+                  minHeight: '80px',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.05)',
+                  color: 'var(--text-primary)',
+                  fontFamily: 'inherit'
+                }}
               />
             </div>
           </>
