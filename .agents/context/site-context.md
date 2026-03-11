@@ -26,6 +26,7 @@ description: Brand voice, internal links, and target keywords for legalpolicygen
 | Disclaimer Generator | `/disclaimer` | liability, disclaimer, legal notice |
 | DMCA Policy Generator | `/dmca` | copyright, takedown, DMCA |
 | Return Policy Generator | `/return-policy` | returns, refunds, e-commerce |
+| Shipping Policy Generator | `/shipping-policy` | shipping policy, delivery, international shipping |
 | Blog | `/blog/[slug]` | Legal guides and articles |
 
 ## Target Keywords
@@ -37,6 +38,7 @@ description: Brand voice, internal links, and target keywords for legalpolicygen
 | GDPR privacy policy template | 🆕 Need content |
 | cookie consent policy | ✅ Published |
 | return policy generator | 🆕 Need content |
+| shipping policy generator | 🆕 Need content |
 
 ### Content Calendar
 1. ~~"How to Write a Privacy Policy (GDPR + CCPA Compliant 2026)"~~ ✅ Published
