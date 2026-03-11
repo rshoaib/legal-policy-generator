@@ -81,6 +81,20 @@ const corePages = [
     h1: 'Terms of Service',
     h2: 'Rules and guidelines for using Legal Policy Generator.',
   },
+  {
+    route: 'history',
+    title: 'Your Generated Policies',
+    description: 'View and manage the legal policies you have generated with Legal Policy Generator.',
+    h1: 'Your Generated Policies',
+    h2: 'Access your previously generated privacy policies, terms, and more.',
+  },
+  {
+    route: 'cookie-policy-generator',
+    title: 'Free Cookie Policy Generator (2026 GDPR Compliant)',
+    description: 'Create a customized, GDPR & ePrivacy compliant Cookie Policy for your website in minutes. Free, no signup required.',
+    h1: 'Free Cookie Policy Generator',
+    h2: 'Generate a customized Cookie Policy for your website or app.',
+  },
 ];
 
 // ── Programmatic SEO pages (same logic as src/data/seoPages.ts) ─────────────
@@ -121,9 +135,43 @@ for (const policy of policies) {
   }
 }
 
+// ── Blog pages ──────────────────────────────────────────────────────────────
+
+let blogPages = [];
+try {
+  const fs = require('fs');
+  const path = require('path');
+  const blogDataPath = path.join(__dirname, '..', 'src', 'lib', 'blogData.ts');
+  const content = fs.readFileSync(blogDataPath, 'utf-8');
+  
+  const parts = content.split('slug:').slice(1);
+  for (const part of parts) {
+    const slugMatch = /^\s*(['"])([\s\S]*?)(?<!\\)\1/.exec(part);
+    const titleMatch = /title:\s*(['"])([\s\S]*?)(?<!\\)\1/.exec(part);
+    const excerptMatch = /excerpt:\s*(['"])([\s\S]*?)(?<!\\)\1/.exec(part);
+    const dateMatch = /date:\s*(['"])([\s\S]*?)(?<!\\)\1/.exec(part);
+    
+    if (slugMatch && titleMatch && excerptMatch && dateMatch) {
+      // Unescape quotes if any
+      const unescape = str => str.replace(/\\(['"])/g, '$1');
+      blogPages.push({
+        route: `blog/${unescape(slugMatch[2])}`,
+        title: unescape(titleMatch[2]),
+        description: unescape(excerptMatch[2]),
+        h1: unescape(titleMatch[2]),
+        h2: `Published on ${unescape(dateMatch[2])}`,
+      });
+    }
+  }
+  console.log(`Loaded ${blogPages.length} blog posts for prerendering.`);
+} catch (e) {
+  console.warn('⚠️ Could not load src/lib/blogData.ts for blog prerendering.');
+  console.error(e);
+}
+
 // ── Combine all routes ──────────────────────────────────────────────────────
 
-const allRoutes = [...corePages, ...seoPages];
+const allRoutes = [...corePages, ...seoPages, ...blogPages];
 
 // ── HTML transformation ─────────────────────────────────────────────────────
 
