@@ -142,5 +142,15 @@
   "generate_data_breach": "Generate Data Breach Policy",
   "start_ai_ethics": "Create AI Ethics Policy",
   "ai_ethics": "AI / ML Ethics Policy",
-  "generate_ai_ethics": "Generate AI Ethics Policy"
+  "generate_ai_ethics": "Generate AI Ethics Policy",
+  "start_shipping": "Create Shipping Policy",
+  "shipping_policy": "Shipping Policy",
+  "generate_shipping": "Generate Shipping Policy",
+  "shipping_processing_time": "Order Processing Time",
+  "shipping_methods": "Shipping Methods",
+  "shipping_domestic_time": "Domestic Delivery Estimate",
+  "shipping_international": "We ship internationally",
+  "shipping_international_time": "International Delivery Estimate",
+  "shipping_free_threshold": "Free Shipping Threshold ($)",
+  "shipping_restrictions": "Shipping Restrictions"
 }

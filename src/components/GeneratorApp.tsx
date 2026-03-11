@@ -81,6 +81,7 @@ export function GeneratorApp() {
     'sla': () => import('../utils/templates/sla').then(m => m.generateSLA),
     'data-breach': () => import('../utils/templates/dataBreachNotification').then(m => m.generateDataBreachNotification),
     'ai-ethics': () => import('../utils/templates/aiEthicsPolicy').then(m => m.generateAIEthicsPolicy),
+    'shipping': () => import('../utils/templates/shippingPolicy').then(m => m.generateShippingPolicy),
   }
 
   const handleGenerate = async (data: PolicyData) => {
@@ -285,6 +286,7 @@ export function GeneratorApp() {
             <button className="btn-primary" onClick={() => handleStart('sla')}>{t('start_sla')}</button>
             <button className="btn-primary" onClick={() => handleStart('data-breach')}>{t('start_data_breach')}</button>
             <button className="btn-primary" onClick={() => handleStart('ai-ethics')}>{t('start_ai_ethics')}</button>
+            <button className="btn-primary" onClick={() => handleStart('shipping')}>{t('start_shipping')}</button>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>

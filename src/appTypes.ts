@@ -1,4 +1,4 @@
-export type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos' | 'hipaa' | 'sla' | 'data-breach' | 'ai-ethics';
+export type PolicyType = 'privacy' | 'terms' | 'cookie' | 'refund' | 'disclaimer' | 'cookie-banner' | 'robots-txt' | 'accessibility' | 'nda' | 'eula' | 'dpa' | 'aup' | 'dmca' | 'employee-privacy' | 'affiliate-disclaimer' | 'social-media' | 'newsletter' | 'tos' | 'hipaa' | 'sla' | 'data-breach' | 'ai-ethics' | 'shipping';
 
 /** i18n keys for policy type titles */
 export const POLICY_TITLE_KEYS: Record<PolicyType, string> = {
@@ -24,6 +24,7 @@ export const POLICY_TITLE_KEYS: Record<PolicyType, string> = {
     'sla': 'sla',
     'data-breach': 'data_breach',
     'ai-ethics': 'ai_ethics',
+    'shipping': 'shipping_policy',
 };
 
 /** i18n keys for Generate button labels */
@@ -50,6 +51,7 @@ export const POLICY_GENERATE_KEYS: Record<PolicyType, string> = {
     'sla': 'generate_sla',
     'data-breach': 'generate_data_breach',
     'ai-ethics': 'generate_ai_ethics',
+    'shipping': 'generate_shipping',
 };
 
 /** Human-readable labels for file names */
@@ -76,6 +78,7 @@ export const POLICY_FILE_LABELS: Record<PolicyType, string> = {
     'sla': 'service-level-agreement',
     'data-breach': 'data-breach-notification',
     'ai-ethics': 'ai-ethics-policy',
+    'shipping': 'shipping-policy',
 };
 
 export interface PolicyData {
@@ -131,4 +134,13 @@ export interface PolicyData {
 
     // SLA fields
     slaUptimeGuarantee?: string;
+
+    // Shipping Policy fields
+    shippingProcessingTime?: string;
+    shippingMethods?: string;
+    shippingDomesticTime?: string;
+    shippingInternational?: boolean;
+    shippingInternationalTime?: string;
+    shippingFreeThreshold?: string;
+    shippingRestrictions?: string;
 }

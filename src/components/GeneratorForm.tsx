@@ -173,7 +173,77 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           </>
         )}
 
-
+        {selectedType === 'shipping' && (
+          <>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_processing_time')}</label>
+              <input
+                name="shippingProcessingTime"
+                value={formData.shippingProcessingTime || ''}
+                onChange={handleChange}
+                placeholder="e.g. 1–2 business days"
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_methods')}</label>
+              <input
+                name="shippingMethods"
+                value={formData.shippingMethods || ''}
+                onChange={handleChange}
+                placeholder="e.g. Standard, Express, Overnight"
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_domestic_time')}</label>
+              <input
+                name="shippingDomesticTime"
+                value={formData.shippingDomesticTime || ''}
+                onChange={handleChange}
+                placeholder="e.g. 5–7 business days"
+              />
+            </div>
+            <div style={{ gridColumn: '1 / -1' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                <input
+                  name="shippingInternational"
+                  type="checkbox"
+                  checked={formData.shippingInternational || false}
+                  onChange={handleCheckboxChange}
+                />
+                {t('shipping_international')}
+              </label>
+            </div>
+            {formData.shippingInternational && (
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_international_time')}</label>
+                <input
+                  name="shippingInternationalTime"
+                  value={formData.shippingInternationalTime || ''}
+                  onChange={handleChange}
+                  placeholder="e.g. 10–20 business days"
+                />
+              </div>
+            )}
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_free_threshold')}</label>
+              <input
+                name="shippingFreeThreshold"
+                value={formData.shippingFreeThreshold || ''}
+                onChange={handleChange}
+                placeholder="e.g. 50 (leave empty if none)"
+              />
+            </div>
+            <div style={{ gridColumn: '1 / -1' }}>
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('shipping_restrictions')}</label>
+              <input
+                name="shippingRestrictions"
+                value={formData.shippingRestrictions || ''}
+                onChange={handleChange}
+                placeholder="e.g. Hazardous materials, P.O. Boxes"
+              />
+            </div>
+          </>
+        )}
 
         {selectedType === 'disclaimer' && (
           <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
