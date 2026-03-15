@@ -64,6 +64,10 @@ export function GeneratorApp() {
       }
       const redirectPath = typeToPath[urlType] || '/'
       window.location.replace(redirectPath)
+    } else if (searchParams.has('q') && !urlStep && !urlType) {
+      // Handle legacy GSC indexed SearchAction URLs (e.g. /?q={search_term_string}) 
+      // -> 301 redirect to clean canonical home
+      window.location.replace('/')
     }
   }, [searchParams, setSearchParams])
 
