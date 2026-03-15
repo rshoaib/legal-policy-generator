@@ -28,6 +28,24 @@ const PrivacyPolicyGenerator = lazy(() => import('./components/PrivacyPolicyGene
 const TermsOfServiceGenerator = lazy(() => import('./components/TermsOfServiceGenerator').then(m => ({ default: m.TermsOfServiceGenerator })))
 const EulaGenerator = lazy(() => import('./components/EulaGenerator').then(m => ({ default: m.EulaGenerator })))
 const NdaGenerator = lazy(() => import('./components/NdaGenerator').then(m => ({ default: m.NdaGenerator })))
+const RefundPolicyGenerator = lazy(() => import('./components/RefundPolicyGenerator').then(m => ({ default: m.RefundPolicyGenerator })))
+const DisclaimerGenerator = lazy(() => import('./components/DisclaimerGenerator').then(m => ({ default: m.DisclaimerGenerator })))
+const CookieBannerGenerator = lazy(() => import('./components/CookieBannerGenerator').then(m => ({ default: m.CookieBannerGenerator })))
+const RobotsTxtGenerator = lazy(() => import('./components/RobotsTxtGenerator').then(m => ({ default: m.RobotsTxtGenerator })))
+const AccessibilityStatementGenerator = lazy(() => import('./components/AccessibilityStatementGenerator').then(m => ({ default: m.AccessibilityStatementGenerator })))
+const DpaGenerator = lazy(() => import('./components/DpaGenerator').then(m => ({ default: m.DpaGenerator })))
+const AupGenerator = lazy(() => import('./components/AupGenerator').then(m => ({ default: m.AupGenerator })))
+const DmcaGenerator = lazy(() => import('./components/DmcaGenerator').then(m => ({ default: m.DmcaGenerator })))
+const EmployeePrivacyGenerator = lazy(() => import('./components/EmployeePrivacyGenerator').then(m => ({ default: m.EmployeePrivacyGenerator })))
+const AffiliateDisclaimerGenerator = lazy(() => import('./components/AffiliateDisclaimerGenerator').then(m => ({ default: m.AffiliateDisclaimerGenerator })))
+const SocialMediaPolicyGenerator = lazy(() => import('./components/SocialMediaPolicyGenerator').then(m => ({ default: m.SocialMediaPolicyGenerator })))
+const NewsletterPolicyGenerator = lazy(() => import('./components/NewsletterPolicyGenerator').then(m => ({ default: m.NewsletterPolicyGenerator })))
+const TosGenerator = lazy(() => import('./components/TosGenerator').then(m => ({ default: m.TosGenerator })))
+const HipaaGenerator = lazy(() => import('./components/HipaaGenerator').then(m => ({ default: m.HipaaGenerator })))
+const SlaGenerator = lazy(() => import('./components/SlaGenerator').then(m => ({ default: m.SlaGenerator })))
+const DataBreachPolicyGenerator = lazy(() => import('./components/DataBreachPolicyGenerator').then(m => ({ default: m.DataBreachPolicyGenerator })))
+const AiEthicsPolicyGenerator = lazy(() => import('./components/AiEthicsPolicyGenerator').then(m => ({ default: m.AiEthicsPolicyGenerator })))
+const ShippingPolicyGenerator = lazy(() => import('./components/ShippingPolicyGenerator').then(m => ({ default: m.ShippingPolicyGenerator })))
 import { seoPages } from './data/seoPages'
 
 /* ── Loading fallback ── */
@@ -84,6 +102,27 @@ function App() {
                 <Route path="/terms-of-service" element={<Navigate to="/terms-of-service-generator" replace />} />
                 <Route path="/eula-generator" element={<EulaGenerator />} />
                 <Route path="/nda-generator" element={<NdaGenerator />} />
+                <Route path="/refund-policy-generator" element={<RefundPolicyGenerator />} />
+                <Route path="/refund-policy" element={<Navigate to="/refund-policy-generator" replace />} />
+                <Route path="/disclaimer-generator" element={<DisclaimerGenerator />} />
+                <Route path="/disclaimer" element={<Navigate to="/disclaimer-generator" replace />} />
+                <Route path="/cookie-banner-generator" element={<CookieBannerGenerator />} />
+                <Route path="/cookie-banner" element={<Navigate to="/cookie-banner-generator" replace />} />
+                <Route path="/robots-txt-generator" element={<RobotsTxtGenerator />} />
+                <Route path="/accessibility-statement-generator" element={<AccessibilityStatementGenerator />} />
+                <Route path="/dpa-generator" element={<DpaGenerator />} />
+                <Route path="/aup-generator" element={<AupGenerator />} />
+                <Route path="/dmca-generator" element={<DmcaGenerator />} />
+                <Route path="/employee-privacy-policy-generator" element={<EmployeePrivacyGenerator />} />
+                <Route path="/affiliate-disclaimer-generator" element={<AffiliateDisclaimerGenerator />} />
+                <Route path="/social-media-policy-generator" element={<SocialMediaPolicyGenerator />} />
+                <Route path="/newsletter-policy-generator" element={<NewsletterPolicyGenerator />} />
+                <Route path="/tos-generator" element={<TosGenerator />} />
+                <Route path="/hipaa-policy-generator" element={<HipaaGenerator />} />
+                <Route path="/sla-generator" element={<SlaGenerator />} />
+                <Route path="/data-breach-policy-generator" element={<DataBreachPolicyGenerator />} />
+                <Route path="/ai-ethics-policy-generator" element={<AiEthicsPolicyGenerator />} />
+                <Route path="/shipping-policy-generator" element={<ShippingPolicyGenerator />} />
                 {/* PROGRAMMATIC SEO: [Policy] for [Industry] */}
                 {seoPages.map(page => (
                     <Route key={page.slug} path={`/${page.slug}`} element={<PolicyIndustryPage page={page} />} />

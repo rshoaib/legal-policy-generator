@@ -1,0 +1,144 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { SEO } from './SEO';
+
+export const HipaaGenerator: React.FC = () => {
+  const navigate = useNavigate();
+
+  const pageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Free HIPAA Privacy Policy Generator',
+    url: 'https://legalpolicygen.com/hipaa-policy-generator',
+    applicationCategory: 'MedicalApplication',
+    operatingSystem: 'All',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    description: 'Generate a HIPAA-compliant Privacy Policy for your medical practice, telehealth app, or pharmacy. Disclose how PHI is secured and handled.',
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is a HIPAA Notice of Privacy Practices (NPP)?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'It is a specific legal document required by the US Department of Health and Human Services. It informs patients of their rights regarding their Protected Health Information (PHI) and outlines how your organization may use or disclose that data.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Who must comply with HIPAA?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'HIPAA applies to "Covered Entities," which include healthcare providers (doctors, dentists, psychologists), health plans (insurance companies), healthcare clearinghouses, and their "Business Associates" (like SaaS vendors hosting medical data).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I just use a standard website Privacy Policy?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No. A standard website Privacy Policy deals with consumer data like IP addresses and marketing cookies. It does not meet the strict federal regulatory requirements set by HIPAA for handling medical and health records (PHI).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What happens if I violate the HIPAA Privacy Rule?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Fines for HIPAA violations are severe, ranging from $137 to $68,928 per violation, depending on the level of negligence. In extreme cases of willful neglect, federal criminal charges and jail time may be pursued.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
+      { '@type': 'ListItem', position: 2, name: 'HIPAA Policy Generator', item: 'https://legalpolicygen.com/hipaa-policy-generator' },
+    ],
+  };
+
+  return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <SEO
+        title="Free HIPAA Privacy Policy Generator — Medical Notice of Privacy (2026)"
+        description="Create a HIPAA-compliant Notice of Privacy Practices (NPP). Legally required for doctors, telehealth apps, and medical SaaS handling PHI."
+        canonical="/hipaa-policy-generator"
+        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
+      />
+
+      {/* Hero */}
+      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
+          ⚕️ Free HIPAA Privacy Policy Generator
+        </h1>
+        <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
+          Create a federal-level <strong style={{ color: 'var(--text-primary)' }}>Notice of Privacy Practices (NPP)</strong>. Essential for clinics, telehealth apps, and B2B medical vendors handling protected health information (PHI).
+        </p>
+        <button
+          className="btn-primary"
+          onClick={() => navigate('/?step=form&type=hipaa')}
+          style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
+        >
+          Generate Your HIPAA Policy — Free →
+        </button>
+      </section>
+
+      {/* Why You Need a Policy */}
+      <section className="glass-panel" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
+        <h2 className="text-gradient" style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Why Healthcare Businesses Need a HIPAA Policy</h2>
+        <div style={{ color: 'var(--text-secondary)', lineHeight: 1.9, fontSize: '1.05rem' }}>
+          <p style={{ marginBottom: '1.25rem' }}>
+            If you collect medical data, appointment details, or health conditions in the United States, you are subject to HIPAA (Health Insurance Portability and Accountability Act). The HIPAA Privacy Rule legally requires you to develop and distribute a specific "Notice of Privacy Practices" to every patient.
+          </p>
+          <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.25rem' }}>
+            <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: 'var(--accent-primary)' }}>Federal Requirement for Covered Entities:</strong> Any doctor's office, dental clinic, or telehealth startup must prominently display this HIPAA notice on their website and provide a physical copy during onboarding.</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: 'var(--accent-primary)' }}>Disclose Permitted PHI Uses:</strong> The policy explicitly outlines how Protected Health Information (PHI) will be used strictly for Treatment, Payment, and Health Care Operations (TPO).</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: 'var(--accent-primary)' }}>Patient Legal Rights:</strong> The Notice must explicitly establish the patient's right to inspect their medical records, request amendments, request an accounting of disclosures, and file formal complaints with the OCR.</li>
+            <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: 'var(--accent-primary)' }}>Massive Non-Compliance Fines:</strong> The Office for Civil Rights (OCR) actively audits healthcare providers. Failing to correctly provide and document the receipt of a proper Privacy Practices notice can result in fines up to $68,000 per missing instance.</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="glass-panel" style={{ padding: '1.5rem' }}>
+            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Is this different from a standard website Privacy Policy?</h3>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes, entirely. A standard web Privacy Policy (for marketing cookies, analytics) does not contain the mandatory federal language required by HIPAA for handling confidential patient medical records.</p>
+          </div>
+          <div className="glass-panel" style={{ padding: '1.5rem' }}>
+            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Who exactly must comply with HIPAA?</h3>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>HIPAA applies to "Covered Entities," which include healthcare providers (doctors, therapists), health plans, and their "Business Associates" (such as SaaS companies managing medical software databases).</p>
+          </div>
+          <div className="glass-panel" style={{ padding: '1.5rem' }}>
+            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What is PHI?</h3>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Protected Health Information (PHI) is any demographic information that can be used to identify a patient (names, phone numbers, SSNs) linked to their past, present, or future physical or mental health condition.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
+        <button
+          className="btn-primary"
+          onClick={() => navigate('/?step=form&type=hipaa')}
+          style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
+        >
+          Create Your HIPAA Privacy Notice Now →
+        </button>
+      </section>
+    </div>
+  );
+};

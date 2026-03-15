@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { SEO } from './SEO'
 import { type PolicyData, type PolicyType, POLICY_FILE_LABELS } from '../appTypes'
 import { savePolicy } from '../utils/useHistoryStorage'
@@ -22,6 +22,21 @@ export function GeneratorApp() {
   const [selectedType, setSelectedType] = useState<PolicyType>('privacy')
   const [generatedContent, setGeneratedContent] = useState('')
   const [livePreviewContent, setLivePreviewContent] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  /* Detect redirect from SEO landing pages */
+  useEffect(() => {
+    const urlStep = searchParams.get('step') as Step
+    const urlType = searchParams.get('type') as PolicyType
+    
+    if (urlStep === 'form' && urlType) {
+      setStep('form')
+      setSelectedType(urlType)
+      
+      // Clear URL params without reloading so it looks clean
+      setSearchParams({})
+    }
+  }, [searchParams, setSearchParams])
 
   /* New: Language Handling */
   const { t, i18n } = useTranslation()
@@ -51,11 +66,6 @@ export function GeneratorApp() {
       setFormData({})
       setStep('landing')
       setGeneratedContent('')
-  }
-
-  const handleStart = (type: PolicyType) => {
-    setSelectedType(type)
-    setStep('form')
   }
 
   /* ── Dynamic template map — loaded only when user generates ── */
@@ -278,29 +288,29 @@ export function GeneratorApp() {
           </p>
           
           <div className="delay-200 animate-enter" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto 4rem' }}>
-            <button className="btn-primary" onClick={() => handleStart('privacy')}>{t('start_privacy')}</button>
-            <button className="btn-primary" onClick={() => handleStart('terms')}>{t('start_terms')}</button>
-            <button className="btn-primary" onClick={() => handleStart('cookie')}>{t('start_cookie')}</button>
-            <button className="btn-primary" onClick={() => handleStart('refund')}>{t('start_refund')}</button>
-            <button className="btn-primary" onClick={() => handleStart('disclaimer')}>{t('start_disclaimer')}</button>
-            <button className="btn-primary" onClick={() => handleStart('cookie-banner')}>{t('start_cookie_banner')}</button>
-            <button className="btn-primary" onClick={() => handleStart('robots-txt')}>{t('start_robots')}</button>
-            <button className="btn-primary" onClick={() => handleStart('accessibility')}>{t('start_accessibility')}</button>
-            <button className="btn-primary" onClick={() => handleStart('nda')}>{t('start_nda')}</button>
-            <button className="btn-primary" onClick={() => handleStart('eula')}>{t('start_eula')}</button>
-            <button className="btn-primary" onClick={() => handleStart('dpa')}>{t('start_dpa')}</button>
-            <button className="btn-primary" onClick={() => handleStart('aup')}>{t('start_aup')}</button>
-            <button className="btn-primary" onClick={() => handleStart('dmca')}>{t('start_dmca')}</button>
-            <button className="btn-primary" onClick={() => handleStart('employee-privacy')}>{t('start_employee_privacy')}</button>
-            <button className="btn-primary" onClick={() => handleStart('affiliate-disclaimer')}>{t('start_affiliate_disclaimer')}</button>
-            <button className="btn-primary" onClick={() => handleStart('social-media')}>{t('start_social_media')}</button>
-            <button className="btn-primary" onClick={() => handleStart('newsletter')}>{t('start_newsletter')}</button>
-            <button className="btn-primary" onClick={() => handleStart('tos')}>{t('start_tos')}</button>
-            <button className="btn-primary" onClick={() => handleStart('hipaa')}>{t('start_hipaa')}</button>
-            <button className="btn-primary" onClick={() => handleStart('sla')}>{t('start_sla')}</button>
-            <button className="btn-primary" onClick={() => handleStart('data-breach')}>{t('start_data_breach')}</button>
-            <button className="btn-primary" onClick={() => handleStart('ai-ethics')}>{t('start_ai_ethics')}</button>
-            <button className="btn-primary" onClick={() => handleStart('shipping')}>{t('start_shipping')}</button>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/privacy-policy-generator">{t('start_privacy')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/terms-of-service-generator">{t('start_terms')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/cookie-policy-generator">{t('start_cookie')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/refund-policy-generator">{t('start_refund')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/disclaimer-generator">{t('start_disclaimer')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/cookie-banner-generator">{t('start_cookie_banner')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/robots-txt-generator">{t('start_robots')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/accessibility-statement-generator">{t('start_accessibility')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/nda-generator">{t('start_nda')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/eula-generator">{t('start_eula')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/dpa-generator">{t('start_dpa')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/aup-generator">{t('start_aup')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/dmca-generator">{t('start_dmca')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/employee-privacy-policy-generator">{t('start_employee_privacy')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/affiliate-disclaimer-generator">{t('start_affiliate_disclaimer')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/social-media-policy-generator">{t('start_social_media')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/newsletter-policy-generator">{t('start_newsletter')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/tos-generator">{t('start_tos')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/hipaa-policy-generator">{t('start_hipaa')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/sla-generator">{t('start_sla')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/data-breach-policy-generator">{t('start_data_breach')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/ai-ethics-policy-generator">{t('start_ai_ethics')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/shipping-policy-generator">{t('start_shipping')}</Link>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
