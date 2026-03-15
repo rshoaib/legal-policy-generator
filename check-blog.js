@@ -27,8 +27,8 @@ const req = https.request(options, res => {
     posts.sort((a,b) => new Date(b.date) - new Date(a.date));
     
     // Use the exact time logic as earlier
-    const now = new Date('2026-03-14T02:37:32+03:00');
-    const today = new Date('2026-03-14T02:37:32+03:00');
+    const now = new Date('2026-03-15T12:14:10+03:00');
+    const today = new Date('2026-03-15T12:14:10+03:00');
     today.setHours(0,0,0,0);
     
     const day = now.getDay();
