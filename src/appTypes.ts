@@ -143,4 +143,9 @@ export interface PolicyData {
     shippingInternationalTime?: string;
     shippingFreeThreshold?: string;
     shippingRestrictions?: string;
+
+    // Advanced Privacy Toggles
+    privacySellData?: boolean;
+    privacyChildren?: boolean;
+    privacyGoogleAnalytics?: boolean;
 }

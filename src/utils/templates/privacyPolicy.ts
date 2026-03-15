@@ -1,6 +1,29 @@
 import type { PolicyData } from '../../appTypes';
 
 export const generatePrivacyPolicy = (data: PolicyData, lang: string = 'en'): string => {
+    let additionalSpanishClauses = '';
+    let additionalEnglishClauses = '';
+    
+    if (data.privacySellData || data.privacyChildren || data.privacyGoogleAnalytics) {
+        additionalSpanishClauses += `\n3. Cumplimiento Avanzado y Divulgaciones\n\n`;
+        additionalEnglishClauses += `\n3. Advanced Compliance and Disclosures\n\n`;
+        
+        if (data.privacyGoogleAnalytics) {
+            additionalSpanishClauses += `Rastreo y Análisis de Terceros\nUtilizamos Proveedores de Servicios externos, como Google Analytics, para monitorear y analizar el uso de nuestro Servicio. Estas partes tienen acceso a Sus Datos Personales solo para realizar estas tareas en Nuestro nombre y están obligadas a no divulgarlos ni utilizarlos para ningún otro propósito.\n\n`;
+            additionalEnglishClauses += `Third-Party Tracking and Analytics\nWe use third-party Service Providers such as Google Analytics to monitor and analyze the use of our Service. These parties have access to Your Personal Data only to perform these tasks on Our behalf and are obligated not to disclose or use it for any other purpose.\n\n`;
+        }
+        
+        if (data.privacySellData) {
+            additionalSpanishClauses += `Aviso de Privacidad de CCPA/CPRA (No Vender Mi Información Personal)\nSegún la Ley de Privacidad del Consumidor de California (CCPA) y la CPRA, los residentes de California tienen derecho a optar por no "vender" o "compartir" su información personal. Si desea ejercer este derecho, contáctenos.\n\n`;
+            additionalEnglishClauses += `CCPA/CPRA Privacy Notice (Do Not Sell My Personal Information)\nUnder the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA), California residents have the right to opt-out of the "sale" or "sharing" of their personal information. If You wish to exercise this right, please contact us.\n\n`;
+        }
+        
+        if (data.privacyChildren) {
+            additionalSpanishClauses += `Privacidad de los Menores (COPPA)\nNuestro Servicio no está dirigido a menores de 13 años. No recopilamos a sabiendas información de identificación personal de menores de 13 años. Si Nos damos cuenta de que hemos recopilado Datos Personales de un menor de 13 años, tomamos medidas para eliminar esa información.\n\n`;
+            additionalEnglishClauses += `Children's Privacy (COPPA)\nOur Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.\n\n`;
+        }
+    }
+
     if (lang === 'es') {
         return `
 Política de Privacidad de ${data.websiteName}
@@ -35,8 +58,8 @@ Mientras utiliza Nuestro Servicio, es posible que le pidamos que Nos proporcione
 * Dirección de correo electrónico
 * Nombre y apellido
 * Datos de uso
-
-3. Contáctenos
+${additionalSpanishClauses}
+${additionalSpanishClauses ? '4.' : '3.'} Contáctenos
 
 Si tiene alguna pregunta sobre esta Política de Privacidad, puede contactarnos:
 
@@ -78,8 +101,8 @@ While using Our Service, We may ask You to provide Us with certain personally id
 * Email address
 * First name and last name
 * Usage Data
-
-3. Contact Us
+${additionalEnglishClauses}
+${additionalEnglishClauses ? '4.' : '3.'} Contact Us
 
 If you have any questions about this Privacy Policy, You can contact us:
 

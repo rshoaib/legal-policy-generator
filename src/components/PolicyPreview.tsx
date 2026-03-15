@@ -181,7 +181,7 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
         />
       )}
 
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
         <button className="btn-primary" onClick={handleCopy}>
           {t('copy_clipboard')}
         </button>
@@ -194,6 +194,44 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
         <button className="btn-primary" style={{ filter: 'hue-rotate(270deg)' }} onClick={handleDownloadWord}>
           {t('download_word')}
         </button>
+      </div>
+
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
+        <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)', fontSize: '1.1rem' }}>How to Embed Your Policy</h3>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem', lineHeight: '1.6' }}>
+          Once you have copied or downloaded your policy, you need to add it to your website. We recommend placing a link to your legal policies in your website's footer so it's accessible from every page.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+          <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '0.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <h4 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>WordPress</h4>
+            <ol style={{ paddingLeft: '1.2rem', color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', margin: 0 }}>
+              <li>Go to <strong>Pages &gt; Add New</strong>.</li>
+              <li>Title the page (e.g., "Privacy Policy").</li>
+              <li>Add a <strong>Custom HTML</strong> block and paste your copied code, OR use a Visual block and paste the text.</li>
+              <li>Publish and add the link to your footer menu via <strong>Appearance &gt; Menus</strong>.</li>
+            </ol>
+          </div>
+          
+          <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '0.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <h4 style={{ color: 'var(--accent-secondary)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Shopify</h4>
+            <ol style={{ paddingLeft: '1.2rem', color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', margin: 0 }}>
+              <li>Go to <strong>Settings &gt; Policies</strong>.</li>
+              <li>Find the relevant policy text box.</li>
+              <li>Click the <strong>&lt;&gt; (Show HTML)</strong> button and paste your copied HTML.</li>
+              <li>Save and add to your footer via <strong>Online Store &gt; Navigation</strong>.</li>
+            </ol>
+          </div>
+
+          <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '0.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <h4 style={{ color: 'var(--accent-tertiary)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Custom HTML / React</h4>
+            <ol style={{ paddingLeft: '1.2rem', color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', margin: 0 }}>
+              <li>Click <strong>Download HTML</strong>.</li>
+              <li>Upload the `.html` file to your server or public directory.</li>
+              <li>Link to it using a standard anchor tag: <code>&lt;a href="/policy.html"&gt;Read Policy&lt;/a&gt;</code>.</li>
+            </ol>
+          </div>
+        </div>
       </div>
     </div>
   );

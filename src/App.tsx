@@ -24,6 +24,10 @@ const PolicyBundle = lazy(() => import('./components/PolicyBundle').then(m => ({
 const PolicyGuide = lazy(() => import('./components/PolicyGuide').then(m => ({ default: m.PolicyGuide })))
 const PolicyIndustryPage = lazy(() => import('./components/PolicyIndustryPage').then(m => ({ default: m.PolicyIndustryPage })))
 const CookiePolicyGenerator = lazy(() => import('./components/CookiePolicyGenerator').then(m => ({ default: m.CookiePolicyGenerator })))
+const PrivacyPolicyGenerator = lazy(() => import('./components/PrivacyPolicyGenerator').then(m => ({ default: m.PrivacyPolicyGenerator })))
+const TermsOfServiceGenerator = lazy(() => import('./components/TermsOfServiceGenerator').then(m => ({ default: m.TermsOfServiceGenerator })))
+const EulaGenerator = lazy(() => import('./components/EulaGenerator').then(m => ({ default: m.EulaGenerator })))
+const NdaGenerator = lazy(() => import('./components/NdaGenerator').then(m => ({ default: m.NdaGenerator })))
 import { seoPages } from './data/seoPages'
 
 /* ── Loading fallback ── */
@@ -74,6 +78,12 @@ function App() {
                 <Route path="/policy-guide" element={<PolicyGuide />} />
                 <Route path="/cookie-policy-generator" element={<CookiePolicyGenerator />} />
                 <Route path="/cookie-policy" element={<Navigate to="/cookie-policy-generator" replace />} />
+                <Route path="/privacy-policy-generator" element={<PrivacyPolicyGenerator />} />
+                <Route path="/privacy-policy" element={<Navigate to="/privacy-policy-generator" replace />} />
+                <Route path="/terms-of-service-generator" element={<TermsOfServiceGenerator />} />
+                <Route path="/terms-of-service" element={<Navigate to="/terms-of-service-generator" replace />} />
+                <Route path="/eula-generator" element={<EulaGenerator />} />
+                <Route path="/nda-generator" element={<NdaGenerator />} />
                 {/* PROGRAMMATIC SEO: [Policy] for [Industry] */}
                 {seoPages.map(page => (
                     <Route key={page.slug} path={`/${page.slug}`} element={<PolicyIndustryPage page={page} />} />

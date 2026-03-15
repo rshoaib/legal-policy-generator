@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { SEO } from './SEO'
@@ -21,6 +21,7 @@ export function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
   const [selectedType, setSelectedType] = useState<PolicyType>('privacy')
   const [generatedContent, setGeneratedContent] = useState('')
+  const [livePreviewContent, setLivePreviewContent] = useState('')
 
   /* New: Language Handling */
   const { t, i18n } = useTranslation()
@@ -83,6 +84,19 @@ export function GeneratorApp() {
     'ai-ethics': () => import('../utils/templates/aiEthicsPolicy').then(m => m.generateAIEthicsPolicy),
     'shipping': () => import('../utils/templates/shippingPolicy').then(m => m.generateShippingPolicy),
   }
+
+  // Live preview effect
+  
+  useEffect(() => {
+    if (step === 'form') {
+      const timer = setTimeout(() => {
+        templateImports[selectedType]().then(generator => {
+          setLivePreviewContent(generator(formData as PolicyData, currentLang))
+        })
+      }, 300)
+      return () => clearTimeout(timer)
+    }
+  }, [formData, selectedType, currentLang, step])
 
   const handleGenerate = async (data: PolicyData) => {
     handleDataChange(data)
@@ -444,7 +458,7 @@ export function GeneratorApp() {
 
       {step === 'form' && (
         <Suspense fallback={<FormLoader />}>
-        <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div className="animate-enter" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <button 
                 onClick={() => setStep('landing')}
@@ -459,12 +473,43 @@ export function GeneratorApp() {
                 {t('clear_data')}
             </button>
           </div>
-          <GeneratorForm 
-            onGenerate={handleGenerate} 
-            selectedType={selectedType} 
-            initialData={formData}
-            onDataChange={handleDataChange}
-          />
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
+            <div>
+              <GeneratorForm 
+                onGenerate={handleGenerate} 
+                selectedType={selectedType} 
+                initialData={formData}
+                onDataChange={handleDataChange}
+              />
+            </div>
+            
+            <div className="glass-panel animate-enter" style={{ padding: '2rem', height: 'fit-content', position: 'sticky', top: '2rem' }}>
+               <h3 style={{ marginBottom: '1rem', color: 'var(--accent-secondary)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                 <div style={{ width: 8, height: 8, background: 'var(--accent-secondary)', borderRadius: '50%', animation: 'pulse 2s infinite' }} />
+                 Live Preview
+               </h3>
+               <div style={{
+                  width: '100%',
+                  height: '600px',
+                  overflowY: 'auto',
+                  background: '#ffffff',
+                  color: '#1a1a1a',
+                  padding: '2rem',
+                  borderRadius: '0.75rem',
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  lineHeight: '1.7',
+                  fontSize: '0.85rem',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.05)'
+                }}
+                dangerouslySetInnerHTML={{ __html: livePreviewContent || '<p style="color: #666">Start typing to see your policy preview...</p>' }}
+               />
+               <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '1rem' }}>
+                 Final document will be fully formatted.
+               </p>
+            </div>
+          </div>
         </div>
         </Suspense>
       )}

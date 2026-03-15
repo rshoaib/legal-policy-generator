@@ -11,6 +11,7 @@ interface GeneratorFormProps {
 
 export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, selectedType, initialData, onDataChange }) => {
   const { t } = useTranslation();
+  const [currentStep, setCurrentStep] = useState<number>(1);
   const [formData, setFormData] = useState<PolicyData>({
     companyName: initialData?.companyName || '',
     companyAddress: initialData?.companyAddress || '',
@@ -24,6 +25,9 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
     disclaimerAffiliate: initialData?.disclaimerAffiliate || false,
     disclaimerHealth: initialData?.disclaimerHealth || false,
     disclaimerFinancial: initialData?.disclaimerFinancial || false,
+    privacySellData: initialData?.privacySellData || false,
+    privacyChildren: initialData?.privacyChildren || false,
+    privacyGoogleAnalytics: initialData?.privacyGoogleAnalytics || false,
     bannerPosition: initialData?.bannerPosition || 'bottom',
     bannerColor: initialData?.bannerColor || '#2b2b2b',
     bannerTextColor: initialData?.bannerTextColor || '#ffffff',
@@ -71,16 +75,38 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onGenerate(formData);
+    if (currentStep < totalSteps) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      onGenerate(formData);
+    }
   };
+
+  const hasSpecificFields = ['privacy', 'refund', 'shipping', 'disclaimer', 'cookie-banner', 'robots-txt', 'accessibility', 'eula', 'dpa', 'sla'].includes(selectedType);
+  const totalSteps = hasSpecificFields ? 2 : 1;
 
   return (
     <div className="glass-panel" style={{ padding: '2rem' }}>
       <h2 style={{ marginBottom: '1.5rem', color: 'var(--accent-primary)' }}>
         {t(POLICY_TITLE_KEYS[selectedType])} {t('details')}
       </h2>
+
+      {/* Progress Bar */}
+      <div style={{ marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+          <span>Step {currentStep} of {totalSteps}</span>
+          <span>{currentStep === 1 ? 'Business Details' : 'Policy Specifics'}</span>
+        </div>
+        <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
+          <div style={{ height: '100%', width: `${(currentStep / totalSteps) * 100}%`, background: 'var(--accent-primary)', transition: 'width 0.3s ease' }} />
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
-        <div style={{ gridColumn: '1 / -1' }}>
+        
+        {currentStep === 1 && (
+          <>
+            <div style={{ gridColumn: '1 / -1' }}>
           <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>{t('company_name')}</label>
           <input
             name="companyName"
@@ -148,6 +174,46 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
             required
           />
         </div>
+        </>
+      )}
+
+      {currentStep === 2 && (
+        <>
+
+        {selectedType === 'privacy' && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+            <div style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+              Enable advanced clauses to ensure compliance with specific regulations.
+            </div>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="privacySellData"
+                type="checkbox"
+                checked={formData.privacySellData}
+                onChange={handleCheckboxChange}
+              />
+              Do you sell user data? (Adds CCPA "Do Not Sell My Info" clause)
+            </label>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="privacyChildren"
+                type="checkbox"
+                checked={formData.privacyChildren}
+                onChange={handleCheckboxChange}
+              />
+              Is your site/app aimed at children under 13? (Adds COPPA compliance clause)
+            </label>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+              <input
+                name="privacyGoogleAnalytics"
+                type="checkbox"
+                checked={formData.privacyGoogleAnalytics}
+                onChange={handleCheckboxChange}
+              />
+              Do you use Google Analytics or AdSense? (Adds required Third-Party Tracking clauses)
+            </label>
+          </div>
+        )}
 
         {selectedType === 'refund' && (
           <>
@@ -658,9 +724,23 @@ export const GeneratorForm: React.FC<GeneratorFormProps> = ({ onGenerate, select
           </div>
         )}
 
-        <div style={{ gridColumn: '1 / -1', marginTop: '1rem' }}>
-          <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-            {t(POLICY_GENERATE_KEYS[selectedType])}
+          </>
+        )}
+
+        {/* Buttons */}
+        <div style={{ gridColumn: '1 / -1', marginTop: '1.5rem', display: 'flex', gap: '1rem' }}>
+          {currentStep > 1 && (
+            <button 
+              type="button" 
+              className="btn-primary" 
+              style={{ background: 'transparent', border: '1px solid var(--accent-primary)', color: 'var(--text-primary)', flex: 1 }}
+              onClick={() => setCurrentStep(currentStep - 1)}
+            >
+              Back
+            </button>
+          )}
+          <button type="submit" className="btn-primary" style={{ flex: 2 }}>
+            {currentStep < totalSteps ? 'Next Step →' : t(POLICY_GENERATE_KEYS[selectedType])}
           </button>
         </div>
       </form>
