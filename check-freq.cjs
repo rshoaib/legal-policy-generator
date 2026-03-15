@@ -14,7 +14,7 @@ while ((match = titleRegex.exec(content)) !== null) {
   titles.push(match[1] || match[2]);
 }
 
-const todayStr = '2026-03-12';
+const todayStr = '2026-03-15';
 const weekStart = new Date('2026-03-09T00:00:00Z');
 const weekEnd = new Date('2026-03-15T23:59:59Z');
 

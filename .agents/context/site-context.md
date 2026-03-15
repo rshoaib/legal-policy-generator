@@ -38,7 +38,7 @@ description: Brand voice, internal links, and target keywords for legalpolicygen
 | GDPR privacy policy template | 🆕 Need content |
 | cookie consent policy | ✅ Published |
 | return policy generator | 🆕 Need content |
-| shipping policy generator | 🆕 Need content |
+| shipping policy generator | ✅ Published |
 
 ### Content Calendar
 1. ~~"How to Write a Privacy Policy (GDPR + CCPA Compliant 2026)"~~ ✅ Published
