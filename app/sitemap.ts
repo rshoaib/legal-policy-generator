@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
-import { seoPages } from '@/data/seoPages'
+import { getAllPosts } from '@/lib/blogService'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://legalpolicygen.com'
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -35,12 +35,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  const seoRoutes: MetadataRoute.Sitemap = seoPages.map(page => ({
-    url: `${baseUrl}/${page.slug}`,
+  const posts = await getAllPosts()
+  const blogRoutes: MetadataRoute.Sitemap = posts.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
 
-  return [...staticRoutes, ...generatorRoutes, ...seoRoutes]
+  // NOTE: Niche tool pages (privacy-policy-for-ecommerce, eula-for-blog, etc.) are intentionally
+  // excluded from the sitemap. They remain as live routes for users but are not submitted to Google
+  // to avoid "Discovered – currently not indexed" bloat and preserve crawl budget.
+
+  return [...staticRoutes, ...generatorRoutes, ...blogRoutes]
 }
