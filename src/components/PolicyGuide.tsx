@@ -1,6 +1,7 @@
+'use client'
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { SEO } from './SEO';
 
 const BUSINESS_TYPES = [
@@ -133,9 +134,9 @@ export const PolicyGuide: React.FC = () => {
                   return (
                     <td key={col.id} style={{ ...tdStyle, textAlign: 'center' }}>
                       {value === true ? (
-                        <Link to="/" title={`Generate ${t(col.labelKey)}`} style={{ fontSize: '1.2rem', textDecoration: 'none' }}>✅</Link>
+                        <Link href="/" title={`Generate ${t(col.labelKey)}`} style={{ fontSize: '1.2rem', textDecoration: 'none' }}>✅</Link>
                       ) : value === 'rec' ? (
-                        <Link to="/" title={`Generate ${t(col.labelKey)} (Recommended)`} style={{ fontSize: '1.2rem', textDecoration: 'none' }}>🟡</Link>
+                        <Link href="/" title={`Generate ${t(col.labelKey)} (Recommended)`} style={{ fontSize: '1.2rem', textDecoration: 'none' }}>🟡</Link>
                       ) : (
                         <span style={{ opacity: 0.3 }}>—</span>
                       )}
@@ -188,7 +189,7 @@ export const PolicyGuide: React.FC = () => {
       </section>
 
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <Link to="/bundle" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+        <Link href="/bundle" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
           📦 {t('bundle_title')}
         </Link>
       </div>

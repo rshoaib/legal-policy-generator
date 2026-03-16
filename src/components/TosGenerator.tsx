@@ -1,9 +1,10 @@
+'use client'
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
 
 export const TosGenerator: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const pageJsonLd = {
     '@context': 'https://schema.org',
@@ -87,7 +88,7 @@ export const TosGenerator: React.FC = () => {
         </p>
         <button
           className="btn-primary"
-          onClick={() => navigate('/?step=form&type=tos')}
+          onClick={() => router.push('/?step=form&type=tos')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Generate Your ToS — Free →
@@ -133,7 +134,7 @@ export const TosGenerator: React.FC = () => {
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
         <button
           className="btn-primary"
-          onClick={() => navigate('/?step=form&type=tos')}
+          onClick={() => router.push('/?step=form&type=tos')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Create Your Terms of Service Now →

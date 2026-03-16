@@ -1,5 +1,6 @@
+'use client'
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getAllPosts } from '../lib/blogService';
 import { type BlogPost } from '../lib/blogData';
 import { SEO } from './SEO';
@@ -100,14 +101,14 @@ export const BlogIndex: React.FC = () => {
                   {post.date}
                 </div>
                 <h2 style={{ marginBottom: '1rem' }}>
-                  <Link to={`/blog/${post.slug}`} style={{ color: 'var(--text-primary)' }}>
+                  <Link href={`/blog/${post.slug}`} style={{ color: 'var(--text-primary)' }}>
                     {post.title}
                   </Link>
                 </h2>
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                   {post.excerpt}
                 </p>
-                <Link to={`/blog/${post.slug}`} style={{ fontWeight: 600, color: 'var(--accent-primary)' }}>
+                <Link href={`/blog/${post.slug}`} style={{ fontWeight: 600, color: 'var(--accent-primary)' }}>
                   Read Article →
                 </Link>
               </article>

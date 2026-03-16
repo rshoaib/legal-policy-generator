@@ -258,7 +258,32 @@ function main() {
     created++;
   }
 
-  console.log(`✅ Prerender-meta: created ${created} route HTML files in dist/`);
+  // Generate dynamic sitemap.xml
+  const today = new Date().toISOString().split('T')[0];
+  let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  
+  // Add root URL explicitly
+  sitemapXml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
+
+  for (const page of allRoutes) {
+    // Determine priority based on route type
+    let priority = '0.8';
+    let changefreq = 'weekly';
+    if (page.route.startsWith('blog/')) {
+      priority = '0.6';
+      changefreq = 'monthly';
+    } else if (page.route.includes('-for-')) {
+      priority = '0.7';
+      changefreq = 'monthly'; // Programmatic pages
+    }
+
+    sitemapXml += `  <url>\n    <loc>${SITE_URL}/${page.route}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>\n`;
+  }
+  
+  sitemapXml += `</urlset>`;
+  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemapXml, 'utf-8');
+
+  console.log(`✅ Prerender-meta: created ${created} route HTML files and dynamic sitemap.xml in dist/`);
 }
 
 main();

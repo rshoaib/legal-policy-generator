@@ -1,11 +1,17 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { getPostBySlug } from '../lib/blogService';
 import { type BlogPost as BlogPostType } from '../lib/blogData';
 import { SEO } from './SEO';
 
-export const BlogPost: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+interface BlogPostProps {
+  slug: string;
+}
+
+export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
+  const router = useRouter();
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -46,9 +52,11 @@ export const BlogPost: React.FC = () => {
     return () => { cancelled = true; };
   }, [slug]);
 
-  if (notFound && !loading) {
-    return <Navigate to="/blog" replace />;
-  }
+  useEffect(() => {
+    if (notFound && !loading) {
+      router.push('/blog');
+    }
+  }, [notFound, loading, router]);
 
   if (loading) {
     return (

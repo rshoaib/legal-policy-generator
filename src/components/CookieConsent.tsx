@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 
 const CONSENT_KEY = 'cookie_consent';

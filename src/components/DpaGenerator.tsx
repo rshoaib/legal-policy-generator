@@ -1,9 +1,10 @@
+'use client'
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
 
 export const DpaGenerator: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const pageJsonLd = {
     '@context': 'https://schema.org',
@@ -79,7 +80,7 @@ export const DpaGenerator: React.FC = () => {
         </p>
         <button
           className="btn-primary"
-          onClick={() => navigate('/?step=form&type=dpa')}
+          onClick={() => router.push('/?step=form&type=dpa')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Generate Your DPA — Free →
@@ -125,7 +126,7 @@ export const DpaGenerator: React.FC = () => {
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
         <button
           className="btn-primary"
-          onClick={() => navigate('/?step=form&type=dpa')}
+          onClick={() => router.push('/?step=form&type=dpa')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Create Your Free Data Processing Agreement Now →

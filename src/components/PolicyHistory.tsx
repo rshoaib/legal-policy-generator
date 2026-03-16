@@ -1,5 +1,6 @@
+'use client'
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { SEO } from './SEO';
@@ -153,7 +154,7 @@ export const PolicyHistory: React.FC = () => {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <Link
-            to="/"
+            href="/"
             style={{
               background: 'none',
               border: 'none',
@@ -214,7 +215,7 @@ export const PolicyHistory: React.FC = () => {
             {t('history_empty_desc')}
           </p>
           <Link
-            to="/"
+            href="/"
             className="btn-primary"
             style={{ display: 'inline-block', textDecoration: 'none' }}
           >

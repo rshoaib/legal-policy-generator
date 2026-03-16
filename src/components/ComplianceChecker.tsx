@@ -1,5 +1,6 @@
+'use client'
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { SEO } from './SEO';
 import { analyzePolicy, type AnalysisResult, type CategoryResult } from '../utils/policyAnalyzer';
 
@@ -287,7 +288,7 @@ export const ComplianceChecker: React.FC = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>
                 Use our free generator to create a fully compliant policy tailored to your business.
               </p>
-              <Link to="/" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
+              <Link href="/" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
                 Generate a Compliant Policy →
               </Link>
             </div>

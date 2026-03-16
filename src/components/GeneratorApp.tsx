@@ -1,6 +1,9 @@
+'use client'
+
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, useSearchParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { SEO } from './SEO'
 import { type PolicyData, type PolicyType, POLICY_FILE_LABELS } from '../appTypes'
 import { savePolicy } from '../utils/useHistoryStorage'
@@ -22,7 +25,7 @@ export function GeneratorApp() {
   const [selectedType, setSelectedType] = useState<PolicyType>('privacy')
   const [generatedContent, setGeneratedContent] = useState('')
   const [livePreviewContent, setLivePreviewContent] = useState('')
-  const [searchParams, setSearchParams] = useSearchParams()
+  const searchParams = useSearchParams()
 
   /* Detect redirect from SEO landing pages */
   useEffect(() => {
@@ -34,7 +37,7 @@ export function GeneratorApp() {
       setSelectedType(urlType)
       
       // Clear URL params without reloading so it looks clean
-      setSearchParams({})
+      window.history.replaceState({}, '', '/')
     } else if (urlType && !urlStep) {
       // Handle legacy GSC indexed URLs (e.g. /?type=dmca) -> 301 redirect to SEO landing page
       const typeToPath: Record<string, string> = {
@@ -69,7 +72,7 @@ export function GeneratorApp() {
       // -> 301 redirect to clean canonical home
       window.location.replace('/')
     }
-  }, [searchParams, setSearchParams])
+  }, [searchParams])
 
   /* New: Language Handling */
   const { t, i18n } = useTranslation()
@@ -83,6 +86,7 @@ export function GeneratorApp() {
 
   /* New: Load initial data from local storage */
   const [formData, setFormData] = useState<Partial<PolicyData>>(() => {
+    if (typeof window === 'undefined') return {}
     const saved = localStorage.getItem('policy_generator_data')
     return saved ? JSON.parse(saved) : {}
   })
@@ -321,34 +325,34 @@ export function GeneratorApp() {
           </p>
           
           <div className="delay-200 animate-enter" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto 4rem' }}>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/privacy-policy-generator">{t('start_privacy')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/terms-of-service-generator">{t('start_terms')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/cookie-policy-generator">{t('start_cookie')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/refund-policy-generator">{t('start_refund')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/disclaimer-generator">{t('start_disclaimer')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/cookie-banner-generator">{t('start_cookie_banner')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/robots-txt-generator">{t('start_robots')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/accessibility-statement-generator">{t('start_accessibility')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/nda-generator">{t('start_nda')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/eula-generator">{t('start_eula')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/dpa-generator">{t('start_dpa')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/aup-generator">{t('start_aup')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/dmca-generator">{t('start_dmca')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/employee-privacy-policy-generator">{t('start_employee_privacy')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/affiliate-disclaimer-generator">{t('start_affiliate_disclaimer')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/social-media-policy-generator">{t('start_social_media')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/newsletter-policy-generator">{t('start_newsletter')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/tos-generator">{t('start_tos')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/hipaa-policy-generator">{t('start_hipaa')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/sla-generator">{t('start_sla')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/data-breach-policy-generator">{t('start_data_breach')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/ai-ethics-policy-generator">{t('start_ai_ethics')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} to="/shipping-policy-generator">{t('start_shipping')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/privacy-policy-generator">{t('start_privacy')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/terms-of-service-generator">{t('start_terms')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/cookie-policy-generator">{t('start_cookie')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/refund-policy-generator">{t('start_refund')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/disclaimer-generator">{t('start_disclaimer')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/cookie-banner-generator">{t('start_cookie_banner')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/robots-txt-generator">{t('start_robots')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/accessibility-statement-generator">{t('start_accessibility')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/nda-generator">{t('start_nda')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/eula-generator">{t('start_eula')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/dpa-generator">{t('start_dpa')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/aup-generator">{t('start_aup')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/dmca-generator">{t('start_dmca')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/employee-privacy-policy-generator">{t('start_employee_privacy')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/affiliate-disclaimer-generator">{t('start_affiliate_disclaimer')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/social-media-policy-generator">{t('start_social_media')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/newsletter-policy-generator">{t('start_newsletter')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/tos-generator">{t('start_tos')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/hipaa-policy-generator">{t('start_hipaa')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/sla-generator">{t('start_sla')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/data-breach-policy-generator">{t('start_data_breach')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/ai-ethics-policy-generator">{t('start_ai_ethics')}</Link>
+            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/shipping-policy-generator">{t('start_shipping')}</Link>
           </div>
 
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
             <Link
-              to="/compliance-checker"
+              href="/compliance-checker"
               className="btn-primary"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -359,7 +363,7 @@ export function GeneratorApp() {
               🔍 Check Your Existing Policy
             </Link>
             <Link
-              to="/history"
+              href="/history"
               className="btn-primary"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -375,7 +379,7 @@ export function GeneratorApp() {
           <div className="glass-panel delay-300 animate-enter" style={{ marginTop: '4rem', maxWidth: '600px', margin: '0 auto' }}>
              <h2 style={{ marginBottom: '1rem', color: 'var(--accent-tertiary)', fontSize: '1.25rem' }}>{t('header_guides')}</h2>
              <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{t('text_guides')}</p>
-             <Link to="/blog" style={{ color: 'var(--accent-secondary)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
+             <Link href="/blog" style={{ color: 'var(--accent-secondary)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
                 {t('link_guides')} <span>→</span>
              </Link>
           </div>
@@ -417,7 +421,7 @@ export function GeneratorApp() {
               <h2 className="text-gradient" style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Why Every Website Needs Legal Pages</h2>
               <div style={{ color: 'var(--text-secondary)', lineHeight: '1.9', fontSize: '1.05rem' }}>
                 <p style={{ marginBottom: '1.25rem' }}>
-                  In today's digital landscape, <strong style={{ color: 'var(--text-primary)' }}>legal compliance isn't optional — it's essential</strong>. Regulations like the EU's General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), Brazil's Lei Geral de Proteção de Dados (LGPD), and others require websites to clearly disclose how they collect, use, and protect user data. Failure to comply can result in fines reaching millions of dollars.
+                  In today&apos;s digital landscape, <strong style={{ color: 'var(--text-primary)' }}>legal compliance isn&apos;t optional — it&apos;s essential</strong>. Regulations like the EU&apos;s General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), Brazil&apos;s Lei Geral de Proteção de Dados (LGPD), and others require websites to clearly disclose how they collect, use, and protect user data. Failure to comply can result in fines reaching millions of dollars.
                 </p>
                 <p style={{ marginBottom: '1.25rem' }}>
                   A well-crafted <strong style={{ color: 'var(--text-primary)' }}>Privacy Policy</strong> tells visitors exactly what personal information you collect and why. <strong style={{ color: 'var(--text-primary)' }}>Terms of Service</strong> protect your intellectual property and limit liability. A <strong style={{ color: 'var(--text-primary)' }}>Cookie Policy</strong> with an appropriate consent banner ensures compliance with the ePrivacy Directive. And documents like <strong style={{ color: 'var(--text-primary)' }}>NDAs, EULAs, and DPAs</strong> safeguard your business relationships and proprietary information.
@@ -473,19 +477,19 @@ export function GeneratorApp() {
               <div className="glass-panel" style={{ padding: '1.75rem' }}>
                 <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>Do you store my data or the policies I generate?</h3>
                 <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-                  No. All document generation happens entirely in your browser using client-side JavaScript. Your business details and generated policies never leave your device. We don't collect, transmit, or store any of the information you enter. Your data privacy is our top priority.
+                  No. All document generation happens entirely in your browser using client-side JavaScript. Your business details and generated policies never leave your device. We don&apos;t collect, transmit, or store any of the information you enter. Your data privacy is our top priority.
                 </p>
               </div>
               <div className="glass-panel" style={{ padding: '1.75rem' }}>
                 <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>What regulations do your templates comply with?</h3>
                 <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-                  Our generator supports compliance with major international regulations including the EU General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA / CPRA), Brazil's LGPD, Canada's PIPEDA, Australia's Privacy Act, the UK GDPR, and the ePrivacy Directive. Each template automatically includes the relevant clauses when you select the applicable regulations.
+                  Our generator supports compliance with major international regulations including the EU General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA / CPRA), Brazil&apos;s LGPD, Canada&apos;s PIPEDA, Australia&apos;s Privacy Act, the UK GDPR, and the ePrivacy Directive. Each template automatically includes the relevant clauses when you select the applicable regulations.
                 </p>
               </div>
               <div className="glass-panel" style={{ padding: '1.75rem' }}>
                 <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>Can I customize the generated policies?</h3>
                 <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-                  Absolutely. The generated HTML can be copied and edited freely. You can modify any section to better fit your specific needs, add additional clauses, change formatting, or integrate the document into your website's design. The generated content is yours to use and modify without restriction.
+                  Absolutely. The generated HTML can be copied and edited freely. You can modify any section to better fit your specific needs, add additional clauses, change formatting, or integrate the document into your website&apos;s design. The generated content is yours to use and modify without restriction.
                 </p>
               </div>
               <div className="glass-panel" style={{ padding: '1.75rem' }}>

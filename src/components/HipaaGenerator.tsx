@@ -1,9 +1,10 @@
+'use client'
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
 
 export const HipaaGenerator: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const pageJsonLd = {
     '@context': 'https://schema.org',
@@ -87,7 +88,7 @@ export const HipaaGenerator: React.FC = () => {
         </p>
         <button
           className="btn-primary"
-          onClick={() => navigate('/?step=form&type=hipaa')}
+          onClick={() => router.push('/?step=form&type=hipaa')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Generate Your HIPAA Policy — Free →
@@ -133,7 +134,7 @@ export const HipaaGenerator: React.FC = () => {
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
         <button
           className="btn-primary"
-          onClick={() => navigate('/?step=form&type=hipaa')}
+          onClick={() => router.push('/?step=form&type=hipaa')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Create Your HIPAA Privacy Notice Now →

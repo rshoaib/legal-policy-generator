@@ -1,5 +1,8 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,7 +19,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -26,7 +29,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   // Close menu on outside click
   useEffect(() => {
@@ -60,11 +63,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   const navLinks = [
-    { to: '/bundle', label: 'Starter Kit' },
-    { to: '/policy-guide', label: 'Policy Guide' },
-    { to: '/compliance-checker', label: 'Compliance Checker' },
-    { to: '/legal-page-checker', label: 'Legal Page Checker' },
-    { to: '/blog', label: 'Blog' },
+    { href: '/bundle', label: 'Starter Kit' },
+    { href: '/profile', label: 'Company Profile' },
+    { href: '/policy-guide', label: 'Policy Guide' },
+    { href: '/compliance-checker', label: 'Compliance Checker' },
+    { href: '/legal-page-checker', label: 'Legal Page Checker' },
+    { href: '/blog', label: 'Blog' },
   ];
 
   return (
@@ -76,7 +80,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       <header className="main-header glass-panel">
         <div className="container header-content">
-          <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+          <Link href="/" className="logo" style={{ textDecoration: 'none' }}>
             <span style={{ fontSize: '1.5rem' }} role="img" aria-label="Legal scales">⚖️</span>
             <span style={{ fontWeight: 700, fontSize: '1.25rem', marginLeft: '0.5rem' }}>
               PolicyGen
@@ -86,7 +90,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* Desktop nav */}
           <nav className="desktop-nav" aria-label="Main navigation">
             {navLinks.map(link => (
-              <Link key={link.to} to={link.to}>{link.label}</Link>
+              <Link key={link.href} href={link.href}>{link.label}</Link>
             ))}
             <button
               onClick={toggleTheme}
@@ -131,7 +135,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         aria-label="Mobile navigation"
       >
         {navLinks.map(link => (
-          <Link key={link.to} to={link.to} className="mobile-drawer-link">
+          <Link key={link.href} href={link.href} className="mobile-drawer-link">
             {link.label}
           </Link>
         ))}
@@ -144,16 +148,18 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <footer className="main-footer">
         <div className="container">
           <div className="footer-links">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
-            <Link to="/about">About Us</Link>
-            <Link to="/contact">Contact Us</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/bundle">Starter Kit</Link>
-            <Link to="/policy-guide">Policy Guide</Link>
-            <Link to="/compliance-checker">Compliance Checker</Link>
-            <Link to="/legal-page-checker">Legal Page Checker</Link>
-            <Link to="/history">Policy History</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
+            <Link href="/about">About Us</Link>
+            <Link href="/contact">Contact Us</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/bundle">Starter Kit</Link>
+            <Link href="/profile">Company Profile</Link>
+            <Link href="/industries">Industries</Link>
+            <Link href="/policy-guide">Policy Guide</Link>
+            <Link href="/compliance-checker">Compliance Checker</Link>
+            <Link href="/legal-page-checker">Legal Page Checker</Link>
+            <Link href="/history">Policy History</Link>
           </div>
           <div className="footer-links" style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--glass-border)' }}>
             <span style={{ fontSize: '0.75rem', opacity: 0.6 }}>Our Other Free Tools:</span>

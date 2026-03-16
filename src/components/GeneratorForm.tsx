@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { type PolicyData, type PolicyType, POLICY_TITLE_KEYS, POLICY_GENERATE_KEYS } from '../appTypes';

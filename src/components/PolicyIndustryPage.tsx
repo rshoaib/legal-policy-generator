@@ -1,5 +1,6 @@
+'use client'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link';
 import { SEO } from './SEO'
 import type { SeoPage } from '../data/seoPages'
 import { seoPages } from '../data/seoPages'
@@ -43,7 +44,7 @@ export function PolicyIndustryPage({ page }: Props) {
       <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
         {/* Breadcrumb */}
         <nav style={{ marginBottom: '2rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-          <Link to="/" style={{ color: 'var(--accent-secondary)', textDecoration: 'none' }}>Home</Link>
+          <Link href="/" style={{ color: 'var(--accent-secondary)', textDecoration: 'none' }}>Home</Link>
           <span style={{ margin: '0 0.5rem' }}>›</span>
           <span>{page.policyLabel} for {page.industry}</span>
         </nav>
@@ -59,7 +60,7 @@ export function PolicyIndustryPage({ page }: Props) {
         {/* CTA */}
         <div className="delay-200 animate-enter" style={{ marginBottom: '3rem' }}>
           <Link
-            to={`/?type=${page.policyType}`}
+            href={`/?type=${page.policyType}`}
             className="btn-primary"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', fontSize: '1.1rem', padding: '1rem 2.5rem' }}
           >
@@ -117,7 +118,7 @@ export function PolicyIndustryPage({ page }: Props) {
               {related.map(r => (
                 <Link
                   key={r.slug}
-                  to={`/${r.slug}`}
+                  href={`/${r.slug}`}
                   className="glass-panel"
                   style={{ padding: '1rem 1.25rem', textDecoration: 'none', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 500, transition: 'all 0.2s' }}
                 >
@@ -137,7 +138,7 @@ export function PolicyIndustryPage({ page }: Props) {
             Free, instant, and compliant with GDPR, CCPA, and more.
           </p>
           <Link
-            to={`/?type=${page.policyType}`}
+            href={`/?type=${page.policyType}`}
             className="btn-primary"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
           >

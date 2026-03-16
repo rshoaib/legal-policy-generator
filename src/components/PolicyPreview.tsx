@@ -1,11 +1,13 @@
+'use client'
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import html2pdf from 'html2pdf.js';
 // @ts-ignore
 import { asBlob } from 'html-docx-js-typescript';
 import { saveAs } from 'file-saver';
+import TurndownService from 'turndown';
 
 interface PolicyPreviewProps {
   content: string;
@@ -50,7 +52,27 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success(t('html_downloaded'));
+    toast.success(t('html_downloaded') || 'HTML downloaded');
+  };
+
+  const handleDownloadMarkdown = () => {
+    try {
+      const turndownService = new TurndownService({ headingStyle: 'atx' });
+      const markdown = turndownService.turndown(content);
+      const blob = new Blob([markdown], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = buildFilename('md');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast.success('Markdown downloaded successfully');
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to generate Markdown');
+    }
   };
 
  const handleDownloadPdf = () => {
@@ -108,7 +130,7 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem' }}>
         <h2 style={{ color: 'var(--accent-secondary)' }}>{t('generated_policy')}</h2>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Link to="/history" style={{ color: 'var(--accent-tertiary)', fontSize: '0.9rem', textDecoration: 'none' }}>
+          <Link href="/history" style={{ color: 'var(--accent-tertiary)', fontSize: '0.9rem', textDecoration: 'none' }}>
             📋 {t('view_history')}
           </Link>
           <button onClick={onReset} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', textDecoration: 'underline' }}>
@@ -187,6 +209,9 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
         </button>
         <button className="btn-primary" style={{ filter: 'hue-rotate(90deg)' }} onClick={handleDownloadHtml}>
           {t('download_html')}
+        </button>
+        <button className="btn-primary" style={{ filter: 'hue-rotate(130deg)' }} onClick={handleDownloadMarkdown}>
+          Get Markdown (.md)
         </button>
         <button className="btn-primary" style={{ filter: 'hue-rotate(180deg)' }} onClick={handleDownloadPdf}>
           {t('download_pdf')}

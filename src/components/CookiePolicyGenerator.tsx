@@ -1,9 +1,11 @@
+'use client'
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
 
 export const CookiePolicyGenerator: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const pageJsonLd = {
     '@context': 'https://schema.org',
@@ -95,7 +97,7 @@ export const CookiePolicyGenerator: React.FC = () => {
         </p>
         <button
           className="btn-primary"
-          onClick={() => navigate('/')}
+          onClick={() => router.push('/')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Generate Your Cookie Policy — Free →
@@ -161,8 +163,8 @@ export const CookiePolicyGenerator: React.FC = () => {
           </ul>
         </div>
         <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Link to="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.95rem' }}>🔒 Privacy Policy Generator</Link>
-          <Link to="/blog/do-you-need-cookie-policy-what-law-says-2026" style={{ color: 'var(--accent-secondary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.95rem' }}>🔒 Privacy Policy Generator</Link>
+          <Link href="/blog/do-you-need-cookie-policy-what-law-says-2026" style={{ color: 'var(--accent-secondary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
             Read: Do You Need a Cookie Policy? →
           </Link>
         </div>
@@ -186,7 +188,7 @@ export const CookiePolicyGenerator: React.FC = () => {
           </div>
           <div className="glass-panel" style={{ padding: '1.5rem' }}>
             <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Do I also need a cookie consent banner?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>If your website serves users in the EU or UK and uses non-essential cookies, yes. The banner must appear before any non-essential cookies are loaded and offer equal "Accept" and "Reject" options. We also offer a <Link to="/" style={{ color: 'var(--accent-secondary)' }}>free Cookie Consent Banner Generator</Link>.</p>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>If your website serves users in the EU or UK and uses non-essential cookies, yes. The banner must appear before any non-essential cookies are loaded and offer equal "Accept" and "Reject" options. We also offer a <Link href="/" style={{ color: 'var(--accent-secondary)' }}>free Cookie Consent Banner Generator</Link>.</p>
           </div>
           <div className="glass-panel" style={{ padding: '1.5rem' }}>
             <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What should a cookie policy include?</h3>
@@ -199,10 +201,10 @@ export const CookiePolicyGenerator: React.FC = () => {
       <section className="glass-panel" style={{ padding: '2rem', textAlign: 'center', marginBottom: '2rem' }}>
         <h2 style={{ color: 'var(--accent-tertiary)', marginBottom: '1rem', fontSize: '1.25rem' }}>Related Free Generators</h2>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>🔒 Privacy Policy</Link>
-          <Link to="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(45deg)' }}>📋 Terms of Service</Link>
-          <Link to="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(90deg)' }}>🛡️ Disclaimer</Link>
-          <Link to="/blog" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(180deg)' }}>📚 Legal Guides</Link>
+          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>🔒 Privacy Policy</Link>
+          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(45deg)' }}>📋 Terms of Service</Link>
+          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(90deg)' }}>🛡️ Disclaimer</Link>
+          <Link href="/blog" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(180deg)' }}>📚 Legal Guides</Link>
         </div>
       </section>
 
@@ -210,7 +212,7 @@ export const CookiePolicyGenerator: React.FC = () => {
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
         <button
           className="btn-primary"
-          onClick={() => navigate('/')}
+          onClick={() => router.push('/')}
           style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
         >
           Create Your Free Cookie Policy Now →

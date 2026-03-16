@@ -1,5 +1,6 @@
+'use client'
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -60,7 +61,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               ↻ Try Again
             </button>
             <Link
-              to="/"
+              href="/"
               className="btn-primary"
               style={{
                 display: 'inline-block',

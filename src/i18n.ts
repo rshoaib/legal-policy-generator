@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 /* Only bundle EN + ES (primary audience) — all others loaded on demand */
 import enTranslation from './locales/en/translation.json';
@@ -15,13 +14,13 @@ const lazyTranslations: Record<string, () => Promise<Record<string, string>>> = 
 };
 
 i18n
-    .use(LanguageDetector)
     .use(initReactI18next)
     .init({
         resources: {
             en: { translation: enTranslation },
             es: { translation: esTranslation },
         },
+        lng: 'en',
         fallbackLng: 'en',
         supportedLngs: ['en', 'es', 'fr', 'de', 'pt', 'ar'],
         interpolation: {

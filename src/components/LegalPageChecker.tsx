@@ -1,5 +1,6 @@
+'use client'
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { SEO } from './SEO';
 import { checkLegalPages, type ScanResult, type PageResult } from '../utils/legalPageChecker';
 
@@ -81,7 +82,7 @@ const PageCard: React.FC<{ page: PageResult }> = ({ page }) => (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '0.82rem', color: '#ef4444' }}>❌ Not found</span>
           <Link
-            to={page.generatorPath}
+            href={page.generatorPath}
             className="btn-primary"
             style={{
               fontSize: '0.75rem',
@@ -353,11 +354,11 @@ export const LegalPageChecker: React.FC = () => {
                   Use our free generator to create {missingPages.length === 1 ? 'the' : 'all'} missing {missingPages.length === 1 ? 'policy' : 'policies'} in minutes — fully GDPR &amp; CCPA compliant.
                 </p>
                 <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <Link to="/" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                  <Link href="/" className="btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
                     Generate Policies →
                   </Link>
                   <Link
-                    to="/bundle"
+                    href="/bundle"
                     style={{
                       display: 'inline-block', textDecoration: 'none',
                       padding: '0.6rem 1.25rem', borderRadius: '8px',
