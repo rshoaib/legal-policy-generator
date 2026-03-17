@@ -7,29 +7,41 @@ import { checkLegalPages, type ScanResult, type PageResult } from '../utils/lega
 /* ─── Score Gauge (circular) ──────────────────────────────────────────────── */
 
 const ScoreGauge: React.FC<{ score: number; size?: number }> = ({ score, size = 160 }) => {
-  const radius = (size - 16) / 2;
+  const radius = (size - 20) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
   const color = score >= 70 ? '#22c55e' : score >= 40 ? '#eab308' : '#ef4444';
 
   return (
-    <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-      <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="8" />
-      <circle
-        cx={size / 2} cy={size / 2} r={radius} fill="none"
-        stroke={color} strokeWidth="8" strokeLinecap="round"
-        strokeDasharray={circumference} strokeDashoffset={offset}
-        style={{ transition: 'stroke-dashoffset 1s ease, stroke 0.5s' }}
-      />
-      <text
-        x={size / 2} y={size / 2}
-        textAnchor="middle" dominantBaseline="central"
-        fill="white" fontSize={size * 0.26} fontWeight="700"
-        style={{ transform: 'rotate(90deg)', transformOrigin: 'center' }}
-      >
-        {score}
-      </text>
-    </svg>
+    <div style={{ position: 'relative', width: size, height: size, margin: '0 auto' }}>
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+        {/* Track ring — theme-aware */}
+        <circle
+          cx={size / 2} cy={size / 2} r={radius} fill="none"
+          stroke="currentColor" strokeWidth="10" opacity={0.1}
+        />
+        {/* Progress ring */}
+        <circle
+          cx={size / 2} cy={size / 2} r={radius} fill="none"
+          stroke={color} strokeWidth="10" strokeLinecap="round"
+          strokeDasharray={circumference} strokeDashoffset={offset}
+          style={{ transition: 'stroke-dashoffset 1s ease, stroke 0.5s' }}
+        />
+      </svg>
+      {/* Centered score label — sits on top of SVG, theme-aware */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        pointerEvents: 'none',
+      }}>
+        <span style={{ fontSize: size * 0.26, fontWeight: 800, color, lineHeight: 1 }}>{score}</span>
+        <span style={{ fontSize: size * 0.1, color: 'var(--text-secondary)', fontWeight: 600, marginTop: 2 }}>/ 100</span>
+      </div>
+    </div>
   );
 };
 
