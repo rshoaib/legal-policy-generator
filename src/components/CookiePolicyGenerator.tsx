@@ -3,6 +3,42 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const COOKIE_FAQS: FAQItem[] = [
+  {
+    question: 'Do I need a cookie policy if I use Google Analytics?',
+    answer: 'Yes. Google Analytics places cookies on visitors\' browsers to track sessions, page views, and user behavior. Under <strong>GDPR</strong>, <strong>UK PECR</strong>, and the <strong>ePrivacy Directive</strong>, you must disclose this to users and obtain consent before loading analytics cookies. Google\'s own terms of service also require a published cookie/privacy policy.',
+  },
+  {
+    question: 'Is this cookie policy generator really free?',
+    answer: 'Yes, 100% free — no signup, no paywall, no hidden charges. Generate unlimited cookie policies without creating an account. Your data never leaves your browser; everything is processed entirely client-side.',
+  },
+  {
+    question: 'What is the difference between a cookie policy and a privacy policy?',
+    answer: 'A <strong>privacy policy</strong> covers all personal data processing — collection, storage, sharing, and user rights. A <strong>cookie policy</strong> specifically addresses the cookies and tracking technologies your website uses — what cookies you set, their purpose, duration, and how users can manage them. Most websites need <strong>both</strong>. Generate your privacy policy with our <a href="/privacy-policy-generator">free Privacy Policy Generator</a>.',
+  },
+  {
+    question: 'Do I also need a cookie consent banner?',
+    answer: 'Yes, if your website serves users in the EU or UK and uses <strong>non-essential cookies</strong> (analytics, marketing, social media). Under GDPR, you must display a consent banner <strong>before</strong> loading these cookies. The banner must offer equal "Accept" and "Reject" options — pre-checked consent boxes are not valid. We offer a <a href="/cookie-banner-generator">free Cookie Consent Banner Generator</a> as well.',
+  },
+  {
+    question: 'What should a cookie policy include?',
+    answer: 'A compliant cookie policy should include: a <strong>definition of cookies</strong>, the <strong>types of cookies</strong> your site uses (essential, functional, analytics, marketing), a <strong>table listing specific cookies</strong> with their names, purposes, and durations, <strong>third-party cookies</strong> (Google, Facebook, etc.), <strong>how users can manage or delete cookies</strong> in their browser, your <strong>consent mechanism</strong>, and <strong>contact information</strong>.',
+  },
+  {
+    question: 'Which countries require cookie consent?',
+    answer: 'Cookie consent is required across the <strong>entire EU/EEA</strong> (27+ countries), the <strong>UK</strong>, <strong>Brazil</strong> (LGPD), and regions covered by the <strong>CCPA/CPRA</strong> (California). In practice, if your website is accessible globally, implementing cookie consent is the safest approach since most major jurisdictions now regulate tracking technologies.',
+  },
+  {
+    question: 'What types of cookies require user consent?',
+    answer: '<strong>Essential cookies</strong> (login sessions, shopping cart, security) do <strong>not</strong> require consent because the site cannot function without them. However, <strong>analytics cookies</strong> (Google Analytics, Hotjar), <strong>marketing cookies</strong> (Facebook Pixel, Google Ads), and <strong>social media cookies</strong> (embedded YouTube, Twitter widgets) all require explicit opt-in consent under GDPR.',
+  },
+  {
+    question: 'Can I load cookies before the user consents?',
+    answer: 'No, not under GDPR. You must <strong>block all non-essential cookies</strong> until the user has given explicit consent via your cookie banner. Loading cookies before consent is a common violation that regulators (especially the French CNIL and German DPAs) actively audit and fine for.',
+  },
+];
 
 export const CookiePolicyGenerator: React.FC = () => {
   const router = useRouter();
@@ -22,53 +58,6 @@ export const CookiePolicyGenerator: React.FC = () => {
     description: 'Generate a free, GDPR and CCPA-compliant cookie policy for your website in minutes. No signup required.',
   };
 
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Is this cookie policy generator really free?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, 100% free. Generate unlimited cookie policies without creating an account, providing payment information, or dealing with paywalled features. Your data never leaves your browser.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does my website need a cookie policy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'If your website uses any cookies — including Google Analytics, advertising pixels, session cookies, or social media widgets — you likely need a cookie policy. Under GDPR (EU), UK PECR, and ePrivacy Directive, websites must disclose what cookies they use and obtain consent before placing non-essential cookies.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What is the difference between a cookie policy and a privacy policy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A privacy policy covers all personal data processing (collection, storage, sharing, user rights). A cookie policy specifically addresses cookies and tracking technologies used on your website — what cookies you set, their purpose, and how users can manage them. Many websites need both.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Do I also need a cookie consent banner?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, if your website serves users in the EU or UK and uses non-essential cookies. Under GDPR, you must display a consent banner before loading analytics or marketing cookies. The banner must offer equal "Accept" and "Reject" options. We also offer a free Cookie Consent Banner Generator.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What should a cookie policy include?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A compliant cookie policy should include: a definition of cookies, the types of cookies your site uses (essential, analytics, marketing), a list of specific cookies with their names and purposes, third-party cookies, how users can manage cookies in their browsers, your consent mechanism, and contact information.',
-        },
-      },
-    ],
-  };
-
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -84,7 +73,7 @@ export const CookiePolicyGenerator: React.FC = () => {
         title="Free Cookie Policy Generator — GDPR & CCPA Compliant (2026)"
         description="Create a free cookie policy for your website in minutes. Covers GDPR, CCPA, ePrivacy Directive, and UK PECR. No signup, no cost — 100% client-side."
         canonical="/cookie-policy-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
+        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
       />
 
       {/* Hero */}
@@ -170,41 +159,17 @@ export const CookiePolicyGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Is this cookie policy generator really free?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes, 100% free. Generate unlimited cookie policies without creating an account, providing payment information, or dealing with paywalled features. Your data never leaves your browser — everything is processed client-side.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Does my website need a cookie policy?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>If your website uses any cookies — including Google Analytics, advertising pixels, session cookies, or social media widgets — you likely need a cookie policy. Under GDPR, UK PECR, and the ePrivacy Directive, websites must obtain consent before placing non-essential cookies.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What's the difference between a cookie policy and a privacy policy?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>A privacy policy covers all personal data processing. A cookie policy specifically addresses cookies and tracking technologies — what cookies you set, their purpose, and how users can manage them. Many websites need both.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Do I also need a cookie consent banner?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>If your website serves users in the EU or UK and uses non-essential cookies, yes. The banner must appear before any non-essential cookies are loaded and offer equal "Accept" and "Reject" options. We also offer a <Link href="/" style={{ color: 'var(--accent-secondary)' }}>free Cookie Consent Banner Generator</Link>.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What should a cookie policy include?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>A compliant cookie policy should include: a definition of cookies, the types of cookies your site uses (essential, analytics, marketing), a list of specific cookies with their names and purposes, third-party cookies, how users can manage cookies in their browsers, your consent mechanism, and contact information.</p>
-          </div>
-        </div>
-      </section>
+      {/* FAQ — Accordion */}
+      <ToolFAQ faqs={COOKIE_FAQS} />
 
       {/* Related Generators */}
       <section className="glass-panel" style={{ padding: '2rem', textAlign: 'center', marginBottom: '2rem' }}>
         <h2 style={{ color: 'var(--accent-tertiary)', marginBottom: '1rem', fontSize: '1.25rem' }}>Related Free Generators</h2>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>🔒 Privacy Policy</Link>
-          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(45deg)' }}>📋 Terms of Service</Link>
-          <Link href="/" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(90deg)' }}>🛡️ Disclaimer</Link>
-          <Link href="/blog" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem', filter: 'hue-rotate(180deg)' }}>📚 Legal Guides</Link>
+          <Link href="/privacy-policy-generator" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>🔒 Privacy Policy</Link>
+          <Link href="/tos-generator" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>📋 Terms of Service</Link>
+          <Link href="/disclaimer-generator" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>🛡️ Disclaimer</Link>
+          <Link href="/blog" className="btn-primary" style={{ textDecoration: 'none', fontSize: '0.9rem' }}>📚 Legal Guides</Link>
         </div>
       </section>
 

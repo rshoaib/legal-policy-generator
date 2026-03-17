@@ -2,6 +2,50 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const PRIVACY_FAQS: FAQItem[] = [
+  {
+    question: 'Is a privacy policy legally required for my website?',
+    answer: 'Yes. If you collect <strong>any</strong> personal information — including names, emails, IP addresses, or cookies via Google Analytics — you are legally required to have a privacy policy under laws like <strong>GDPR</strong> (EU), <strong>CCPA/CPRA</strong> (California), <strong>LGPD</strong> (Brazil), and <strong>PIPEDA</strong> (Canada). Third-party platforms like Google AdSense, the Apple App Store, and Stripe also require a published privacy policy.',
+  },
+  {
+    question: 'Is this privacy policy generator really free?',
+    answer: 'Yes, 100% free — no hidden charges, no signup, no paywall. Generate unlimited privacy policies without creating an account. Your data never leaves your browser; everything is processed entirely client-side.',
+  },
+  {
+    question: 'Are generated privacy policies legally binding?',
+    answer: 'Our templates are built on real legal frameworks including GDPR, CCPA, CalOPPA, and LGPD. They cover the vast majority of use cases for small businesses, bloggers, SaaS apps, and e-commerce stores. However, we always recommend having an attorney review your final document if you handle highly sensitive data (health, financial, children\'s data).',
+  },
+  {
+    question: 'Does a small blog or personal website need a privacy policy?',
+    answer: 'Yes. Even a simple blog that uses Google Analytics, collects email subscribers, or displays ads collects personal data (IP addresses, cookies). Under GDPR, <strong>any</strong> processing of personal data from EU visitors requires a privacy policy — regardless of your website\'s size or traffic volume.',
+  },
+  {
+    question: 'What makes a privacy policy GDPR compliant?',
+    answer: 'To satisfy GDPR Articles 13 and 14, your privacy policy must clearly disclose: <strong>who</strong> collects the data (your identity), <strong>what</strong> data is collected, <strong>why</strong> it is collected (legal basis), <strong>who</strong> it is shared with, <strong>how long</strong> it is retained, and a full list of <strong>data subject rights</strong> (access, deletion, portability, objection). Our generator covers all of these automatically.',
+  },
+  {
+    question: 'What is the difference between GDPR and CCPA?',
+    answer: 'The <strong>GDPR</strong> (EU) requires opt-in consent before most data processing and applies to any site with EU visitors. The <strong>CCPA/CPRA</strong> (California) gives consumers the right to know what data is collected and to opt-out of the sale of their data. CCPA applies to for-profit businesses that meet certain revenue or data volume thresholds. Our generator creates policies that cover <strong>both</strong> regulations.',
+  },
+  {
+    question: 'Can I just copy another website\'s privacy policy?',
+    answer: 'No. Copying is <strong>copyright infringement</strong>, and more importantly, another site\'s policy was written for their specific data practices, third-party tools, and jurisdiction. Using it for your business provides no legal protection. Use a generator that customizes the document to your actual data collection practices.',
+  },
+  {
+    question: 'How often should I update my privacy policy?',
+    answer: 'Review your privacy policy at least <strong>once a year</strong> and update it whenever you: change data collection practices, add new third-party tools or analytics, expand to new geographic markets, or when major regulations change. Always display a visible "last updated" date.',
+  },
+  {
+    question: 'Do I need a separate privacy policy for my mobile app?',
+    answer: 'While one privacy policy can cover both your website and app, it must address <strong>all</strong> data practices for both platforms — including mobile-specific data like location services, device identifiers, push notifications, and camera/microphone access. Both the Apple App Store and Google Play Store require a published privacy policy link.',
+  },
+  {
+    question: 'Does Google require a privacy policy?',
+    answer: 'Yes. <strong>Google Analytics</strong>, <strong>Google AdSense</strong>, <strong>Google Ads</strong>, and the <strong>Google Play Store</strong> all explicitly require websites and apps to have a published, accessible privacy policy. Failure to comply can result in account suspension or ad serving being disabled.',
+  },
+];
 
 export const PrivacyPolicyGenerator: React.FC = () => {
   const router = useRouter();
@@ -21,45 +65,6 @@ export const PrivacyPolicyGenerator: React.FC = () => {
     description: 'Generate a free, GDPR and CCPA-compliant privacy policy for your website or app in minutes. No signup required.',
   };
 
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Is this privacy policy generator really free?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, 100% free. Generate unlimited privacy policies without creating an account or providing payment information. Your data never leaves your browser.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Are these generated policies legally binding?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Our templates are based on real legal frameworks and compliance standards including GDPR, CCPA, CalOPPA, and more. While they cover the majority of use cases, we recommend having an attorney review your final document for your specific jurisdiction.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Do I need a privacy policy for my website?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. If you collect any personal information (even just an email address for a newsletter, or through Google Analytics), you are legally required to have a privacy policy by global privacy laws like the GDPR and the CCPA.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What makes a privacy policy GDPR compliant?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'To be GDPR compliant, a privacy policy must be transparent, clearly stating what data is collected, why it is collected, how long it is retained, who it is shared with, and detailing users\' rights regarding their data (such as the right to deletion).',
-        },
-      },
-    ],
-  };
-
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -75,7 +80,7 @@ export const PrivacyPolicyGenerator: React.FC = () => {
         title="Free Privacy Policy Generator — GDPR & CCPA Compliant (2026)"
         description="Create a free privacy policy for your website or app. Covers GDPR, CCPA, and CalOPPA. No signup, no cost — 100% client-side generation."
         canonical="/privacy-policy-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
+        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
       />
 
       {/* Hero */}
@@ -111,24 +116,8 @@ export const PrivacyPolicyGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Is this privacy policy generator really free?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes, 100% free with no hidden charges. Generate unlimited legal documents without creating an account or providing payment information.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Are these generated policies legally binding?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Our templates are based on real legal frameworks. However, we recommend having an attorney review your final document for your specific jurisdiction.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Do I need a privacy policy for my website?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes. If you collect any personal information (e.g. through contact forms, newsletters, or Google Analytics), you are legally required to have a privacy policy.</p>
-          </div>
-        </div>
-      </section>
+      {/* FAQ — Accordion */}
+      <ToolFAQ faqs={PRIVACY_FAQS} />
 
       {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
