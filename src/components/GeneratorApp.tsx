@@ -390,7 +390,7 @@ export function GeneratorApp() {
           </div>
 
           {/* ── All Tools by Category ── */}
-          <div className="delay-200 animate-enter" style={{ marginBottom: '3rem', maxWidth: '1000px', margin: '0 auto 3rem' }}>
+          <div className="delay-200 animate-enter" style={{ maxWidth: '1000px', margin: '0 auto', marginBottom: '4rem' }}>
             <span className="section-label">Browse All 22+ Generators</span>
             <div className="category-tabs" style={{ marginTop: '0.5rem' }}>
               {CATEGORIES.map(cat => (
@@ -416,7 +416,7 @@ export function GeneratorApp() {
           </div>
 
           {/* ── Utility Links ── */}
-          <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
+          <div className="delay-200 animate-enter" style={{ marginTop: '4rem', marginBottom: '4rem', textAlign: 'center', display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
             <Link
               href="/compliance-checker"
               className="hero-cta"
@@ -427,13 +427,13 @@ export function GeneratorApp() {
             <Link
               href="/history"
               className="hero-cta"
-              style={{ fontSize: '0.95rem', padding: '0.85rem 2rem', marginLeft: '1rem' }}
+              style={{ fontSize: '0.95rem', padding: '0.85rem 2rem' }}
             >
               📋 {t('view_history')}
             </Link>
           </div>
 
-          <div className="glass-panel delay-300 animate-enter" style={{ marginTop: '4rem', maxWidth: '600px', margin: '0 auto' }}>
+          <div className="glass-panel delay-300 animate-enter" style={{ maxWidth: '600px', margin: '0 auto 5rem' }}>
              <h2 style={{ marginBottom: '1rem', color: 'var(--accent-tertiary)', fontSize: '1.25rem' }}>{t('header_guides')}</h2>
              <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{t('text_guides')}</p>
              <Link href="/blog" style={{ color: 'var(--accent-secondary)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
