@@ -20,11 +20,62 @@ const FormLoader = () => (
 
 type Step = 'landing' | 'form' | 'preview'
 
+/* ── Tool Registry ── */
+type ToolEntry = { id: string; t_key: string; href: string; icon: string; desc: string; category: string }
+
+const POPULAR_TOOLS: ToolEntry[] = [
+  { id: 'privacy',  t_key: 'start_privacy',  href: '/privacy-policy-generator',  icon: '🔒', desc: 'GDPR, CCPA & LGPD compliant privacy policies for any website or app.', category: 'privacy' },
+  { id: 'terms',    t_key: 'start_terms',    href: '/terms-of-service-generator', icon: '📜', desc: 'Protect your business with professional terms & conditions.', category: 'terms' },
+  { id: 'cookie',   t_key: 'start_cookie',   href: '/cookie-policy-generator',   icon: '🍪', desc: 'ePrivacy-compliant cookie policy with consent disclosures.', category: 'privacy' },
+  { id: 'nda',      t_key: 'start_nda',      href: '/nda-generator',             icon: '🤝', desc: 'Legally binding non-disclosure agreements for business deals.', category: 'terms' },
+  { id: 'eula',     t_key: 'start_eula',     href: '/eula-generator',            icon: '💻', desc: 'End-user license agreements for software & SaaS products.', category: 'terms' },
+  { id: 'disclaimer', t_key: 'start_disclaimer', href: '/disclaimer-generator',  icon: '⚠️', desc: 'Limit liability with a professional website disclaimer.', category: 'compliance' },
+]
+
+const CATEGORIES = [
+  { id: 'privacy',    icon: '🔒', label: 'Privacy & Data' },
+  { id: 'terms',      icon: '📜', label: 'Terms & Agreements' },
+  { id: 'compliance', icon: '⚖️', label: 'Compliance & Disclosures' },
+  { id: 'developer',  icon: '🛠️', label: 'Developer Tools' },
+]
+
+const ALL_TOOLS: ToolEntry[] = [
+  // Privacy & Data
+  { id: 'privacy',           t_key: 'start_privacy',           href: '/privacy-policy-generator',          icon: '🔒', desc: '', category: 'privacy' },
+  { id: 'cookie',            t_key: 'start_cookie',            href: '/cookie-policy-generator',           icon: '🍪', desc: '', category: 'privacy' },
+  { id: 'cookie-banner',     t_key: 'start_cookie_banner',     href: '/cookie-banner-generator',           icon: '🪧', desc: '', category: 'privacy' },
+  { id: 'dpa',               t_key: 'start_dpa',               href: '/dpa-generator',                     icon: '📋', desc: '', category: 'privacy' },
+  { id: 'hipaa',             t_key: 'start_hipaa',             href: '/hipaa-policy-generator',            icon: '🏥', desc: '', category: 'privacy' },
+  { id: 'employee-privacy',  t_key: 'start_employee_privacy',  href: '/employee-privacy-policy-generator', icon: '👤', desc: '', category: 'privacy' },
+  { id: 'data-breach',       t_key: 'start_data_breach',       href: '/data-breach-policy-generator',      icon: '🚨', desc: '', category: 'privacy' },
+  { id: 'newsletter',        t_key: 'start_newsletter',        href: '/newsletter-policy-generator',       icon: '📧', desc: '', category: 'privacy' },
+  // Terms & Agreements
+  { id: 'terms',             t_key: 'start_terms',             href: '/terms-of-service-generator',        icon: '📜', desc: '', category: 'terms' },
+  { id: 'tos',               t_key: 'start_tos',               href: '/tos-generator',                     icon: '📄', desc: '', category: 'terms' },
+  { id: 'eula',              t_key: 'start_eula',              href: '/eula-generator',                    icon: '💻', desc: '', category: 'terms' },
+  { id: 'nda',               t_key: 'start_nda',               href: '/nda-generator',                     icon: '🤝', desc: '', category: 'terms' },
+  { id: 'sla',               t_key: 'start_sla',               href: '/sla-generator',                     icon: '⏱️', desc: '', category: 'terms' },
+  { id: 'refund',            t_key: 'start_refund',            href: '/refund-policy-generator',           icon: '💰', desc: '', category: 'terms' },
+  { id: 'shipping',          t_key: 'start_shipping',          href: '/shipping-policy-generator',         icon: '📦', desc: '', category: 'terms' },
+  // Compliance & Disclosures
+  { id: 'disclaimer',        t_key: 'start_disclaimer',        href: '/disclaimer-generator',              icon: '⚠️', desc: '', category: 'compliance' },
+  { id: 'dmca',              t_key: 'start_dmca',              href: '/dmca-generator',                    icon: '©️', desc: '', category: 'compliance' },
+  { id: 'aup',               t_key: 'start_aup',               href: '/aup-generator',                     icon: '📝', desc: '', category: 'compliance' },
+  { id: 'accessibility',     t_key: 'start_accessibility',     href: '/accessibility-statement-generator', icon: '♿', desc: '', category: 'compliance' },
+  { id: 'affiliate-disclaimer', t_key: 'start_affiliate_disclaimer', href: '/affiliate-disclaimer-generator', icon: '🔗', desc: '', category: 'compliance' },
+  { id: 'social-media',      t_key: 'start_social_media',      href: '/social-media-policy-generator',     icon: '📱', desc: '', category: 'compliance' },
+  { id: 'ai-ethics',         t_key: 'start_ai_ethics',         href: '/ai-ethics-policy-generator',        icon: '🤖', desc: '', category: 'compliance' },
+  // Developer Tools
+  { id: 'robots-txt',        t_key: 'start_robots',            href: '/robots-txt-generator',              icon: '🤖', desc: '', category: 'developer' },
+  { id: 'legal-page-checker', t_key: 'start_legal_checker',    href: '/legal-page-checker',                icon: '✅', desc: '', category: 'developer' },
+]
+
 export function GeneratorApp() {
   const [step, setStep] = useState<Step>('landing')
   const [selectedType, setSelectedType] = useState<PolicyType>('privacy')
   const [generatedContent, setGeneratedContent] = useState('')
   const [livePreviewContent, setLivePreviewContent] = useState('')
+  const [activeCategory, setActiveCategory] = useState('privacy')
   const searchParams = useSearchParams()
 
   /* Detect redirect from SEO landing pages */
@@ -320,57 +371,63 @@ export function GeneratorApp() {
           <h1 className="text-gradient" style={{ fontSize: '4rem', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
             {t('app_title')}
           </h1>
-          <p className="delay-100 animate-enter" style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 4rem', lineHeight: '1.8' }}>
+          <p className="delay-100 animate-enter" style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 2.5rem', lineHeight: '1.8' }}>
             {t('app_subtitle')}
           </p>
-          
-          <div className="delay-200 animate-enter" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto 4rem' }}>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/privacy-policy-generator">{t('start_privacy')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/terms-of-service-generator">{t('start_terms')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/cookie-policy-generator">{t('start_cookie')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/refund-policy-generator">{t('start_refund')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/disclaimer-generator">{t('start_disclaimer')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/cookie-banner-generator">{t('start_cookie_banner')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/robots-txt-generator">{t('start_robots')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/accessibility-statement-generator">{t('start_accessibility')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/nda-generator">{t('start_nda')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/eula-generator">{t('start_eula')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/dpa-generator">{t('start_dpa')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/aup-generator">{t('start_aup')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/dmca-generator">{t('start_dmca')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/employee-privacy-policy-generator">{t('start_employee_privacy')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/affiliate-disclaimer-generator">{t('start_affiliate_disclaimer')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/social-media-policy-generator">{t('start_social_media')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/newsletter-policy-generator">{t('start_newsletter')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/tos-generator">{t('start_tos')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/hipaa-policy-generator">{t('start_hipaa')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/sla-generator">{t('start_sla')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/data-breach-policy-generator">{t('start_data_breach')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/ai-ethics-policy-generator">{t('start_ai_ethics')}</Link>
-            <Link className="btn-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }} href="/shipping-policy-generator">{t('start_shipping')}</Link>
+
+          {/* ── Popular Tools ── */}
+          <div className="delay-100 animate-enter" style={{ marginBottom: '4rem' }}>
+            <span className="section-label">⭐ Most Popular</span>
+            <div className="popular-grid">
+              {POPULAR_TOOLS.map(tool => (
+                <Link key={tool.id} href={tool.href} className="tool-card">
+                  <span className="tool-card-icon">{tool.icon}</span>
+                  <span className="tool-card-name">{t(tool.t_key)}</span>
+                  <span className="tool-card-desc">{tool.desc}</span>
+                </Link>
+              ))}
+            </div>
           </div>
 
+          {/* ── All Tools by Category ── */}
+          <div className="delay-200 animate-enter" style={{ marginBottom: '3rem', maxWidth: '1000px', margin: '0 auto 3rem' }}>
+            <span className="section-label">Browse All 22+ Generators</span>
+            <div className="category-tabs" style={{ marginTop: '0.5rem' }}>
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat.id}
+                  className={`category-tab${activeCategory === cat.id ? ' active' : ''}`}
+                  onClick={() => setActiveCategory(cat.id)}
+                >
+                  {cat.icon} {cat.label}
+                </button>
+              ))}
+            </div>
+            <div className="category-grid">
+              {ALL_TOOLS
+                .filter(t => t.category === activeCategory)
+                .map(tool => (
+                  <Link key={tool.id} href={tool.href} className="tool-link">
+                    <span className="tool-link-icon">{tool.icon}</span>
+                    {t(tool.t_key)}
+                  </Link>
+                ))}
+            </div>
+          </div>
+
+          {/* ── Utility Links ── */}
           <div className="delay-200 animate-enter" style={{ marginTop: '2rem', textAlign: 'center' }}>
             <Link
               href="/compliance-checker"
-              className="btn-primary"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                textDecoration: 'none', filter: 'hue-rotate(45deg)',
-                padding: '0.85rem 2rem', fontSize: '1.05rem',
-              }}
+              className="hero-cta"
+              style={{ fontSize: '0.95rem', padding: '0.85rem 2rem' }}
             >
               🔍 Check Your Existing Policy
             </Link>
             <Link
               href="/history"
-              className="btn-primary"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                textDecoration: 'none', filter: 'hue-rotate(200deg)',
-                padding: '0.85rem 2rem', fontSize: '1.05rem',
-                marginLeft: '1rem',
-              }}
+              className="hero-cta"
+              style={{ fontSize: '0.95rem', padding: '0.85rem 2rem', marginLeft: '1rem' }}
             >
               📋 {t('view_history')}
             </Link>

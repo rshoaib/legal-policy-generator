@@ -142,5 +142,6 @@
   "generate_data_breach": "Gerar Política de Violação",
   "start_ai_ethics": "Criar Política de Ética de IA",
   "ai_ethics": "Política de Ética de IA / ML",
-  "generate_ai_ethics": "Gerar Política de Ética de IA"
+  "generate_ai_ethics": "Gerar Política de Ética de IA",
+  "start_legal_checker": "Legal Page Checker"
 }

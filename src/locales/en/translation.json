@@ -152,5 +152,6 @@
   "shipping_international": "We ship internationally",
   "shipping_international_time": "International Delivery Estimate",
   "shipping_free_threshold": "Free Shipping Threshold ($)",
-  "shipping_restrictions": "Shipping Restrictions"
+  "shipping_restrictions": "Shipping Restrictions",
+  "start_legal_checker": "Legal Page Checker"
 }

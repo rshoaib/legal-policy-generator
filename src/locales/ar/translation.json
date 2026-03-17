@@ -142,5 +142,6 @@
   "generate_data_breach": "إنشاء سياسة خرق البيانات",
   "start_ai_ethics": "إنشاء سياسة أخلاقيات الذكاء الاصطناعي",
   "ai_ethics": "سياسة أخلاقيات الذكاء الاصطناعي",
-  "generate_ai_ethics": "إنشاء سياسة أخلاقيات الذكاء الاصطناعي"
+  "generate_ai_ethics": "إنشاء سياسة أخلاقيات الذكاء الاصطناعي",
+  "start_legal_checker": "Legal Page Checker"
 }

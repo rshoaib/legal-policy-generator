@@ -142,5 +142,6 @@
   "generate_data_breach": "Richtlinie Generieren",
   "start_ai_ethics": "KI-Ethik-Richtlinie Erstellen",
   "ai_ethics": "KI / ML Ethik-Richtlinie",
-  "generate_ai_ethics": "KI-Ethik-Richtlinie Generieren"
+  "generate_ai_ethics": "KI-Ethik-Richtlinie Generieren",
+  "start_legal_checker": "Legal Page Checker"
 }
