@@ -2,6 +2,38 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const DISCLAIMER_FAQS: FAQItem[] = [
+  {
+    question: 'Do I need a disclaimer on my website?',
+    answer: 'If your website provides <strong>any</strong> kind of information, advice, or services — including blog posts, tutorials, product reviews, or health/fitness content — you should have a disclaimer. It limits your liability if someone acts on your content and suffers damages or financial loss.',
+  },
+  {
+    question: 'What is the difference between a disclaimer and a terms of service?',
+    answer: 'A <strong>disclaimer</strong> limits liability for the accuracy of your content (e.g., "this is not medical advice"). A <strong>Terms of Service</strong> is a broader legal contract governing how users interact with your platform — covering account rules, IP rights, and dispute resolution. Most websites benefit from <strong>both</strong>. Generate your ToS with our <a href="/tos-generator">free Terms of Service Generator</a>.',
+  },
+  {
+    question: 'What types of disclaimers exist?',
+    answer: 'The most common types include: <strong>General disclaimers</strong> ("for informational purposes only"), <strong>medical/health disclaimers</strong> ("not a substitute for professional medical advice"), <strong>legal disclaimers</strong> ("not legal counsel"), <strong>financial disclaimers</strong> ("not investment advice"), <strong>affiliate disclaimers</strong> (FTC-required), and <strong>testimonial disclaimers</strong> ("results may vary").',
+  },
+  {
+    question: 'Do bloggers need a disclaimer?',
+    answer: 'Yes. Bloggers who share opinions, product reviews, recipes, health tips, or financial insights should have a disclaimer. If a reader follows your advice and suffers harm (e.g., an allergic reaction to a recipe ingredient), a disclaimer provides a crucial legal defense.',
+  },
+  {
+    question: 'What is an affiliate disclaimer and is it required?',
+    answer: 'An affiliate disclaimer discloses that you may earn a commission from links on your site. The <strong>FTC (Federal Trade Commission)</strong> legally requires this disclosure for any website using Amazon Associates, ShareASale, or other affiliate programs. Failure to disclose can result in FTC enforcement actions and fines.',
+  },
+  {
+    question: 'Can a disclaimer protect me from all lawsuits?',
+    answer: 'A disclaimer <strong>cannot prevent</strong> someone from filing a lawsuit. However, it provides a <strong>powerful legal defense</strong>. Courts regularly dismiss claims when the defendant had a clear, visible disclaimer that the user acknowledged. It demonstrates that the user assumed the risk of relying on your content.',
+  },
+  {
+    question: 'Does a medical or health website need a professional disclaimer?',
+    answer: 'Absolutely. Health and medical websites face the <strong>highest liability risk</strong>. Your disclaimer must clearly state that content is for informational purposes only, is not a substitute for professional medical advice, and that readers should consult a qualified healthcare provider before making health decisions.',
+  },
+];
 
 export const DisclaimerGenerator: React.FC = () => {
   const router = useRouter();
@@ -13,51 +45,8 @@ export const DisclaimerGenerator: React.FC = () => {
     url: 'https://legalpolicygen.com/disclaimer-generator',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description: 'Generate a free, professional disclaimer for your website or blog. Limit your liability for medical, legal, or financial information.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Do I need a disclaimer on my website?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'If your website provides any kind of information, advice, or services, you almost certainly need a disclaimer. It limits your liability for the accuracy of the information and protects you from lawsuits if someone relies on your content and suffers damages.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What does a professional disclaimer cover?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A good disclaimer clarifies that your content is for informational purposes only. It specifically states that the information does not constitute professional advice, such as medical, legal, or financial advice, and limits your liability for errors or omissions.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Can a disclaimer protect me from all lawsuits?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'While a disclaimer cannot prevent someone from suing you, it provides a strong legal defense. By explicitly stating your limitations and requiring users to assume the risk of using your information, courts are highly likely to dismiss claims against you.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What is an affiliate disclaimer?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'The FTC requires publishers to disclose if they earn commissions through affiliate links. An affiliate disclaimer lets readers know that you may earn a small commission from purchases made through your links, ensuring transparency.',
-        },
-      },
-    ],
   };
 
   const breadcrumbJsonLd = {
@@ -75,10 +64,9 @@ export const DisclaimerGenerator: React.FC = () => {
         title="Free Disclaimer Generator — Limit Your Website Liability (2026)"
         description="Create a professional disclaimer to protect your blog, medical, or financial site from liability. Includes FTC affiliate disclosures. 100% Free."
         canonical="/disclaimer-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
+        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
       />
 
-      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           ⚖️ Free Disclaimer Generator
@@ -86,22 +74,15 @@ export const DisclaimerGenerator: React.FC = () => {
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
           Create a professional <strong style={{ color: 'var(--text-primary)' }}>Disclaimer</strong> to protect your blog or business website from liability lawsuits. Includes FTC affiliate disclosures.
         </p>
-        <button
-          className="btn-primary"
-          onClick={() => router.push('/?step=form&type=disclaimer')}
-          style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
-        >
+        <button className="btn-primary" onClick={() => router.push('/?step=form&type=disclaimer')} style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}>
           Generate Your Disclaimer — Free →
         </button>
       </section>
 
-      {/* Why You Need a Policy */}
       <section className="glass-panel" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
         <h2 className="text-gradient" style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Why Your Website Needs a Disclaimer</h2>
         <div style={{ color: 'var(--text-secondary)', lineHeight: 1.9, fontSize: '1.05rem' }}>
-          <p style={{ marginBottom: '1.25rem' }}>
-            A disclaimer is a legal statement that formally limits your liability for the content published on your website. Without it, you open your business up to lawsuits initiated by users who acted upon your advice or information and suffered damages or financial loss.
-          </p>
+          <p style={{ marginBottom: '1.25rem' }}>A disclaimer is a legal statement that formally limits your liability for the content published on your website. Without it, you open your business up to lawsuits initiated by users who acted upon your advice or information and suffered damages or financial loss.</p>
           <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.25rem' }}>
             <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: 'var(--accent-primary)' }}>Medical and Health Blogs:</strong> Prevent readers from replacing professional medical diagnosis with your informational wellness or fitness content.</li>
             <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: 'var(--accent-primary)' }}>Financial Advice:</strong> Protect yourself from lawsuits if a reader invests money based on your blog post and loses their investment.</li>
@@ -111,32 +92,10 @@ export const DisclaimerGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Do I need a disclaimer on my website?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>If your website provides any kind of information, advice, or services, you certainly need a disclaimer. It limits your liability for the accuracy of the information and protects you from lawsuits.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What does a professional disclaimer cover?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>It clarifies that your content is for informational purposes only. It states that the information does not constitute professional advice, placing the responsibility safely back onto the user.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Can a disclaimer stop me from getting sued?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>While anyone can file a lawsuit, a well-written disclaimer gives you a powerful, immediate legal defense that often leads to the case being dismissed early, saving you thousands in legal fees.</p>
-          </div>
-        </div>
-      </section>
+      <ToolFAQ faqs={DISCLAIMER_FAQS} />
 
-      {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
-        <button
-          className="btn-primary"
-          onClick={() => router.push('/?step=form&type=disclaimer')}
-          style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}
-        >
+        <button className="btn-primary" onClick={() => router.push('/?step=form&type=disclaimer')} style={{ fontSize: '1.15rem', padding: '1rem 2.5rem' }}>
           Create Your Free Disclaimer Now →
         </button>
       </section>
