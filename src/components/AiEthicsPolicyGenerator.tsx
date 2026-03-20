@@ -2,6 +2,15 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const AI_ETHICS_FAQS: FAQItem[] = [
+  { question: 'What is an AI Ethics Policy?', answer: 'An AI Ethics Policy outlines exactly how employees are allowed to use Generative AI tools (ChatGPT, GitHub Copilot, Midjourney) — focusing on data privacy, avoiding bias, and protecting intellectual property.' },
+  { question: 'Why does our company need an AI policy?', answer: 'Without a policy, employees may paste confidential client data into public AI tools, effectively leaking trade secrets. A policy formally forbids inputting PII, source code, or financial data into unauthorized AI services.' },
+  { question: 'Can we lose copyright if we use AI-generated content?', answer: 'Yes. The US Copyright Office has ruled that purely AI-generated content cannot be copyrighted. The policy requires employees to substantially edit AI output to ensure final products remain legally theirs.' },
+  { question: 'Should we ban AI entirely?', answer: 'No. Banning AI only pushes "Shadow AI" usage underground where you cannot monitor it. A strong policy embraces productivity gains while formally mitigating security risks.' },
+  { question: 'Does this policy cover developer tools like GitHub Copilot?', answer: 'Yes. The policy governs which repositories developers can expose to AI assistants and requires review of generated code before committing.' },
+];
 
 export const AiEthicsPolicyGenerator: React.FC = () => {
   const router = useRouter();
@@ -111,24 +120,7 @@ export const AiEthicsPolicyGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Should we ban AI entirely?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>No. Banning AI only pushes "Shadow AI" usage underground where you cannot monitor it. A strong AI policy embraces the productivity gains while formally mitigating the security risks.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Does this policy cover developer tools like GitHub Copilot?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes. While specific tools often offer enterprise data protections, the policy dictates the general rules of engagement regarding what repositories developers are allowed to expose to AI assistants.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What is "Shadow AI"?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Shadow AI refers to employees using unauthorized, unsanctioned generative AI web apps on their work devices, often bypassing firewall regulations and placing company data at risk.</p>
-          </div>
-        </div>
-      </section>
+      <ToolFAQ faqs={AI_ETHICS_FAQS} />
 
       {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>

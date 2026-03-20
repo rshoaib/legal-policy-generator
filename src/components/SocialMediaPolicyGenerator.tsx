@@ -2,6 +2,15 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const SOCIAL_MEDIA_FAQS: FAQItem[] = [
+  { question: 'What is a corporate Social Media Policy?', answer: 'A set of guidelines governing how employees should conduct themselves online when representing your company or discussing their employment — what they can and cannot post.' },
+  { question: 'Why do companies need a Social Media Policy?', answer: 'It protects brand reputation from PR disasters, prevents leaking of trade secrets, outlines consequences for online harassment, and ensures FTC compliance when employees endorse products.' },
+  { question: 'Can I fire an employee for a social media post?', answer: 'Generally yes (in at-will states) if the post violates a clearly established policy, such as sharing confidential data or severe harassment. However, the NLRB protects rights to discuss working conditions.' },
+  { question: 'Does this policy cover personal accounts?', answer: 'Yes. The policy governs how employees reference the company on personal Twitter, LinkedIn, or TikTok — usually requiring a disclaimer that "opinions are my own."' },
+  { question: 'Are there limits to what a policy can restrict?', answer: 'Yes. The NLRB protects employees\' rights to "concerted activity" — you cannot ban them from discussing working conditions or pay online.' },
+];
 
 export const SocialMediaPolicyGenerator: React.FC = () => {
   const router = useRouter();
@@ -111,24 +120,7 @@ export const SocialMediaPolicyGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Does this policy cover personal accounts?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes. While you cannot dictate an employee's entirely private life, a comprehensive policy governs how they act when identifying themselves as your employee or discussing your industry.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What is the "Opinions are my own" disclaimer?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>It is a common requirement in social media policies where employees must state that their views do not represent the company, legally distancing your brand from their personal statements.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Are there limits to what a policy can restrict?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes. The National Labor Relations Board (NLRB) protects employees' rights to engage in "concerted activity," meaning you usually cannot ban them from discussing working conditions or pay online.</p>
-          </div>
-        </div>
-      </section>
+      <ToolFAQ faqs={SOCIAL_MEDIA_FAQS} />
 
       {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>

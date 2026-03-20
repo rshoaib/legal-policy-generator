@@ -2,6 +2,15 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const ACCESSIBILITY_FAQS: FAQItem[] = [
+  { question: 'What is a website accessibility statement?', answer: 'An accessibility statement is a public document stating your commitment to accessibility, the WCAG 2.1 AA standards you target, known limitations, and how users can report barriers.' },
+  { question: 'Does an accessibility statement protect me from ADA lawsuits?', answer: 'While it does not grant absolute immunity, a clear statement serves as strong evidence of good-faith compliance effort — which courts frequently consider when dismissing ADA claims.' },
+  { question: 'What does WCAG stand for?', answer: 'WCAG stands for Web Content Accessibility Guidelines, the international W3C standard. Most modern laws (ADA, EAA) require WCAG 2.1 Level AA compliance.' },
+  { question: 'Do e-commerce sites need an accessibility statement?', answer: 'Yes — especially under the European Accessibility Act (EAA) which mandated compliance for EU e-commerce businesses from June 2025. US businesses should also publish one to reduce ADA litigation risk.' },
+  { question: 'Will this statement make my site ADA compliant?', answer: 'No. A statement is a legal disclaimer. You must also fix HTML structure, keyboard navigation, color contrast, and add alt text to all images.' },
+];
 
 export const AccessibilityStatementGenerator: React.FC = () => {
   const router = useRouter();
@@ -103,24 +112,7 @@ export const AccessibilityStatementGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What is a website accessibility statement?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>It is a dedicated public page where you define your commitment to accessibility, list the standards you aim to meet (like WCAG 2.1), and provide contact info for users encountering issues.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Will this statement make my site ADA compliant?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>No. A statement is a legal disclaimer and commitment document. You must still actively fix the HTML, color contrast, and keyboard navigation issues on your website to be fully compliant.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What does WCAG stand for?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>WCAG stands for Web Content Accessibility Guidelines. It sets the international, measurable baseline for rendering web applications usable for disabled users.</p>
-          </div>
-        </div>
-      </section>
+      <ToolFAQ faqs={ACCESSIBILITY_FAQS} />
 
       {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>

@@ -2,6 +2,15 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const HIPAA_FAQS: FAQItem[] = [
+  { question: 'What is a HIPAA Notice of Privacy Practices (NPP)?', answer: 'A specific legal document required by HHS that informs patients of their rights regarding Protected Health Information (PHI) and how your organization may use or disclose that data.' },
+  { question: 'Who must comply with HIPAA?', answer: 'HIPAA applies to Covered Entities (doctors, dentists, health plans, clearinghouses) and their Business Associates — such as SaaS vendors who host or process medical data.' },
+  { question: 'Can I use a standard website Privacy Policy?', answer: 'No. A standard Privacy Policy covers marketing cookies and analytics. It does not meet the strict federal regulatory requirements under HIPAA for handling medical records (PHI).' },
+  { question: 'What happens if I violate HIPAA?', answer: 'Fines range from $137 to $68,928 per violation depending on negligence level. Willful neglect can lead to federal criminal charges and imprisonment.' },
+  { question: 'What is PHI?', answer: 'Protected Health Information is any demographic data that identifies a patient (name, SSN, phone) linked to their past, present, or future physical or mental health condition.' },
+];
 
 export const HipaaGenerator: React.FC = () => {
   const router = useRouter();
@@ -111,24 +120,7 @@ export const HipaaGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Is this different from a standard website Privacy Policy?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes, entirely. A standard web Privacy Policy (for marketing cookies, analytics) does not contain the mandatory federal language required by HIPAA for handling confidential patient medical records.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Who exactly must comply with HIPAA?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>HIPAA applies to "Covered Entities," which include healthcare providers (doctors, therapists), health plans, and their "Business Associates" (such as SaaS companies managing medical software databases).</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What is PHI?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Protected Health Information (PHI) is any demographic information that can be used to identify a patient (names, phone numbers, SSNs) linked to their past, present, or future physical or mental health condition.</p>
-          </div>
-        </div>
-      </section>
+      <ToolFAQ faqs={HIPAA_FAQS} />
 
       {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>

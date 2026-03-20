@@ -2,6 +2,15 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { SEO } from './SEO';
+import { ToolFAQ, type FAQItem } from './ToolFAQ';
+
+const AUP_FAQS: FAQItem[] = [
+  { question: 'What is an Acceptable Use Policy (AUP)?', answer: 'An AUP is a set of rules restricting how users may use your network, website, or platform — explicitly forbidding spam, hacking, harassment, or posting illegal content.' },
+  { question: 'Why do I need an AUP if I already have Terms of Service?', answer: 'A ToS covers the broad legal relationship (payment, liability). An AUP isolates prohibited user behavior, making it far easier to enforce rules and ban abusive users without navigating complex ToS clauses.' },
+  { question: 'Can an AUP help me ban users legally?', answer: 'Yes. An AUP serves as your contractual justification for terminating an account immediately. If a user violates an explicitly listed rule, you have the right to revoke access without notice or refund.' },
+  { question: 'Who typically needs an Acceptable Use Policy?', answer: 'SaaS platforms, web hosting companies, ISPs, online communities, and corporate networks. B2B providers like AWS and Stripe also often require that you have an AUP in place to pass their compliance audits.' },
+  { question: 'What happens if a user breaks an AUP rule?', answer: 'Your AUP explicitly grants you the right to suspend or terminate their account indefinitely and without a refund for prepaid services.' },
+];
 
 export const AupGenerator: React.FC = () => {
   const router = useRouter();
@@ -111,24 +120,7 @@ export const AupGenerator: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="text-gradient" style={{ fontSize: '1.75rem', textAlign: 'center', marginBottom: '1.5rem' }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What is an Acceptable Use Policy?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>It is a specific framework of rules dictating what a user is expressly forbidden from doing while using your service, network, or application.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>Do I need an AUP if I have a Terms of Service?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Yes. While a ToS covers global payment and legal agreements, an AUP isolates behavioral boundaries. This makes it easier for moderators to reference and enforce without navigating a massive legal document.</p>
-          </div>
-          <div className="glass-panel" style={{ padding: '1.5rem' }}>
-            <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '1.05rem' }}>What happens if a user breaks an AUP rule?</h3>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>Your AUP explicitly grants you the right to suspend or terminate their account indefinitely, immediately, and usually without offering a refund for prepaid services.</p>
-          </div>
-        </div>
-      </section>
+      <ToolFAQ faqs={AUP_FAQS} />
 
       {/* Final CTA */}
       <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
