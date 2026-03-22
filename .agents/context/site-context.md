@@ -70,7 +70,7 @@
 | Cluster | Primary Keyword | Search Intent | Status |
 |---|---|---|---|
 | NDA Generator | "free nda template generator" | Transactional | ✅ Tool Live |
-| EULA Guide | "eula vs terms of service difference" | Informational | 🟡 Gap |
+| EULA Guide | "eula vs terms of service difference" | Informational | ✅ Published |
 | SLA Guide | "service level agreement template free" | Informational | 🟡 Gap |
 
 ### Pillar 4: Industry-Specific Legal
@@ -92,6 +92,7 @@
 | 3 | Terms of Service vs Privacy Policy: The Difference | `terms-vs-privacy-policy` | Mar 2026 | "terms vs privacy policy difference" |
 | 4 | Free Legal Pages Every Website Needs (Checklist) | `legal-pages-website-checklist` | Mar 2026 | "what legal pages does website need" |
 | 5 | GDPR for Small Business: A Plain-English Guide | `gdpr-small-business-guide` | Mar 2026 | "gdpr for small business" |
+| 6 | EULA vs Terms of Service: What's the Difference? | `eula-vs-terms-of-service` | Mar 23, 2026 | "eula vs terms of service difference" |
 
 ---
 
@@ -99,8 +100,9 @@
 
 | Priority | Keyword | Why High Priority |
 |---|---|---|
-| 🔴 1 | "eula vs terms of service difference" | Comparison — drives both EULA and Terms tools |
-| 🔴 2 | "ccpa vs gdpr differences explained" | Comparison — high volume, builds pillar 1 depth |
-| 🔴 3 | "how to write a refund policy" | E-commerce audience — drives return policy tool |
-| 🟠 4 | "does my blog need a privacy policy" | Beginner query — high volume, easy to rank |
-| 🟠 5 | "legal requirements for ecommerce website" | Gateway article — drives multiple tools |
+| ~~🔴 1~~ | ~~"eula vs terms of service difference"~~ | ✅ Published Mar 23, 2026 |
+| 🔴 1 | "ccpa vs gdpr differences explained" | Comparison — high volume, builds pillar 1 depth |
+| 🔴 2 | "how to write a refund policy" | E-commerce audience — drives return policy tool |
+| 🟠 3 | "does my blog need a privacy policy" | Beginner query — high volume, easy to rank |
+| 🟠 4 | "legal requirements for ecommerce website" | Gateway article — drives multiple tools |
+
