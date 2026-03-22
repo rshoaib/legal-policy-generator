@@ -1,49 +1,106 @@
+# LegalPolicyGen — Site Context
+
+> **URL**: https://legalpolicygen.com
+> **Stack**: Vite-React SPA + Supabase (blog) + Vercel
+> **Revenue**: AdSense
+> **Core Value**: 22+ free legal document generators — Privacy Policy, Terms, NDA, EULA, and more. Multi-lingual, GDPR/CCPA compliant.
+
 ---
-description: Brand voice, internal links, and target keywords for legalpolicygen.com
----
 
-# Context — legalpolicygen.com
+## 🎤 Brand Voice
 
-## Brand Voice
-- **Tone:** Authoritative yet accessible. Legal but not legalese.
-- **Persona:** A friendly compliance advisor who simplifies legal jargon.
-- **Values:** GDPR/CCPA compliance, privacy-first, free generation, no lawyer needed.
-- **Audience:** Website owners, app developers, small businesses who need legal pages.
+- **Tone**: Authoritative yet accessible. Legal but not legalese. "Generate your Privacy Policy in 60 seconds — free, GDPR-ready."
+- **Persona**: A friendly compliance advisor who simplifies legal jargon.
+- **Address**: Second person ("you"). Help website owners, app developers, and small business founders.
+- **Values**: GDPR/CCPA compliance, privacy-first, free generation, no lawyer needed.
+- **Differentiator**: Always mention "free, no signup, GDPR & CCPA compliant" within the first 100 words.
+- **Disclaimer**: Include "This is not legal advice. Consult a lawyer for specific cases."
+- **Competitor framing**: Position against Termly ($15/mo), TermsFeed ($25+), and lawyers ($500+).
 
-## Writing Rules
+### Writing Rules
 1. Explain legal concepts in plain English — then show the formal version.
 2. Always mention specific regulations (GDPR, CCPA, COPPA) with context.
 3. Include "last updated" dates and jurisdiction info in examples.
 4. Use step-by-step guides for generating policies.
-5. Warn about limitations — "This is not legal advice. Consult a lawyer for specific cases."
 
-## Internal Links Map
-| Tool/Page | URL | Keywords |
-|-----------|-----|----------|
-| Privacy Policy Generator | `/privacy-policy` | privacy policy, GDPR, data collection |
-| Terms of Service Generator | `/terms-of-service` | terms, conditions, user agreement |
-| Cookie Policy Generator | `/cookie-policy` | cookies, consent, GDPR cookies |
-| Disclaimer Generator | `/disclaimer` | liability, disclaimer, legal notice |
-| DMCA Policy Generator | `/dmca` | copyright, takedown, DMCA |
-| Return Policy Generator | `/return-policy` | returns, refunds, e-commerce |
-| Shipping Policy Generator | `/shipping-policy` | shipping policy, delivery, international shipping |
-| Blog | `/blog/[slug]` | Legal guides and articles |
+---
 
-## Target Keywords
-### High Priority
-| Keyword | Status |
-|---------|--------|
-| free privacy policy generator | ✅ Published |
-| terms of service generator | 🆕 Need content |
-| GDPR privacy policy template | 🆕 Need content |
-| cookie consent policy | ✅ Published |
-| return policy generator | 🆕 Need content |
-| shipping policy generator | ✅ Published |
+## 🔗 Internal Links (Tool URLs)
 
-### Content Calendar
-1. ~~"How to Write a Privacy Policy (GDPR + CCPA Compliant 2026)"~~ ✅ Published
-2. ~~"Do You Need a Cookie Policy? What the Law Actually Says (2026)"~~ ✅ Published
-3. ~~"Terms of Service vs Privacy Policy: What's the Difference?"~~ ✅ Published
-4. ~~"Free Legal Pages Every Website Needs (Complete Checklist)"~~ ✅ Published
-5. ~~"GDPR for Small Business: A Plain-English Guide"~~ ✅ Published
+| Generator | URL | Anchor Text Examples |
+|---|---|---|
+| **Privacy Policy** | `/privacy-policy` | "free privacy policy generator" |
+| **Terms of Service** | `/terms-of-service` | "terms of service generator" |
+| **Cookie Policy** | `/cookie-policy` | "cookie policy generator" |
+| **Disclaimer** | `/disclaimer` | "disclaimer generator" |
+| **DMCA Policy** | `/dmca` | "DMCA policy generator" |
+| **Return Policy** | `/return-policy` | "return policy generator" |
+| **Shipping Policy** | `/shipping-policy` | "shipping policy generator" |
+| **NDA Generator** | `/nda` | "free NDA generator" |
+| **EULA Generator** | `/eula` | "EULA generator" |
+| **DPA Generator** | `/dpa` | "data processing agreement generator" |
+| **Blog** | `/blog/[slug]` | "legal guides", "learn more" |
+| **Homepage** | `/` | "LegalPolicyGen", "free legal document generator" |
 
+---
+
+## 🎯 Topic Clusters & Published Content Map
+
+### Pillar 1: Privacy & Data Protection
+| Cluster | Primary Keyword | Search Intent | Status |
+|---|---|---|---|
+| Privacy Policy Generator | "free privacy policy generator" | Transactional | ✅ Tool Live |
+| Privacy Policy Guide | "how to write a privacy policy 2026" | Informational | ✅ Published |
+| GDPR Guide | "gdpr for small business plain english guide" | Informational | ✅ Published |
+| CCPA vs GDPR | "ccpa vs gdpr differences explained" | Informational | 🟡 Gap |
+| Cookie Consent | "cookie consent requirements 2026" | Informational | ✅ Published |
+| DPA Guide | "what is a data processing agreement" | Informational | 🟡 Gap |
+
+### Pillar 2: Website Legal Requirements
+| Cluster | Primary Keyword | Search Intent | Status |
+|---|---|---|---|
+| Legal Pages Checklist | "what legal pages does my website need" | Informational | ✅ Published |
+| Terms vs Privacy | "terms of service vs privacy policy difference" | Informational | ✅ Published |
+| Terms Generator | "free terms and conditions generator" | Transactional | ✅ Tool Live |
+| Refund Policy Guide | "how to write a refund policy" | Informational | 🟡 Gap |
+| DMCA Guide | "dmca policy for website template" | Informational | 🟡 Gap |
+| Disclaimer Guide | "website disclaimer generator free" | Transactional | 🟡 Gap |
+
+### Pillar 3: Business Contracts & Agreements
+| Cluster | Primary Keyword | Search Intent | Status |
+|---|---|---|---|
+| NDA Generator | "free nda template generator" | Transactional | ✅ Tool Live |
+| EULA Guide | "eula vs terms of service difference" | Informational | 🟡 Gap |
+| SLA Guide | "service level agreement template free" | Informational | 🟡 Gap |
+
+### Pillar 4: Industry-Specific Legal
+| Cluster | Primary Keyword | Search Intent | Status |
+|---|---|---|---|
+| SaaS Legal | "privacy policy for saas app" | Transactional | ✅ pSEO Live |
+| E-commerce Legal | "legal requirements for ecommerce website" | Informational | 🟡 Gap |
+| Mobile App Legal | "privacy policy for mobile app" | Transactional | ✅ pSEO Live |
+| Blog Legal | "does my blog need a privacy policy" | Informational | 🟡 Gap |
+
+---
+
+## 📊 Published Blog Articles
+
+| # | Title | Slug | Published | Primary Keyword |
+|---|---|---|---|---|
+| 1 | How to Write a Privacy Policy (GDPR + CCPA 2026) | `how-to-write-privacy-policy-2026` | Mar 2026 | "how to write a privacy policy" |
+| 2 | Do You Need a Cookie Policy? What the Law Says | `cookie-policy-requirements` | Mar 2026 | "cookie consent requirements" |
+| 3 | Terms of Service vs Privacy Policy: The Difference | `terms-vs-privacy-policy` | Mar 2026 | "terms vs privacy policy difference" |
+| 4 | Free Legal Pages Every Website Needs (Checklist) | `legal-pages-website-checklist` | Mar 2026 | "what legal pages does website need" |
+| 5 | GDPR for Small Business: A Plain-English Guide | `gdpr-small-business-guide` | Mar 2026 | "gdpr for small business" |
+
+---
+
+## 📌 Content Priority Queue
+
+| Priority | Keyword | Why High Priority |
+|---|---|---|
+| 🔴 1 | "eula vs terms of service difference" | Comparison — drives both EULA and Terms tools |
+| 🔴 2 | "ccpa vs gdpr differences explained" | Comparison — high volume, builds pillar 1 depth |
+| 🔴 3 | "how to write a refund policy" | E-commerce audience — drives return policy tool |
+| 🟠 4 | "does my blog need a privacy policy" | Beginner query — high volume, easy to rank |
+| 🟠 5 | "legal requirements for ecommerce website" | Gateway article — drives multiple tools |
