@@ -1,6 +1,16 @@
 import { supabase } from './supabase'
-import type { BlogPost } from './blogData'
-export type { BlogPost }
+
+export interface BlogPost {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    date: string
+    author?: string
+    category?: string
+    image?: string
+}
 
 // In-memory cache to avoid redundant fetches during navigation
 let cachedPosts: BlogPost[] | null = null
@@ -12,17 +22,7 @@ function isCacheValid(): boolean {
 }
 
 /**
- * Lazily load the 99KB local fallback only when Supabase is unavailable.
- * This keeps blogData.ts out of the initial JS bundle.
- */
-async function getLocalPosts(): Promise<BlogPost[]> {
-    const { blogPosts } = await import('./blogData')
-    return blogPosts
-}
-
-/**
  * Fetch all blog posts, ordered by date descending.
- * Falls back to local data if Supabase is unavailable.
  */
 export async function getAllPosts(): Promise<BlogPost[]> {
     if (isCacheValid()) {
@@ -30,7 +30,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     }
 
     if (!supabase) {
-        return getLocalPosts()
+        return []
     }
 
     try {
@@ -47,17 +47,15 @@ export async function getAllPosts(): Promise<BlogPost[]> {
             return cachedPosts
         }
 
-        // Empty table — fall back to local data
-        return getLocalPosts()
+        return []
     } catch (err) {
-        console.warn('Failed to fetch blog posts from Supabase, using local fallback:', err)
-        return getLocalPosts()
+        console.warn('Failed to fetch blog posts from Supabase:', err)
+        return []
     }
 }
 
 /**
  * Fetch a single blog post by slug.
- * Falls back to local data if Supabase is unavailable.
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     // Check cache first
@@ -66,8 +64,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     }
 
     if (!supabase) {
-        const posts = await getLocalPosts()
-        return posts.find(p => p.slug === slug) || null
+        return null
     }
 
     try {
@@ -81,8 +78,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
         return data as BlogPost
     } catch (err) {
-        console.warn(`Failed to fetch post "${slug}" from Supabase, using local fallback:`, err)
-        const posts = await getLocalPosts()
-        return posts.find(p => p.slug === slug) || null
+        console.warn(`Failed to fetch post "${slug}" from Supabase:`, err)
+        return null
     }
 }
