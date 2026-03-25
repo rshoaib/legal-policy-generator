@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { getPostBySlug } from '../lib/blogService';
-import { type BlogPost as BlogPostType } from '../lib/blogData';
+import { type BlogPost as BlogPostType } from '../lib/blogService';
 import { SEO } from './SEO';
 
 interface BlogPostProps {

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getAllPosts } from '../lib/blogService';
-import { type BlogPost } from '../lib/blogData';
+import { type BlogPost } from '../lib/blogService';
 import { SEO } from './SEO';
 
 const POSTS_PER_PAGE = 6;
