@@ -101,8 +101,8 @@
 | Priority | Keyword | Why High Priority |
 |---|---|---|
 | ~~🔴 1~~ | ~~"eula vs terms of service difference"~~ | ✅ Published Mar 23, 2026 |
-| 🔴 1 | "ccpa vs gdpr differences explained" | Comparison — high volume, builds pillar 1 depth |
-| 🔴 2 | "how to write a refund policy" | E-commerce audience — drives return policy tool |
-| 🟠 3 | "does my blog need a privacy policy" | Beginner query — high volume, easy to rank |
-| 🟠 4 | "legal requirements for ecommerce website" | Gateway article — drives multiple tools |
+| ~~🔴 1~~ | ~~"ccpa vs gdpr differences explained"~~ | ✅ Published Mar 25, 2026 |
+| ~~🔴 2~~ | ~~"how to write a refund policy"~~ | ✅ Published Mar 27, 2026 |
+| 🔴 1 | "does my blog need a privacy policy" | Beginner query — high volume, easy to rank |
+| 🔴 2 | "legal requirements for ecommerce website" | Gateway article — drives multiple tools |
 
