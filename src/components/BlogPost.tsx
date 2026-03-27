@@ -140,6 +140,13 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
         />
         
         <style>{`
+            .blog-content h2 {
+                margin-top: 2.5rem;
+                margin-bottom: 1rem;
+                color: var(--accent-primary);
+                font-size: 1.75rem;
+                font-weight: 700;
+            }
             .blog-content h3 {
                 margin-top: 2rem;
                 margin-bottom: 1rem;
@@ -155,6 +162,37 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             }
             .blog-content li {
                 margin-bottom: 0.5rem;
+            }
+            .blog-content table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+                font-size: 0.95rem;
+            }
+            .blog-content th {
+                text-align: left;
+                font-weight: 600;
+                color: var(--text-primary, #f1f5f9);
+                padding: 0.75rem 1rem;
+                border-bottom: 2px solid var(--accent-primary, #6366f1);
+                background: rgba(99, 102, 241, 0.08);
+            }
+            .blog-content td {
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.08));
+                vertical-align: top;
+            }
+            .blog-content tbody tr:hover {
+                background: rgba(99, 102, 241, 0.04);
+            }
+            .blog-content strong {
+                color: var(--text-primary, #f1f5f9);
+            }
+            .blog-content img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
             }
         `}</style>
       </article>
