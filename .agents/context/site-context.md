@@ -93,6 +93,9 @@
 | 4 | Free Legal Pages Every Website Needs (Checklist) | `legal-pages-website-checklist` | Mar 2026 | "what legal pages does website need" |
 | 5 | GDPR for Small Business: A Plain-English Guide | `gdpr-small-business-guide` | Mar 2026 | "gdpr for small business" |
 | 6 | EULA vs Terms of Service: What's the Difference? | `eula-vs-terms-of-service` | Mar 23, 2026 | "eula vs terms of service difference" |
+| 7 | CCPA vs GDPR: Key Differences Explained | `ccpa-vs-gdpr-differences` | Mar 25, 2026 | "ccpa vs gdpr differences explained" |
+| 8 | How to Write a Refund Policy (Free Template) | `how-to-write-refund-policy` | Mar 27, 2026 | "how to write a refund policy" |
+| 9 | Does My Blog Need a Privacy Policy? (Yes — Here's Why) | `does-my-blog-need-privacy-policy` | Mar 29, 2026 | "does my blog need a privacy policy" |
 
 ---
 
@@ -103,6 +106,6 @@
 | ~~🔴 1~~ | ~~"eula vs terms of service difference"~~ | ✅ Published Mar 23, 2026 |
 | ~~🔴 1~~ | ~~"ccpa vs gdpr differences explained"~~ | ✅ Published Mar 25, 2026 |
 | ~~🔴 2~~ | ~~"how to write a refund policy"~~ | ✅ Published Mar 27, 2026 |
-| 🔴 1 | "does my blog need a privacy policy" | Beginner query — high volume, easy to rank |
-| 🔴 2 | "legal requirements for ecommerce website" | Gateway article — drives multiple tools |
+| ~~🔴 1~~ | ~~"does my blog need a privacy policy"~~ | ✅ Published Mar 29, 2026 |
+| ~~🔴 1~~ | ~~"legal requirements for ecommerce website"~~ | ✅ Published Mar 30, 2026 |
 
