@@ -134,11 +134,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
           <h1 style={{ fontSize: '2.5rem', lineHeight: '1.2', marginBottom: '1rem' }}>{post.title}</h1>
         </header>
 
-        {post.image && (
-          <div style={{ marginBottom: '2rem' }}>
-            <img src={post.image} alt={post.title} style={{ width: '100%', borderRadius: '12px', maxHeight: '400px', objectFit: 'cover' }} />
-          </div>
-        )}
         
         <div 
           className="blog-content"
