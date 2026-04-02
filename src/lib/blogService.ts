@@ -36,7 +36,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     try {
         const { data, error } = await supabase
             .from('blog_posts')
-            .select('slug, title, excerpt, date, content')
+            .select('slug, title, excerpt, date, content, image')
             .order('date', { ascending: false })
 
         if (error) throw error
@@ -70,7 +70,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     try {
         const { data, error } = await supabase
             .from('blog_posts')
-            .select('slug, title, excerpt, date, content')
+            .select('slug, title, excerpt, date, content, image')
             .eq('slug', slug)
             .single()
 

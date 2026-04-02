@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getPostBySlug } from '../lib/blogService';
 import { type BlogPost as BlogPostType } from '../lib/blogService';
 import { SEO } from './SEO';
+import { marked } from 'marked';
 
 interface BlogPostProps {
   slug: string;
@@ -132,11 +133,17 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             </div>
           <h1 style={{ fontSize: '2.5rem', lineHeight: '1.2', marginBottom: '1rem' }}>{post.title}</h1>
         </header>
+
+        {post.image && (
+          <div style={{ marginBottom: '2rem' }}>
+            <img src={post.image} alt={post.title} style={{ width: '100%', borderRadius: '12px', maxHeight: '400px', objectFit: 'cover' }} />
+          </div>
+        )}
         
         <div 
           className="blog-content"
           style={{ lineHeight: '1.8', fontSize: '1.1rem', color: 'var(--text-primary)' }}
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: /^\s*<[a-z]/i.test(post.content) ? post.content : marked.parse(post.content) as string }}
         />
         
         <style>{`
@@ -193,6 +200,34 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
                 height: auto;
                 border-radius: 12px;
                 margin-bottom: 1.5rem;
+            }
+            .blog-content code {
+                background: rgba(99, 102, 241, 0.1);
+                padding: 0.15rem 0.4rem;
+                border-radius: 4px;
+                font-size: 0.9em;
+            }
+            .blog-content pre {
+                background: rgba(0,0,0,0.3);
+                padding: 1rem 1.25rem;
+                border-radius: 8px;
+                overflow-x: auto;
+                margin-bottom: 1.5rem;
+            }
+            .blog-content pre code {
+                background: none;
+                padding: 0;
+            }
+            .blog-content blockquote {
+                border-left: 3px solid var(--accent-primary);
+                padding-left: 1rem;
+                margin: 1.5rem 0;
+                color: var(--text-secondary);
+                font-style: italic;
+            }
+            .blog-content a {
+                color: var(--accent-primary);
+                text-decoration: underline;
             }
         `}</style>
       </article>
