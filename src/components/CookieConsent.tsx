@@ -57,8 +57,7 @@ export const CookieConsent: React.FC = () => {
           left: 0;
           right: 0;
           z-index: 9999;
-          background: rgba(10, 10, 30, 0.95);
-          backdrop-filter: blur(20px);
+          background: rgba(10, 10, 30, 0.97);
           border-top: 1px solid var(--glass-border, rgba(255,255,255,0.1));
           padding: 1rem 1.5rem;
           animation: slideUp 0.4s ease-out;

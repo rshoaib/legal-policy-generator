@@ -17,9 +17,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const page = seoPages.find(p => p.slug === slug)
   if (!page) return {}
 
+  const url = `https://legalpolicygen.com/${slug}`
   return {
     title: page.title,
     description: page.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: page.title,
+      description: page.description,
+      url,
+      type: 'website',
+    },
   }
 }
 

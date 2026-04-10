@@ -3,11 +3,6 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import html2pdf from 'html2pdf.js';
-// @ts-ignore
-import { asBlob } from 'html-docx-js-typescript';
-import { saveAs } from 'file-saver';
-import TurndownService from 'turndown';
 
 interface PolicyPreviewProps {
   content: string;
@@ -55,8 +50,9 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
     toast.success(t('html_downloaded') || 'HTML downloaded');
   };
 
-  const handleDownloadMarkdown = () => {
+  const handleDownloadMarkdown = async () => {
     try {
+      const { default: TurndownService } = await import('turndown');
       const turndownService = new TurndownService({ headingStyle: 'atx' });
       const markdown = turndownService.turndown(content);
       const blob = new Blob([markdown], { type: 'text/markdown' });
@@ -75,7 +71,8 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
     }
   };
 
- const handleDownloadPdf = () => {
+ const handleDownloadPdf = async () => {
+    const { default: html2pdf } = await import('html2pdf.js');
     const element = document.createElement('div');
     element.innerHTML = content.replace(/\n/g, '<br>');
     element.style.padding = '20px';
@@ -99,7 +96,11 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
     });
   };
 
-  const handleDownloadWord = () => {
+  const handleDownloadWord = async () => {
+      const [{ asBlob }, { saveAs }] = await Promise.all([
+        import('html-docx-js-typescript') as any,
+        import('file-saver'),
+      ]);
       const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -115,7 +116,7 @@ export const PolicyPreview: React.FC<PolicyPreviewProps> = ({
         </body>
         </html>
       `;
-      
+
       asBlob(htmlContent).then((blob: any) => {
           saveAs(blob, buildFilename('docx'));
           toast.success(t('word_downloaded'));

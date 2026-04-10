@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blogService'
+import { seoPages } from '@/data/seoPages'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://legalpolicygen.com'
@@ -16,8 +17,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/bundle`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/policy-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/industries`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${baseUrl}/history`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.4 },
-    { url: `${baseUrl}/profile`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.4 },
   ]
 
   const generatorRoutes: MetadataRoute.Sitemap = [
@@ -35,6 +34,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
+  /* 60 niche "[Policy] for [Industry]" pages — unique content, FAQs, now indexable */
+  const nicheRoutes: MetadataRoute.Sitemap = seoPages.map(page => ({
+    url: `${baseUrl}/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
   const posts = await getAllPosts()
   const blogRoutes: MetadataRoute.Sitemap = posts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -43,9 +50,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  // NOTE: Niche tool pages (privacy-policy-for-ecommerce, eula-for-blog, etc.) are intentionally
-  // excluded from the sitemap. They remain as live routes for users but are not submitted to Google
-  // to avoid "Discovered – currently not indexed" bloat and preserve crawl budget.
-
-  return [...staticRoutes, ...generatorRoutes, ...blogRoutes]
+  return [...staticRoutes, ...generatorRoutes, ...nicheRoutes, ...blogRoutes]
 }

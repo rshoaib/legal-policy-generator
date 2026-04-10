@@ -78,50 +78,15 @@ export function GeneratorApp() {
   const [activeCategory, setActiveCategory] = useState('privacy')
   const searchParams = useSearchParams()
 
-  /* Detect redirect from SEO landing pages */
+  /* Legacy /?type=X and /?q= redirects are now handled server-side in next.config.ts */
   useEffect(() => {
     const urlStep = searchParams.get('step') as Step
     const urlType = searchParams.get('type') as PolicyType
-    
+
     if (urlStep === 'form' && urlType) {
       setStep('form')
       setSelectedType(urlType)
-      
-      // Clear URL params without reloading so it looks clean
       window.history.replaceState({}, '', '/')
-    } else if (urlType && !urlStep) {
-      // Handle legacy GSC indexed URLs (e.g. /?type=dmca) -> 301 redirect to SEO landing page
-      const typeToPath: Record<string, string> = {
-        'privacy': '/privacy-policy-generator',
-        'terms': '/terms-of-service-generator',
-        'tos': '/tos-generator',
-        'cookie': '/cookie-policy-generator',
-        'refund': '/refund-policy-generator',
-        'disclaimer': '/disclaimer-generator',
-        'cookie-banner': '/cookie-banner-generator',
-        'robots-txt': '/robots-txt-generator',
-        'accessibility': '/accessibility-statement-generator',
-        'nda': '/nda-generator',
-        'eula': '/eula-generator',
-        'dpa': '/dpa-generator',
-        'aup': '/aup-generator',
-        'dmca': '/dmca-generator',
-        'employee-privacy': '/employee-privacy-policy-generator',
-        'affiliate-disclaimer': '/affiliate-disclaimer-generator',
-        'social-media': '/social-media-policy-generator',
-        'newsletter': '/newsletter-policy-generator',
-        'hipaa': '/hipaa-policy-generator',
-        'sla': '/sla-generator',
-        'data-breach': '/data-breach-policy-generator',
-        'ai-ethics': '/ai-ethics-policy-generator',
-        'shipping': '/shipping-policy-generator',
-      }
-      const redirectPath = typeToPath[urlType] || '/'
-      window.location.replace(redirectPath)
-    } else if (searchParams.has('q') && !urlStep && !urlType) {
-      // Handle legacy GSC indexed SearchAction URLs (e.g. /?q={search_term_string}) 
-      // -> 301 redirect to clean canonical home
-      window.location.replace('/')
     }
   }, [searchParams])
 
