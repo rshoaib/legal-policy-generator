@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { getAllPosts } from '../lib/blogService';
 import { type BlogPost } from '../lib/blogService';
 import { SEO } from './SEO';
-import { blogHeroImages } from '../data/blogHeroImages';
 
 const POSTS_PER_PAGE = 6;
 
@@ -98,16 +97,6 @@ export const BlogIndex: React.FC = () => {
           <div style={{ display: 'grid', gap: '2rem' }}>
             {visiblePosts.map(post => (
               <article key={post.slug} className="glass-panel" style={{ padding: 0, transition: 'transform 0.2s', overflow: 'hidden' }}>
-                {blogHeroImages[post.slug] && (
-                  <Link href={`/blog/${post.slug}`} style={{ display: 'block' }}>
-                    <img
-                      src={blogHeroImages[post.slug]}
-                      alt={post.title}
-                      style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
-                      loading="lazy"
-                    />
-                  </Link>
-                )}
                 <div style={{ padding: '2rem' }}>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
                     {post.date}

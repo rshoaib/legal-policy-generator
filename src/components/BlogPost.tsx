@@ -6,7 +6,6 @@ import { getPostBySlug } from '../lib/blogService';
 import { type BlogPost as BlogPostType } from '../lib/blogService';
 import { SEO } from './SEO';
 import { marked } from 'marked';
-import { blogHeroImages } from '../data/blogHeroImages';
 
 interface BlogPostProps {
   slug: string;
@@ -79,7 +78,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
 
   if (!post) return null;
 
-  const heroImage = blogHeroImages[post.slug] ?? null;
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
 
   const breadcrumbJsonLd = {
@@ -100,7 +98,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
     datePublished: post.date,
     dateModified: post.date,
     wordCount,
-    image: heroImage ? `https://legalpolicygen.com${heroImage}` : 'https://legalpolicygen.com/og-image.png',
+    image: 'https://legalpolicygen.com/og-image.png',
     author: {
       '@type': 'Organization',
       name: 'Legal Policy Generator',
@@ -135,17 +133,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             </div>
           <h1 style={{ fontSize: '2.5rem', lineHeight: '1.2', marginBottom: '1rem' }}>{post.title}</h1>
         </header>
-
-        {heroImage && (
-          <div style={{ marginBottom: '2rem', borderRadius: '12px', overflow: 'hidden' }}>
-            <img
-              src={heroImage}
-              alt={post.title}
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-              loading="eager"
-            />
-          </div>
-        )}
 
         <div
           className="blog-content"
