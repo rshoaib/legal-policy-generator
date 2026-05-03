@@ -25,13 +25,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'cookie-banner-generator', 'robots-txt-generator', 'accessibility-statement-generator',
     'dpa-generator', 'aup-generator', 'dmca-generator', 'employee-privacy-policy-generator',
     'affiliate-disclaimer-generator', 'social-media-policy-generator', 'newsletter-policy-generator',
-    'tos-generator', 'hipaa-policy-generator', 'sla-generator', 'data-breach-policy-generator',
+    'hipaa-policy-generator', 'sla-generator', 'data-breach-policy-generator',
     'ai-ethics-policy-generator', 'shipping-policy-generator',
+    /* Note: tos-generator is intentionally excluded — it 301-redirects to terms-of-service-generator
+       per next.config.ts. Including it here would re-advertise the redirect source to crawlers. */
   ].map(slug => ({
     url: `${baseUrl}/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
+  }))
+
+  /* Platform-specific landing pages — high commercial intent ("[platform] privacy policy") */
+  const platformRoutes: MetadataRoute.Sitemap = [
+    'shopify-privacy-policy-generator',
+    'woocommerce-privacy-policy-generator',
+    'wix-privacy-policy-generator',
+    'webflow-privacy-policy-generator',
+    'squarespace-privacy-policy-generator',
+  ].map(slug => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
   }))
 
   /* 60 niche "[Policy] for [Industry]" pages — unique content, FAQs, now indexable */
@@ -50,5 +66,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  return [...staticRoutes, ...generatorRoutes, ...nicheRoutes, ...blogRoutes]
+  return [...staticRoutes, ...generatorRoutes, ...platformRoutes, ...nicheRoutes, ...blogRoutes]
 }
