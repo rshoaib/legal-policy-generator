@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const HIPAA_FAQS: FAQItem[] = [
@@ -14,80 +13,8 @@ const HIPAA_FAQS: FAQItem[] = [
 
 export const HipaaGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free HIPAA Privacy Policy Generator',
-    url: 'https://legalpolicygen.com/hipaa-policy-generator',
-    applicationCategory: 'MedicalApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a HIPAA-compliant Privacy Policy for your medical practice, telehealth app, or pharmacy. Disclose how PHI is secured and handled.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is a HIPAA Notice of Privacy Practices (NPP)?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'It is a specific legal document required by the US Department of Health and Human Services. It informs patients of their rights regarding their Protected Health Information (PHI) and outlines how your organization may use or disclose that data.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Who must comply with HIPAA?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'HIPAA applies to "Covered Entities," which include healthcare providers (doctors, dentists, psychologists), health plans (insurance companies), healthcare clearinghouses, and their "Business Associates" (like SaaS vendors hosting medical data).',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Can I just use a standard website Privacy Policy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No. A standard website Privacy Policy deals with consumer data like IP addresses and marketing cookies. It does not meet the strict federal regulatory requirements set by HIPAA for handling medical and health records (PHI).',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What happens if I violate the HIPAA Privacy Rule?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Fines for HIPAA violations are severe, ranging from $137 to $68,928 per violation, depending on the level of negligence. In extreme cases of willful neglect, federal criminal charges and jail time may be pursued.',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'HIPAA Policy Generator', item: 'https://legalpolicygen.com/hipaa-policy-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free HIPAA Privacy Policy Generator — Medical Notice of Privacy (2026)"
-        description="Create a HIPAA-compliant Notice of Privacy Practices (NPP). Legally required for doctors, telehealth apps, and medical SaaS handling PHI."
-        canonical="/hipaa-policy-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           ⚕️ Free HIPAA Privacy Policy Generator

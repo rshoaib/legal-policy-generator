@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/history', '/profile'],
     },
     sitemap: 'https://legalpolicygen.com/sitemap.xml',
   }

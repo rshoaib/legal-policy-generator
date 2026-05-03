@@ -11,13 +11,20 @@ const nextConfig: NextConfig = {
       { source: '/refund-policy', destination: '/refund-policy-generator', permanent: true },
       { source: '/disclaimer', destination: '/disclaimer-generator', permanent: true },
       { source: '/cookie-banner', destination: '/cookie-banner-generator', permanent: true },
+
+      /* Cannibalization fixes — consolidate near-duplicate URLs to canonical winner.
+         Winners chosen by word count + recency (per 2026-05-03 SEO audit). */
+      { source: '/tos-generator', destination: '/terms-of-service-generator', permanent: true },
+      { source: '/blog/gdpr-vs-ccpa-key-differences', destination: '/blog/ccpa-vs-gdpr-differences-explained', permanent: true },
+      { source: '/blog/how-to-write-refund-policy-ecommerce', destination: '/blog/how-to-write-refund-policy', permanent: true },
+      { source: '/blog/acceptable-use-policy-guide', destination: '/blog/what-is-an-acceptable-use-policy', permanent: true },
     ]
 
     /* Query-param legacy redirects: /?type=X → proper SEO page (server-side 301) */
     const typeMap: Record<string, string> = {
       'privacy': '/privacy-policy-generator',
       'terms': '/terms-of-service-generator',
-      'tos': '/tos-generator',
+      'tos': '/terms-of-service-generator',
       'cookie': '/cookie-policy-generator',
       'refund': '/refund-policy-generator',
       'disclaimer': '/disclaimer-generator',

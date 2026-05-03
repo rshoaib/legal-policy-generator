@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const DISCLAIMER_FAQS: FAQItem[] = [
@@ -37,37 +36,8 @@ const DISCLAIMER_FAQS: FAQItem[] = [
 
 export const DisclaimerGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Disclaimer Generator',
-    url: 'https://legalpolicygen.com/disclaimer-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate a free, professional disclaimer for your website or blog. Limit your liability for medical, legal, or financial information.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Disclaimer Generator', item: 'https://legalpolicygen.com/disclaimer-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Disclaimer Generator — Limit Your Website Liability (2026)"
-        description="Create a professional disclaimer to protect your blog, medical, or financial site from liability. Includes FTC affiliate disclosures. 100% Free."
-        canonical="/disclaimer-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           ⚖️ Free Disclaimer Generator
         </h1>

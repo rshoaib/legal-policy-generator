@@ -1,0 +1,35 @@
+---
+slug: 'why-you-need-cookie-policy'
+title: 'Why You Need a Cookie Policy (Especially for GDPR & CCPA)'
+date: '2026-02-05'
+excerpt: 'See those cookie banners everywhere? There''s a legal reason. Learn why your site needs a Cookie Policy under GDPR, CCPA, and the new U.S. state privacy laws.'
+---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="Cookie compliance banner" style="width:100%;height:auto;border-radius:12px;margin-bottom:24px;display:block;"><defs><linearGradient id="g_c_87c5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f1f5f9"/><stop offset="100%" stop-color="#cbd5e1"/></linearGradient></defs><rect width="1200" height="360" fill="url(#g_c_87c5)"/><circle cx="694" cy="125" r="4" fill="#312e81" fill-opacity="0.36"/><circle cx="666" cy="169" r="7" fill="#312e81" fill-opacity="0.44"/><circle cx="670" cy="301" r="5" fill="#312e81" fill-opacity="0.20"/><circle cx="914" cy="161" r="7" fill="#312e81" fill-opacity="0.44"/><circle cx="1030" cy="29" r="3" fill="#312e81" fill-opacity="0.36"/><circle cx="874" cy="241" r="4" fill="#312e81" fill-opacity="0.38"/><circle cx="302" cy="341" r="4" fill="#312e81" fill-opacity="0.16"/><circle cx="162" cy="129" r="5" fill="#312e81" fill-opacity="0.40"/><circle cx="182" cy="189" r="3" fill="#312e81" fill-opacity="0.34"/><circle cx="682" cy="273" r="6" fill="#312e81" fill-opacity="0.26"/><circle cx="350" cy="293" r="6" fill="#312e81" fill-opacity="0.22"/><circle cx="626" cy="265" r="6" fill="#312e81" fill-opacity="0.18"/><circle cx="790" cy="245" r="3" fill="#312e81" fill-opacity="0.40"/><circle cx="378" cy="313" r="4" fill="#312e81" fill-opacity="0.44"/><circle cx="30" cy="229" r="7" fill="#312e81" fill-opacity="0.34"/><circle cx="978" cy="249" r="3" fill="#312e81" fill-opacity="0.16"/><circle cx="934" cy="109" r="3" fill="#312e81" fill-opacity="0.42"/><circle cx="458" cy="65" r="6" fill="#312e81" fill-opacity="0.36"/><polygon points="361,284 408,378 314,378" fill="#312e81" fill-opacity="0.09"/><polygon points="534,269 554,309 514,309" fill="#312e81" fill-opacity="0.09"/><polygon points="167,178 188,220 146,220" fill="#312e81" fill-opacity="0.09"/><polygon points="508,155 550,239 466,239" fill="#312e81" fill-opacity="0.09"/><polygon points="581,32 640,150 522,150" fill="#312e81" fill-opacity="0.09"/><polygon points="130,137 162,201 98,201" fill="#312e81" fill-opacity="0.09"/><g transform="translate(496,174)" stroke="#312e81" stroke-width="4"><circle r="95" fill="#ffffff" fill-opacity="0.6"/><circle cx="-30.0" cy="-20.0" r="8" fill="#312e81"/><circle cx="20.0" cy="-40.0" r="6" fill="#312e81"/><circle cx="40.0" cy="10.0" r="9" fill="#312e81"/><circle cx="-10.0" cy="35.0" r="7" fill="#312e81"/><circle cx="-45.0" cy="30.0" r="5" fill="#312e81"/><circle cx="30.0" cy="45.0" r="6" fill="#312e81"/></g><g transform="translate(895,172)" stroke="#312e81" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="0" y1="-58.5" x2="0" y2="58.5"/><line x1="-78.0" y1="-52.0" x2="78.0" y2="-52.0"/><path d="M-78.0 -52.0 L-104.0 -6.5 L-52.0 -6.5 Z" fill="#ffffff" fill-opacity="0.55"/><path d="M78.0 -52.0 L52.0 -6.5 L104.0 -6.5 Z" fill="#ffffff" fill-opacity="0.55"/><rect x="-26.0" y="52.0" width="52.0" height="9.1" rx="4" fill="#312e81"/><circle cx="0" cy="-58.5" r="6" fill="#312e81"/></g></svg>
+
+<p>You've seen those pop-ups on every website asking you to "Accept Cookies." But why are they there, and does <em>your</em> site actually need one? In 2026, the answer is almost always yes — and what counts as "lawful consent" has gotten significantly stricter.</p>
+
+<h3>What Are Cookies (and Trackers)?</h3>
+<p>Cookies are small text files stored on a user's device when they visit a site. The category has expanded — pixels, local-storage tokens, fingerprinting scripts, and SDKs all do similar work. Some are <strong>strictly necessary</strong> (keeping you logged in, remembering items in a cart). Most others — analytics, A/B testing, retargeting, social embeds — fall into the "non-essential" bucket and trigger consent requirements.</p>
+
+<h3>Why You Need a Cookie Policy</h3>
+<p>Two regulatory regimes drive the requirement:</p>
+<ul>
+  <li><strong>EU/UK — GDPR + the ePrivacy Directive.</strong> You must obtain freely-given, specific, informed, and unambiguous opt-in consent <em>before</em> placing non-essential cookies. Regulators have been explicit that "Reject All" must be as easy as "Accept All" — France's CNIL has issued multi-million-euro fines for cookie-banner dark patterns, and the EDPB's cookie-banner taskforce keeps publishing updated guidance.</li>
+  <li><strong>U.S. — CCPA/CPRA and the wave of state privacy laws.</strong> Cookies and trackers used for targeted advertising typically count as a "sale" or "share" of personal information under California (CCPA/CPRA), Virginia, Colorado, Connecticut, Texas, Oregon, Montana, Delaware, New Jersey, Maryland, Minnesota, and others. You need a clear opt-out mechanism — and several states (California, Colorado, Connecticut, and counting) require you to honor the <strong>Global Privacy Control (GPC)</strong> browser signal automatically.</li>
+</ul>
+<p>A Cookie Policy is the disclosure document that ties this all together: what you set, why, who the third parties are, how long the cookies live, and how users can change their mind.</p>
+
+<h3>Privacy Policy vs. Cookie Policy</h3>
+<p>Your <a href="/blog/why-you-need-privacy-policy">Privacy Policy</a> covers <em>all</em> data processing. A Cookie Policy is specific to tracking technologies. Some sites combine them; many keep them separate, since regulators and consent-management platforms tend to find a dedicated, plain-language Cookie Policy clearer and easier to audit. For a side-by-side of the two regimes that drive the strictest cookie rules, see our <a href="/blog/gdpr-vs-ccpa-key-differences">GDPR vs CCPA</a> breakdown, or for country-by-country nuances, our guide to <a href="/blog/cookie-consent-requirements-by-country">cookie consent requirements by country</a>.</p>
+
+<h3>Common Mistakes to Avoid</h3>
+<ul>
+  <li>Pre-ticked "Accept" boxes — invalid under GDPR.</li>
+  <li>Loading analytics or ad scripts <em>before</em> consent is given.</li>
+  <li>"Cookie wall" designs that block content unless you accept — regulators in several EU member states treat these as forced consent.</li>
+  <li>Not honoring the GPC signal where state law requires it.</li>
+  <li>Listing only your own cookies and ignoring third-party ones loaded by embeds.</li>
+</ul>
+
+<h3>Create Yours for Free</h3>
+<p>Don't risk fines or user mistrust. Use our <a href="/">free Cookie Policy generator</a> to create a clear, compliant policy in just a few clicks.</p>

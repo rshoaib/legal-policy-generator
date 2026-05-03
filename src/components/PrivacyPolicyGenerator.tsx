@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const PRIVACY_FAQS: FAQItem[] = [
@@ -49,41 +48,8 @@ const PRIVACY_FAQS: FAQItem[] = [
 
 export const PrivacyPolicyGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Privacy Policy Generator',
-    url: 'https://legalpolicygen.com/privacy-policy-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a free, GDPR and CCPA-compliant privacy policy for your website or app in minutes. No signup required.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Privacy Policy Generator', item: 'https://legalpolicygen.com/privacy-policy-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Privacy Policy Generator — GDPR & CCPA Compliant (2026)"
-        description="Create a free privacy policy for your website or app. Covers GDPR, CCPA, and CalOPPA. No signup, no cost — 100% client-side generation."
-        canonical="/privacy-policy-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           🔒 Free Privacy Policy Generator

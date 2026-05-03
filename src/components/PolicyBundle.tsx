@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SEO } from './SEO';
 import type { PolicyData } from '../appTypes';
 import { generatePrivacyPolicy } from '../utils/templates/privacyPolicy';
 import { generateTermsConditions } from '../utils/templates/termsConditions';
@@ -87,25 +86,8 @@ export const PolicyBundle: React.FC = () => {
     link.click();
   };
 
-  const appJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Website Legal Starter Kit',
-    url: 'https://legalpolicygen.com/bundle',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate all essential legal policies at once — Privacy Policy, Terms & Conditions, Cookie Policy, and more.',
-  };
-
   return (
     <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Website Legal Starter Kit — Generate All Policies at Once"
-        description="Generate all essential legal policies for your website in one click. Privacy Policy, Terms & Conditions, Cookie Policy, Disclaimer, and more."
-        canonical="/bundle"
-        jsonLd={[appJsonLd]}
-      />
 
       <h1 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center' }}>
         📦 {t('bundle_title')}

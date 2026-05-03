@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect } from 'react';
-import { SEO } from './SEO';
 
 export const TermsPage: React.FC = () => {
   useEffect(() => {
@@ -9,11 +8,6 @@ export const TermsPage: React.FC = () => {
 
   return (
     <div className="container animate-enter" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
-      <SEO
-        title="Terms of Service"
-        description="Read the Terms of Service for Legal Policy Generator. Understand the rules, disclaimer of legal advice, and limitation of liability."
-        canonical="/terms"
-      />
       <h1 className="text-gradient" style={{ marginBottom: '2rem' }}>Terms of Service</h1>
       
       <div className="glass-panel" style={{ padding: '2rem' }}>

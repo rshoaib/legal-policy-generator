@@ -1,29 +1,9 @@
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
-
-import { createClient, SupabaseClient } from '@supabase/supabase-js'
-
-function isValidUrl(url: string): boolean {
-    try {
-        const parsed = new URL(url)
-        return parsed.protocol === 'http:' || parsed.protocol === 'https:'
-    } catch {
-        return false
-    }
-}
-
-function createSupabaseClient(): SupabaseClient | null {
-    if (!supabaseUrl || !supabaseAnonKey || !isValidUrl(supabaseUrl)) {
-        console.warn('Supabase credentials not configured. Blog will use local fallback data.')
-        return null
-    }
-
-    try {
-        return createClient(supabaseUrl, supabaseAnonKey)
-    } catch (err) {
-        console.warn('Failed to initialize Supabase client. Blog will use local fallback data.', err)
-        return null
-    }
-}
-
-export const supabase = createSupabaseClient()
+/**
+ * @deprecated Supabase has been removed. Blog posts now live in `content/blog/*.md`
+ * and are read via `src/lib/blogService.ts`. This file is kept temporarily so
+ * you can delete it manually — nothing in the app imports it any more.
+ *
+ * After confirming there are no remaining imports of '@/lib/supabase' or
+ * '../lib/supabase', delete this file and re-run `next build`.
+ */
+export const supabase = null

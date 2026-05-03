@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import Link from 'next/link';
-import { SEO } from './SEO';
 import { seoPages } from '../data/seoPages';
 
 export const IndustriesIndex: React.FC = () => {
@@ -18,12 +17,6 @@ export const IndustriesIndex: React.FC = () => {
 
   return (
     <div className="animate-enter" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-      <SEO
-        title="Legal Policies by Industry | Legal Policy Generator"
-        description="Find free, tailored legal policies (Privacy Policies, Terms of Service, EULAs) specifically crafted for your industry."
-        canonical="/industries"
-      />
-
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
           Industry-Specific Legal Policies

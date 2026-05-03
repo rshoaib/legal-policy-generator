@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const EULA_FAQS: FAQItem[] = [
@@ -37,37 +36,8 @@ const EULA_FAQS: FAQItem[] = [
 
 export const EulaGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free EULA Generator',
-    url: 'https://legalpolicygen.com/eula-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate a free End-User License Agreement (EULA) for your software or mobile app in minutes. No signup required.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'EULA Generator', item: 'https://legalpolicygen.com/eula-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free EULA Generator — End-User License Agreement (2026)"
-        description="Create a customized End-User License Agreement (EULA) for your software, desktop application, or mobile app."
-        canonical="/eula-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>💻 Free EULA Generator</h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
           Create a professional <strong style={{ color: 'var(--text-primary)' }}>End-User License Agreement</strong> for your app or software. Protect your intellectual property from reverse engineering and abuse.

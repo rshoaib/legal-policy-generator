@@ -1,4 +1,7 @@
-import { supabase } from './supabase'
+import 'server-only'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import matter from 'gray-matter'
 
 export interface BlogPost {
     id?: string
@@ -12,73 +15,62 @@ export interface BlogPost {
     image?: string
 }
 
-// In-memory cache to avoid redundant fetches during navigation
+const POSTS_DIR = path.join(process.cwd(), 'content', 'blog')
+
 let cachedPosts: BlogPost[] | null = null
-let cacheTimestamp = 0
-const CACHE_TTL = 5 * 60 * 1000 // 5 minutes
 
-function isCacheValid(): boolean {
-    return cachedPosts !== null && (Date.now() - cacheTimestamp) < CACHE_TTL
+async function loadAllFromDisk(): Promise<BlogPost[]> {
+    let entries: string[]
+    try {
+        entries = await fs.readdir(POSTS_DIR)
+    } catch (err) {
+        console.warn(`Blog content directory not found at ${POSTS_DIR}:`, err)
+        return []
+    }
+
+    const files = entries.filter(name => name.endsWith('.md'))
+
+    const posts = await Promise.all(
+        files.map(async (file): Promise<BlogPost | null> => {
+            const filePath = path.join(POSTS_DIR, file)
+            const raw = await fs.readFile(filePath, 'utf8')
+            const { data, content } = matter(raw)
+
+            const slug = (data.slug as string) || file.replace(/\.md$/, '')
+            const title = data.title as string | undefined
+            const date = data.date as string | undefined
+            const excerpt = (data.excerpt as string) || ''
+
+            if (!title || !date) {
+                console.warn(`Skipping ${file}: missing title or date in frontmatter.`)
+                return null
+            }
+
+            return {
+                slug,
+                title,
+                date,
+                excerpt,
+                content: content.trim(),
+                ...(data.author ? { author: data.author as string } : {}),
+                ...(data.category ? { category: data.category as string } : {}),
+                ...(data.image ? { image: data.image as string } : {}),
+            }
+        }),
+    )
+
+    return posts
+        .filter((p): p is BlogPost => p !== null)
+        .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
 }
 
-/**
- * Fetch all blog posts, ordered by date descending.
- */
 export async function getAllPosts(): Promise<BlogPost[]> {
-    if (isCacheValid()) {
-        return cachedPosts!
-    }
-
-    if (!supabase) {
-        return []
-    }
-
-    try {
-        const { data, error } = await supabase
-            .from('blog_posts')
-            .select('slug, title, excerpt, date, content')
-            .order('date', { ascending: false })
-
-        if (error) throw error
-
-        if (data && data.length > 0) {
-            cachedPosts = data as BlogPost[]
-            cacheTimestamp = Date.now()
-            return cachedPosts
-        }
-
-        return []
-    } catch (err) {
-        console.warn('Failed to fetch blog posts from Supabase:', err)
-        return []
-    }
+    if (cachedPosts) return cachedPosts
+    cachedPosts = await loadAllFromDisk()
+    return cachedPosts
 }
 
-/**
- * Fetch a single blog post by slug.
- */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-    // Check cache first
-    if (isCacheValid()) {
-        return cachedPosts!.find(p => p.slug === slug) || null
-    }
-
-    if (!supabase) {
-        return null
-    }
-
-    try {
-        const { data, error } = await supabase
-            .from('blog_posts')
-            .select('slug, title, excerpt, date, content')
-            .eq('slug', slug)
-            .single()
-
-        if (error) throw error
-
-        return data as BlogPost
-    } catch (err) {
-        console.warn(`Failed to fetch post "${slug}" from Supabase:`, err)
-        return null
-    }
+    const posts = await getAllPosts()
+    return posts.find(p => p.slug === slug) ?? null
 }

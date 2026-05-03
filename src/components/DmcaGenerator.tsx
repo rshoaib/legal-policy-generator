@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const DMCA_FAQS: FAQItem[] = [
@@ -37,37 +36,8 @@ const DMCA_FAQS: FAQItem[] = [
 
 export const DmcaGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free DMCA Policy Generator',
-    url: 'https://legalpolicygen.com/dmca-generator',
-    applicationCategory: 'LegalApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate a professional DMCA Policy for your website. Establish Safe Harbor and protect your business from user-generated copyright infringement.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'DMCA Generator', item: 'https://legalpolicygen.com/dmca-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free DMCA Policy Generator — Copyright Safe Harbor (2026)"
-        description="Create a DMCA Policy to protect your platform from copyright lawsuits. Establish Safe Harbor for user-generated content. Free, no registration."
-        canonical="/dmca-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>©️ Free DMCA Policy Generator</h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
           Create a clear <strong style={{ color: 'var(--text-primary)' }}>DMCA Takedown Policy</strong> to establish Safe Harbor protection and avoid massive copyright lawsuits.

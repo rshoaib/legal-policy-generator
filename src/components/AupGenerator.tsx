@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const AUP_FAQS: FAQItem[] = [
@@ -15,78 +14,8 @@ const AUP_FAQS: FAQItem[] = [
 export const AupGenerator: React.FC = () => {
   const router = useRouter();
 
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Acceptable Use Policy Generator (AUP)',
-    url: 'https://legalpolicygen.com/aup-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a professional Acceptable Use Policy (AUP) for your SaaS, forum, or network. Protect your platform from abuse, spam, and illegal activity.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is an Acceptable Use Policy (AUP)?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'An Acceptable Use Policy (AUP) is a set of rules applied by the owner of a network, website, or service that restricts the ways in which the network or site may be used. It explicitly defines what behavior is forbidden, such as spamming, hacking, or posting illegal content.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Why do I need an AUP if I already have a Terms of Service?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'While a Terms of Service (ToS) covers the broad legal relationship (payment terms, liability limits), an AUP specifically isolates and details prohibited user behavior. Having a standalone AUP makes it much easier to enforce rules and ban abusive users without navigating complex ToS clauses.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Can an AUP help me ban users?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. An AUP serves as your legal justification for terminating an account immediately. If a user violates an explicitly forbidden action listed in your AUP, you have the contractual right to revoke their access without notice or refund.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Who typically needs an Acceptable Use Policy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'SaaS platforms (especially those sending emails or hosting data), web hosting companies, internet service providers (ISPs), online communities, and corporate internal networks all require strict AUPs.',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'AUP Generator', item: 'https://legalpolicygen.com/aup-generator' },
-    ],
-  };
-
   return (
     <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Acceptable Use Policy Generator (AUP) — Protect Your App"
-        description="Create a clear Acceptable Use Policy for your SaaS, community, or app. Ban destructive users and outline prohibited behavior easily. Free tool."
-        canonical="/aup-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
       {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>

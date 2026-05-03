@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect } from 'react';
-import { SEO } from './SEO';
 
 export const PrivacyPage: React.FC = () => {
   useEffect(() => {
@@ -9,11 +8,6 @@ export const PrivacyPage: React.FC = () => {
 
   return (
     <div className="container animate-enter" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
-      <SEO
-        title="Privacy Policy"
-        description="Read our Privacy Policy to understand how Legal Policy Generator collects, uses, and protects your personal information."
-        canonical="/privacy"
-      />
       <h1 className="text-gradient" style={{ marginBottom: '2rem' }}>Privacy Policy</h1>
       
       <div className="glass-panel" style={{ padding: '2rem' }}>

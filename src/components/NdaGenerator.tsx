@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const NDA_FAQS: FAQItem[] = [
@@ -37,37 +36,8 @@ const NDA_FAQS: FAQItem[] = [
 
 export const NdaGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free NDA Generator',
-    url: 'https://legalpolicygen.com/nda-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate a free Non-Disclosure Agreement (NDA) to protect your business secrets. No signup required.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'NDA Generator', item: 'https://legalpolicygen.com/nda-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free NDA Generator — Non-Disclosure Agreement (2026)"
-        description="Create a customized Non-Disclosure Agreement (NDA) to protect your confidential information and trade secrets."
-        canonical="/nda-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>🤫 Free NDA Generator</h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
           Create a professional <strong style={{ color: 'var(--text-primary)' }}>Non-Disclosure Agreement</strong> in minutes. Protect your confidential business information and trade secrets.

@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link';
-import { SEO } from './SEO'
 import type { SeoPage } from '../data/seoPages'
 import { seoPages } from '../data/seoPages'
 
@@ -17,29 +16,10 @@ export function PolicyIndustryPage({ page }: Props) {
     .filter(p => p.policyType === page.policyType && p.slug !== page.slug)
     .slice(0, 6)
 
-  // FAQ JSON-LD Schema
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: page.faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  }
+  /* Note: FAQ JSON-LD + meta are now emitted server-side from app/[slug]/page.tsx. */
 
   return (
     <>
-      <SEO
-        title={page.title}
-        description={page.description}
-        canonical={`/${page.slug}`}
-        jsonLd={faqJsonLd}
-      />
-
       <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem 1rem' }}>
         {/* Breadcrumb */}
         <nav style={{ marginBottom: '2rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>

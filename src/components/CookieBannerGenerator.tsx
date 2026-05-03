@@ -1,84 +1,10 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
-
 export const CookieBannerGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Cookie Consent Banner Generator',
-    url: 'https://legalpolicygen.com/cookie-banner-generator',
-    applicationCategory: 'BrowserApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a free, GDPR-compliant cookie consent banner for your website. Easy HTML integration for WordPress, Shopify, and custom sites.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Is a cookie banner required by law?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, if you have visitors from the European Union or the UK. The GDPR and ePrivacy Directive require explicit, informed consent before placing non-essential cookies (like Google Analytics or Facebook Pixel) on a user\'s device.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What must a compliant cookie banner include?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A GDPR-compliant banner must have clear language, an equally prominent "Reject" option alongside the "Accept" option, granular controls for categorical opt-ins, and a link to your full Cookie Policy.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does this banner work on WordPress or Shopify?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Our generator creates raw HTML, CSS, and vanilla JavaScript that you can copy and paste into the header or footer of any platform, including WordPress, Shopify, Webflow, or custom React apps.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is implied consent enough?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No. The EU courts have ruled that "implied consent" (e.g., "By browsing this site, you accept cookies") or pre-checked checkboxes do not meet the standard for explicit consent under GDPR.',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Cookie Banner Generator', item: 'https://legalpolicygen.com/cookie-banner-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Cookie Consent Banner Generator — GDPR Compliant HTML (2026)"
-        description="Create a GDPR and ePrivacy compliant cookie consent banner in seconds. Copy-paste the HTML/JS code into WordPress, Shopify, or any site."
-        canonical="/cookie-banner-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           🍪 Free Cookie Consent Banner Generator

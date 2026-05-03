@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const REFUND_FAQS: FAQItem[] = [
@@ -37,37 +36,8 @@ const REFUND_FAQS: FAQItem[] = [
 
 export const RefundPolicyGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Refund Policy Generator',
-    url: 'https://legalpolicygen.com/refund-policy-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate a free, professional return and refund policy for your e-commerce store in minutes. Protect your business from chargebacks.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Refund Policy Generator', item: 'https://legalpolicygen.com/refund-policy-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Refund Policy Generator — Protect Your Store (2026)"
-        description="Create a clear return and refund policy for your e-commerce store or SaaS. Reduce chargebacks and build trust. Free, no signup required."
-        canonical="/refund-policy-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>💸 Free Refund Policy Generator</h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
           Create a clear, professional <strong style={{ color: 'var(--text-primary)' }}>Return & Refund Policy</strong> for your business. Prevent disputes, reduce chargebacks, and build customer trust in minutes.

@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { SEO } from './SEO';
 
 export const ContactPage: React.FC = () => {
   useEffect(() => {
@@ -19,11 +18,6 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="container animate-enter" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1rem' }}>
-      <SEO
-        title="Contact Us — Legal Policy Generator"
-        description="Get in touch with the Legal Policy Generator team. Ask questions about privacy policies, terms of service, GDPR compliance, cookie policies, or any of our 22+ free legal document generators."
-        canonical="/contact"
-      />
       <h1 className="text-gradient" style={{ marginBottom: '1rem' }}>Contact Us</h1>
       <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: '1.8', maxWidth: '700px' }}>
         Have a question about our legal policy generators, need help with GDPR or CCPA compliance, or want to suggest a new document type? We're here to help. Fill out the form below or email us directly — we typically respond within 24–48 business hours.

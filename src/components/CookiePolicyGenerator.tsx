@@ -2,7 +2,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const COOKIE_FAQS: FAQItem[] = [
@@ -42,41 +41,8 @@ const COOKIE_FAQS: FAQItem[] = [
 
 export const CookiePolicyGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Cookie Policy Generator',
-    url: 'https://legalpolicygen.com/cookie-policy-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a free, GDPR and CCPA-compliant cookie policy for your website in minutes. No signup required.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Cookie Policy Generator', item: 'https://legalpolicygen.com/cookie-policy-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Cookie Policy Generator — GDPR & CCPA Compliant (2026)"
-        description="Create a free cookie policy for your website in minutes. Covers GDPR, CCPA, ePrivacy Directive, and UK PECR. No signup, no cost — 100% client-side."
-        canonical="/cookie-policy-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           🍪 Free Cookie Policy Generator

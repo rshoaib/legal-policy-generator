@@ -1,98 +1,31 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { getAllPosts } from '../lib/blogService';
 import { type BlogPost } from '../lib/blogService';
-import { SEO } from './SEO';
 
 const POSTS_PER_PAGE = 6;
 
-export const BlogIndex: React.FC = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
+interface BlogIndexProps {
+  posts: BlogPost[];
+}
 
-  useEffect(() => {
-    let cancelled = false;
-    
-    async function loadPosts() {
-      try {
-        setLoading(true);
-        const data = await getAllPosts();
-        if (!cancelled) {
-          setPosts(data);
-          setError(null);
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setError('Failed to load articles. Please try again later.');
-          console.error(err);
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
-      }
-    }
-    
-    loadPosts();
-    return () => { cancelled = true; };
-  }, []);
+export const BlogIndex: React.FC<BlogIndexProps> = ({ posts }) => {
+  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
 
   const visiblePosts = posts.slice(0, visibleCount);
   const hasMore = visibleCount < posts.length;
 
   return (
     <div>
-      <SEO
-        title="Blog — Helpful Guides & Resources"
-        description="Expert guides on privacy policies, terms & conditions, cookie policies, GDPR, CCPA compliance, and more. Free legal resources for website owners."
-        canonical="/blog"
-        jsonLd={[
-          {
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://legalpolicygen.com/blog' },
-            ],
-          },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'CollectionPage',
-            name: 'Helpful Guides & Resources',
-            url: 'https://legalpolicygen.com/blog',
-            description: 'Expert guides on privacy policies, terms & conditions, cookie policies, GDPR, CCPA compliance, and more.',
-            isPartOf: { '@type': 'WebSite', name: 'Legal Policy Generator', url: 'https://legalpolicygen.com' },
-          },
-        ]}
-      />
       <h1 style={{ marginBottom: '2rem', background: 'linear-gradient(to right, #ec4899 0%, #8b5cf6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontSize: '2.5rem' }}>
         Helpful Guides & Resources
       </h1>
 
-      {loading && (
-        <div style={{ display: 'grid', gap: '2rem' }}>
-          {[1, 2, 3].map(i => (
-            <div key={i} className="glass-panel" style={{ padding: '2rem' }}>
-              <div className="skeleton-shimmer" style={{ height: '0.875rem', width: '100px', borderRadius: '4px', marginBottom: '0.75rem' }} />
-              <div className="skeleton-shimmer" style={{ height: '1.5rem', width: '80%', borderRadius: '4px', marginBottom: '1rem' }} />
-              <div className="skeleton-shimmer" style={{ height: '1rem', width: '95%', borderRadius: '4px', marginBottom: '0.5rem' }} />
-              <div className="skeleton-shimmer" style={{ height: '1rem', width: '60%', borderRadius: '4px', marginBottom: '1.5rem' }} />
-              <div className="skeleton-shimmer" style={{ height: '1rem', width: '120px', borderRadius: '4px' }} />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {error && !loading && (
+      {posts.length === 0 ? (
         <div className="glass-panel" style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-          <p>{error}</p>
+          <p>No articles published yet. Check back soon.</p>
         </div>
-      )}
-
-      {!loading && !error && (
+      ) : (
         <>
           <div style={{ display: 'grid', gap: '2rem' }}>
             {visiblePosts.map(post => (

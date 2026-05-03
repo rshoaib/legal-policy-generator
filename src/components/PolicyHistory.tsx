@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { SEO } from './SEO';
 import {
   getHistory,
   deletePolicy,
@@ -134,13 +133,6 @@ export const PolicyHistory: React.FC = () => {
 
   return (
     <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Policy History | Legal Policy Generator"
-        description="Browse and manage your previously generated legal policies."
-        canonical="/history"
-        noindex
-      />
-
       {/* Header */}
       <div
         style={{

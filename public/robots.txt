@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /history
+Disallow: /profile
 
 Sitemap: https://legalpolicygen.com/sitemap.xml

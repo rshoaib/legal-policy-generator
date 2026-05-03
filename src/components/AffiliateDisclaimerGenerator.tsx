@@ -1,83 +1,12 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 
 export const AffiliateDisclaimerGenerator: React.FC = () => {
   const router = useRouter();
 
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Affiliate Disclaimer Generator',
-    url: 'https://legalpolicygen.com/affiliate-disclaimer-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate an FTC-compliant Affiliate Disclaimer for your blog. Protect your Amazon Associates and other affiliate network accounts.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is an Affiliate Disclaimer?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'An Affiliate Disclaimer is a public statement on your website that discloses to your readers that you may earn a commission if they click on certain links or purchase recommended products. It ensures transparency in your content monetization.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is an Affiliate Disclaimer legally required by the FTC?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. In the United States, the Federal Trade Commission (FTC) strictly mandates that any material connection between an endorser (you) and an advertiser must be clearly and conspicuously disclosed to consumers.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Do I need this for the Amazon Associates program?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Absolutely. Section 5 of the Amazon Associates Operating Agreement explicitly requires you to state: "As an Amazon Associate I earn from qualifying purchases." Failing to do so will result in your Amazon account being banned and your commissions forfeited.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Where should I place my affiliate disclaimer?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'The FTC requires the disclosure to be "clear and conspicuous." This means it should be placed *before* the affiliate links appear (e.g., at the top of a blog post), not hidden at the very bottom in the footer.',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Affiliate Disclaimer Generator', item: 'https://legalpolicygen.com/affiliate-disclaimer-generator' },
-    ],
-  };
-
   return (
     <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Affiliate Disclaimer Generator (FTC Compliant) — 2026"
-        description="Create an FTC-compliant affiliate disclosure for your blog or website. Required for Amazon Associates and other affiliate programs. 100% Free."
-        canonical="/affiliate-disclaimer-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
       {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>

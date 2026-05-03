@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   verification: {
     google: 'eQuLiSbiykNngy21ZpYGas-qRRHmzv3-E3u1Ax1OrCY',
   },
-  other: {
-    'og:site_name': 'LegalPolicyGen',
-  },
+  /* Note: og:site_name is already emitted via openGraph.siteName above as
+     <meta property="og:site_name">. Do NOT add it again under `other`, which
+     would emit a duplicate <meta name="og:site_name"> (incorrect attribute). */
 }
 
 export default function RootLayout({

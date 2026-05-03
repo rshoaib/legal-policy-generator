@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const AI_ETHICS_FAQS: FAQItem[] = [
@@ -14,80 +13,8 @@ const AI_ETHICS_FAQS: FAQItem[] = [
 
 export const AiEthicsPolicyGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free AI Ethics Policy Generator',
-    url: 'https://legalpolicygen.com/ai-ethics-policy-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate an AI Ethics and Acceptable Use Policy for your company. Establish guidelines for employee use of ChatGPT, Copilot, and Claude.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is an AI Ethics Policy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'An AI Ethics Policy (or AI Acceptable Use Policy) is a corporate document that outlines exactly how employees are allowed to use Generative AI tools (like ChatGPT, Midjourney, or GitHub Copilot) in their daily work, focusing on data privacy, avoiding bias, and protecting intellectual property.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Why do we need a corporate AI policy?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'If employees paste confidential client data, financial projections, or proprietary source code into public AI tools, that data may be used to train the AI maker\'s core models, effectively leaking your company\'s secrets to the public. A policy forbids this.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Can we lose copyright if we use AI?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. The US Copyright Office has repeatedly ruled that AI-generated text and images cannot be copyrighted. An AI policy requires employees to heavily modify AI outputs to ensure your final products remain legally protectable.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How does it address AI hallucinations?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A strong policy dictates a "Human-in-the-Loop" workflow, legally requiring employees to verify the accuracy of AI outputs before publishing them or sending them to clients, preventing catastrophic PR crises caused by AI hallucinations.',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'AI Ethics Policy Generator', item: 'https://legalpolicygen.com/ai-ethics-policy-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Corporate AI Ethics Policy Generator (Acceptable Use)"
-        description="Create an internal AI Policy to govern your employees' use of ChatGPT and Copilot. Protect trade secrets, prevent copyright loss, and stop hallucinations."
-        canonical="/ai-ethics-policy-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           🤖 Free Corporate AI Ethics Policy Generator

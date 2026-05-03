@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { SEO } from './SEO';
 import { type PolicyData } from '../appTypes';
 
 export const CompanyProfile: React.FC = () => {
@@ -39,12 +38,6 @@ export const CompanyProfile: React.FC = () => {
 
   return (
     <div className="animate-enter" style={{ maxWidth: '800px', margin: '0 auto' }}>
-      <SEO
-        title="Company Profile Settings | Legal Policy Generator"
-        description="Save your business details securely in your browser to auto-fill all 22+ legal document generators instantly."
-        canonical="/profile"
-        noindex
-      />
 
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>

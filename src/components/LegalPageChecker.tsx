@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SEO } from './SEO';
 import { checkLegalPages, type ScanResult, type PageResult } from '../utils/legalPageChecker';
 
 /* ─── Score Gauge (circular) ──────────────────────────────────────────────── */
@@ -162,22 +161,6 @@ export const LegalPageChecker: React.FC = () => {
 
   return (
     <>
-      <SEO
-        title="Free Website Legal Page Checker — Scan Your Site for Missing Policies"
-        description="Enter your website URL and instantly check if you have all essential legal pages: Privacy Policy, Terms, Cookie Policy, Disclaimer, DMCA, and more."
-        canonical="/legal-page-checker"
-        jsonLd={[{
-          '@context': 'https://schema.org',
-          '@type': 'WebApplication',
-          name: 'Website Legal Page Checker',
-          url: 'https://legalpolicygen.com/legal-page-checker',
-          applicationCategory: 'BusinessApplication',
-          operatingSystem: 'All',
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-          description: 'Free tool to scan any website for essential legal pages like Privacy Policy, Terms of Service, Cookie Policy, and more.',
-        }]}
-      />
-
       <div style={{ maxWidth: '850px', margin: '0 auto' }}>
         {/* Header */}
         <div className="animate-enter" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>

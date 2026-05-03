@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SEO } from './SEO';
 import { analyzePolicy, type AnalysisResult, type CategoryResult } from '../utils/policyAnalyzer';
 
 /* ─── Score Gauge (circular) ──────────────────────────────────────────────── */
@@ -150,22 +149,6 @@ export const ComplianceChecker: React.FC = () => {
 
   return (
     <>
-      <SEO
-        title="Free Policy Compliance Checker — GDPR & CCPA Analysis"
-        description="Paste your privacy policy and get an instant compliance analysis. Check for GDPR, CCPA, and general best-practice gaps with actionable suggestions."
-        canonical="/compliance-checker"
-        jsonLd={[{
-          '@context': 'https://schema.org',
-          '@type': 'WebApplication',
-          name: 'Policy Compliance Checker',
-          url: 'https://legalpolicygen.com/compliance-checker',
-          applicationCategory: 'BusinessApplication',
-          operatingSystem: 'All',
-          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-          description: 'Free GDPR and CCPA compliance analyzer for privacy policies.',
-        }]}
-      />
-
       <div style={{ maxWidth: '850px', margin: '0 auto' }}>
         <div className="animate-enter" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
           <h1 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>

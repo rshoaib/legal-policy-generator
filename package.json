@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.95.3",
     "file-saver": "^2.0.5",
+    "gray-matter": "^4.0.3",
     "html-docx-js-typescript": "^0.1.5",
     "html2pdf.js": "^0.14.0",
     "i18next": "^25.8.4",

@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const SHIPPING_FAQS: FAQItem[] = [
@@ -37,37 +36,8 @@ const SHIPPING_FAQS: FAQItem[] = [
 
 export const ShippingPolicyGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Shipping Policy Generator',
-    url: 'https://legalpolicygen.com/shipping-policy-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    description: 'Generate a professional Shipping Policy for your e-commerce store. Clarify shipping times, international customs duties, and lost package protocols.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Shipping Policy Generator', item: 'https://legalpolicygen.com/shipping-policy-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free E-Commerce Shipping Policy Generator (Shopify/WooCommerce)"
-        description="Create a custom Shipping Policy for your online store. Clearly define shipping costs, handling times, and international customs responsibilities."
-        canonical="/shipping-policy-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>📦 Free Shipping Policy Generator</h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.8, maxWidth: '650px', margin: '0 auto 2rem' }}>
           Create a clear <strong style={{ color: 'var(--text-primary)' }}>Shipping Policy</strong> for your online store. Prevent customer chargebacks regarding delayed deliveries or international customs fees.

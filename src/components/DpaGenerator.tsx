@@ -1,76 +1,10 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
-
 export const DpaGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free DPA Generator (Data Processing Agreement)',
-    url: 'https://legalpolicygen.com/dpa-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Create a free, GDPR-compliant Data Processing Agreement (DPA). Protect your B2B SaaS or agency when handling client data.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is a Data Processing Agreement (DPA)?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A DPA is a legally binding contract between a Data Controller (your client) and a Data Processor (your business). It dictates exactly how you are allowed to collect, store, and protect their end-users\' personal data under laws like the GDPR.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Who needs a DPA?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Any B2B business that processes personal data on behalf of another company. This includes SaaS platforms, marketing agencies, cloud hosting providers, and freelance web developers handling customer databases.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is a DPA legally required under GDPR?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Article 28 of the GDPR explicitly states that Data Controllers must only use Processors that provide sufficient guarantees to implement appropriate technical and organizational measures, governed by a binding written contract (the DPA).',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'DPA Generator', item: 'https://legalpolicygen.com/dpa-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free DPA Generator — Data Processing Agreement (GDPR Compliant)"
-        description="Generate a Data Processing Agreement (DPA) to legally handle client data. Protect your B2B SaaS or agency and guarantee GDPR & CCPA compliance."
-        canonical="/dpa-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           🤝 Free Data Processing Agreement (DPA) Generator

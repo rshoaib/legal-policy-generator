@@ -1,7 +1,6 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
 import { ToolFAQ, type FAQItem } from './ToolFAQ';
 
 const TOS_FAQS: FAQItem[] = [
@@ -49,41 +48,8 @@ const TOS_FAQS: FAQItem[] = [
 
 export const TosGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Terms of Service (ToS) Generator',
-    url: 'https://legalpolicygen.com/tos-generator',
-    applicationCategory: 'LegalApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a professional Terms of Service (ToS) agreement for your website or app. Define user rules, limit liability, and protect your intellectual property.',
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Terms of Service Generator', item: 'https://legalpolicygen.com/tos-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free Terms of Service (ToS) Generator — Protect Your App (2026)"
-        description="Create a custom Terms of Service agreement in minutes. Establish user rules, protect intellectual property, and limit business liability. Free tool."
-        canonical="/tos-generator"
-        jsonLd={[pageJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+ return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           📜 Free Terms of Service (ToS) Generator

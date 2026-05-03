@@ -1,84 +1,10 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { SEO } from './SEO';
-
 export const SlaGenerator: React.FC = () => {
   const router = useRouter();
-
-  const pageJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Free Service Level Agreement (SLA) Generator',
-    url: 'https://legalpolicygen.com/sla-generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'All',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    description: 'Generate a Service Level Agreement (SLA) for your B2B SaaS or IT agency. Define uptime guarantees, support response times, and service credits.',
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is a Service Level Agreement (SLA)?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'An SLA is a contract between a service provider and a client that defines the expected level of service. It typically covers uptime guarantees (e.g., 99.9% uptime), support response times, and the penalties (service credits) if those levels are not met.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does my SaaS startup need an SLA?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'For B2C (consumer) software, no. However, if you sell to B2B enterprise clients, an SLA is almost always required during the procurement process. Enterprise clients need a financial guarantee that your software won\'t crash during critical business hours.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What are "Service Credits"?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Service credits are the financial remedy if you fail to meet your SLA. Instead of the client suing you for lost revenue due to an outage, your SLA dictates they receive a percentage of their subscription fee back (e.g., a 10% discount next month).',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How do you calculate 99.9% uptime?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '99.9% uptime allows for approximately 43.8 minutes of downtime per month. If your servers are down for longer than 44 minutes in a 30-day period, you have breached a 99.9% SLA.',
-        },
-      },
-    ],
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://legalpolicygen.com/' },
-      { '@type': 'ListItem', position: 2, name: 'SLA Generator', item: 'https://legalpolicygen.com/sla-generator' },
-    ],
-  };
-
-  return (
-    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <SEO
-        title="Free SLA Generator — Service Level Agreement for SaaS"
-        description="Create an SLA for your IT agency or B2B SaaS. Define 99.9% uptime guarantees, support response times, and service credit penalties."
-        canonical="/sla-generator"
-        jsonLd={[pageJsonLd, faqJsonLd, breadcrumbJsonLd]}
-      />
-
-      {/* Hero */}
+return (
+    <div className="animate-enter" style={{ maxWidth: '900px', margin: '0 auto' }}>      {/* Hero */}
       <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 className="text-gradient" style={{ fontSize: '2.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
           🤝 Free Service Level Agreement (SLA) Generator
