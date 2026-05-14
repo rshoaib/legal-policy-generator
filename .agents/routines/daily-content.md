@@ -44,6 +44,7 @@ Inspect 2–3 existing posts first to learn the HTML body + inline SVG hero patt
 - **Never offer personalized legal advice.** Every post must include the standard disclaimer.
 - Never fabricate regulation citations, case law, fine amounts, or court decisions. If unverified via WebSearch, omit.
 - Never delete content. Never force-push. Never `--no-verify`.
+- **Never write to Supabase.** This site is file-based (Next.js — content lives under `app/blog/ or content/ (inspect)` in the repo). The only legitimate target for new content is a git commit on the default branch. If you see a Supabase MCP connector attached to this routine, ignore it for content writes — that connector is shared across all routines but only `easyorder-bot` legitimately uses Supabase for content. Writing content to Supabase from this routine will contaminate the orderviachat database (verified incident: 2026-05-14 with online-image-shrinker).
 
 ## After the change
 
