@@ -1,7 +1,7 @@
 ---
 slug: 'how-to-write-refund-policy-ecommerce'
 title: 'How to Write a Refund Policy for Your E-Commerce Store'
-date: '2026-02-07'
+date: '2026-05-22'
 excerpt: 'A clear refund policy builds customer trust, reduces disputes, and protects your business. Here''s what every e-commerce store needs to include.'
 ---
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="E-commerce policy banner" style="width:100%;height:auto;border-radius:12px;margin-bottom:24px;display:block;"><defs><linearGradient id="g_h_23d4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e2e8f0"/><stop offset="100%" stop-color="#94a3b8"/></linearGradient></defs><rect width="1200" height="360" fill="url(#g_h_23d4)"/><polygon points="312,183 358,275 266,275" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="689,260 712,306 666,306" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="1150,45 1186,117 1114,117" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="655,258 700,348 610,348" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="68,275 110,359 26,359" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="845,200 888,286 802,286" fill="#1d4ed8" fill-opacity="0.09"/><g transform="translate(524,176)" stroke="#1d4ed8" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M-110.0 -60.0 H-70.0 L-40.0 40.0 H80.0 L110.0 -30.0 H-55.0" fill="#ffffff" fill-opacity="0.55"/><circle cx="-20.0" cy="70.0" r="14.0" fill="#1e293b"/><circle cx="65.0" cy="70.0" r="14.0" fill="#1e293b"/></g><g transform="translate(923,178)" stroke="#1d4ed8" stroke-width="4" fill="#ffffff" fill-opacity="0.55" stroke-linejoin="round"><rect x="-71.5" y="-45.5" width="143.0" height="84.5" rx="10"/><line x1="-58.5" y1="-26.0" x2="32.5" y2="-26.0" stroke-width="3"/><line x1="-58.5" y1="-13.0" x2="58.5" y2="-13.0" stroke-width="3"/><line x1="-58.5" y1="0" x2="19.5" y2="0" stroke-width="3"/><path d="M-91.0 39.0 L91.0 39.0 L78.0 52.0 L-78.0 52.0 Z" fill="#1d4ed8" fill-opacity="0.9" stroke="none"/></g></svg>
@@ -49,4 +49,6 @@ excerpt: 'A clear refund policy builds customer trust, reduces disputes, and pro
       </ul>
 
       <h3>Generate Yours in Minutes</h3>
-      <p>Don't start from scratch. Use our <a href="/">Free Refund Policy Generator</a> to create a professional, customizable refund policy tailored to your business.</p>
+      <p>Don't start from scratch. Use our <a href="/refund-policy-generator">free refund policy generator</a> to create a professional, customizable refund policy tailored to your business.</p>
+
+      <p><em>This article is for general informational purposes only and is not legal advice. Laws and regulations change frequently. Consult a qualified attorney for advice specific to your situation.</em></p>
