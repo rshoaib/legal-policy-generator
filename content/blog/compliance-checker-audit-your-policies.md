@@ -1,7 +1,7 @@
 ---
 slug: 'compliance-checker-audit-your-policies'
 title: 'Is Your Privacy Policy Actually Compliant? How to Audit It in 60 Seconds'
-date: '2026-02-13'
+date: '2026-05-25'
 excerpt: 'Most privacy policies are missing critical clauses. Learn the most common compliance gaps and use our free Compliance Checker to audit your existing policies instantly.'
 ---
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="Compliance banner" style="width:100%;height:auto;border-radius:12px;margin-bottom:24px;display:block;"><defs><linearGradient id="g_g_2220" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#bfdbfe"/></linearGradient></defs><rect width="1200" height="360" fill="url(#g_g_2220)"/><polygon points="966,197 1002,269 930,269" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="263,322 292,380 234,380" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="172,211 198,263 146,263" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="53,40 96,126 10,126" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="306,41 346,121 266,121" fill="#1d4ed8" fill-opacity="0.09"/><polygon points="963,334 1020,448 906,448" fill="#1d4ed8" fill-opacity="0.09"/><g transform="translate(555,178)" stroke="#1d4ed8" stroke-width="5" fill="#ffffff" fill-opacity="0.55" stroke-linejoin="round"><path d="M0 -115 L100 -85 V30 Q100 115 0 115 Q-100 115 -100 30 V-85 Z"/><path d="M-50.0 10 L-10.0 50.0 L60.0 -40.0" fill="none" stroke-width="8" stroke-linecap="round"/></g><g transform="translate(803,103)" stroke="#1d4ed8" stroke-width="4" fill="none" stroke-linejoin="round"><path d="M0 0 H94 L117 23 V143 H0 Z" fill="#ffffff" fill-opacity="0.55"/><path d="M94 0 V23 H117"/><line x1="22" y1="45" x2="95" y2="45"/><line x1="22" y1="71" x2="95" y2="71"/><line x1="22" y1="97" x2="77" y2="97"/><line x1="22" y1="123" x2="57" y2="123"/></g></svg>
@@ -13,7 +13,7 @@ excerpt: 'Most privacy policies are missing critical clauses. Learn the most com
       <h3>The 7 Most Common Privacy Policy Gaps</h3>
 
       <h3>1. Missing Data Subject Rights</h3>
-      <p><strong>The requirement:</strong> GDPR mandates that you inform users of their rights: access, rectification, erasure, data portability, objection, and the right to withdraw consent. CCPA grants rights to know, delete, and opt out of sale.</p>
+      <p><strong>The requirement:</strong> GDPR mandates that you inform users of their rights: access, rectification, erasure, data portability, objection, and the right to withdraw consent. The CCPA — as amended by the California Privacy Rights Act (CPRA) — grants rights to know, delete, correct inaccurate data, opt out of the sale <em>or sharing</em> of personal information, and limit the use of sensitive personal information.</p>
       <p><strong>The reality:</strong> Many policies mention "we respect your privacy" but never actually list the specific rights users have or explain how to exercise them.</p>
 
       <h3>2. No Legal Basis for Processing</h3>
@@ -49,6 +49,8 @@ excerpt: 'Most privacy policies are missing critical clauses. Learn the most com
       </ol>
 
       <h3>Fix the Gaps Instantly</h3>
-      <p>Found missing clauses? Don't try to patch them manually — that often creates inconsistencies. Instead, use our <a href="/">Policy Generators</a> to create a completely new, up-to-date policy from scratch. It takes under 5 minutes and ensures all required clauses are included.</p>
+      <p>Found missing clauses? Don't try to patch them manually — that often creates inconsistencies. Instead, use our <a href="/privacy-policy-generator">free privacy policy generator</a> to create a completely new, up-to-date policy from scratch. It takes under 5 minutes and ensures all required clauses are included.</p>
 
       <p><strong><a href="/compliance-checker">Audit your Privacy Policy now →</a></strong></p>
+
+      <p><em>This article is for general informational purposes only and is not legal advice. Laws and regulations change frequently. Consult a qualified attorney for advice specific to your situation.</em></p>
