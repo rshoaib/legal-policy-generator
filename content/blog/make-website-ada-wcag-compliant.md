@@ -1,7 +1,7 @@
 ---
 slug: 'make-website-ada-wcag-compliant'
 title: 'How to Make Your Website ADA and WCAG Compliant: A Practical Guide'
-date: '2026-02-08'
+date: '2026-05-27'
 excerpt: 'Web accessibility isn''t just the right thing to do — it''s increasingly a legal requirement. Learn the basics of ADA and WCAG compliance for your website.'
 ---
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="Accessibility banner" style="width:100%;height:auto;border-radius:12px;margin-bottom:24px;display:block;"><defs><linearGradient id="g_b_e22d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e0e7ff"/><stop offset="100%" stop-color="#a5b4fc"/></linearGradient></defs><rect width="1200" height="360" fill="url(#g_b_e22d)"/><circle cx="659" cy="158" r="45" fill="none" stroke="#1e40af" stroke-opacity="0.15" stroke-width="2"/><circle cx="520" cy="223" r="50" fill="none" stroke="#1e40af" stroke-opacity="0.15" stroke-width="2"/><circle cx="881" cy="92" r="67" fill="none" stroke="#1e40af" stroke-opacity="0.15" stroke-width="2"/><circle cx="286" cy="165" r="56" fill="none" stroke="#1e40af" stroke-opacity="0.15" stroke-width="2"/><circle cx="671" cy="106" r="97" fill="none" stroke="#1e40af" stroke-opacity="0.15" stroke-width="2"/><g transform="translate(510,185)" stroke="#1e40af" stroke-width="5" fill="#ffffff" fill-opacity="0.55" stroke-linejoin="round"><path d="M0 -115 L100 -85 V30 Q100 115 0 115 Q-100 115 -100 30 V-85 Z"/><path d="M-50.0 10 L-10.0 50.0 L60.0 -40.0" fill="none" stroke-width="8" stroke-linecap="round"/></g><g transform="translate(856,175)" stroke="#1e40af" stroke-width="4" fill="none"><circle r="68" fill="#ffffff" fill-opacity="0.5"/><ellipse rx="68" ry="22"/><ellipse rx="22" ry="68"/><line x1="-68" y1="0" x2="68" y2="0"/><line x1="0" y1="-68" x2="0" y2="68"/></g></svg>
@@ -9,7 +9,7 @@ excerpt: 'Web accessibility isn''t just the right thing to do — it''s increasi
 <p>In 2026, web accessibility is no longer optional. A growing number of lawsuits, regulations, and industry standards require websites to be accessible to people with disabilities. The two key frameworks you need to understand are the <strong>ADA</strong> (Americans with Disabilities Act) and <strong>WCAG</strong> (Web Content Accessibility Guidelines).</p>
 
       <h3>What is the ADA?</h3>
-      <p>The Americans with Disabilities Act is a civil rights law that prohibits discrimination against individuals with disabilities. While it was originally written for physical spaces, courts have increasingly interpreted it to apply to websites and digital services. In recent years, ADA-related website lawsuits have surged, with over 4,000 cases filed annually in the US alone.</p>
+      <p>The Americans with Disabilities Act is a civil rights law that prohibits discrimination against individuals with disabilities. While it was originally written for physical spaces, courts have increasingly interpreted it to apply to websites and digital services. In recent years, ADA-related website lawsuits have surged: more than 5,000 digital accessibility lawsuits were filed in 2025, including over 3,100 in US federal court alone — roughly a 27% jump over 2024.</p>
 
       <h3>What is WCAG?</h3>
       <p>The Web Content Accessibility Guidelines are the internationally recognized standards for web accessibility. Published by the W3C (World Wide Web Consortium), WCAG provides specific, testable criteria organized into three levels:</p>
@@ -19,6 +19,14 @@ excerpt: 'Web accessibility isn''t just the right thing to do — it''s increasi
         <li><strong>Level AAA:</strong> The highest level. Addresses more specialized needs. Not typically required.</li>
       </ul>
       <p>Most regulations and best practices target <strong>WCAG 2.1 Level AA</strong> compliance.</p>
+
+      <h3>The 2026 Legal Landscape: Key Deadlines</h3>
+      <p>Two developments make accessibility a hard legal requirement in 2026, not just a best practice:</p>
+      <ul>
+        <li><strong>ADA Title II (US state &amp; local governments):</strong> The Department of Justice's April 2024 final rule formally adopted <strong>WCAG 2.1 Level AA</strong> as the standard for public-sector websites and mobile apps. An interim final rule effective April 20, 2026 extended the compliance deadlines: entities serving a population of 50,000 or more must comply by <strong>April 26, 2027</strong>, and smaller entities and special districts by <strong>April 26, 2028</strong>.</li>
+        <li><strong>European Accessibility Act (EAA):</strong> Enforcement began across all 27 EU member states on <strong>June 28, 2025</strong>. It applies to any business selling digital products or services to EU consumers — regardless of where the business is based — and relies on the EN 301 549 standard, which incorporates WCAG 2.1 Level AA. Services already on the market before that date have a transition period until June 28, 2030.</li>
+      </ul>
+      <p>Private US businesses are governed by ADA Title III, where courts continue to apply WCAG 2.1 AA as the de facto benchmark. Note that while WCAG 2.2 has been published, WCAG 2.1 Level AA remains the operative legal standard under these rules.</p>
 
       <h3>The Four Principles of WCAG (POUR)</h3>
       <p>WCAG is built on four fundamental principles. All web content must be:</p>
@@ -70,4 +78,6 @@ excerpt: 'Web accessibility isn''t just the right thing to do — it''s increasi
       </ul>
 
       <h3>Create Your Accessibility Statement</h3>
-      <p>An accessibility statement shows your commitment to inclusion and outlines your accessibility efforts. Use our <a href="/">Free Accessibility Statement Generator</a> to create a professional statement for your website.</p>
+      <p>An accessibility statement shows your commitment to inclusion and outlines your accessibility efforts. Use our <a href="/accessibility-statement-generator">free accessibility statement generator</a> to create a professional statement for your website.</p>
+
+      <p><em>This article is for general informational purposes only and is not legal advice. Laws and regulations change frequently. Consult a qualified attorney for advice specific to your situation.</em></p>
